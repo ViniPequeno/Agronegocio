@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="_CSS/bootstrap.css" rel="stylesheet">
     <link href="_CSS/mdb.css" rel="stylesheet">
     <link href="_CSS/index.css" rel="stylesheet">
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="index.html" target="_self">
             <img src="img/icon.svg" height="30" width="30" alt="">Chicken Tracker</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,6 +25,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Seu Negócio</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Outro</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -37,19 +42,19 @@
 
     </nav>
     <div class="jumbotron jumbotron-fluid">
+        <div class="img"></div>
         <div class="container">
-            <h1 class="display-4">Bem vindo!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <h1 class="display-4">Mude a visão do seu negócio</h1>
+            <p class="lead">O Chicken Tracker lhe dará pleno controle sobre os estoque, despesas e funcionários de sua granja, além de informar o seu desempenho com o tempo.</p>
             <p class="lead">
-                <a class="btn btn-dark btn-lg" href="#" role="button">Learn more</a>
+                <a class="btn btn-dark btn-lg" href="#" role="button">Saiba mais</a>
             </p>
         </div>
     </div>
     <div class="container conteudo">
         <div class="secao">
             <h1 class="text-center">Nosso Projeto</h1>
+            <canvas id="lineChart"></canvas>
         </div>
         <hr class="my-4">
         <div class="secao">
@@ -58,19 +63,60 @@
         <hr class="my-4">
         <div class="secao">
             <h1 class="text-center">A equipe</h1>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="text-center">
+                        <a href="img/">
+                        <img class="rounded-circle" src="img/значок-фермера-п-оский-79310477.jpg" alt="Gabriel" style="width:80%">
+                        <div class="black-text">
+                        <p>Gabriel San Martin</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="text-center">
+                        <a href="/w3images/nature.jpg">
+                        <img class="rounded-circle" src="img/значок-фермера-п-оский-79310477.jpg" alt="Pedro" style="width:80%">
+                        <div class="black-text">
+                        <p>Pedro Vinicius</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="text-center">
+                        <a href="/w3images/fjords.jpg">
+                        <img class="rounded-circle" src="img/значок-фермера-п-оский-79310477.jpg" alt="Victor" style="width:80%">
+                        <div class="black-text">
+                        <p>Victor Yan</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="text-center">
+                        <a href="/w3images/fjords.jpg">
+                        <img src="img/значок-фермера-п-оский-79310477.jpg" class="rounded-circle" alt="Wyller" style="width:80%">
+                        <div class="black-text">
+                        <p>Wyller Douglas</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
         <hr class="my-4">
     </div>
-    <!--Footer-->
-    <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
+    <footer class="page-footer center-on-small-only stylish-color-dark">
 
         <!--Footer Links-->
-        <div class="container text-center text-md-left">
+        <div class="container">
             <div class="row">
 
                 <!--First column-->
                 <div class="col-md-4">
-                    <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Footer Content</h5>
+                    <h5 class="title mb-4 mt-3 font-bold">Footer Content</h5>
                     <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </div>
                 <!--/.First column-->
@@ -79,8 +125,8 @@
 
                 <!--Second column-->
                 <div class="col-md-2 mx-auto">
-                    <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Links</h5>
-                    <ul class="list-unstyled">
+                    <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                    <ul>
                         <li><a href="#!">Link 1</a></li>
                         <li><a href="#!">Link 2</a></li>
                         <li><a href="#!">Link 3</a></li>
@@ -93,8 +139,8 @@
 
                 <!--Third column-->
                 <div class="col-md-2 mx-auto">
-                    <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Links</h5>
-                    <ul class="list-unstyled">
+                    <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                    <ul>
                         <li><a href="#!">Link 1</a></li>
                         <li><a href="#!">Link 2</a></li>
                         <li><a href="#!">Link 3</a></li>
@@ -107,8 +153,8 @@
 
                 <!--Fourth column-->
                 <div class="col-md-2 mx-auto">
-                    <h5 class="text-uppercase mb-4 mt-3 font-weight-bold ">Links</h5>
-                    <ul class="list-unstyled">
+                    <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
+                    <ul>
                         <li><a href="#!">Link 1</a></li>
                         <li><a href="#!">Link 2</a></li>
                         <li><a href="#!">Link 3</a></li>
@@ -123,12 +169,12 @@
         <hr>
 
         <!--Call to action-->
-        <div class="text-center py-3">
-            <ul class="list-unstyled list-inline mb-0">
-                <li class="list-inline-item">
-                    <h5 class="mb-1">Register for free</h5>
+        <div class="call-to-action">
+            <ul>
+                <li>
+                    <h5 class="mb-1">Cadastre-se agora mesmo</h5>
                 </li>
-                <li class="list-inline-item"><a href="#!" class="btn btn-danger btn-rounded">Sign up!</a></li>
+                <li><a href="" class="btn btn-success btn-rounded">Entrar</a></li>
             </ul>
         </div>
         <!--/.Call to action-->
@@ -136,32 +182,34 @@
         <hr>
 
         <!--Social buttons-->
-        <div class="text-center">
-            <ul class="list-unstyled list-inline">
-                <li class="list-inline-item"><a class="btn-floating btn-sm btn-fb mx-1"><i class="fa fa-facebook"> </i></a></li>
-                <li class="list-inline-item"><a class="btn-floating btn-sm btn-tw mx-1"><i class="fa fa-twitter"> </i></a></li>
-                <li class="list-inline-item"><a class="btn-floating btn-sm btn-gplus mx-1"><i class="fa fa-google-plus"> </i></a></li>
-                <li class="list-inline-item"><a class="btn-floating btn-sm btn-li mx-1"><i class="fa fa-linkedin"> </i></a></li>
-                <li class="list-inline-item"><a class="btn-floating btn-sm btn-dribbble mx-1"><i class="fa fa-dribbble"> </i></a></li>
+        <div class="social-section text-center">
+            <ul>
+
+                <li><a class="btn-floating btn-sm btn-fb"><i class="fa fa-facebook"> </i></a></li>
+                <li><a class="btn-floating btn-sm btn-tw"><i class="fa fa-twitter"> </i></a></li>
+                <li><a class="btn-floating btn-sm btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+                <li><a class="btn-floating btn-sm btn-li"><i class="fa fa-linkedin"> </i></a></li>
+                <li><a class="btn-floating btn-sm btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
+
             </ul>
         </div>
         <!--/.Social buttons-->
 
         <!--Copyright-->
-        <div class="footer-copyright py-3 text-center">
+        <div class="footer-copyright">
             <div class="container-fluid">
-                © 2017 Copyright: <a href="https://mdbootstrap.com/material-design-for-bootstrap/"> MDBootstrap.com </a>
+                © 2017 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
 
             </div>
         </div>
         <!--/.Copyright-->
 
     </footer>
-    <!--/.Footer-->
     <script src="_JS/jquery-3.3.1.js"></script>
     <script src="_JS/popper.min.js"></script>
     <script src="_JS/bootstrap.js"></script>
     <script src="_JS/mdb.js"></script>
+    <script src="_JS/index.js"></script>
 </body>
 
 </html>
