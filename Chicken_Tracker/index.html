@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="_CSS/bootstrap.css" rel="stylesheet">
     <link href="_CSS/mdb.css" rel="stylesheet">
     <link href="_CSS/index.css" rel="stylesheet">
@@ -44,18 +45,16 @@
         <div class="img"></div>
         <div class="container">
             <h1 class="display-4">Mude a visão do seu negócio</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p class="lead">O Chicken Tracker lhe dará pleno controle sobre os estoque, despesas e funcionários de sua granja, além de informar o seu desempenho com o tempo.</p>
             <p class="lead">
-                <a class="btn btn-info btn-lg" href="#" role="button">Saiba mais</a>
+                <a class="btn btn-dark btn-lg" href="#" role="button">Saiba mais</a>
             </p>
         </div>
     </div>
     <div class="container conteudo">
         <div class="secao">
             <h1 class="text-center">Nosso Projeto</h1>
+            <canvas id="lineChart"></canvas>
         </div>
         <hr class="my-4">
         <div class="secao">
@@ -65,8 +64,8 @@
         <div class="secao">
             <h1 class="text-center">A equipe</h1>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="text-sm-center text-md-center">
+                <div class="col-md-3 col-6">
+                    <div class="text-center">
                         <a href="img/">
                         <img class="rounded-circle" src="img/значок-фермера-п-оский-79310477.jpg" alt="Gabriel" style="width:80%">
                         <div class="black-text">
@@ -75,8 +74,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="text-sm-center">
+                <div class="col-md-3 col-6">
+                    <div class="text-center">
                         <a href="/w3images/nature.jpg">
                         <img class="rounded-circle" src="img/значок-фермера-п-оский-79310477.jpg" alt="Pedro" style="width:80%">
                         <div class="black-text">
@@ -85,8 +84,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="text-sm-center">
+                <div class="col-md-3 col-6">
+                    <div class="text-center">
                         <a href="/w3images/fjords.jpg">
                         <img class="rounded-circle" src="img/значок-фермера-п-оский-79310477.jpg" alt="Victor" style="width:80%">
                         <div class="black-text">
@@ -95,8 +94,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="text-sm-center">
+                <div class="col-md-3 col-6">
+                    <div class="text-center">
                         <a href="/w3images/fjords.jpg">
                         <img src="img/значок-фермера-п-оский-79310477.jpg" class="rounded-circle" alt="Wyller" style="width:80%">
                         <div class="black-text">
@@ -210,6 +209,7 @@
     <script src="_JS/popper.min.js"></script>
     <script src="_JS/bootstrap.js"></script>
     <script src="_JS/mdb.js"></script>
+    <script src="_JS/index.js"></script>
 </body>
 
 </html>
