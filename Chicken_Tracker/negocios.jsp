@@ -1,35 +1,26 @@
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <link href="_CSS/bootstrap.css" rel="stylesheet">
-    <title>Chicken Tracket</title>
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html" target="_self">Chicken Tracker</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="negocios.html">NegÃ³cios <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="seu_negocio.html">Seu NegÃ³cio</a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link disabled" href="login.html">Disabled</a>
-                </li>
+<%@ include file="cabecalho.jsp"%>
+<div class="destaque">
+    <section class="busca">
+        <h2>Busca</h2>
+        <form>
+            <input type="search">
+        </form>
+    </section><!-- fim .busca -->
+    <section class="menu-departamentos">
+        <h2>Departamentos</h2>
+        <nav>
+            <ul>
+                <li><a href="#">Blusas e Camisas</a></li>
+                <li><a href="#">Calças</a></li>
+                <li><a href="#">Saias</a></li>
+                <li><a href="#">Vestidos</a></li>
+                <li><a href="#">Sapatos</a></li>
+                <li><a href="#">Bolsas e Carteiras</a></li>
+                <li><a href="#">Acessórios</a></li>
             </ul>
-        </div>
-    </nav>
-
-    <script src="_JS/jquery-3.3.1.js"></script>
-    <script src="_JS/bootstrap.js"></script>
+        </nav>
+    </section><!-- fim .menu-departamentos -->
+</div><!-- fim .container .destaque -->
+<%@include file="rodape.jsp" %>
 </body>
-
 </html>

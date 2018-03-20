@@ -51,6 +51,45 @@ body {
     text-shadow: 2px 2px 5px #000000;
 }
 
+.busca, .menu-departamentos{
+    box-shadow: 2px 2px 3px #000;
+    background-color: #222;
+    padding-top: 5px;
+    color: white;
+    margin-right: 10px;
+    width:15%;
+}
+
+.busca h2,
+.busca form,
+.menu-departamentos h2 {
+    margin: 10px;
+}
+.menu-departamentos li {
+    background-color: white;
+    margin-bottom: 1px;
+    padding: 5px 10px;
+}
+
+.menu-departamentos li:hover, .menu-departamentos li:hover > a {
+    background-color: #333333;
+    color: yellowgreen;
+}
+
+.menu-departamentos li:hover  > a {
+    transition: 0.2s;
+}
+
+.menu-departamentos a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.busca input{
+    margin-bottom: 20px;
+    color: yellowgreen;
+}
+
 @media screen and (max-width: 768px) {
     .jumbotron {
         padding-top: 20px;
