@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="_CSS/bootstrap.css" rel="stylesheet">
         <link href="_CSS/mdb.css" rel="stylesheet">
-        <link href="_CSS/index.css" rel="stylesheet">
+        <link href="_CSS/cabecalho.css" rel="stylesheet">
+        <link href="_CSS/<%=css%>" rel="stylesheet">
         <title>Chicken Tracker</title>
     </head>
     <body>

@@ -4,27 +4,6 @@ body {
     padding-top: 50px;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: white;
-}
-
-.navbar-dark .navbar-brand:hover {
-    color: yellowgreen;
-}
-
-.secao {
-    padding-top: 10px;
-}
-
-.conteudo {
-    background-color: floralwhite;
-}
-
-.navbar.navbar-dark .breadcrumb .nav-item .nav-link:hover,
-.navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
-    color: yellowgreen;
-}
-
 .jumbotron .img {
     margin-bottom: 0px;
     color: #fff;
@@ -37,10 +16,15 @@ body {
     top: 0;
     left: 0;
     z-index: 1;
-    filter: blur(3px);
+    filter: blur(0px) brightness(0.8);
 }
 
 .jumbotron {
+    position: relative;
+    height: 700px;
+}
+
+.jumbotron h1{
     position: relative;
 }
 
@@ -51,129 +35,26 @@ body {
     text-shadow: 2px 2px 5px #000000;
 }
 
-.busca,
-.menu-departamentos {
-    box-shadow: 2px 2px 3px #000;
-    background-color: #222;
-    padding-top: 5px;
-    color: white;
-    margin-right: 10px;
-    width: 15%;
+.vertical-center {
+  height:100%;
+  width:100%;
+
+  text-align: center;  /* align the inline(-block) elements horizontally */
+  font: 0/0 a;         /* remove the gap between inline(-block) elements */
 }
 
-.busca h2,
-.busca form,
-.menu-departamentos h2 {
-    margin: 10px;
+.vertical-center:before {    /* create a full-height inline block pseudo=element */
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;    /* vertical alignment of the inline element */
+  height: 100%;
 }
 
-.menu-departamentos li {
-    background-color: white;
-    margin-bottom: 1px;
-    padding: 5px 10px;
-}
+.vertical-center > .container {
+  max-width: 100%;
 
-.menu-departamentos li:hover,
-.menu-departamentos li:hover > a {
-    background-color: #333333;
-    color: yellowgreen;
-}
-
-.menu-departamentos li:hover > a {
-    transition: 0.2s;
-}
-
-.menu-departamentos a {
-    color: #333333;
-    text-decoration: none;
-}
-
-.busca input {
-    margin-bottom: 20px;
-    color: yellowgreen;
-}
-
-/*
- * Style tweaks
- * --------------------------------------------------
- */
-
-html,
-body {
-    overflow-x: hidden;
-    /* Prevent scroll on narrow devices */
-}
-
-body {
-    padding-top: 70px;
-}
-
-footer {
-    padding: 30px 0;
-}
-
-/*
- * Off Canvas
- * --------------------------------------------------
- */
-
-@media screen and (max-width: 767px) {
-    .row-offcanvas {
-        position: relative;
-        -webkit-transition: all .25s ease-out;
-        -o-transition: all .25s ease-out;
-        transition: all .25s ease-out;
-    }
-
-    .row-offcanvas-right {
-        right: 0;
-    }
-
-    .row-offcanvas-left {
-        left: 0;
-    }
-
-    .row-offcanvas-right .sidebar-offcanvas {
-        right: -100%;
-        /* 12 columns */
-    }
-
-    .row-offcanvas-right.active .sidebar-offcanvas {
-        right: -50%;
-        /* 6 columns */
-    }
-
-    .row-offcanvas-left .sidebar-offcanvas {
-        left: -100%;
-        /* 12 columns */
-    }
-
-    .row-offcanvas-left.active .sidebar-offcanvas {
-        left: -50%;
-        /* 6 columns */
-    }
-
-    .row-offcanvas-right.active {
-        right: 50%;
-        /* 6 columns */
-    }
-
-    .row-offcanvas-left.active {
-        left: 50%;
-        /* 6 columns */
-    }
-
-    .sidebar-offcanvas {
-        position: absolute;
-        top: 0;
-        width: 50%;
-        /* 6 columns */
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .jumbotron {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
+  display: inline-block;
+  vertical-align: middle;  /* vertical alignment of the inline element */
+                           /* reset the font property */
+  font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

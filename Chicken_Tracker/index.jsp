@@ -1,12 +1,15 @@
+<% String css = "index.css";%>
 <%@ include file="cabecalho.jsp"%>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid vertical-center">
     <div class="img"></div>
     <div class="container">
-        <h1 class="display-4">Mude a visão do seu negócio</h1>
-        <p class="lead">O Chicken Tracker lhe dará pleno controle sobre os estoque, despesas e funcionários de sua granja, além de informar o seu desempenho com o tempo.</p>
-        <p class="lead">
-            <a class="btn btn-dark btn-lg" href="#" role="button">Saiba mais</a>
-        </p>
+        <div class="center-jumbotron-content">
+            <h1 class="display-4">Mude a visão do seu negócio</h1>
+            <p class="lead">O Chicken Tracker lhe dará pleno controle sobre os estoque, despesas e funcionários de sua granja, além de informar o seu desempenho com o tempo.</p>
+            <p class="lead">
+                <a class="btn btn-dark btn-lg" href="#" role="button">Saiba mais</a>
+            </p>
+        </div>
     </div>
 </div>
 <div class="container conteudo">

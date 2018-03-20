@@ -61,10 +61,12 @@
     <!--Call to action-->
     <div class="call-to-action">
         <ul>
-            <li>
-                <h5 class="mb-1">Cadastre-se agora mesmo</h5>
-            </li>
-            <li><a href="" class="btn btn-success btn-rounded">Entrar</a></li>
+            <div class="row">
+                <li class="col-md-6 col-12">
+                    <h5 class="mb-1">Cadastre-se agora mesmo</h5>
+                </li>
+                <li class="col-md-6 col-12"><a href="" class="btn btn-success btn-rounded">Entrar</a></li>
+            </div>
         </ul>
     </div>
     <!--/.Call to action-->
@@ -88,7 +90,7 @@
     <!--Copyright-->
     <div class="footer-copyright">
         <div class="container-fluid">
-            © 2017 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+            � 2017 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
 
         </div>
     </div>

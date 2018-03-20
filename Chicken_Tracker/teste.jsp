@@ -1,98 +1,79 @@
-<%@ include file="cabecalho.jsp"%>
-    <div class="container">
+<%@page language="java" contentType="text/html; charset=utf-8"%>
+<html>
 
-        <div class="row row-offcanvas row-offcanvas-right">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="_CSS/bootstrap.css" rel="stylesheet">
+        <link href="_CSS/mdb.css" rel="stylesheet">
+        <link href="_CSS/simple-sidebar.css" rel="stylesheet">
+        <title>Chicken Tracker</title>
+    </head>
 
-            <div class="col-12 col-md-9">
-                <p class="float-right hidden-md-up">
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
-                </p>
-                <div class="jumbotron">
-                    <h1>Hello, world!</h1>
-                    <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
-                </div>
-                <div class="row">
-                    <div class="col-6 col-lg-4">
-                        <h2>Heading</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-                    </div>
-                    <!--/span-->
-                    <div class="col-6 col-lg-4">
-                        <h2>Heading</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-                    </div>
-                    <!--/span-->
-                    <div class="col-6 col-lg-4">
-                        <h2>Heading</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-                    </div>
-                    <!--/span-->
-                    <div class="col-6 col-lg-4">
-                        <h2>Heading</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-                    </div>
-                    <!--/span-->
-                    <div class="col-6 col-lg-4">
-                        <h2>Heading</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-                    </div>
-                    <!--/span-->
-                    <div class="col-6 col-lg-4">
-                        <h2>Heading</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-                    </div>
-                    <!--/span-->
-                </div>
-                <!--/row-->
+    <body>
+
+        <div id="wrapper" class="">
+
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            Start Bootstrap
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#">Shortcuts</a>
+                    </li>
+                    <li>
+                        <a href="#">Overview</a>
+                    </li>
+                    <li>
+                        <a href="#">Events</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
             </div>
-            <!--/span-->
+            <!-- /#sidebar-wrapper -->
 
-            <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
-                <div class="list-group">
-                    <a href="#" class="list-group-item active">Link</a>
-                    <a href="#" class="list-group-item">Link</a>
-                    <a href="#" class="list-group-item">Link</a>
-                    <a href="#" class="list-group-item">Link</a>
-                    <a href="#" class="list-group-item">Link</a>
-                    <a href="#" class="list-group-item">Link</a>
-                    <a href="#" class="list-group-item">Link</a>
-                    <a href="#" class="list-group-item">Link</a>
-                    <a href="#" class="list-group-item">Link</a>
-                    <a href="#" class="list-group-item">Link</a>
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <h1>Simple Sidebar</h1>
+                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                    <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
                 </div>
             </div>
-            <!--/span-->
+            <!-- /#page-content-wrapper -->
+
         </div>
-        <!--/row-->
+        <!-- /#wrapper -->
 
-        <hr>
+        <!-- Bootstrap core JavaScript -->
+        <script src="_JS/jquery-3.3.1.js"></script>
+        <script src="_JS/popper.min.js"></script>
+        <script src="_JS/bootstrap.js"></script>
+        <script src="_JS/mdb.js"></script>
 
-        <footer>
-            <p>© Company 2017</p>
-        </footer>
-
-    </div>
-    <!-- fim .container .destaque -->
-    <%@include file="rodape.jsp" %>
+        <!-- Menu Toggle Script -->
         <script>
-            window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
-
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function() {
-                $('[data-toggle="offcanvas"]').click(function() {
-                    $('.row-offcanvas').toggleClass('active')
-                });
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
             });
-
         </script>
-        </body>
+    </body>
 
-        </html>
+</html>
