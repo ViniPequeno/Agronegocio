@@ -7,7 +7,7 @@
             <h1 class="display-4">Mude a visão do seu negócio</h1>
             <p class="lead">O Chicken Tracker lhe dará pleno controle sobre os estoque, despesas e funcionários de sua granja, além de informar o seu desempenho com o tempo.</p>
             <p class="lead">
-                <a class="btn btn-dark btn-lg" href="#" role="button">Saiba mais</a>
+                <a class="btn btn-info btn-lg" href="#" role="button">Saiba mais</a>
             </p>
         </div>
     </div>
@@ -15,7 +15,13 @@
 <div class="container conteudo">
     <div class="secao">
         <h1 class="text-center">Nosso Projeto</h1>
-        <canvas id="lineChart"></canvas>
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-center">Saiba seu desempenho</h4>
+                <canvas id="lineChart"></canvas>
+                <p>Tenha acesso instantâneo as informações financeiras do seu negócio e descubra o quanto e você está gastando e ganhando</p>
+            </div>
+        </div>
     </div>
     <hr class="my-4">
     <div class="secao">

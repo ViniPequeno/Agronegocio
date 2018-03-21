@@ -19,14 +19,6 @@ and open the template in the editor.
     color: yellowgreen;
 }
 
-.secao {
-    padding-top: 10px;
-}
-
-.conteudo {
-    background-color: floralwhite;
-}
-
 .navbar.navbar-dark .breadcrumb .nav-item .nav-link:hover,
 .navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
     color: yellowgreen;
