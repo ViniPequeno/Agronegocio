@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=utf-8"%>
-<html>
+    <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +10,7 @@
         <link href="_CSS/<%=css%>" rel="stylesheet">
         <title>Chicken Tracker</title>
     </head>
+
     <body>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="index.html" target="_self">
