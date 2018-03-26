@@ -1,5 +1,5 @@
-<% String css = "seu_negocios.css";%>
-<%@ include file="cabecalho.jsp"%>
+<% String css = "../css/seu_negocios.css";%>
+<%@ include file="../cabecalho.jsp"%>
 <div class="destaque">
     <section class="busca">
         <h2>Busca</h2>
@@ -23,7 +23,7 @@
     <!-- fim .menu-departamentos -->
 </div>
 <!-- fim .container .destaque -->
-<%@include file="rodape.jsp" %>
+<%@include file="../rodape.jsp" %>
 </body>
 
 </html>

@@ -1,6 +1,5 @@
-<% String css = "cadastro.css";%>
-<%@ include file="cabecalho.jsp"%>
-
+<% String css = "../css/cadastro.css";%>
+<%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
     <div class="card">
@@ -57,8 +56,6 @@
         </div>
     </div>
 </div>
-
-<%@include file="rodape.jsp" %>
+<%@include file="../rodape.jsp" %>
 </body>
-
 </html>

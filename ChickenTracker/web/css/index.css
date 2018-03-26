@@ -20,7 +20,7 @@ body {
 
 .jumbotron {
     position: relative;
-    min-height: 700px;
+    align-items: center;
 }
 
 .jumbotron h1 {

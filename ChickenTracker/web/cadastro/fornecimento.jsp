@@ -1,44 +1,46 @@
-<% String css = "cadastro.css";%>
-<%@ include file="cabecalho.jsp"%>
+<% String css = "../css/cadastro.css";%>
+<%@ include file="../cabecalho.jsp"%>
 
 <!-- Material form register -->
 <div class="container">
-    <div class="card"><div class="card-body"><form>
+    <div class="card">
+        <div class="card-body">
+            <form>
                 <p class="h1 text-center mb-4">Novo Fornecedor</p>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="materialFormRegisterNameEx" class="form-control">
-                    <label for="materialFormRegisterNameEx">CNPJ</label>
+                    <input type="text" id="inputCNPJ" class="form-control">
+                    <label for="inputCNPJ">CNPJ</label>
                 </div>
                 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-money-bill-alt prefix grey-text"></i>
-                    <input type="text" id="materialFormRegisterSalarioEx" class="form-control">
-                    <label for="materialFormRegisterSalarioEx">Quantidade</label>
+                    <input type="text" id="inputQtde" class="form-control">
+                    <label for="inputQtde">Quantidade</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-money-bill-alt prefix grey-text"></i>
-                    <input type="text" id="materialFormRegisterSalarioEx" class="form-control">
-                    <label for="materialFormRegisterSalarioEx">Forma de pagamento</label>
+                    <input type="text" id="inputFormaPagamento" class="form-control">
+                    <label for="inputFormaPagamento">Forma de pagamento</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-id-badge prefix grey-text"></i>
-                    <input type="text" id="materialFormRegisterCargoEx" class="form-control">
-                    <label for="materialFormRegisterCargoEx">Vencimento</label>
+                    <input type="text" id="inputDataVencimento" class="form-control">
+                    <label for="inputDataVencimento">Data de vencimento</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-id-card prefix grey-text"></i>
-                    <input type="text" id="materialFormRegisterCPFEx" class="form-control">
-                    <label for="materialFormRegisterCPFEx">Tipo</label>
+                    <input type="text" id="inputTipo" class="form-control">
+                    <label for="inputTipo">Tipo</label>
                 </div>
                 <div class="text-center mt-4">
                     <button class="btn btn-primary" type="submit">Confirmar</button>
@@ -47,11 +49,8 @@
             <!-- Material form register -->
         </div>
     </div>
-
-
 </div>
-
-<%@include file="rodape.jsp" %>
+<%@include file="../rodape.jsp" %>
 </body>
 
 </html>
