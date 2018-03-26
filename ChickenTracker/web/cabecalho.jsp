@@ -9,6 +9,7 @@
         <link href="css/mdb.css" rel="stylesheet">
         <link href="css/cabecalho.css" rel="stylesheet">
         <link href="css/<%=css%>" rel="stylesheet">
+        <link rel="icon" href="img/f.jpg">
         <title>Chicken Tracker</title>
     </head>
 
@@ -35,10 +36,10 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-user mr-1" aria-hidden="true"></i>Login</a>
+                        <a class="nav-link" href="login.jsp"><i class="fa fa-user mr-1" aria-hidden="true"></i>Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-pencil-alt mr-1" aria-hidden="true"></i>Cadastre-se</a>
+                        <a class="nav-link" href="cadastroUsuario.jsp"><i class="fa fa-pencil-alt mr-1" aria-hidden="true"></i>Cadastre-se</a>
                     </li>
                 </ul>
             </div>

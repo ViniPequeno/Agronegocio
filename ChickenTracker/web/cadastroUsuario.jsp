@@ -49,39 +49,39 @@
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" id="materialFormRegisterNameEx" class="form-control">
-                            <label for="materialFormRegisterNameEx">Nome</label>
-                        </div>
-
-                        <!-- Material input text -->
-                        <div class="md-form">
-                            <i class="fa fa-money-bill-alt prefix grey-text"></i>
-                            <input type="text" id="materialFormRegisterSalarioEx" class="form-control">
-                            <label for="materialFormRegisterSalarioEx">Apelido</label>
-                        </div>
-
-                        <!-- Material input email -->
-                        <div class="md-form">
-                            <i class="fa fa-envelope prefix grey-text"></i>
-                            <input type="email" id="materialFormRegisterEmailEx" class="form-control">
-                            <label for="materialFormRegisterEmailEx">Email</label>
-                        </div>
-
-                        <!-- Material input text -->
-                        <div class="md-form">
-                            <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="materialFormRegisterCargoEx" class="form-control">
-                            <label for="materialFormRegisterCargoEx">Senha</label>
+                            <input type="text" id="inputNome" class="form-control">
+                            <label for="inputNome">Nome</label>
                         </div>
 
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-id-card prefix grey-text"></i>
-                            <input type="text" id="materialFormRegisterCPFEx" class="form-control">
-                            <label for="materialFormRegisterCPFEx">Foto</label>
+                            <input type="text" id="inputLogin" class="form-control">
+                            <label for="inputLogin">Login</label>
+                        </div>
+
+                        <!-- Material input email -->
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix grey-text"></i>
+                            <input type="email" id="inputEmail" class="form-control">
+                            <label for="inputEmail">Email</label>
+                        </div>
+
+                        <!-- Material input text -->
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" id="inputSenha" class="form-control">
+                            <label for="inputSenha">Senha</label>
+                        </div>
+                        
+                        <!-- Material input text -->
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" id="inputConfirmarSenha" class="form-control">
+                            <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
                         <div class="text-center mt-4">
-                            <button class="btn btn-primary" type="submit">Confirmar</button>
+                            <button class="btn btn-cyan" type="submit">Confirmar</button>
                         </div>
                     </div>
                 </div>

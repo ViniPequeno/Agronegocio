@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-3 col-6">
                 <div class="text-center">
-                    <a href="/w3images/nature.jpg">
+                    <a href="/w3images/nature.jpg" id="sd">
                         <img class="rounded-circle" src="img/farmer.jpg" alt="Pedro" style="width:80%">
                         <div class="black-text">
                             <p>Pedro Vinicius</p>
