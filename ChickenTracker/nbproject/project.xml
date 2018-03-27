@@ -50,6 +50,14 @@
                     <file>${file.reference.hibernate-jpamodelgen-5.2.16.Final.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
+                <library dirs="200">
+                    <file>${libs.hibernate4-persistence.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.hibernate-release-5.2.16.Final-lib}</file>
+                    <path-in-war>WEB-INF/classes</path-in-war>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>

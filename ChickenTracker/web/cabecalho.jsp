@@ -34,7 +34,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../cadastro/login.jsp"><i class="fa fa-user mr-1" aria-hidden="true"></i>Login</a>
+                        <a class="nav-link" href="../main/login.jsp"><i class="fa fa-sign-in-alt mr-1" aria-hidden="true"></i>Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../cadastro/usuario.jsp"><i class="fa fa-pencil-alt mr-1" aria-hidden="true"></i>Cadastre-se</a>

@@ -72,17 +72,17 @@
                             <input type="password" id="inputSenha" class="form-control">
                             <label for="inputSenha">Senha</label>
                         </div>
-                        
+
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-lock prefix grey-text"></i>
                             <input type="password" id="inputConfirmarSenha" class="form-control">
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
-                        <div class="text-center mt-4">
-                            <button class="btn btn-cyan" type="submit">Confirmar</button>
-                        </div>
                     </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-cyan" type="submit">Confirmar</button>
                 </div>
             </form>
             <!-- Material form register -->
