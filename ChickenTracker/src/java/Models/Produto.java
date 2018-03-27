@@ -32,10 +32,10 @@ public class Produto implements Serializable, Singleton {
     }
 
     @Transient
-    private Produto getInstance;
+    private static Produto getInstance;
 
-    @Override
-    public Produto getInstance() {
+    
+    public static Produto getInstance() {
         if (getInstance == null) {
             getInstance = new Produto();
         }

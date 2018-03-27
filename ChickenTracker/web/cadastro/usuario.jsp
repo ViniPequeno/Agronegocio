@@ -1,4 +1,4 @@
-<% String css = "../css/cadastro.css";%>
+<% String css = "../_CSS/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
@@ -91,6 +91,6 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
-<script src="../js/profile-picture.js"></script>
+<script src="../fontawesome-free-5.0.8/_JS/profile-picture.js"></script>
 </body>
 </html>

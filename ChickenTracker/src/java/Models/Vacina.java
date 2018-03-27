@@ -36,10 +36,10 @@ public class Vacina implements Serializable, Singleton {
     }
 
     @Transient
-    private Vacina getInstance;
+    private static Vacina getInstance;
 
-    @Override
-    public Vacina getInstance() {
+    
+    public static Vacina getInstance() {
         if (getInstance == null) {
             getInstance = new Vacina();
         }

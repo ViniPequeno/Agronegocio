@@ -4,9 +4,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script defer src="../fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.js"></script>
-        <link href="../css/bootstrap.css" rel="stylesheet">
-        <link href="../css/mdb.css" rel="stylesheet">
-        <link href="../css/cabecalho.css" rel="stylesheet">
+        <link href="../Bootstrap/_CSS/bootstrap.css" rel="stylesheet">
+        <link href="../Bootstrap/_CSS//mdb.css" rel="stylesheet">
+        <link href="../_CSS/cabecalho.css" rel="stylesheet">
         <link href="<%=css%>" rel="stylesheet">
         <link rel="icon" href="../img/f.jpg">
         <title>Chicken Tracker</title>

@@ -39,10 +39,10 @@ public class Negocio implements Serializable, Singleton {
     }
 
     @Transient
-    private Negocio getInstance;
+    private static Negocio getInstance;
 
-    @Override
-    public Negocio getInstance() {
+    
+    public static Negocio getInstance() {
         if (getInstance == null) {
             getInstance = new Negocio();
         }

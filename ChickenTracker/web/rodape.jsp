@@ -143,7 +143,7 @@
 <!--/.Footer-->
                       
 
-<script src="../js/jquery-3.3.1.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="../js/mdb.js"></script>
+<script src="../Bootstrap/_JS/jquery-3.3.1.js"></script>
+<script src="../Bootstrap/_JS/popper.min.js"></script>
+<script src="../Bootstrap/_JS/bootstrap.js"></script>
+<script src="../Bootstrap/_JS/mdb.js"></script>

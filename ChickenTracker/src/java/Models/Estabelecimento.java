@@ -42,10 +42,10 @@ public class Estabelecimento implements Serializable, Singleton {
     }
 
     @Transient
-    private Estabelecimento getInstance;
+    private static Estabelecimento getInstance;
 
-    @Override
-    public Estabelecimento getInstance() {
+    
+    public static Estabelecimento getInstance() {
         if (getInstance == null) {
             getInstance = new Estabelecimento();
         }

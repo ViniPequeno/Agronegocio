@@ -29,10 +29,10 @@ public class Funcionario implements Serializable, Singleton {
     }
 
     @Transient
-    private Funcionario getInstance;
+    private static Funcionario getInstance;
 
-    @Override
-    public Funcionario getInstance() {
+    
+    public static Funcionario getInstance() {
         if (getInstance == null) {
             getInstance = new Funcionario();
         }

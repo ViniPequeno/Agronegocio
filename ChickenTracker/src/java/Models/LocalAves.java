@@ -32,10 +32,10 @@ public class LocalAves implements Serializable, Singleton {
     }
 
     @Transient
-    private LocalAves getInstance;
+    private static LocalAves getInstance;
 
-    @Override
-    public LocalAves getInstance() {
+    
+    public static LocalAves getInstance() {
         if (getInstance == null) {
             getInstance = new LocalAves();
         }

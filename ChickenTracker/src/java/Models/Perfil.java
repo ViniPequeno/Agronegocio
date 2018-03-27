@@ -31,13 +31,13 @@ public class Perfil implements Serializable, Singleton {
     private List<Estabelecimento> estabelecimentos;
 
     @Transient
-    private Perfil getInstance;
+    private static Perfil getInstance;
 
     private Perfil() {
     }
 
-    @Override
-    public Perfil getInstance() {
+    
+    public static Perfil getInstance() {
         if (getInstance == null) {
             getInstance = new Perfil();
         }

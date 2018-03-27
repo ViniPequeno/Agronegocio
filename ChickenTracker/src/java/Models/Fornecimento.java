@@ -31,10 +31,9 @@ public class Fornecimento implements Serializable, Singleton {
     }
 
     @Transient
-    private Fornecimento getInstance;
+    private static Fornecimento getInstance;
 
-    @Override
-    public Fornecimento getInstance() {
+    public static Fornecimento getInstance() {
         if (getInstance == null) {
             getInstance = new Fornecimento();
         }

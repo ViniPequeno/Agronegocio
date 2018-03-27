@@ -1,4 +1,4 @@
-<% String css = "../css/seu_negocios.css";%>
+<% String css = "../_CSS/seu_negocios.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <div class="destaque">
     <section class="busca">

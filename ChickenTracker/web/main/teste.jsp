@@ -5,9 +5,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script defer src="../fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.js"></script>
-        <link href="../css/bootstrap.css" rel="stylesheet">
-        <link href="../css/mdb.css" rel="stylesheet">
-        <link href="../css/simple-sidebar.css" rel="stylesheet">
+        <link href="../Bootstrap/_CSS/bootstrap.css" rel="stylesheet">
+        <link href="../Bootstrap/_CSS/mdb.css" rel="stylesheet">
+        <link href="../Bootstrap/_CSS/simple-sidebar.css" rel="stylesheet">
         <title>Chicken Tracker</title>
     </head>
 
@@ -143,10 +143,10 @@
         <!--Projects section v.3-->
 
         <!-- Bootstrap core JavaScript -->
-        <script src=../"js/jquery-3.3.1.js"></script>
-        <script src="../js/popper.min.js"></script>
-        <script src="../js/bootstrap.js"></script>
-        <script src="../js/mdb.js"></script>
+        <script src="../Bootstrap/_JS/jquery-3.3.1.js"></script>
+        <script src="../Bootstrap/_JS/popper.min.js"></script>
+        <script src="../Bootstrap/_JS/bootstrap.js"></script>
+        <script src="../Bootstrap/_JS/mdb.js"></script>
 
         <!-- Menu Toggle Script -->
         <script>
