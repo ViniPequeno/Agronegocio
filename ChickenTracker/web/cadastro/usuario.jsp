@@ -48,35 +48,35 @@
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" id="inputNome" class="form-control">
+                            <input type="text" id="inputNome" class="form-control" required autofocus maxlength="50">
                             <label for="inputNome">Nome</label>
                         </div>
 
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-id-card prefix grey-text"></i>
-                            <input type="text" id="inputLogin" class="form-control">
+                            <input type="text" id="inputLogin" class="form-control" required maxlength="20">
                             <label for="inputLogin">Login</label>
                         </div>
 
                         <!-- Material input email -->
                         <div class="md-form">
                             <i class="fa fa-envelope prefix grey-text"></i>
-                            <input type="email" id="inputEmail" class="form-control">
+                            <input type="email" id="inputEmail" class="form-control" required maxlength="80">
                             <label for="inputEmail">Email</label>
                         </div>
 
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputSenha" class="form-control">
+                            <input type="password" id="inputSenha" class="form-control" required maxlength="255">
                             <label for="inputSenha">Senha</label>
                         </div>
 
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputConfirmarSenha" class="form-control">
+                            <input type="password" id="inputConfirmarSenha" class="form-control" required maxlength="255">
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
                     </div>

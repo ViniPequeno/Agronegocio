@@ -1,10 +1,9 @@
-package Models;
+package com.mycompany.chicken_tracker.Models;
 
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
-import Interfaces.Singleton;
 
 /**
  *
@@ -12,7 +11,7 @@ import Interfaces.Singleton;
  */
 @Entity
 @Table(name = "localaves")
-public class LocalAves implements Serializable, Singleton {
+public class LocalAves implements Serializable {
 
     @Id
     private int codigo;

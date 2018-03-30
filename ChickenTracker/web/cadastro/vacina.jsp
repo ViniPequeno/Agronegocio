@@ -10,35 +10,35 @@
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="inputNome" class="form-control">
+                    <input type="text" id="inputNome" class="form-control" required autofocus maxlength="50">
                     <label for="inputNome">Nome</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-money-bill-alt prefix grey-text"></i>
-                    <input type="text" id="inputDataPrimeiraVacina" class="form-control">
+                    <input type="text" id="inputDataPrimeiraVacina" class="form-control" required maxlength="10">
                     <label for="materialFormRegisterSalarioEx">Data da primeira vacina:</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-id-badge prefix grey-text"></i>
-                    <input type="text" id="inputDataProximaVacina" class="form-control">
+                    <input type="text" id="inputDataProximaVacina" class="form-control" required maxlength="10">
                     <label for="inputDataProximaVacina">Data da próxima vacina</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-id-card prefix grey-text"></i>
-                    <input type="text" id="inputCodigo" class="form-control">
+                    <input type="text" id="inputCodigo" class="form-control" required maxlength="10">
                     <label for="inputCodigo">Código</label>
                 </div>
 
                 <!-- Material textarea message -->
                 <div class="md-form">
                     <i class="fa fa-pencil-alt prefix grey-text"></i>
-                    <textarea id="inputDescricao" class="form-control md-textarea" rows="3"></textarea>
+                    <textarea id="inputDescricao" class="form-control md-textarea" rows="3" required=""></textarea>
                     <label for="inputDescricao">Descrição</label>
                 </div>
                 <div class="text-center mt-4">

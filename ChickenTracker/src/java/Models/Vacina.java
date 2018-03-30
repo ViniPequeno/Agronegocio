@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Models;
+package com.mycompany.chicken_tracker.Models;
 
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
-import Interfaces.Singleton;
 
 /**
  *
@@ -17,7 +16,7 @@ import Interfaces.Singleton;
  */
 @Entity
 @Table(name = "vacina")
-public class Vacina implements Serializable, Singleton {
+public class Vacina implements Serializable {
 
     @Id
     private int codigo;

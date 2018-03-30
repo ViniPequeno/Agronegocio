@@ -11,37 +11,31 @@
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="inputCNPJ" class="form-control">
+                    <input type="text" id="inputCNPJ" class="form-control" required autofocus maxlength="8">
                     <label for="inputCNPJ">CNPJ</label>
                 </div>
                 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-money-bill-alt prefix grey-text"></i>
-                    <input type="text" id="inputQtde" class="form-control">
+                    <input type="text" id="inputQtde" class="form-control" required  maxlength="5">
                     <label for="inputQtde">Quantidade</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-money-bill-alt prefix grey-text"></i>
-                    <input type="text" id="inputFormaPagamento" class="form-control">
-                    <label for="inputFormaPagamento">Forma de pagamento</label>
+                    <input type="text" id="inputValorPagamento" class="form-control"required maxlength="20">
+                    <label for="inputFormaPagamento">Valor do pagamento</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-id-badge prefix grey-text"></i>
-                    <input type="text" id="inputDataVencimento" class="form-control">
+                    <input type="text" id="inputDataVencimento" class="form-control" required maxlength="10">
                     <label for="inputDataVencimento">Data de vencimento</label>
                 </div>
-
-                <!-- Material input text -->
-                <div class="md-form">
-                    <i class="fa fa-id-card prefix grey-text"></i>
-                    <input type="text" id="inputTipo" class="form-control">
-                    <label for="inputTipo">Tipo</label>
-                </div>
+                
                 <div class="text-center mt-4">
                     <button class="btn btn-primary" type="submit">Confirmar</button>
                 </div>

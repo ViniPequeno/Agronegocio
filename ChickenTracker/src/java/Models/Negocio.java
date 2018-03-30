@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Models;
+package com.mycompany.chicken_tracker.Models;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import Interfaces.Singleton;
 import static javax.persistence.CascadeType.ALL;
 
 /**
@@ -17,7 +16,7 @@ import static javax.persistence.CascadeType.ALL;
  */
 @Entity
 @Table(name = "negocio")
-public class Negocio implements Serializable, Singleton {
+public class Negocio implements Serializable {
 
     @Id
     private String empresaCNPJ;

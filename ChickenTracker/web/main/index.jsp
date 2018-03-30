@@ -1,5 +1,5 @@
 <% String css = "../_CSS/index.css";%>
-<%@ include file="../cabecalho.jsp"%>
+<%@ include file="/cabecalho.jsp"%>
 <div class="jumbotron vertical-center">
     <div class="img"></div>
     <div class="container">

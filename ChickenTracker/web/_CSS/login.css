@@ -1,57 +1,159 @@
-html,
-body {
-    height: 100%;
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25/03/2018, 15:35:22
+    Author     : user
+*/
+
+
+.container form{
+    margin-top: 40px;
 }
 
-body {
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-align: center;
-    -ms-flex-pack: center;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: rgb(129,253,111);
+body .container:first-of-type{
+    margin-top: 20px;
 }
 
-.form-signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
+/*DEMO*/
+.preview {
+    margin: 10px;
+    display: none;
 }
-.form-signin .checkbox {
-    font-weight: 400;
+.preview--rounded {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
 }
-.form-signin .form-control {
-    position: relative;
-    box-sizing: border-box;
-    height: auto;
-    padding: 10px;
-    font-size: 16px;
-}
-.form-signin .form-control:focus {
-    z-index: 2;
-}
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+/* IMMUTABLE */
+.hide {
+    display: none !important;
 }
 
-.jumbotron-login{
-    padding: 2rem 1rem;
-    margin-bottom: 2rem;
-    background-color: #e9ecef;
-    border-radius: 0.3rem;
-    width: 450px;
+.message p {
+    font-size: 0.9em;
 }
+.photo__options {
+    list-style: none;
+}
+.photo__options li {
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+}
+.photo--empty .photo__frame {
+    cursor: pointer;
+}
+/**
+* IMG states
+*/
+.profile.is-dragover .photo__frame img,
+.photo--empty img,
+.photo--error img,
+.photo--error--file-type img,
+.photo--error--image-size img,
+.photo--loading img {
+    display: none;
+}
+/**
+* States
+*/
+/** SELECT PHOTO MESSAGE */
+.message--desktop,
+.message--mobile {
+    display: none;
+}
+/* MOBILE */
+.is-mobile .message--mobile {
+    display: inline-block;
+}
+.is-mobile .message--desktop {
+    display: none;
+}
+/* DESKTOP */
+.is-desktop .message--desktop {
+    display: inline-block;
+}
+.is-desktop .message--mobile {
+    display: none;
+}
+/* DEFAULT */
+.message.is-empty,
+.message.is-loading,
+.message.is-wrong-file-type,
+.message.is-wrong-image-size,
+.message.is-something-wrong,
+.message.is-dragover {
+    display: none;
+}
+/* EMPTY */
+.photo--empty .photo__options {
+    display: none;
+}f
+.photo--empty .message.is-empty {
+    display: inline-block;
+}
+.photo--empty .photo__frame:hover {
+    background: #268eff;
+}
+.photo--empty .photo__frame:hover .message {
+    color: #fff;
+}
+/* LOADING */
+.photo--loading .message.is-loading {
+    display: inline-block;
+}
+.photo--loading .message.is-empty,
+.photo--loading .message.is-wrong-file-type,
+.photo--loading .message.is-dragover,
+.photo--loading .message.is-wrong-image-size,
+.photo--loading .photo__options {
+    display: none;
+}
+/* ERROR */
+/* UNKNOWN */
+.photo--error .message.is-empty,
+.photo--error .message.is-loading,
+.photo--error .message.is-dragover,
+.photo--error .message.is-wrong-image-size,
+.photo--error .photo__options {
+    display: none;
+}
+.photo--error .message.is-something-wrong {
+    display: inline-block;
+}
+/* FILE TYPE*/
+.photo--error--file-type .message.is-empty,
+.photo--error--file-type .message.is-loading,
+.photo--error--file-type .message.is-dragover,
+.photo--error--file-type .message.is-wrong-image-size,
+.photo--error--file-type .photo__options {
+    display: none;
+}
+.photo--error--file-type .message.is-wrong-file-type {
+    display: inline-block;
+}
+/* IMAGE SIZE */
+.photo--error--image-size .message.is-empty,
+.photo--error--image-size .message.is-loading,
+.photo--error--image-size .message.is-dragover,
+.photo--error--image-size .message.is-wrong-file-type,
+.photo--error--image-size .photo__options {
+    display: none;
+}
+.photo--error--image-size .message.is-wrong-image-size {
+    display: inline-block;
+}
+/* DRAGOVER */
+.profile.is-dragover .photo__frame .is-dragover {
+    display: inline-block;
+}
+.profile.is-dragover .message.is-empty,
+.profile.is-dragover .message.is-loading,
+.profile.is-dragover .message.is-wrong-file-type,
+.profile.is-dragover .message.is-wrong-image-size {
+    display: none;
+}
+

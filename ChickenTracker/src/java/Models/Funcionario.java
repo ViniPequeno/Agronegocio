@@ -1,9 +1,8 @@
-package Models;
+package com.mycompany.chicken_tracker.Models;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import Interfaces.Singleton;
 
 /**
  *
@@ -11,7 +10,7 @@ import Interfaces.Singleton;
  */
 @Entity
 @Table(name = "funcionario")
-public class Funcionario implements Serializable, Singleton {
+public class Funcionario implements Serializable{
 
     @Id
     private String CPF;

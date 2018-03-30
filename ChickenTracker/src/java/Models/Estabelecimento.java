@@ -1,9 +1,8 @@
-package Models;
+package com.mycompany.chicken_tracker.Models;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import Interfaces.Singleton;
 import static javax.persistence.CascadeType.ALL;
 
 /**
@@ -12,7 +11,7 @@ import static javax.persistence.CascadeType.ALL;
  */
 @Entity
 @Table(name = "estabelecimento")
-public class Estabelecimento implements Serializable, Singleton {
+public class Estabelecimento implements Serializable{
 
     @Id
     private String sufixoCNPJ;
@@ -44,7 +43,7 @@ public class Estabelecimento implements Serializable, Singleton {
     @Transient
     private static Estabelecimento getInstance;
 
-    
+
     public static Estabelecimento getInstance() {
         if (getInstance == null) {
             getInstance = new Estabelecimento();
