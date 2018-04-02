@@ -141,9 +141,13 @@
 
 </footer>
 <!--/.Footer-->
-                      
-
 <script src="../Bootstrap/_JS/jquery-3.3.1.js"></script>
 <script src="../Bootstrap/_JS/popper.min.js"></script>
 <script src="../Bootstrap/_JS/bootstrap.js"></script>
 <script src="../Bootstrap/_JS/mdb.js"></script>
+<script>
+    // Tooltips Initialization
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>

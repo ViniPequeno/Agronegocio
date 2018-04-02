@@ -28,16 +28,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book mr-1" aria-hidden="true"></i>Seus Negócios</a>
                         <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Negócios</a>
+                            <a class="dropdown-item" href="../seusNegocios/negocios.jsp">Negócios</a>
                             <a class="dropdown-item" href="#">Estabelecimentos</a>
                             <a class="dropdown-item" href="#">Fornecedores</a>
                             <a class="dropdown-item" href="#">Produtos</a>
                             <a class="dropdown-item" href="#">Desempenho</a>
                         </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Outro</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
