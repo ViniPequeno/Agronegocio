@@ -8,7 +8,6 @@ and open the template in the editor.
     Author     : user
 */
 
-
 .container form{
     margin-top: 40px;
 }
@@ -19,32 +18,32 @@ body .container:first-of-type{
 
 /*DEMO*/
 .preview {
-    margin: 10px;
-    display: none;
+  margin: 10px;
+  display: none;
 }
 .preview--rounded {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
 }
 /* IMMUTABLE */
 .hide {
-    display: none !important;
+  display: none !important;
 }
 
 .message p {
-    font-size: 0.9em;
+  font-size: 0.9em;
 }
 .photo__options {
-    list-style: none;
+  list-style: none;
 }
 .photo__options li {
-    display: inline-block;
-    text-align: center;
-    width: 50%;
+  display: inline-block;
+  text-align: center;
+  width: 50%;
 }
 .photo--empty .photo__frame {
-    cursor: pointer;
+  cursor: pointer;
 }
 /**
 * IMG states
@@ -55,7 +54,7 @@ body .container:first-of-type{
 .photo--error--file-type img,
 .photo--error--image-size img,
 .photo--loading img {
-    display: none;
+  display: none;
 }
 /**
 * States
@@ -63,21 +62,21 @@ body .container:first-of-type{
 /** SELECT PHOTO MESSAGE */
 .message--desktop,
 .message--mobile {
-    display: none;
+  display: none;
 }
 /* MOBILE */
 .is-mobile .message--mobile {
-    display: inline-block;
+  display: inline-block;
 }
 .is-mobile .message--desktop {
-    display: none;
+  display: none;
 }
 /* DESKTOP */
 .is-desktop .message--desktop {
-    display: inline-block;
+  display: inline-block;
 }
 .is-desktop .message--mobile {
-    display: none;
+  display: none;
 }
 /* DEFAULT */
 .message.is-empty,
@@ -86,31 +85,31 @@ body .container:first-of-type{
 .message.is-wrong-image-size,
 .message.is-something-wrong,
 .message.is-dragover {
-    display: none;
+  display: none;
 }
 /* EMPTY */
 .photo--empty .photo__options {
-    display: none;
-}f
+  display: none;
+}
 .photo--empty .message.is-empty {
-    display: inline-block;
+  display: inline-block;
 }
 .photo--empty .photo__frame:hover {
-    background: #268eff;
+  background: #268eff;
 }
 .photo--empty .photo__frame:hover .message {
-    color: #fff;
+  color: #fff;
 }
 /* LOADING */
 .photo--loading .message.is-loading {
-    display: inline-block;
+  display: inline-block;
 }
 .photo--loading .message.is-empty,
 .photo--loading .message.is-wrong-file-type,
 .photo--loading .message.is-dragover,
 .photo--loading .message.is-wrong-image-size,
 .photo--loading .photo__options {
-    display: none;
+  display: none;
 }
 /* ERROR */
 /* UNKNOWN */
@@ -119,10 +118,10 @@ body .container:first-of-type{
 .photo--error .message.is-dragover,
 .photo--error .message.is-wrong-image-size,
 .photo--error .photo__options {
-    display: none;
+  display: none;
 }
 .photo--error .message.is-something-wrong {
-    display: inline-block;
+  display: inline-block;
 }
 /* FILE TYPE*/
 .photo--error--file-type .message.is-empty,
@@ -130,10 +129,10 @@ body .container:first-of-type{
 .photo--error--file-type .message.is-dragover,
 .photo--error--file-type .message.is-wrong-image-size,
 .photo--error--file-type .photo__options {
-    display: none;
+  display: none;
 }
 .photo--error--file-type .message.is-wrong-file-type {
-    display: inline-block;
+  display: inline-block;
 }
 /* IMAGE SIZE */
 .photo--error--image-size .message.is-empty,
@@ -141,19 +140,19 @@ body .container:first-of-type{
 .photo--error--image-size .message.is-dragover,
 .photo--error--image-size .message.is-wrong-file-type,
 .photo--error--image-size .photo__options {
-    display: none;
+  display: none;
 }
 .photo--error--image-size .message.is-wrong-image-size {
-    display: inline-block;
+  display: inline-block;
 }
 /* DRAGOVER */
 .profile.is-dragover .photo__frame .is-dragover {
-    display: inline-block;
+  display: inline-block;
 }
 .profile.is-dragover .message.is-empty,
 .profile.is-dragover .message.is-loading,
 .profile.is-dragover .message.is-wrong-file-type,
 .profile.is-dragover .message.is-wrong-image-size {
-    display: none;
+  display: none;
 }
 
