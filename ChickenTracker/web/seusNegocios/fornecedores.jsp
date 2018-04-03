@@ -69,17 +69,32 @@
 
     </table>
     <!--Table-->
-    <a class="btn btn-light-green btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a class="btn btn-danger btn-rounded" href="#" data-toggle="tooltip" data-placement="bottom" title="Excluir negócios selecionados" role="button"><i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+    <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
+        <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Todos os estabelecimentos associados a este negócio também serão apagados</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script>
-    for (i = 0; i < document.querySelectorAll('td').length; i++) {
-        document.querySelectorAll('td')[i].addEventListener('click', function () {
-            window.location.href = this.getAttribute('data-link');
-
-        });
-    }
-</script>
+<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

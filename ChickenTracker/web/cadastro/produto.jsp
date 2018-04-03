@@ -2,7 +2,7 @@
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
-    <div class="card">
+    <div class="card mx-auto mt-5">
         <div class="card-body">
             <form>
                 <p class="h1 text-center mb-4">Novo Produto</p>

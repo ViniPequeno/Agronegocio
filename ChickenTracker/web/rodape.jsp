@@ -23,15 +23,6 @@
                     <li>
                         <a href="#!">Link 1</a>
                     </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
                 </ul>
             </div>
             <!--/.Second column-->
@@ -45,15 +36,6 @@
                     <li>
                         <a href="#!">Link 1</a>
                     </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
                 </ul>
             </div>
             <!--/.Third column-->
@@ -66,15 +48,6 @@
                 <ul class="list-unstyled">
                     <li>
                         <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
                     </li>
                 </ul>
             </div>
@@ -146,7 +119,7 @@
 <script src="../Bootstrap/_JS/bootstrap.js"></script>
 <script src="../Bootstrap/_JS/mdb.js"></script>
 <script>
-    // Tooltips Initialization
+// Tooltips Initialization
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
