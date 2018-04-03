@@ -61,8 +61,10 @@
 
     </table>
     <!--Table-->
-    <a class="btn btn-light-green btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a class="btn btn-danger btn-rounded" href="#" data-toggle="tooltip" data-placement="bottom" title="Excluir negócios selecionados" role="button"><i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+    <button type="button" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio">
+        <i class="fa fa-plus mr-1" aria-hidden="true"></i></button>
+    <button type="button" class="btn btn-danger btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Excluir negócios selecionados">
+        <i class="fa fa-trash mr-1" aria-hidden="true"></i></button>
 </div>
 <%@include file="../rodape.jsp" %>
 <script>

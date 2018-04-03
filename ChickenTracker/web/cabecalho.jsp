@@ -29,10 +29,14 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book mr-1" aria-hidden="true"></i>Seus Negócios</a>
                         <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="../seusNegocios/negocios.jsp">Negócios</a>
-                            <a class="dropdown-item" href="#">Estabelecimentos</a>
-                            <a class="dropdown-item" href="#">Fornecedores</a>
-                            <a class="dropdown-item" href="#">Produtos</a>
-                            <a class="dropdown-item" href="#">Desempenho</a>
+                            <a class="dropdown-item" href="../seusNegocios/estabeleciemtnos.jsp">Estabelecimentos</a>
+                            <a class="dropdown-item" href="../seusNegocios/funcionarios.jsp">Funcionários</a>
+                            <a class="dropdown-item" href="../seusNegocios/fornecedores.jsp">Fornecedores</a>
+                            <a class="dropdown-item" href="../seusNegocios/fornecimentos.jsp">Fornecimentos</a>
+                            <a class="dropdown-item" href="../seusNegocios/aviarios.jsp">Aviários</a>
+                            <a class="dropdown-item" href="../seusNegocios/vacinas.jsp">Vacinas</a>
+                            <a class="dropdown-item" href="../seusNegocios/produtos.jsp">Produtos</a>
+                            <a class="dropdown-item" href="../seusNegocios/desempenho.jsp">Desempenho</a>
                         </div>
                     </li>
                 </ul>
