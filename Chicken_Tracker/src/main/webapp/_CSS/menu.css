@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+/*
+    Created on : 20/03/2018, 19:19:37
+    Author     : user
+*/
+
+body {
+    padding-top: 57px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-dark .navbar-brand:hover {
+    color: yellowgreen;
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item .nav-link:hover,
+.navbar.navbar-dark .navbar-nav .nav-item .nav-link:hover {
+    color: yellowgreen;
+}
+
+.dropdown .dropdown-menu.dropdown-dark .dropdown-item:active,
+.dropdown .dropdown-menu.dropdown-dark .dropdown-item:hover {
+    color: yellowgreen !important;
+}
+
+.dropdown-dark .dropdown-content li a,
+.dropdown-dark .dropdown-content li span:hover,
+.dropdown-dark .dropdown-content li.active {
+    color: yellowgreen !important;
+}
+
+.dropdown-dark .search-wrap input:focus {
+    border-bottom: 1px solid #2e2e2e;
+    box-shadow: 0 1px 0 0 #2e2e2e
+}
+
+.navbar-dark .navbar-toggler .navbar-toggler-icon { 
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-dark .navbar-toggler .navbar-toggler-icon:hover{ 
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(154, 205, 50)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    transition: 0.2s;
+}
+
+footer.page-footer a:hover {
+    color: yellowgreen;
+    transition: 0.2s;
+}
+
+footer li .svg-inline--fa{
+    margin-top: 16px;
+}
+
+section a .svg-inline--fa{
+    margin-top: 16px;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100%; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
