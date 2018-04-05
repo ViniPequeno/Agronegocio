@@ -5,6 +5,8 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets;
 
+import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
+import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,14 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.hibernate.Session;
 
 /**
  *
  * @author user
  */
 public class executarLogin extends HttpServlet {
-
-    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,15 +32,18 @@ public class executarLogin extends HttpServlet {
         sessao.invalidate();
         response.sendRedirect("main/index.jsp");
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("text/html");
         HttpSession sessao = request.getSession();
-        
-        if (request.getParameter("inputLogin").equals("jsp") && request.getParameter("inputSenha").equals("123")) {
+        Session s = HibernateFactory.getSession();
+        Perfil p = s.get(Perfil.class, request.getParameter("inputLogin"));
+        if(p==null){
+            //Usuario naão existe
+        }else if (request.getParameter("inputSenha").equals(p.getSenha())) {
             sessao.setAttribute("usuario_logado", "true");
             sessao.setAttribute("nome_usuario", request.getParameter("inputLogin"));
             response.sendRedirect("main/index.jsp");
@@ -48,15 +52,5 @@ public class executarLogin extends HttpServlet {
         }
 
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

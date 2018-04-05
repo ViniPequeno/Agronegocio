@@ -5,10 +5,9 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets;
 
+import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
-import br.com.avicultura.chicken_tracker.Models.Negocio;
-import br.com.avicultura.chicken_tracker.Models.Perfil;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +25,7 @@ public class ProdutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.sendRedirect("manterProduto");
     }
 
     @Override
