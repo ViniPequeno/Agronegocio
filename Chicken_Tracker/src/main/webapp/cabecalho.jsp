@@ -13,6 +13,13 @@
         <title>Chicken Tracker</title>
     </head>
     <body>
+        <%@page import="javax.servlet.http.*"%>
+        <%
+            HttpSession sessao = request.getSession();
+            if (sessao.getAttribute("usuario_logado") == null) {
+                sessao.setAttribute("usuario_logado", "false");
+            }
+        %>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="../main/index.jsp" target="_self">
                 <img src="../img/icon.svg" height="30" width="30" alt="">Chicken Tracker</a>
@@ -41,12 +48,26 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
+                    <%
+                        if (sessao.isNew() || sessao.getAttribute("usuario_logado").equals("false")) {
+                    %>
                     <li class="nav-item">
                         <a class="nav-link" href="../main/login.jsp"><i class="fa fa-sign-in-alt mr-1" aria-hidden="true"></i>Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../cadastro/usuario.jsp"><i class="fa fa-pencil-alt mr-1" aria-hidden="true"></i>Cadastre-se</a>
                     </li>
+                    <%} else {%>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdownUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <% out.println(session.getAttribute("nome_usuario"));%>
+                        </a>
+                        <div class="dropdown-menu dropdown-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="../main/perfil.jsp">Perfil</a>
+                            <a class="dropdown-item" href="/Chicken_Tracker/executarLogin">Sair</a>
+                        </div>
+                    </li>
+                    <% }%>
                 </ul>
             </div>
         </nav>

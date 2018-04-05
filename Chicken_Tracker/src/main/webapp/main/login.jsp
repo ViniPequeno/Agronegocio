@@ -6,19 +6,19 @@
         <div class="card">
             <div class="card-body">
                 <!-- Material form login -->
-                <form>
+                <form action="/Chicken_Tracker/executarLogin" method="post">
                     <p class="h4 text-center mb-4">Faça o seu login</p>
                     <!-- Material input email -->
                     <div class="md-form">
                         <i class="fa fa-id-card prefix grey-text"></i>
-                        <input type="email" id="inputLogin" class="form-control">
-                        <label for="materialFormLoginEmailEx">Login</label>
+                        <input type="text" id="inputLogin" name="inputLogin" class="form-control" autofocus required>
+                        <label for="inputLogin">Login</label>
                     </div>
 
                     <!-- Material input password -->
                     <div class="md-form">
                         <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="inputSenha" class="form-control">
+                        <input type="password" id="inputSenha" name="inputSenha" class="form-control">
                         <label for="inputSenha">Senha</label>
                     </div>
 
