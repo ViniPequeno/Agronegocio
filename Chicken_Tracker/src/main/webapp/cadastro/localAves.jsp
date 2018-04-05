@@ -7,6 +7,13 @@
             <form action="/Chicken_Tracker/LocalAvesServlet" method="post">
                 <p class="h1 text-center mb-4">Novo Estabeleciemnto</p>
 
+                 <!-- Material input text -->
+                <div class="md-form">
+                    <i class="fa fa-hashtag  prefix grey-text"></i>
+                    <input type="text" id="inputCodigo" name="inputCodigo" class="form-control" required autofocus maxlength="5">
+                    <label for="inputCodigo">Código</label>
+                </div>
+                
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>

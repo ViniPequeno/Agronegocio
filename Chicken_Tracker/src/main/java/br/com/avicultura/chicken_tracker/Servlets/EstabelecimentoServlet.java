@@ -84,7 +84,7 @@ public class EstabelecimentoServlet extends HttpServlet {
         String s = hup.salvar(e);
         PrintWriter out = response.getWriter();
         out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        response.sendRedirect("seusNegocios/estabelecimetos.jsp");
     }
 
     /**

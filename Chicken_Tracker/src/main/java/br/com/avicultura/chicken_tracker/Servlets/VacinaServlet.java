@@ -5,8 +5,18 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets;
 
+import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
+import br.com.avicultura.chicken_tracker.Models.Perfil;
+import br.com.avicultura.chicken_tracker.Models.Vacina;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +45,7 @@ public class VacinaServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet VacinaServlet</title>");            
+            out.println("<title>Servlet VacinaServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet VacinaServlet at " + request.getContextPath() + "</h1>");
@@ -56,7 +66,27 @@ public class VacinaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Vacina v = Vacina.getInstance();
+            v.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+            v.setNome(request.getParameter("inputCNAE"));
+            v.setDescricao(request.getParameter("inputCNAE"));
+
+            Date dataRealizada = formato.parse(request.getParameter("inputDataAbertura"));
+            v.setDataRealizada(dataRealizada);
+            Date dataProxima = formato.parse(request.getParameter("inputDataFechamento"));
+            v.setDataProxima(dataProxima);
+
+            v.setEstabelecimento(Estabelecimento.getInstance());
+            HibernateUtil<Vacina> hup = new HibernateUtil<>();
+            String s = hup.salvar(v);
+            PrintWriter out = response.getWriter();
+            out.print(s);
+            response.sendRedirect("seusNegocios/estabelecimetos.jsp");
+        } catch (ParseException ex) {
+            Logger.getLogger(VacinaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

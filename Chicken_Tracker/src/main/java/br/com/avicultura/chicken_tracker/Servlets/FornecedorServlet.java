@@ -8,7 +8,7 @@ package br.com.avicultura.chicken_tracker.Servlets;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Negocio;
-import br.com.avicultura.chicken_tracker.Models.Fornecedor;
+//import br.com.avicultura.chicken_tracker.Models.Fornecedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -74,17 +74,17 @@ public class FornecedorServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Fornecedor f = Fornecedor.getInstance();
-        f.setCNPJ(request.getParameter("inputCNPJ"));
-        f.setQtde(request.getParameter("inputQtde"));
-        f.setValorPagamento(request.getParameter("inputValorPagamento"));
-        f.setDataVencimento(request.getParameter("inputDataVencimento"));
+//        Fornecedor f = Fornecedor.getInstance();
+//        f.setCNPJ(request.getParameter("inputCNPJ"));
+//        f.setQtde(request.getParameter("inputQtde"));
+//        f.setValorPagamento(request.getParameter("inputValorPagamento"));
+//        f.setDataVencimento(request.getParameter("inputDataVencimento"));
         //f.setPerfil(Perfil.getInstance());
         //f.setNegocio(Negocio.getInstance());
-        HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
-        String s = hup.salvar(f);
+//        HibernateUtil<Fornecedor> hup = new HibernateUtil<>();
+//        String s = hup.salvar(f);
         PrintWriter out = response.getWriter();
-        out.print(s);
+//        out.print(s);
         response.sendRedirect("seusNegocios/negocios.jsp");
     }
 

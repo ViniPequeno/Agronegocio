@@ -8,9 +8,13 @@ package br.com.avicultura.chicken_tracker.Servlets;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.LocalAves;
-import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +43,7 @@ public class LocalAvesServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LocalAvesServlet</title>");            
+            out.println("<title>Servlet LocalAvesServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LocalAvesServlet at " + request.getContextPath() + "</h1>");
@@ -74,20 +78,29 @@ public class LocalAvesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        LocalAves e = LocalAves.getInstance();
-        e.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
-        e.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
-        e.setLargura(Double.parseDouble(request.getParameter("inputLargura")));
-        e.setArea(Double.parseDouble(request.getParameter("inputArea")));
-        e.setDataAbertura(Integer.parseInt(request.getParameter("inputDataAbertura")));
-        e.setDataFechamento(Integer.parseInt(request.getParameter("inputDataFechamento")));
-        e.setFuncao(request.getParameter("inputFuncao"));
-        e.setEstabelecimento(Estabelecimento.getInstance());
-        HibernateUtil<LocalAves> hup = new HibernateUtil<>();
-        String s = hup.salvar(e);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            LocalAves e = LocalAves.getInstance();
+            e.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+            e.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
+            e.setLargura(Double.parseDouble(request.getParameter("inputLargura")));
+            e.setArea(Double.parseDouble(request.getParameter("inputArea")));
+            e.setFuncao(request.getParameter("inputFuncao"));
+
+            Date dataAbertura = formato.parse(request.getParameter("inputDataAbertura"));
+            e.setDataAbertura(dataAbertura);
+            Date dataFechamento = formato.parse(request.getParameter("inputDataFechamento"));
+            e.setDataFechamento(dataFechamento);
+
+            HibernateUtil<LocalAves> hup = new HibernateUtil<>();
+            String s = hup.salvar(e);
+            PrintWriter out = response.getWriter();
+            out.print(formato.format(dataAbertura));
+            out.print(formato.format(dataFechamento));
+            out.print(s);
+        } catch (ParseException ex) {
+            Logger.getLogger(LocalAvesServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -5,6 +5,11 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets;
 
+import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
+import br.com.avicultura.chicken_tracker.Models.Perfil;
+import br.com.avicultura.chicken_tracker.Models.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -70,7 +75,19 @@ public class ProdutoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Produto p = Produto.getInstance();
+        p.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+        p.setDescricao(request.getParameter("inputDescricao"));
+        p.setNome(request.getParameter("inputNome"));
+        p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputQtdeAtual")));
+        p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxQtde")));
+        p.setQuantidadeMinima(Integer.parseInt(request.getParameter("inputMinQtde")));
+        p.setEstabelecimento(Estabelecimento.getInstance());
+        HibernateUtil<Produto> hup = new HibernateUtil<>();
+        String s = hup.salvar(p);
+        PrintWriter out = response.getWriter();
+        out.print(s);
+        response.sendRedirect("seusNegocios/produtos.jsp");
     }
 
     /**

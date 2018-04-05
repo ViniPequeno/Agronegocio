@@ -5,6 +5,9 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets;
 
+import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
+import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -70,7 +73,18 @@ public class NegocioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Negocio n = Negocio.getInstance();
+        n.setNome(request.getParameter("inputNome"));
+        n.setEmpresaCNPJ(request.getParameter("inputEmpresaCNPJ"));
+        n.setLinkEmail(request.getParameter("inputEmail"));
+        n.setLinkFacebook(request.getParameter("inputLinkFB"));
+        n.setLinkInstragram(request.getParameter("inputLinkInstagram"));
+        n.setPerfil(Perfil.getInstance());
+        HibernateUtil<Negocio> hup = new HibernateUtil<>();
+        String s = hup.salvar(n);
+        PrintWriter out = response.getWriter();
+        out.print(s);
+        response.sendRedirect("seusNegocios/negocios.jsp");
     }
 
     /**
