@@ -17,8 +17,7 @@ public class Fornecimento implements Serializable {
     private String CNPJ;
     private int quantidade;
     private double pagamento;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date vencimento;
+    private String vencimento;
     private char tipo;
 
     @ManyToMany
@@ -63,11 +62,11 @@ public class Fornecimento implements Serializable {
         this.pagamento = pagamento;
     }
 
-    public Date getVencimento() {
+    public String getVencimento() {
         return vencimento;
     }
 
-    public void setVencimento(Date vencimento) {
+    public void setVencimento(String vencimento) {
         this.vencimento = vencimento;
     }
 
