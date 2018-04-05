@@ -19,10 +19,9 @@ public class LocalAves implements Serializable {
     private double comprimento;
     private double area;
     private String funcao;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataAbertura;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataFechamento;
+    private String dataAbertura;
+    private String dataFechamento;
+    
     @ManyToOne
     @JoinColumn(name = "Estabelecimento_id")
     private Estabelecimento estabelecimento;
@@ -81,19 +80,19 @@ public class LocalAves implements Serializable {
         this.funcao = funcao;
     }
 
-    public Date getDataAbertura() {
+    public String getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(Date dataAbertura) {
+    public void setDataAbertura(String dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public Date getDataFechamento() {
+    public String getDataFechamento() {
         return dataFechamento;
     }
 
-    public void setDataFechamento(Date dataFechamento) {
+    public void setDataFechamento(String dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 
