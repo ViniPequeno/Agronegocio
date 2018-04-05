@@ -5,25 +5,32 @@
     <div class="card mx-auto mt-5">
         <div class="card-body">
             <form action="/Chicken_Tracker/LocalAvesServlet" method="post">
-                <p class="h1 text-center mb-4">Novo Estabeleciemnto</p>
+                <p class="h1 text-center mb-4">Novo Aviário</p>
 
+                 <!-- Material input text -->
+                <div class="md-form">
+                    <i class="fa fa-hashtag  prefix grey-text"></i>
+                    <input type="text" id="inputCodigo" name="inputCodigo" class="form-control" required autofocus maxlength="5">
+                    <label for="inputCodigo">Código</label>
+                </div>
+                
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-user prefix grey-text"></i>
+                    <i class="fa fa-arrows-alt-h prefix grey-text"></i>
                     <input type="text" id="inputLargura" name="inputLargura" class="form-control" required autofocus maxlength="5">
                     <label for="inputLargura">Largura</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-money-bill-alt prefix grey-text"></i>
+                    <i class="fa fa-arrows-alt-v prefix grey-text"></i>
                     <input type="text" id="inputComprimento" name="inputComprimento" class="form-control" required maxlength="5">
                     <label for="inputComprimento">Comprimento</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-id-badge prefix grey-text"></i>
+                    <i class="fa fa-arrows-alt prefix grey-text"></i>
                     <input type="text" id="inputArea" name="inputArea" class="form-control" required maxlength="5">
                     <label for="inputArea">Área</label>
                 </div>
@@ -37,14 +44,14 @@
                 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-id-badge prefix grey-text"></i>
+                    <i class="fa fa-calendar-alt prefix grey-text"></i>
                     <input type="text" id="inputDataAbertura" name="inputDataAbertura" class="form-control" required maxlength="10">
                     <label for="inputDataAbertura">Data de abertura</label>
                 </div>
                 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-id-badge prefix grey-text"></i>
+                    <i class="fa fa-calendar-alt prefix grey-text"></i>
                     <input type="text" id="inputDataFechamento" name="inputDataFechamento" class="form-control" required maxlength="10">
                     <label for="inputDataFechamento">Data de fechamento</label>
                 </div>

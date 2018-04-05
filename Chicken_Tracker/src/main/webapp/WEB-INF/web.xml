@@ -32,6 +32,10 @@
         <servlet-name>FornecedorServlet</servlet-name>
         <servlet-class>br.com.avicultura.chicken_tracker.Servlets.FornecedorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Funcionario</servlet-name>
+        <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Funcionario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PerfilServlet</servlet-name>
         <url-pattern>/PerfilServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>FornecedorServlet</servlet-name>
         <url-pattern>/FornecedorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Funcionario</servlet-name>
+        <url-pattern>/Funcionario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

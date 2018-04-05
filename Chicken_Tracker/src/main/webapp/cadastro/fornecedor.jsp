@@ -31,7 +31,7 @@
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-id-badge prefix grey-text"></i>
+                    <i class="fa fa-calendar-alt prefix grey-text"></i>
                     <input type="text" id="inputDataVencimento" name="inputDataVencimento" class="form-control" required maxlength="10">
                     <label for="inputDataVencimento">Data de vencimento</label>
                 </div>
