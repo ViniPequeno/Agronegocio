@@ -7,17 +7,23 @@ package br.com.avicultura.chicken_tracker.Servlets;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
+import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author User
  */
+@MultipartConfig
 public class PerfilServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -32,7 +38,7 @@ public class PerfilServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
@@ -51,11 +57,28 @@ public class PerfilServlet extends HttpServlet {
         p.setEmail(request.getParameter("inputEmail"));
         p.setSenha(request.getParameter("inputSenha"));
         p.setUsuario(request.getParameter("inputLogin"));
+
+        InputStream in = null;
+        Part fileImg = request.getPart("inputFoto");
+        if (fileImg != null) {
+            System.out.println(fileImg.getName());
+            System.out.println(fileImg.getSize());
+            System.out.println(fileImg.getContentType());
+            in = fileImg.getInputStream();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            int reads = in.read();
+            while (reads != -1) {
+                baos.write(reads);
+                reads = in.read();
+            }
+            p.setFoto(baos.toByteArray());
+        }
+        PrintWriter out = response.getWriter();
+        out.print(request.getPart("inputFoto"));
+
         HibernateUtil<Perfil> hup = new HibernateUtil<>();
         String s = hup.salvar(p);
-        PrintWriter out = response.getWriter();
         out.print(s);
-        response.sendRedirect("main/index.jsp");
     }
 
     /**
