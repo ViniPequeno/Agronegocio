@@ -5,10 +5,12 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets;
 
+import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,20 +34,19 @@ public class PerfilServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         PrintWriter out = response.getWriter();
-        Session session = new Configuration().configure("hibernate.cfg.xml")
-                .buildSessionFactory().openSession();
+        Session session = HibernateFactory.getSession();
         String login = request.getSession().getAttribute("nome_usuario").toString();
         Perfil object1 = (Perfil) session.get(Perfil.class, login); // It will get data of which have imageId=1
         byte[] getImageInBytes = object1.getFoto();  // image convert in byte form
 
-        File imageFile = new File("/Users/user/Documents/GitHub/Avicultura/Chicken_Tracker/myImage.jpg"); // we can put any name of file (just name of new file created).
+        File imageFile = new File("myImage.jpg"); // we can put any name of file (just name of new file created).
 
         FileOutputStream outputStream = new FileOutputStream(imageFile); // it will create new file (same location of class)
         outputStream.write(getImageInBytes); // image write in "myImage.jpg" file
         outputStream.close(); // close the output stream
-        
+
         response.setContentType("text/html");
         out = response.getWriter();
         out.println(getImageInBytes);
@@ -55,10 +56,17 @@ public class PerfilServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println(login);
+        out.print("<br/>");
+        out.print(object1.getEmail());
+        out.print("<br/>");
         out.println(request.getContextPath());
+        out.print("<br/>");
         out.println(imageFile.getAbsolutePath());
+        out.print("<br/>");
         out.println("Retrieved Image from Database using Hibernate.");
+        out.print("<br/>");
         out.println("<img src='myImage.jpg'>");
+        out.print("<br/>");
         out.println("</body>");
         out.println("</html>");
         session.close();
@@ -74,27 +82,37 @@ public class PerfilServlet extends HttpServlet {
         p.setSenha(request.getParameter("inputSenha"));
         p.setUsuario(request.getParameter("inputLogin"));
 
+        PrintWriter out = response.getWriter();
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title> Cálculo de áreas de figuras geométricas</title>");
+        out.println("</head>");
+        out.println("<body>");
         InputStream in = null;
+        int i = 989;
         Part fileImg = request.getPart("inputFoto");
         if (fileImg != null) {
-            System.out.println(fileImg.getName());
-            System.out.println(fileImg.getSize());
-            System.out.println(fileImg.getContentType());
+            byte[] buffer = null;
+            out.print(request.getPart("inputFoto"));
+            out.print("<br>");
+            out.print(request.getParameter("inputFoto"));
+            out.print("<br>");
+            out.print(fileImg.getSubmittedFileName());
+            out.print("<br/>");
             in = fileImg.getInputStream();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            int reads = in.read();
-            while (reads != -1) {
-                baos.write(reads);
-                reads = in.read();
-            }
-            p.setFoto(baos.toByteArray());
+            buffer = new byte[in.available()];
+            in.read(buffer);
+            in.close();
+            i = buffer.length;
+            p.setFoto(buffer);
         }
-        PrintWriter out = response.getWriter();
-        out.print(request.getPart("inputFoto"));
-
         HibernateUtil<Perfil> hup = new HibernateUtil<>();
         String s = hup.salvar(p);
         out.print(s);
+        out.print("<br/>");
+        out.print(i);
+        out.print("</body>");
+        out.print("</html>");
     }
 
     @Override

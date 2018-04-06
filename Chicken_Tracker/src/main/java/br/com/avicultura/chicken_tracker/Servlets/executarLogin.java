@@ -5,6 +5,7 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets;
 
+import br.com.avicultura.chicken_tracker.Controller.ConsultaPerfil;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.IOException;
@@ -39,11 +40,11 @@ public class executarLogin extends HttpServlet {
 
         response.setContentType("text/html");
         HttpSession sessao = request.getSession();
-        Session s = HibernateFactory.getSession();
-        Perfil p = s.get(Perfil.class, request.getParameter("inputLogin"));
-        if(p==null){
+        ConsultaPerfil cp = new ConsultaPerfil();
+        Perfil p = cp.findById(request.getParameter("inputLogin"));
+        if (p == null) {
             //Usuario naão existe
-        }else if (request.getParameter("inputSenha").equals(p.getSenha())) {
+        } else if (request.getParameter("inputSenha").equals(p.getSenha())) {
             sessao.setAttribute("usuario_logado", "true");
             sessao.setAttribute("nome_usuario", request.getParameter("inputLogin"));
             response.sendRedirect("main/index.jsp");
