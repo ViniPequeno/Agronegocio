@@ -5,22 +5,22 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets;
 
-import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -32,10 +32,36 @@ public class PerfilServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-////        Session s = HibernateFactory.getSession();
-////        Query query = s.createQuery("from perfil");
-////        List<Perfil> list = query.getResultList();
-//          response.sendRedirect("manter");
+        
+        PrintWriter out = response.getWriter();
+        Session session = new Configuration().configure("hibernate.cfg.xml")
+                .buildSessionFactory().openSession();
+        String login = request.getSession().getAttribute("nome_usuario").toString();
+        Perfil object1 = (Perfil) session.get(Perfil.class, login); // It will get data of which have imageId=1
+        byte[] getImageInBytes = object1.getFoto();  // image convert in byte form
+
+        File imageFile = new File("/Users/user/Documents/GitHub/Avicultura/Chicken_Tracker/myImage.jpg"); // we can put any name of file (just name of new file created).
+
+        FileOutputStream outputStream = new FileOutputStream(imageFile); // it will create new file (same location of class)
+        outputStream.write(getImageInBytes); // image write in "myImage.jpg" file
+        outputStream.close(); // close the output stream
+        
+        response.setContentType("text/html");
+        out = response.getWriter();
+        out.println(getImageInBytes);
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title> Cálculo de áreas de figuras geométricas</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println(login);
+        out.println(request.getContextPath());
+        out.println(imageFile.getAbsolutePath());
+        out.println("Retrieved Image from Database using Hibernate.");
+        out.println("<img src='myImage.jpg'>");
+        out.println("</body>");
+        out.println("</html>");
+        session.close();
     }
 
     @Override

@@ -63,7 +63,7 @@
                             <% out.println(session.getAttribute("nome_usuario"));%>
                         </a>
                         <div class="dropdown-menu dropdown-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="../main/perfil.jsp">Perfil</a>
+                            <a class="dropdown-item" href="/Chicken_Tracker/PerfilServlet">Perfil</a>
                             <a class="dropdown-item" href="/Chicken_Tracker/executarLogin">Sair</a>
                         </div>
                     </li>
