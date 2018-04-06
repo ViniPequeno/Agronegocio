@@ -8,13 +8,12 @@ package br.com.avicultura.chicken_tracker.Servlets;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import org.hibernate.Session;
-import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -75,44 +73,11 @@ public class PerfilServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Perfil p = Perfil.getInstance();
-        p.setNome(request.getParameter("inputNome"));
-        p.setUsuario(request.getParameter("inputLogin"));
-        p.setEmail(request.getParameter("inputEmail"));
-        p.setSenha(request.getParameter("inputSenha"));
-        p.setUsuario(request.getParameter("inputLogin"));
-
-        PrintWriter out = response.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title> Cálculo de áreas de figuras geométricas</title>");
-        out.println("</head>");
-        out.println("<body>");
-        InputStream in = null;
-        int i = 989;
-        Part fileImg = request.getPart("inputFoto");
-        if (fileImg != null) {
-            byte[] buffer = null;
-            out.print(request.getPart("inputFoto"));
-            out.print("<br>");
-            out.print(request.getParameter("inputFoto"));
-            out.print("<br>");
-            out.print(fileImg.getSubmittedFileName());
-            out.print("<br/>");
-            in = fileImg.getInputStream();
-            buffer = new byte[in.available()];
-            in.read(buffer);
-            in.close();
-            i = buffer.length;
-            p.setFoto(buffer);
-        }
-        HibernateUtil<Perfil> hup = new HibernateUtil<>();
-        String s = hup.salvar(p);
-        out.print(s);
-        out.print("<br/>");
-        out.print(i);
-        out.print("</body>");
-        out.print("</html>");
+        Part filePart = request.getPart("inputFoto"); // Retrieves <input type="file" name="file">
+        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+        InputStream fileContent = filePart.getInputStream();
+        System.out.println(fileContent.toString());
+        System.out.println(fileContent.available());
     }
 
     @Override

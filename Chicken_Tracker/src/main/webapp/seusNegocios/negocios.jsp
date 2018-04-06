@@ -5,7 +5,7 @@
     <!--Table-->
     <h2 class="py-5 font-weight-bold text-left">Negócios</h2>
 
-    <table class="table table-hover table-responsive-md btn-table">
+    <table class="table table-hover table-responsive-md btn-table" id="tableDados">
         <!--Table head-->
         <thead class="mdb-color darken-3">
             <tr class="text-white">
@@ -34,7 +34,7 @@
                 <td>@mdo</td>
                 <td>@mdo</td>
                 <td>@mdo</td>
-                <td><a class="btn btn-cyan btn-rounded btn-sm" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
@@ -48,7 +48,7 @@
                 <td>@mdo</td>
                 <td>@mdo</td>
                 <td>@mdo</td>
-                <td><a class="btn btn-cyan btn-rounded btn-sm" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>            
             </tr>
             <tr>
@@ -62,7 +62,7 @@
                 <td>@mdo</td>
                 <td>@mdo</td>
                 <td>@mdo</td>
-                <td><a class="btn btn-cyan btn-rounded btn-sm" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>            
             </tr>
         </tbody>
@@ -94,8 +94,34 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="detalhesNegocio" tabindex="-1" role="dialog" aria-labelledby="detalhesNegocio" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelDetalhes">Detalhes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Nome: </p>
+                    <p>Proprietário: </p>
+                    <p>Sócios: </p>
+                    <p>Email: </p>
+                    <p>Fone 1: </p>
+                    <p>Fone 2: </p>
+                    <p>Link da página do Facebook: </p>
+                    <p>Link da página do Instagram: </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/formUtils.js"></script>
+<script src="../_JS/formUtil.js"></script>
 </body>
 </html>

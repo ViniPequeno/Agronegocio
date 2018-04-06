@@ -58,6 +58,7 @@
 
     <hr>
 
+    <% if (sessao.isNew() || sessao.getAttribute("usuario_logado").equals("false")) {%>
     <!--Call to action-->
     <div class="text-center py-3">
         <ul class="list-unstyled list-inline mb-0">
@@ -72,6 +73,7 @@
     <!--/.Call to action-->
 
     <hr>
+    <% }%>
 
     <!--Social buttons-->
     <div class="text-center">
@@ -120,7 +122,7 @@
 <script src="../Bootstrap/_JS/mdb.js"></script>
 <script>
 // Tooltips Initialization
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
