@@ -1,6 +1,7 @@
 <% String css = "";%>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
+    <a href="../main/index.jsp"><i class="fa fa-arrow-left mr-1" aria-hidden="true" style="margin-top: 25px"></i>Voltar</a>
     <!--Table-->
     <h2 class="py-5 font-weight-bold text-left">Negócios</h2>
 
