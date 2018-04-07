@@ -1,5 +1,8 @@
 <% String css = "";%>
 <%@ include file="../cabecalho.jsp"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.avicultura.chicken_tracker.Controller.ConsultaNegocio" %>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <div class="container">
     <a href="../main/index.jsp"><i class="fa fa-arrow-left mr-1" aria-hidden="true" style="margin-top: 25px"></i>Voltar</a>
     <!--Table-->
@@ -23,48 +26,24 @@
 
         <!--Table body-->
         <tbody>
+            <%List<Negocio> negocios;
+                negocios = ConsultaNegocio.returnList();
+                for (Negocio n : negocios) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox124">
-                    <label for="checkbox124" class="label-table"></label>
+                    <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>">
+                    <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
                 </th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <td><%=n.getNome()%></td>
+                <td><%=n.getLinkEmail()%></td>
+                <td><%=n.getLinkFacebook()%></td>
+                <td><%=n.getLinkInstragram()%></td>
+                <td><%=n.getEmpresaCNPJ()%></td>
+                <td><%=n.getNome()%></td>
                 <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
             </tr>
-            <tr>
-                <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox125">
-                    <label for="checkbox125" class="label-table"></label>
-                </th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
-                        <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>            
-            </tr>
-            <tr>
-                <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox126">
-                    <label for="checkbox126" class="label-table"></label>
-                </th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
-                        <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>            
-            </tr>
+            <%}%>
         </tbody>
         <!--Table body-->
 
@@ -104,14 +83,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Nome: </p>
-                    <p>Proprietário: </p>
-                    <p>Sócios: </p>
-                    <p>Email: </p>
-                    <p>Fone 1: </p>
-                    <p>Fone 2: </p>
-                    <p>Link da página do Facebook: </p>
-                    <p>Link da página do Instagram: </p>
+                    <p id="nome">Nome: </p>
+                    <p id="prop">Proprietário: </p>
+                    <p id="socios">Sócios: </p>
+                    <p id="email"> Email: </p>
+                    <p id="fone1"> Fone 1: </p>
+                    <p id="fone2">Fone 2: </p>
+                    <p id="linkFB">Link da página do Facebook: </p>
+                    <p id="linkInstagram">Link da página do Instagram: </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
@@ -123,5 +102,9 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtil.js"></script>
+<script>
+    $("#detalhesNegocio").on('show.bs.modal', function () {
+    });
+</script>
 </body>
 </html>
