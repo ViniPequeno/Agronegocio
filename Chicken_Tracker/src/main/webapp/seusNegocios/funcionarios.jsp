@@ -1,4 +1,7 @@
 <% String css = "";%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.avicultura.chicken_tracker.Controller.ConsultaFuncionario" %>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Funcionario" %>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
     <!--Table-->
@@ -8,7 +11,7 @@
         <!--Table head-->
         <thead class="mdb-color darken-3">
             <tr class="text-white">
-                <th> </th>
+                <th></th>
                 <th>Nome</th>
                 <th>Cargo</th>
                 <th>CPF</th>
@@ -21,45 +24,23 @@
 
         <!--Table body-->
         <tbody>
+            <%List<Funcionario> funcionarios;
+                funcionarios = ConsultaFuncionario.returnList();
+                for (Funcionario f : funcionarios) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox124">
-                    <label for="checkbox124" class="label-table"></label>
+                    <input type="checkbox" id="checkbox<%=f.getCPF()%>">
+                    <label for="checkbox<%=f.getCPF()%>" class="label-table"></label>
                 </th>
-                <td>Ronaldinho</td>
-                <td>Cuidador de Galinhas</td>
-                <td>065.213.543-82</td>
-                <td>87029-8</td>
-                <td>Ativo</td>
-                <td><a class="btn btn-cyan btn-rounded btn-sm" href="../cadastro/funcionario.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Funcionário" role="button">
+                <td><%=f.getNome()%></td>
+                <td><%=f.getCargo()%></td>
+                <td><%=f.getCPF()%></td>
+                <td><%=f.getRG()%></td>
+                <td><%=f.getSituacao()%></td>
+                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
             </tr>
-            <tr>
-                <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox124">
-                    <label for="checkbox124" class="label-table"></label>
-                </th>
-                <td>Valdinho</td>
-                <td>Lavador de Galinhas</td>
-                <td>065.213.543-82</td>
-                <td>87029-8</td>
-                <td>Ativo</td>
-                <td><a class="btn btn-cyan btn-rounded btn-sm" href="../cadastro/funcionario.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Funcionário" role="button">
-                        <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox124">
-                    <label for="checkbox124" class="label-table"></label>
-                </th>
-                <td>Bentinho</td>
-                <td>Abatedor de Galinhas</td>
-                <td>065.213.543-82</td>
-                <td>87029-8</td>
-                <td>Não ativo</td>
-                <td><a class="btn btn-cyan btn-rounded btn-sm" href="../cadastro/funcionario.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Funcionário" role="button">
-                        <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
-            </tr>
+            <%}%>
         </tbody>
         <!--Table body-->
 

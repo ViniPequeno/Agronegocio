@@ -1,5 +1,8 @@
 <% String css = "";%>
 <%@ include file="../cabecalho.jsp"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.avicultura.chicken_tracker.Controller.ConsultaEstabelecimento" %>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento" %>
 <div class="container">
     <!--Table-->
     <h2 class="py-5 font-weight-bold text-left">Negócios</h2>
@@ -9,12 +12,11 @@
         <thead class="mdb-color darken-3">
             <tr class="text-white">
                 <th> </th>
-                <th>Nome</th>
+                <th>Negócio</th>
                 <th>Proprietário</th>
-                <th>CNPJ</th>
-                <th>Email</th>
-                <th>Fone 1</th>
-                <th>Fone 2</th>
+                <th>CNAE</th>
+                <th>Endereço</th>
+                <th>Sufixo CNPJ</th>
                 <th></th>
             </tr>
         </thead>
@@ -22,48 +24,23 @@
 
         <!--Table body-->
         <tbody>
+            <%List<Estabelecimento> estabelecimento;
+                estabelecimento = ConsultaEstabelecimento.returnList();
+                for (Estabelecimento e : estabelecimento) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox124">
-                    <label for="checkbox124" class="label-table"></label>
+                    <input type="checkbox" id="checkbox<%=e.getCNAE()%>">
+                    <label for="checkbox<%=e.getCNAE()%>" class="label-table"></label>
                 </th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td><a class="btn btn-cyan btn-rounded btn-sm" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                <td><%=e.getNegocio()%></td>
+                <td><%=e.getPerfil()%></td>
+                <td><%=e.getCNAE()%></td>
+                <td><%=e.getEndereco()%></td>
+                <td><%=e.getSufixoCNPJ()%></td>
+                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
             </tr>
-            <tr>
-                <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox125">
-                    <label for="checkbox125" class="label-table"></label>
-                </th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td><a class="btn btn-cyan btn-rounded btn-sm" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
-                        <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>            
-            </tr>
-            <tr>
-                <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox126">
-                    <label for="checkbox126" class="label-table"></label>
-                </th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td><a class="btn btn-cyan btn-rounded btn-sm" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
-                        <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>            
-            </tr>
+            <%}%>
         </tbody>
         <!--Table body-->
 

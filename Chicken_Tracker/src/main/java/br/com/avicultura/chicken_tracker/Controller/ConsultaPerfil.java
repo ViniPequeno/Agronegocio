@@ -17,12 +17,12 @@ import org.hibernate.Session;
  */
 public class ConsultaPerfil {
 
-    public Perfil findById(String id) {
+    public static Perfil findById(String id) {
         Session s = HibernateFactory.getSession();
         return s.get(Perfil.class, id);
     }
 
-    public List<Perfil> returnList() {
+    public static List<Perfil> returnList() {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from perfil");
         return query.getResultList();

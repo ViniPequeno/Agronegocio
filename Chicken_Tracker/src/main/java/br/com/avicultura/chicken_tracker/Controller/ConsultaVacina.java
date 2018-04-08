@@ -5,10 +5,27 @@
  */
 package br.com.avicultura.chicken_tracker.Controller;
 
+import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
+import br.com.avicultura.chicken_tracker.Models.Vacina;
+import java.util.List;
+import javax.persistence.Query;
+import org.hibernate.Session;
+
 /**
  *
  * @author User
  */
 public class ConsultaVacina {
+
+    public static Vacina findById(String id) {
+        Session s = HibernateFactory.getSession();
+        return s.get(Vacina.class, id);
+    }
+
+    public static List<Vacina> returnList() {
+        Session s = HibernateFactory.getSession();
+        Query query = s.createQuery("from vacina");
+        return query.getResultList();
+    }
     
 }

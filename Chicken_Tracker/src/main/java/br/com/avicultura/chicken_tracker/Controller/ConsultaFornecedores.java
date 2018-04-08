@@ -16,13 +16,13 @@ import org.hibernate.Session;
  * @author User
  */
 public class ConsultaFornecedores {
-    public Fornecimento findById(String id) {
+    public static Fornecimento findById(String id) {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from fornecimento where  tipo = c");
         return (Fornecimento) query.getSingleResult();
     }
 
-    public List<Fornecimento> returnList() {
+    public static List<Fornecimento> returnList() {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from fornecimento where  tipo = c");
         return query.getResultList();
