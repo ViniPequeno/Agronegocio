@@ -22,9 +22,11 @@ public class ConsultaFuncionario {
         return s.get(Funcionario.class, id);
     }
 
-    public static List<Funcionario> returnList() {
+    public static List<Funcionario> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from funcionario");
+        Query query = s.createQuery("select * from Funcionario f where "
+                + "f.Estabelecimento.suficoCNPJ:= estabelecimento");
+        query.setParameter("estabelecimento", estabelecimento);
         return query.getResultList();
     }
 }

@@ -25,7 +25,7 @@
         <!--Table body-->
         <tbody>
             <%List<Estabelecimento> estabelecimento;
-                estabelecimento = ConsultaEstabelecimento.returnList();
+                estabelecimento = ConsultaEstabelecimento.returnListOfNegocio(request.getParameter("negocio"));
                 for (Estabelecimento e : estabelecimento) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">

@@ -24,7 +24,7 @@
         <!--Table body-->
         <tbody>
             <%List<Fornecimento> fornecimentos;
-                fornecimentos = ConsultaFornecedores.returnList();
+                fornecimentos = ConsultaFornecedores.returnList(request.getParameter("estabelecimento"));
                 for (Fornecimento f : fornecimentos) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">

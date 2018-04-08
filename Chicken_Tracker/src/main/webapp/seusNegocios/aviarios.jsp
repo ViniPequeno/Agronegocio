@@ -24,7 +24,7 @@
         <!--Table body-->
         <tbody>
             <%List<LocalAves> locaisAves;
-                locaisAves = ConsultaLocalAves.returnList();
+                locaisAves = ConsultaLocalAves.returnList(request.getParameter("estabelecimento"));
                 for (LocalAves l : locaisAves) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">

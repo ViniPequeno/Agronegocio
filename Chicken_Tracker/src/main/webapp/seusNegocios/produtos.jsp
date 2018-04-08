@@ -24,7 +24,7 @@
         <!--Table body-->
         <tbody>
             <%List<Produto> produtos;
-                produtos = ConsultaProduto.returnList();
+                produtos = ConsultaProduto.returnList(request.getParameter("estabelecimento"));
                 for (Produto p : produtos) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">

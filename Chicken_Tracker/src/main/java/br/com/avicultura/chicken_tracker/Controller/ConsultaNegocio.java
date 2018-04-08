@@ -16,14 +16,16 @@ import org.hibernate.Session;
  * @author User
  */
 public class ConsultaNegocio {
+
     public static Negocio findById(String id) {
         Session s = HibernateFactory.getSession();
         return s.get(Negocio.class, id);
     }
 
-    public static List<Negocio> returnList() {
+    public static List<Negocio> returnList(String usuario) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Negocio");
+        Query query = s.createQuery("select * from negocio n where n.perfil_id:= usuario");
+        query.setParameter("usuario", usuario);
         return query.getResultList();
     }
 }

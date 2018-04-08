@@ -16,15 +16,20 @@ import org.hibernate.Session;
  * @author User
  */
 public class ConsultaLocalAves {
-     public static LocalAves findById(String id) {
+
+    public static LocalAves findById(String id, String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from localaves");
+        Query query = s.createQuery("select * from LocalAves la where "
+                + "la.Estabelecimento.suficoCNPJ := estabelecimento and la.codigo := id");
+        query.setParameter("id", id);
+        query.setParameter("estabelecimento", estabelecimento);
         return (LocalAves) query.getSingleResult();
     }
 
-    public static List<LocalAves> returnList() {
+    public static List<LocalAves> returnList(String estabeleciemento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from localaves");
+        Query query = s.createQuery("select * from LocalAves la where la.Estabelecimento.suficoCNPJ= estabelecimento");
+        query.setParameter("estabelecimento", estabeleciemento);
         return query.getResultList();
     }
 }

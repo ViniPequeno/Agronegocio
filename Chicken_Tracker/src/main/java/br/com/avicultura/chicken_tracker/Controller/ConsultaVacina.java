@@ -9,6 +9,7 @@ import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Vacina;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 import org.hibernate.Session;
 
 /**
@@ -22,10 +23,11 @@ public class ConsultaVacina {
         return s.get(Vacina.class, id);
     }
 
-    public static List<Vacina> returnList() {
+    public static List<Vacina> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from vacina");
+        Query query = s.createQuery("select * from Vacina v from v.Estabelecimento.suficoCNPJ := estabelecimento");
+        query.setParameter("estalecimento", estabelecimento);
         return query.getResultList();
     }
-    
+
 }

@@ -27,7 +27,7 @@
         <!--Table body-->
         <tbody>
             <%List<Negocio> negocios;
-                negocios = ConsultaNegocio.returnList();
+                negocios = ConsultaNegocio.returnList((String) sessao.getAttribute("usuario"));
                 for (Negocio n : negocios) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">
