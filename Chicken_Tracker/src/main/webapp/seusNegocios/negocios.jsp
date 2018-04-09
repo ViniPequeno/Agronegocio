@@ -35,11 +35,11 @@
                     <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
                 </th>
                 <td><%=n.getNome()%></td>
+                <td><%=n.getPerfil().getNome()%></td>
+                <td><%=n.getEmpresaCNPJ()%></td>
                 <td><%=n.getLinkEmail()%></td>
                 <td><%=n.getLinkFacebook()%></td>
                 <td><%=n.getLinkInstragram()%></td>
-                <td><%=n.getEmpresaCNPJ()%></td>
-                <td><%=n.getNome()%></td>
                 <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
             </tr>

@@ -19,8 +19,8 @@ public class ConsultaFornecedores {
 
     public static Fornecimento findById(String estabelecimento, String id) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("select * from Fornecimento f where  f.Estabelecimento.suficoCNPJ:= estabelecimento"
-                + " and f.CNPJ := id and tipo = c");
+        Query query = s.createQuery("from Fornecimento f where  f.Estabelecimento.sufixoCNPJ =:estabelecimento"
+                + " and f.CNPJ =: id and tipo = c");
         query.setParameter("estabelecimento", estabelecimento);
         query.setParameter("CNPJ", id);
         return (Fornecimento) query.getSingleResult();
@@ -28,7 +28,7 @@ public class ConsultaFornecedores {
 
     public static List<Fornecimento> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("select * from Fornecimento f where  f.Estabelecimento.suficoCNPJ := estabelecimento"
+        Query query = s.createQuery("from Fornecimento f where  f.Estabelecimento.sufixoCNPJ =:estabelecimento"
                 + " and tipo = c");
         query.setParameter("estabelecimento", estabelecimento);
         return query.getResultList();

@@ -22,9 +22,20 @@ import javax.servlet.http.HttpServletResponse;
 public class NegocioServlet extends HttpServlet {
 
     @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        out.println(req.getMethod());
+        out.println(req.getContextPath());
+        out.println(req.getServletPath());
+        out.println(req.getHeaderNames().toString());
+    }
+    
+    
+    
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
 
     @Override

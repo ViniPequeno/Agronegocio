@@ -20,7 +20,6 @@ public class ExcluirTudo<T> {
         for (T t : lista) {
             s.delete(t);
         }
-        
         return false;
     }
 }

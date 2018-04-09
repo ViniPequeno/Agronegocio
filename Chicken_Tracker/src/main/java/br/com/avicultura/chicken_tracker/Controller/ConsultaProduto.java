@@ -24,7 +24,7 @@ public class ConsultaProduto {
 
     public static List<Produto> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("select * from Produto p where p.Estabelecimento.suficoCNPJ := estabelecimento");
+        Query query = s.createQuery("from Produto p where p.Estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estabelecimento", estabelecimento);
         return query.getResultList();
     }

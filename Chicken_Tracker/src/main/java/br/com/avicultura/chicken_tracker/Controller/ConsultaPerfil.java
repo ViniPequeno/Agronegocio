@@ -24,7 +24,7 @@ public class ConsultaPerfil {
 
     public static List<Perfil> returnList() {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("select * from Perfil");
+        Query query = s.createQuery("from Perfil");
         return query.getResultList();
     }
 }

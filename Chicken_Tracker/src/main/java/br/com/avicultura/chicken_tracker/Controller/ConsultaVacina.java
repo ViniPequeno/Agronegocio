@@ -25,7 +25,7 @@ public class ConsultaVacina {
 
     public static List<Vacina> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("select * from Vacina v from v.Estabelecimento.suficoCNPJ := estabelecimento");
+        Query query = s.createQuery("from Vacina v where v.Estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estalecimento", estabelecimento);
         return query.getResultList();
     }
