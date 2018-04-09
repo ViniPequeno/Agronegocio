@@ -70,8 +70,59 @@
             </div>
         </div>
     </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="detalhesFuncionario" tabindex="-1" role="dialog" aria-labelledby="detalhesFuncionario" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelDetalhes">Detalhes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="nome"> Nome: </p>
+                    <p id="cargo"> Cargo:</p>
+                    <p id="CPF"> CPF: </p>
+                    <p id="RG"> RG: </p>
+                    <p id="situacao"> Situação: </p>
+                    <p id="estabelecimentos"> Locais de trabalho: </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtils.js"></script>
+<script>
+    $("td").not(function () {
+        return $("a", this).length != 0;
+    }).click(function () {
+        $("#detalhesFuncionario").modal();
+        var linha = $(this).closest('tr');
+        var celula = $(linha).children('td').eq(0);
+        $("#nome").text("Nome: " + celula.text());
+
+        celula = $(linha).children('td').eq(1);
+        $("#cargo").text("Cargo: " + celula.text());
+
+        celula = $(linha).children('td').eq(2);
+        $("#CPF").text("CPF: " + celula.text());
+
+        celula = $(linha).children('td').eq(3);
+        $("#RG").text("RG: " + celula.text());
+
+        celula = $(linha).children('td').eq(4);
+        $("#situacao").text("Situação: " + celula.text());
+
+        celula = $(linha).children('td').eq(5);
+        $("#estabelecimentos").text("Locais de trabalho: " + celula.text());
+    });
+</script>
 </body>
 </html>

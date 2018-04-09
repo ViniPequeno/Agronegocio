@@ -84,7 +84,7 @@
                 <div class="modal-body">
                     <p id="negocio">Negócio: </p>
                     <p id="proprietario">Proprietário: </p>
-                    <p id="CNAE">CNAE: </p>
+                    <p id="cnae">CNAE: </p>
                     <p id="sufixoCNPJ"> Sufixo do CNPJ: </p>
                     <p id="empresaCNPJ"> CNPJ da empresa: </p>
                     <p id="endereco"> Endereço: </p>
@@ -107,13 +107,13 @@
         $("#detalhesEstabelecimento").modal();
         var linha = $(this).closest('tr');
         var celula = $(linha).children('td').eq(0);
-        $("#negocio").text("Negócio:: " + celula.text());
+        $("#negocio").text("Negócio: " + celula.text());
 
         celula = $(linha).children('td').eq(1);
         $("#proprietario").text("Proprietário: " + celula.text());
 
         celula = $(linha).children('td').eq(2);
-        $("#CNAE").text("CNAE: " + celula.text());
+        $("#cnae").text("CNAE: " + celula.text());
 
         celula = $(linha).children('td').eq(3);
         $("#sufixoCNPJ").text("Sufixo do CNPJ: " + celula.text());

@@ -10,8 +10,8 @@
 
     <table class="table table-hover table-responsive-md btn-table" id="tableDados">
         <!--Table head-->
-        <thead class="mdb-color darken-3">
-            <tr class="text-white">
+        <thead class="blue-grey lighten-4">
+            <tr>
                 <th> </th>
                 <th>Nome</th>
                 <th>Proprietário</th>
@@ -29,7 +29,7 @@
             <%List<Negocio> negocios;
                 negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());
                 for (Negocio n : negocios) {%>
-            <tr>
+            <tr data-negocio="<%=n.getNome()%>#<%=n.getPerfil().getNome()%>#<%=n.getEmpresaCNPJ()%>#<%=n.getLinkEmail()%>#<%=n.getLinkFacebook()%>#<%=n.getLinkInstragram()%>#<%=n.getEstabelecimentos().toString()%>">
                 <th scope="row" class="pr-md-3 pr-5">
                     <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>">
                     <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
@@ -46,8 +46,8 @@
             <%}%>
         </tbody>
         <!--Table body-->
-
     </table>
+
     <!--Table-->
     <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
     <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
@@ -84,13 +84,14 @@
                 </div>
                 <div class="modal-body">
                     <p id="nome">Nome: </p>
-                    <p id="prop">Proprietário: </p>
-                    <p id="socios">Sócios: </p>
+                    <p id="proprietario">Proprietário: </p>
+                    <p id="cnpj">CNPJ: </p>
                     <p id="email"> Email: </p>
                     <p id="fone1"> Fone 1: </p>
                     <p id="fone2">Fone 2: </p>
                     <p id="linkFB">Link da página do Facebook: </p>
                     <p id="linkInstagram">Link da página do Instagram: </p>
+                    <p id="estabelecimentos">Estabelecimentos: </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
@@ -105,27 +106,34 @@
 <script>
     $("td").not(function () {
         return $("a", this).length != 0;
-    }).click(function () {
+    }).click(function (event) {
         $("#detalhesNegocio").modal();
         var linha = $(this).closest('tr');
-        var celula = $(linha).children('td').eq(0);
-        $("#nome").text("Nome: " + celula.text());
+        var dados = linha.data('negocio').toString();
+        var campo = dados.split("#");
+        var nome = campo[0];
+        var proprietario = campo[1];
+        var cnpj = campo[2];
+        var email = campo[3];
+        var facebook = campo[4];
+        var instagram = campo[5];
+        var estabelecimentos = campo[6];
+        $("#nome").text("Nome: " + nome);
+        
+        $("#proprietario").text("Proprietário: " + proprietario);
+        
+        $("#cnpj").text("CNPJ: " + cnpj);
 
-        celula = $(linha).children('td').eq(1);
-        $("#email").text("Email: " + celula.text());
+        $("#email").text("Email: " + email);
 
-        celula = $(linha).children('td').eq(2);
-        $("#linkFB").text("Link da página do Facebook: " + celula.text());
+        $("#linkFB").text("Link da página do Facebook: " + facebook);
 
-        celula = $(linha).children('td').eq(3);
-        $("#linkInstagram").text("Link da página do Instagram: " + celula.text());
+        $("#linkInstagram").text("Link da página do Instagram: " + instagram);
+        
+        $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
 
-        celula = $(linha).children('td').eq(4);
-        $("#empresaCNPJ").text("CNPJ da empresa: " + celula.text());
-
-        celula = $(linha).children('td').eq(5);
-        $("#fone1").text("Fone 1: " + celula.text());
-        $("#fone2").text("Fone 2: " + celula.text());
+        $("#fone1").text("Fone 1: " + nome);
+        $("#fone2").text("Fone 2: " + nome);
     });
 </script>
 </body>
