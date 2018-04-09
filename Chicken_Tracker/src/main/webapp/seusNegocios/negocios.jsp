@@ -27,7 +27,7 @@
         <!--Table body-->
         <tbody>
             <%List<Negocio> negocios;
-                negocios = ConsultaNegocio.returnList((String) sessao.getAttribute("usuario"));
+                negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());
                 for (Negocio n : negocios) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">
@@ -103,7 +103,29 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtil.js"></script>
 <script>
-    $("#detalhesNegocio").on('show.bs.modal', function () {
+    $("td").not(function () {
+        return $("a", this).length != 0;
+    }).click(function () {
+        $("#detalhesNegocio").modal();
+        var linha = $(this).closest('tr');
+        var celula = $(linha).children('td').eq(0);
+        $("#nome").text("Nome: " + celula.text());
+
+        celula = $(linha).children('td').eq(1);
+        $("#email").text("Email: " + celula.text());
+
+        celula = $(linha).children('td').eq(2);
+        $("#linkFB").text("Link da página do Facebook: " + celula.text());
+
+        celula = $(linha).children('td').eq(3);
+        $("#linkInstagram").text("Link da página do Instagram: " + celula.text());
+
+        celula = $(linha).children('td').eq(4);
+        $("#empresaCNPJ").text("CNPJ da empresa: " + celula.text());
+
+        celula = $(linha).children('td').eq(5);
+        $("#fone1").text("Fone 1: " + celula.text());
+        $("#fone2").text("Fone 2: " + celula.text());
     });
 </script>
 </body>

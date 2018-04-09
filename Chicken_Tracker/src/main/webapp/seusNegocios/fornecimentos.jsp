@@ -5,7 +5,7 @@
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
     <!--Table-->
-    <h2 class="py-5 font-weight-bold text-left">Negócios</h2>
+    <h2 class="py-5 font-weight-bold text-left">Fornecimentos</h2>
 
     <table class="table table-hover table-responsive-md btn-table">
         <!--Table head-->

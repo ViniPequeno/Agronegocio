@@ -24,15 +24,21 @@ public class ConsultaEstabelecimento {
 
     public static List<Estabelecimento> returnListOfNegocio(String negocio) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Estabelecimento e where e.negocio_id:=negocio");
+        Query query = s.createQuery("from Estabelecimento e where e.negocio.empresaCNPJ=:negocio");
         query.setParameter("negocio", negocio);
         return query.getResultList();
     }
 
-    public static List<Estabelecimento> returnListofUsuario(String usuario) {
+    public static List<Estabelecimento> returnListOfUsuario(String usuario) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from estabelecimento where perfil_id:=usuario");
+        Query query = s.createQuery("from estabelecimento where perfil.usuario=:usuario");
         query.setParameter("usuario", usuario);
+        return query.getResultList();
+    }
+    
+    public static List<Estabelecimento> returnList() {
+        Session s = HibernateFactory.getSession();
+        Query query = s.createQuery("from estabelecimento");
         return query.getResultList();
     }
 }

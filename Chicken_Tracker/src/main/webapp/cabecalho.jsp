@@ -32,11 +32,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../main/negocios.jsp"><i class="fa fa-suitcase mr-1" aria-hidden="true"></i>Negócios</a>
                     </li>
+                    <%
+                        if (!(sessao.isNew() || sessao.getAttribute("usuario_logado").equals("false"))) {
+                    %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book mr-1" aria-hidden="true"></i>Seus Negócios</a>
                         <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="../seusNegocios/negocios.jsp">Negócios</a>
-                            <a class="dropdown-item" href="../seusNegocios/estabeleciemtnos.jsp">Estabelecimentos</a>
+                            <a class="dropdown-item" href="../seusNegocios/estabelecimentos.jsp">Estabelecimentos</a>
                             <a class="dropdown-item" href="../seusNegocios/funcionarios.jsp">Funcionários</a>
                             <a class="dropdown-item" href="../seusNegocios/fornecedores.jsp">Fornecedores</a>
                             <a class="dropdown-item" href="../seusNegocios/fornecimentos.jsp">Fornecimentos</a>
@@ -46,6 +49,7 @@
                             <a class="dropdown-item" href="../seusNegocios/desempenho.jsp">Desempenho</a>
                         </div>
                     </li>
+                    <% }%>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <%

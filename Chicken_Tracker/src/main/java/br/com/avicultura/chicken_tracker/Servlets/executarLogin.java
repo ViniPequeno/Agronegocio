@@ -6,16 +6,13 @@
 package br.com.avicultura.chicken_tracker.Servlets;
 
 import br.com.avicultura.chicken_tracker.Controller.ConsultaPerfil;
-import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.Session;
 
 /**
  *
@@ -30,6 +27,7 @@ public class executarLogin extends HttpServlet {
 
         HttpSession sessao = request.getSession();
         sessao.setAttribute("usuario_logado", null);
+        sessao.setAttribute("nome_usuario", null);
         sessao.invalidate();
         response.sendRedirect("main/index.jsp");
     }

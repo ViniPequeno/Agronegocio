@@ -3,9 +3,11 @@
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Controller.ConsultaEstabelecimento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento" %>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Perfil" %>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <div class="container">
     <!--Table-->
-    <h2 class="py-5 font-weight-bold text-left">Negócios</h2>
+    <h2 class="py-5 font-weight-bold text-left">Estabelecimentos</h2>
 
     <table class="table table-hover table-responsive-md btn-table">
         <!--Table head-->
@@ -32,12 +34,12 @@
                     <input type="checkbox" id="checkbox<%=e.getCNAE()%>">
                     <label for="checkbox<%=e.getCNAE()%>" class="label-table"></label>
                 </th>
-                <td><%=e.getNegocio()%></td>
-                <td><%=e.getPerfil()%></td>
+                <td><%=e.getNegocio().getNome()%></td>
+                <td><%=e.getPerfil().getNome()%></td>
                 <td><%=e.getCNAE()%></td>
                 <td><%=e.getEndereco()%></td>
                 <td><%=e.getSufixoCNPJ()%></td>
-                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/estabelecimento.jsp.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
             </tr>
             <%}%>
@@ -70,8 +72,61 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="detalhesEstabelecimento" tabindex="-1" role="dialog" aria-labelledby="detalhesEstabelecimento" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelDetalhes">Detalhes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="negocio">Negócio: </p>
+                    <p id="proprietario">Proprietário: </p>
+                    <p id="CNAE">CNAE: </p>
+                    <p id="sufixoCNPJ"> Sufixo do CNPJ: </p>
+                    <p id="empresaCNPJ"> CNPJ da empresa: </p>
+                    <p id="endereco"> Endereço: </p>
+                    <p id="qtdeFuncionarios">Quantidade de funcionários: </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtils.js"></script>
+<script>
+    $("td").not(function () {
+        return $("a", this).length != 0;
+    }).click(function () {
+        $("#detalhesEstabelecimento").modal();
+        var linha = $(this).closest('tr');
+        var celula = $(linha).children('td').eq(0);
+        $("#negocio").text("Negócio:: " + celula.text());
+
+        celula = $(linha).children('td').eq(1);
+        $("#proprietario").text("Proprietário: " + celula.text());
+
+        celula = $(linha).children('td').eq(2);
+        $("#CNAE").text("CNAE: " + celula.text());
+
+        celula = $(linha).children('td').eq(3);
+        $("#sufixoCNPJ").text("Sufixo do CNPJ: " + celula.text());
+
+        celula = $(linha).children('td').eq(4);
+        $("#empresaCNPJ").text("CNPJ da empresa: " + celula.text());
+
+        celula = $(linha).children('td').eq(5);
+        $("#endereco").text("Endereço: " + celula.text());
+
+        celula = $(linha).children('td').eq(6);
+        $("#qtdeFuncionarios").text("Quantidade de funcionários: " + celula.text());
+    });
+</script>
 </body>
 </html>
