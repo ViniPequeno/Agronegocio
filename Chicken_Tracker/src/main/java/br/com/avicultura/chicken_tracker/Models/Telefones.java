@@ -16,12 +16,29 @@ import javax.persistence.Table;
  * @author User
  */
 @Entity
-@Table(name="Telefones")
+@Table(name = "Telefones")
 public class Telefones {
+
     @Id
     private String telefone;
     @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Negocio negocio;
-    
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public Negocio getNegocio() {
+        return negocio;
+    }
+
+    public void setNegocio(Negocio negocio) {
+        this.negocio = negocio;
+    }
+
 }

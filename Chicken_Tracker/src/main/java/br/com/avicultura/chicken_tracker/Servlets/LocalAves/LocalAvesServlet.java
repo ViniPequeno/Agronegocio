@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Servlets;
+package br.com.avicultura.chicken_tracker.Servlets.LocalAves;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
-import br.com.avicultura.chicken_tracker.Models.Negocio;
-import br.com.avicultura.chicken_tracker.Models.Perfil;
-import br.com.avicultura.chicken_tracker.Models.Vacina;
+import br.com.avicultura.chicken_tracker.Models.LocalAves;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -26,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-public class VacinaServlet extends HttpServlet {
+public class LocalAvesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,15 +35,16 @@ public class VacinaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Vacina v = Vacina.getInstance();
-        v.setNome(request.getParameter("inputNome"));
-        v.setCodigo(Integer.parseInt(request.getParameter("inputUsuario")));
-        //v.setDataProxima(request.getParameter("inputDataProxima"));
-        //v.setDataRealizada(request.getParameter("inputDataRealizada"));
-        v.setDescricao(request.getParameter("inputDescricao"));
-        //p.setFoto(foto);
-        HibernateUtil<Vacina> hup = new HibernateUtil<>();
-        String s = hup.salvar(v);
+        LocalAves l = LocalAves.getInstance();
+        l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+        l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
+        l.setLargura(Double.parseDouble(request.getParameter("inputLargura")));
+        l.setArea(Double.parseDouble(request.getParameter("inputArea")));
+        l.setDataAbertura(request.getParameter("inputDataAbertura"));
+        l.setFuncao(request.getParameter("inputFuncao"));
+        //f.setEstabelecimentos();
+        HibernateUtil<LocalAves> hup = new HibernateUtil<>();
+        String s = hup.salvar(l);
         PrintWriter out = response.getWriter();
         out.print(s);
         response.sendRedirect("seusNegocios/negocios.jsp");
@@ -54,14 +53,16 @@ public class VacinaServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Vacina v = Vacina.getInstance();
-        v.setNome(request.getParameter("inputNome"));
-        v.setCodigo(Integer.parseInt(request.getParameter("inputUsuario")));
-        //v.setDataProxima(request.getParameter("inputDataProxima"));
-        //v.setDataRealizada(request.getParameter("inputDataRealizada"));
-        v.setDescricao(request.getParameter("inputDescricao"));
-        HibernateUtil<Vacina> hup = new HibernateUtil<>();
-        String s = hup.atualizar(v);
+        LocalAves l = LocalAves.getInstance();
+        l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+        l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
+        l.setLargura(Double.parseDouble(request.getParameter("inputLargura")));
+        l.setArea(Double.parseDouble(request.getParameter("inputArea")));
+        l.setDataAbertura(request.getParameter("inputDataAbertura"));
+        l.setFuncao(request.getParameter("inputFuncao"));
+        //f.setEstabelecimentos();
+        HibernateUtil<LocalAves> hup = new HibernateUtil<>();
+        String s = hup.atualizar(l);
         PrintWriter out = response.getWriter();
         out.print(s);
         response.sendRedirect("seusNegocios/negocios.jsp");
@@ -71,10 +72,10 @@ public class VacinaServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Vacina v = Vacina.getInstance();
-        v.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
-        HibernateUtil<Vacina> hup = new HibernateUtil<>();
-        String s = hup.deletar(v);
+        LocalAves l = LocalAves.getInstance();
+        l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+        HibernateUtil<LocalAves> hup = new HibernateUtil<>();
+        String s = hup.deletar(l);
         PrintWriter out = response.getWriter();
         out.print(s);
         response.sendRedirect("seusNegocios/negocios.jsp");

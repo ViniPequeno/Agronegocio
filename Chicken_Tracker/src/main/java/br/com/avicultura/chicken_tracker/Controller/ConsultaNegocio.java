@@ -28,4 +28,22 @@ public class ConsultaNegocio {
         query.setParameter("usuario", usuario);
         return query.getResultList();
     }
+
+    public static String returnValues(Negocio negocio) {
+        String a = "";
+        a += negocio.getNome() + "#";
+        a += negocio.getPerfil().getNome() + "#";
+        a += negocio.getEmpresaCNPJ() + "#";
+        a += negocio.getLinkEmail() + "&#";
+        for (int i = 0; i < negocio.getTelefones().size(); i++) {
+            a += negocio.getTelefones().get(i).getTelefone() + "&";
+        }
+        a += "#*";
+        for (int i = 0; i < negocio.getEstabelecimentos().size(); i++) {
+            a += negocio.getEstabelecimentos().get(i).getSufixoCNPJ() + "#";
+            a += negocio.getEstabelecimentos().get(i).getCNAE()+ "#";
+        }
+        a += "*";
+        return a;
+    }
 }

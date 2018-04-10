@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Servlets;
+package br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
@@ -35,33 +35,6 @@ public class EstabelecimentoServlet extends HttpServlet {
         e.setEndereco(request.getParameter("inputEndereco"));
         HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
         String s = hup.salvar(e);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
-    }
-
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Estabelecimento e = Estabelecimento.getInstance();
-        e.setSufixoCNPJ(request.getParameter("inputSuficoCNPJ"));
-        e.setCNAE(request.getParameter("inputCNAE"));
-        e.setEndereco(request.getParameter("inputEndereco"));
-        HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
-        String s = hup.atualizar(e);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
-
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Estabelecimento e = Estabelecimento.getInstance();
-        e.setSufixoCNPJ(request.getParameter("inputSuficoCNPJ"));
-        HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
-        String s = hup.deletar(e);
         PrintWriter out = response.getWriter();
         out.print(s);
         response.sendRedirect("seusNegocios/negocios.jsp");

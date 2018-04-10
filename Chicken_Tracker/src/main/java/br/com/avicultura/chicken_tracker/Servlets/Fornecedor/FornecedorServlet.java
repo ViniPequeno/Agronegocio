@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Servlets;
+package br.com.avicultura.chicken_tracker.Servlets.Fornecedor;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.*;
@@ -23,8 +23,9 @@ public class FornecedorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -41,36 +42,5 @@ public class FornecedorServlet extends HttpServlet {
         out.print(s);
         response.sendRedirect("seusNegocios/negocios.jsp");
     }
-    
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException{
-        Fornecimento f = Fornecimento.getInstance();
-        f.setCNPJ(request.getParameter("inputCNPJ"));
-        f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
-        f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
-        f.setVencimento(request.getParameter("inputDataVencimento"));
-        f.setTipo('C');
-        //f.setEstabelecimentos();
-        HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
-        String s = hup.atualizar(f);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
-        
-    }
-    
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException{
-        Fornecimento f = Fornecimento.getInstance();
-        f.setCNPJ(request.getParameter("inputCNPJ"));
-        HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
-        String s = hup.deletar(f);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
-    }   
-
 
 }

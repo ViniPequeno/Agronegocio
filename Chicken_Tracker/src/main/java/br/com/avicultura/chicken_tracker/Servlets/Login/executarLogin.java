@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Servlets;
+package br.com.avicultura.chicken_tracker.Servlets.Login;
 
 import br.com.avicultura.chicken_tracker.Controller.ConsultaPerfil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;

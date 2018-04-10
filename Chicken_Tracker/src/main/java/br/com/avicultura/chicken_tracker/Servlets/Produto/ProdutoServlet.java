@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Servlets;
+package br.com.avicultura.chicken_tracker.Servlets.Produto;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
@@ -46,36 +46,7 @@ public class ProdutoServlet extends HttpServlet {
         response.sendRedirect("seusNegocios/negocios.jsp");
     }
 
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Produto p = Produto.getInstance();
-        p.setNome(request.getParameter("inputNome"));
-        p.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
-        p.setDescricao(request.getParameter("inputDescricao"));
-        p.setQuantidadeMinima(Integer.parseInt(request.getParameter("inputMinimo")));
-        p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxima")));
-        p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputAtual")));
-        //p.setFoto(foto);
-        //f.setEstabelecimentos();
-        HibernateUtil<Produto> hup = new HibernateUtil<>();
-        String s = hup.atualizar(p);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+   
 
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Produto p = Produto.getInstance();
-        p.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
-        HibernateUtil<Produto> hup = new HibernateUtil<>();
-        String s = hup.deletar(p);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
-    }
 
 }

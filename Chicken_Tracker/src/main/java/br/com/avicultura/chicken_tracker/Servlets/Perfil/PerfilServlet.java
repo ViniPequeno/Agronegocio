@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Servlets;
+package br.com.avicultura.chicken_tracker.Servlets.Perfil;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
@@ -80,33 +80,4 @@ public class PerfilServlet extends HttpServlet {
         System.out.println(fileContent.available());
     }
 
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Perfil p = Perfil.getInstance();
-        p.setNome(request.getParameter("inputNome"));
-        p.setUsuario(request.getParameter("inputUsuario"));
-        p.setEmail(request.getParameter("inputEmail"));
-        p.setSenha(request.getParameter("inputSenha"));
-        //p.setFoto(foto);
-        //f.setEstabelecimentos();
-        HibernateUtil<Perfil> hup = new HibernateUtil<>();
-        String s = hup.atualizar(p);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
-
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Perfil p = Perfil.getInstance();
-        p.setUsuario(request.getParameter("inputUsuario"));
-        HibernateUtil<Perfil> hup = new HibernateUtil<>();
-        String s = hup.deletar(p);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
-    }
 }
