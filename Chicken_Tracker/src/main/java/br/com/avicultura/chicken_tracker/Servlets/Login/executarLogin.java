@@ -5,7 +5,7 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets.Login;
 
-import br.com.avicultura.chicken_tracker.Controller.ConsultaPerfil;
+import br.com.avicultura.chicken_tracker.Servlets.Perfil.ConsultaPerfil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -28,6 +28,7 @@ public class executarLogin extends HttpServlet {
         HttpSession sessao = request.getSession();
         sessao.setAttribute("usuario_logado", null);
         sessao.setAttribute("nome_usuario", null);
+        sessao.setAttribute("usuario", null);
         sessao.invalidate();
         response.sendRedirect("main/index.jsp");
     }
@@ -45,6 +46,7 @@ public class executarLogin extends HttpServlet {
         } else if (request.getParameter("inputSenha").equals(p.getSenha())) {
             sessao.setAttribute("usuario_logado", "true");
             sessao.setAttribute("nome_usuario", request.getParameter("inputLogin"));
+            sessao.setAttribute("usuario", p);
             response.sendRedirect("main/index.jsp");
         } else {
             response.sendRedirect("main/login.jsp");

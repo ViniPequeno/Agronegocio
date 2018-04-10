@@ -11,15 +11,13 @@ import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 
 /**
@@ -73,11 +71,19 @@ public class PerfilServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Part filePart = request.getPart("inputFoto"); // Retrieves <input type="file" name="file">
-        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-        InputStream fileContent = filePart.getInputStream();
-        System.out.println(fileContent.toString());
-        System.out.println(fileContent.available());
+        Perfil p = Perfil.getInstance();
+        p.setNome(request.getParameter("inputNome"));
+        p.setUsuario(request.getParameter("inputLogin"));
+        p.setEmail(request.getParameter("inputEmail"));
+        p.setSenha(request.getParameter("inputSenha"));
+        HibernateUtil<Perfil> hup = new HibernateUtil<>();
+        String s = hup.salvar(p);
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("usuario", p);
+        sessao.setAttribute("usuario_logado", "true");
+        sessao.setAttribute("nome_usuario", request.getParameter("inputLogin"));
+        response.sendRedirect(
+                "seusNegocios/negocios.jsp");
     }
 
 }

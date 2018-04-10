@@ -3,29 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Controller;
+package br.com.avicultura.chicken_tracker.Servlets.Vacina;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
-import br.com.avicultura.chicken_tracker.Models.Produto;
+import br.com.avicultura.chicken_tracker.Models.Vacina;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 import org.hibernate.Session;
 
 /**
  *
  * @author User
  */
-public class ConsultaProduto {
+public class ConsultaVacina {
 
-    public static Produto findById(String id) {
+    public static Vacina findById(String id) {
         Session s = HibernateFactory.getSession();
-        return s.get(Produto.class, id);
+        return s.get(Vacina.class, id);
     }
 
-    public static List<Produto> returnList(String estabelecimento) {
+    public static List<Vacina> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Produto p where p.Estabelecimento.sufixoCNPJ =:estabelecimento");
-        query.setParameter("estabelecimento", estabelecimento);
+        Query query = s.createQuery("from Vacina v where v.Estabelecimento.sufixoCNPJ =:estabelecimento");
+        query.setParameter("estalecimento", estabelecimento);
         return query.getResultList();
     }
+
 }

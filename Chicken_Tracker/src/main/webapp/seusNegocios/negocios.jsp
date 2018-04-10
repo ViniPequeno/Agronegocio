@@ -29,7 +29,7 @@
             <%List<Negocio> negocios;
                 negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());
                 for (Negocio n : negocios) {%>
-            <tr data-negocio="<%=n.getNome()%>#<%=n.getPerfil().getNome()%>#<%=n.getEmpresaCNPJ()%>#<%=n.getLinkEmail()%>#<%=n.getLinkFacebook()%>#<%=n.getLinkInstragram()%>#<%=n.getEstabelecimentos().toString()%>">
+            <tr data-negocio="<%=n.getNome()%>#<%=n.getPerfil().getNome()%>#<%=n.getEmpresaCNPJ()%>#<%=n.getLinkEmail()%>#<%=n.getLinkFacebook()%>#<%=n.getLinkInstragram()%>#<%=n.getEstabelecimentos()%>">
                 <th scope="row" class="pr-md-3 pr-5">
                     <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>">
                     <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>

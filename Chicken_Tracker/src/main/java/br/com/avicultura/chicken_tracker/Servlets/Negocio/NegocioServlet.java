@@ -8,12 +8,15 @@ package br.com.avicultura.chicken_tracker.Servlets.Negocio;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
+import br.com.avicultura.chicken_tracker.Models.Telefones;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,15 +35,35 @@ public class NegocioServlet extends HttpServlet {
             throws ServletException, IOException {
         Negocio n = Negocio.getInstance();
         n.setNome(request.getParameter("inputNome"));
-        n.setEmpresaCNPJ(request.getParameter("inputEmpresaCNPJ"));
-        n.setLinkEmail(request.getParameter("inputLinkEmail"));
-        n.setLinkInstragram(request.getParameter("inputLinkInstragram"));
-        n.setLinkFacebook(request.getParameter("inputLinkFacebook"));
-        //f.setEstabelecimentos();
+        n.setEmpresaCNPJ(request.getParameter("inputCNPJ"));
+        n.setLinkEmail(request.getParameter("inputEmail"));
+        n.setLinkInstragram(request.getParameter("inputLinkInstagram"));
+        n.setLinkFacebook(request.getParameter("inputLinkFB"));
+        
+        HttpSession sessao = request.getSession();
+        n.setPerfil((Perfil)sessao.getAttribute("usuario"));
+        
+        n.setTelefones(new ArrayList<Telefones>());
+        
+        Telefones t1 = new Telefones();
+        t1.setTelefone(request.getParameter("inputFone1"));
+        t1.setNegocio(n);
+        n.getTelefones().add(t1);
+
+        Telefones t2 = new Telefones();
+        t2.setTelefone(request.getParameter("inputFone2"));
+        t2.setNegocio(n);
+        n.getTelefones().add(t2);
+        
         HibernateUtil<Negocio> hup = new HibernateUtil<>();
         String s = hup.salvar(n);
         PrintWriter out = response.getWriter();
-        out.print(s);
+
+        out.println(s);
+        out.println(((Perfil) request.getAttribute("usuario")).getUsuario());
+        out.println(((Perfil) request.getAttribute("usuario")).getNome());
+        out.println((Perfil) request.getAttribute("usuario"));
+        out.println(request.getAttribute("usuario"));
         response.sendRedirect("seusNegocios/negocios.jsp");
     }
 

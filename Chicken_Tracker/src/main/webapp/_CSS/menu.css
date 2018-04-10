@@ -72,3 +72,12 @@ section a .svg-inline--fa{
   align-items: center;
 }
 
+.fixed-bottom {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+  bottom: 0;
+}
+

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Controller;
+package br.com.avicultura.chicken_tracker.Servlets.Negocio;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Negocio;
@@ -34,11 +34,11 @@ public class ConsultaNegocio {
         a += negocio.getNome() + "#";
         a += negocio.getPerfil().getNome() + "#";
         a += negocio.getEmpresaCNPJ() + "#";
-        a += negocio.getLinkEmail() + "&#";
+        a += negocio.getLinkEmail() + "&";
         for (int i = 0; i < negocio.getTelefones().size(); i++) {
-            a += negocio.getTelefones().get(i).getTelefone() + "&";
+            a += negocio.getTelefones().get(i).getTelefone() + "#";
         }
-        a += "#*";
+        a += "&*";
         for (int i = 0; i < negocio.getEstabelecimentos().size(); i++) {
             a += negocio.getEstabelecimentos().get(i).getSufixoCNPJ() + "#";
             a += negocio.getEstabelecimentos().get(i).getCNAE()+ "#";

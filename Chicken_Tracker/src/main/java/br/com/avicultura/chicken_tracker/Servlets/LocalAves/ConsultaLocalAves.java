@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Controller;
+package br.com.avicultura.chicken_tracker.Servlets.LocalAves;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.LocalAves;

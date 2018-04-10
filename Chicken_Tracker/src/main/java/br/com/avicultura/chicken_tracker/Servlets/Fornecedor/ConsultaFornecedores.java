@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.avicultura.chicken_tracker.Controller;
+package br.com.avicultura.chicken_tracker.Servlets.Fornecedor;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
@@ -15,23 +15,22 @@ import org.hibernate.Session;
  *
  * @author User
  */
-public class ConsultaFornecimento {
+public class ConsultaFornecedores {
 
-    public static Fornecimento findById(String id, String estabelecimento) {
+    public static Fornecimento findById(String estabelecimento, String id) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Fornecimento f where f.Estabelecimento.sufixoCNPJ =:estabelecimento"
-                + " and e.CNPJ=:id and tipo = v");
+        Query query = s.createQuery("from Fornecimento f where  f.Estabelecimento.sufixoCNPJ =:estabelecimento"
+                + " and f.CNPJ =: id and tipo = c");
         query.setParameter("estabelecimento", estabelecimento);
-        query.setParameter("id", id);
+        query.setParameter("CNPJ", id);
         return (Fornecimento) query.getSingleResult();
     }
 
     public static List<Fornecimento> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Fornecimento f where f.Estabelecimento.sufixoCNPJ =:estabelecimento"
-                + " and e.CNPJ=:id");
+        Query query = s.createQuery("from Fornecimento f where  f.Estabelecimento.sufixoCNPJ =:estabelecimento"
+                + " and tipo = c");
         query.setParameter("estabelecimento", estabelecimento);
         return query.getResultList();
     }
-
 }
