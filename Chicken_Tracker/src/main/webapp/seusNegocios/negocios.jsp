@@ -1,7 +1,7 @@
 <% String css = "";%>
 <%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.avicultura.chicken_tracker.Controller.ConsultaNegocio" %>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <div class="container">
     <a href="../main/index.jsp"><i class="fa fa-arrow-left mr-1" aria-hidden="true" style="margin-top: 25px"></i>Voltar</a>

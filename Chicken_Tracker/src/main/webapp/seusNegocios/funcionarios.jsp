@@ -1,6 +1,6 @@
 <% String css = "";%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.avicultura.chicken_tracker.Controller.ConsultaFuncionario" %>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Funcionario.ConsultaFuncionario" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Funcionario" %>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
@@ -25,7 +25,7 @@
         <!--Table body-->
         <tbody>
             <%List<Funcionario> funcionarios;
-                funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"));
+                funcionarios = ConsultaFuncionario.returnList();
                 for (Funcionario f : funcionarios) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">
