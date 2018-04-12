@@ -1,7 +1,7 @@
 <% String css = "";%>
 <%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.avicultura.chicken_tracker.Controller.ConsultaEstabelecimento" %>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Perfil" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>

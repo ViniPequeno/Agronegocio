@@ -1,6 +1,6 @@
 <% String css = "";%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.avicultura.chicken_tracker.Controller.ConsultaProduto" %>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Produto" %>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">

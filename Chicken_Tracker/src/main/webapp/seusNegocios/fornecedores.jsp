@@ -1,6 +1,6 @@
 <% String css = "";%>
 <%@page import="java.util.List"%>
-<%@page import="br.com.avicultura.chicken_tracker.Controller.ConsultaFornecedores" %>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Fornecedor.ConsultaFornecedores" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Fornecimento" %>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
@@ -69,7 +69,7 @@
         </div>
     </div>
 </div>
-<%@include file="../rodapf.jsp" %>
+<%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtils.js"></script>
 </body>
 </html>
