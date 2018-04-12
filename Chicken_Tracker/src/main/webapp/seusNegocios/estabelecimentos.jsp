@@ -27,8 +27,9 @@
         <!--Table body-->
         <tbody>
             <%List<Estabelecimento> estabelecimento;
-                estabelecimento = ConsultaEstabelecimento.returnListOfNegocio(request.getParameter("negocio"));
-                for (Estabelecimento e : estabelecimento) {%>
+                estabelecimento = ConsultaEstabelecimento.returnList();
+                for (Estabelecimento e : estabelecimento) {
+            %>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">
                     <input type="checkbox" id="checkbox<%=e.getCNAE()%>">
@@ -48,8 +49,8 @@
 
     </table>
     <!--Table-->
-    <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
+    <a href="../cadastro/estabelecimento.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo estabelecimento" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir estabelecimentos selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
 
     <!-- Modal -->
@@ -63,7 +64,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Todos os estabelecimentos associados a este negócio também serão apagados</p>
+                    <p>Todos os funcionários associados a este estabelecimento também serão apagados</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>

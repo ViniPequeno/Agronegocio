@@ -34,11 +34,16 @@ public class ConsultaNegocio {
         a += negocio.getNome() + "#";
         a += negocio.getPerfil().getNome() + "#";
         a += negocio.getEmpresaCNPJ() + "#";
-        a += negocio.getLinkEmail() + "&";
+        a += negocio.getLinkEmail() + "#";
+        a += negocio.getLinkFacebook()+ "#";
+        a += negocio.getLinkInstragram()+ "#";
         for (int i = 0; i < negocio.getTelefones().size(); i++) {
-            a += negocio.getTelefones().get(i).getTelefone() + "#";
+            a += negocio.getTelefones().get(i).getTelefone();
+           if(i!= negocio.getTelefones().size()-1){
+               a+="&";
+           }
         }
-        a += "&*";
+        a += "#";
         for (int i = 0; i < negocio.getEstabelecimentos().size(); i++) {
             a += negocio.getEstabelecimentos().get(i).getSufixoCNPJ() + "#";
             a += negocio.getEstabelecimentos().get(i).getCNAE()+ "#";

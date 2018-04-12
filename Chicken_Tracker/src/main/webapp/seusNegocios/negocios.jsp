@@ -28,8 +28,10 @@
         <tbody>
             <%List<Negocio> negocios;
                 negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());
-                for (Negocio n : negocios) {%>
-            <tr data-negocio="<%=n.getNome()%>#<%=n.getPerfil().getNome()%>#<%=n.getEmpresaCNPJ()%>#<%=n.getLinkEmail()%>#<%=n.getLinkFacebook()%>#<%=n.getLinkInstragram()%>#<%=n.getEstabelecimentos()%>">
+                for (Negocio n : negocios) {
+                    String s = ConsultaNegocio.returnValues(n);
+            %>
+            <tr data-negocio="<%=s%>">
                 <th scope="row" class="pr-md-3 pr-5">
                     <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>">
                     <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
@@ -83,15 +85,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p id="nome">Nome: </p>
-                    <p id="proprietario">Proprietário: </p>
-                    <p id="cnpj">CNPJ: </p>
+                    <p id="nome"> Nome: </p>
+                    <p id="proprietario"> Proprietário: </p>
+                    <p id="cnpj"> CNPJ: </p>
                     <p id="email"> Email: </p>
+                    <p id="linkFB"> Link da página do Facebook: </p>
+                    <p id="linkInstagram"> Link da página do Instagram: </p>
                     <p id="fone1"> Fone 1: </p>
-                    <p id="fone2">Fone 2: </p>
-                    <p id="linkFB">Link da página do Facebook: </p>
-                    <p id="linkInstagram">Link da página do Instagram: </p>
-                    <p id="estabelecimentos">Estabelecimentos: </p>
+                    <p id="fone2"> Fone 2: </p>
+                    <p id="estabelecimentos"> Estabelecimentos: </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
@@ -117,7 +119,10 @@
         var email = campo[3];
         var facebook = campo[4];
         var instagram = campo[5];
-        var estabelecimentos = campo[6];
+        
+        var fones = campo[6].split("&");
+        var fone1 = fones[0];
+        var fone2 = fones[1];
         $("#nome").text("Nome: " + nome);
         
         $("#proprietario").text("Proprietário: " + proprietario);
@@ -127,13 +132,13 @@
         $("#email").text("Email: " + email);
 
         $("#linkFB").text("Link da página do Facebook: " + facebook);
-
+        
         $("#linkInstagram").text("Link da página do Instagram: " + instagram);
         
-        $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
+        $("#estabelecimentos").text("Estabelecimentos: " + dados);
 
-        $("#fone1").text("Fone 1: " + nome);
-        $("#fone2").text("Fone 2: " + nome);
+        $("#fone1").text("Fone 1: " + fone1);
+        $("#fone2").text("Fone 2: " + fone2);
     });
 </script>
 </body>

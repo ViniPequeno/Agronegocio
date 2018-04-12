@@ -7,12 +7,14 @@ package br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
+import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,11 +35,15 @@ public class EstabelecimentoServlet extends HttpServlet {
         e.setSufixoCNPJ(request.getParameter("inputSuficoCNPJ"));
         e.setCNAE(request.getParameter("inputCNAE"));
         e.setEndereco(request.getParameter("inputEndereco"));
+        
+        HttpSession sessao = request.getSession();
+        e.setPerfil((Perfil)sessao.getAttribute("usuario"));
+        
         HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
         String s = hup.salvar(e);
         PrintWriter out = response.getWriter();
         out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        response.sendRedirect("seusNegocios/estabelecimentos.jsp");
     }
 
 }

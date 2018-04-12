@@ -31,14 +31,14 @@ public class ConsultaEstabelecimento {
 
     public static List<Estabelecimento> returnListOfUsuario(String usuario) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from estabelecimento where perfil.usuario=:usuario");
+        Query query = s.createQuery("from Estabelecimento where perfil.usuario=:usuario");
         query.setParameter("usuario", usuario);
         return query.getResultList();
     }
     
     public static List<Estabelecimento> returnList() {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from estabelecimento");
+        Query query = s.createQuery("from Estabelecimento");
         return query.getResultList();
     }
 }
