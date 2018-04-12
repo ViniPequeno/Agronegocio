@@ -48,6 +48,5 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
-<script src="../Bootstrap/_JS/bootstrap-combobox.js"></script>
 </body>
 </html>
