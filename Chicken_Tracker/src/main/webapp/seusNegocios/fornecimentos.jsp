@@ -7,6 +7,9 @@
     <!--Table-->
     <h2 class="py-5 font-weight-bold text-left">Fornecimentos</h2>
 
+    <%List<Fornecimento> fornecimentos;
+        fornecimentos = ConsultaFornecimento.returnList(request.getParameter("estabelecimento"));
+        if (fornecimentos.size() > 0) {%>
     <table class="table table-hover table-responsive-md btn-table">
         <!--Table head-->
         <thead class="mdb-color darken-3">
@@ -23,9 +26,7 @@
 
         <!--Table body-->
         <tbody>
-            <%List<Fornecimento> fornecimentos;
-                fornecimentos = ConsultaFornecimento.returnList(request.getParameter("estabelecimento"));
-                for (Fornecimento f : fornecimentos) {%>
+            <%  for (Fornecimento f : fornecimentos) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">
                     <input type="checkbox" id="checkbox<%=f.getCNPJ()%>">
@@ -41,9 +42,11 @@
             <%}%>
         </tbody>
         <!--Table body-->
-
     </table>
     <!--Table-->
+    <%} else {%>
+    <h2 class="py-5 text-center">Nenhum fornecimento registrado ainda</h2>
+    <%}%>
     <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
     <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>

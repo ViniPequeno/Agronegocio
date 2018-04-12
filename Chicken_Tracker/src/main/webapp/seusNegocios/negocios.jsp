@@ -8,6 +8,12 @@
     <!--Table-->
     <h2 class="py-5 font-weight-bold text-left">Negócios</h2>
 
+    <%  //Gera tabela se houver algum registro
+        List<Negocio> negocios;
+        negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());
+        if (negocios.size() > 0){
+    %>
+
     <table class="table table-hover table-responsive-md btn-table" id="tableDados">
         <!--Table head-->
         <thead class="blue-grey lighten-4">
@@ -26,12 +32,11 @@
 
         <!--Table body-->
         <tbody>
-            <%List<Negocio> negocios;
-                negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());
+            <% //Percorrer List de negócios e adiconando linhas à tabela
                 for (Negocio n : negocios) {
-                    String s = ConsultaNegocio.returnValues(n);
+                    String dataNegocio = ConsultaNegocio.returnValues(n);
             %>
-            <tr data-negocio="<%=s%>">
+            <tr data-negocio="<%=dataNegocio%>">
                 <th scope="row" class="pr-md-3 pr-5">
                     <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>">
                     <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
@@ -49,8 +54,11 @@
         </tbody>
         <!--Table body-->
     </table>
-
     <!--Table-->
+    <%} else{%>
+     <h2 class="py-5 text-center">Nenhum negócio registrado ainda</h2>
+    <%}%>
+
     <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
     <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
@@ -119,22 +127,22 @@
         var email = campo[3];
         var facebook = campo[4];
         var instagram = campo[5];
-        
+
         var fones = campo[6].split("&");
         var fone1 = fones[0];
         var fone2 = fones[1];
         $("#nome").text("Nome: " + nome);
-        
+
         $("#proprietario").text("Proprietário: " + proprietario);
-        
+
         $("#cnpj").text("CNPJ: " + cnpj);
 
         $("#email").text("Email: " + email);
 
         $("#linkFB").text("Link da página do Facebook: " + facebook);
-        
+
         $("#linkInstagram").text("Link da página do Instagram: " + instagram);
-        
+
         $("#estabelecimentos").text("Estabelecimentos: " + dados);
 
         $("#fone1").text("Fone 1: " + fone1);

@@ -7,6 +7,9 @@
     <!--Table-->
     <h2 class="py-5 font-weight-bold text-left">Gerenciar Funcionários</h2>
 
+    <%List<Funcionario> funcionarios;
+        funcionarios = ConsultaFuncionario.returnList();
+        if (funcionarios.size() > 0) {%>
     <table class="table table-hover table-responsive-md btn-table">
         <!--Table head-->
         <thead class="mdb-color darken-3">
@@ -24,9 +27,7 @@
 
         <!--Table body-->
         <tbody>
-            <%List<Funcionario> funcionarios;
-                funcionarios = ConsultaFuncionario.returnList();
-                for (Funcionario f : funcionarios) {%>
+            <%  for (Funcionario f : funcionarios) {%>
             <tr>
                 <th scope="row" class="pr-md-3 pr-5">
                     <input type="checkbox" id="checkbox<%=f.getCPF()%>">
@@ -43,9 +44,12 @@
             <%}%>
         </tbody>
         <!--Table body-->
-
     </table>
     <!--Table-->
+    <%} else {%>
+    <h2 class="py-5 text-center">Nenhum funcionário registrado ainda</h2>
+    <%}%>
+
     <a href="../cadastro/funcionario.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo funcionário" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
     <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir funcionário(s) selecionado(s)" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
@@ -70,7 +74,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal fade" id="detalhesFuncionario" tabindex="-1" role="dialog" aria-labelledby="detalhesFuncionario" aria-hidden="true">
         <div class="modal-dialog" role="document">
