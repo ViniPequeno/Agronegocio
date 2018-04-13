@@ -1,3 +1,6 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio"%>
 <% String css = "../css/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 
@@ -29,12 +32,14 @@
                     <label for="inputEndereco">Endereço</label>
                 </div>
 
+                <% List<Negocio> negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());%>
                 <label>Negócio</label>
                 <select class="browser-default">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                    
+                    <option value="" disabled selected>--Nenhum--</option>
+                    <%for(Negocio n : negocios){%>
+                    <option value="<%=n.getEmpresaCNPJ()%>"><%=n.getNome()%></option>
+                    <%}%>
                 </select>
 
                 <div class="text-center mt-4">

@@ -11,7 +11,7 @@
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="50">
+                    <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="50" >
                     <label for="inputNome">Nome</label>
                 </div>
 
