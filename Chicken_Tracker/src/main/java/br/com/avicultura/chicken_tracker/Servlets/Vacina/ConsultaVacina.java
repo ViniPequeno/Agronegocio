@@ -30,4 +30,14 @@ public class ConsultaVacina {
         return query.getResultList();
     }
 
+    public static String returnValues(Vacina v) {
+        String a = "";
+        a += v.getCodigo() + "#";
+        a += v.getNome() + "#";
+        a += v.getDescricao() + "#";
+        a += v.getDataRealizada() + "#";
+        a += v.getDataProxima() + "#";
+
+        return a;
+    }
 }

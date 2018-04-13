@@ -29,10 +29,22 @@ public class ConsultaFuncionario {
         query.setParameter("estabelecimento", estabelecimento);
         return query.getResultList();
     }
-    
+
     public static List<Funcionario> returnList() {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Funcionario");
         return query.getResultList();
+    }
+
+    public static String returnValues(Funcionario f) {
+        String a = "";
+        a += f.getCPF() + "#";
+        a += f.getCargo() + "#";
+        a += f.getNome() + "#";
+        a += f.getRG() + "#";
+        a += f.getSalario() + "#";
+        a += f.getSituacao() + "#";
+
+        return a;
     }
 }

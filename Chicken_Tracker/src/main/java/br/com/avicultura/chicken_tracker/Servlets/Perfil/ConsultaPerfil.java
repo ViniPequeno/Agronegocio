@@ -27,4 +27,12 @@ public class ConsultaPerfil {
         Query query = s.createQuery("from Perfil");
         return query.getResultList();
     }
+
+    public static String returnValues(Perfil p) {
+        String a = "";
+        a += p.getNome() + "#";
+        a += p.getEmail() + "#";
+        a += p.getUsuario() + "#";
+        return a;
+    }
 }

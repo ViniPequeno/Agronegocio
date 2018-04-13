@@ -34,4 +34,13 @@ public class ConsultaFornecimento {
         return query.getResultList();
     }
 
+    public static String returnValues(Fornecimento e) {
+        String a = "";
+        a += e.getCNPJ() + "#";
+        a += e.getVencimento() + "#";
+        a += e.getPagamento() + "#";
+        a += e.getQuantidade() + "#";
+        return a;
+    }
+
 }

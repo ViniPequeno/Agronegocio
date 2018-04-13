@@ -35,10 +35,19 @@ public class ConsultaEstabelecimento {
         query.setParameter("usuario", usuario);
         return query.getResultList();
     }
-    
+
     public static List<Estabelecimento> returnList() {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Estabelecimento");
         return query.getResultList();
+    }
+
+    public static String returnValues(Estabelecimento e) {
+        String a = "";
+        a += e.getSufixoCNPJ() + "#";
+        a += e.getCNAE() + "#";
+        a += e.getEndereco() + "#";
+        
+        return a;
     }
 }

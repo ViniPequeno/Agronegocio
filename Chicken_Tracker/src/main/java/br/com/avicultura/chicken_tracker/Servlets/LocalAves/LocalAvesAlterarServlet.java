@@ -6,15 +6,9 @@
 package br.com.avicultura.chicken_tracker.Servlets.LocalAves;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
-import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.LocalAves;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,13 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-public class LocalAvesServlet extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
+public class LocalAvesAlterarServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,14 +32,11 @@ public class LocalAvesServlet extends HttpServlet {
         l.setFuncao(request.getParameter("inputFuncao"));
         //f.setEstabelecimentos();
         HibernateUtil<LocalAves> hup = new HibernateUtil<>();
-        String s = hup.salvar(l);
+        String s = hup.atualizar(l);
         PrintWriter out = response.getWriter();
         out.print(s);
         response.sendRedirect("seusNegocios/negocios.jsp");
+
     }
-
-    
-
-    
 
 }

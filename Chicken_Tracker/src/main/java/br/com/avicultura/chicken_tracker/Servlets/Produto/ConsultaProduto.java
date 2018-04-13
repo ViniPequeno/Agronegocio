@@ -28,4 +28,13 @@ public class ConsultaProduto {
         query.setParameter("estabelecimento", estabelecimento);
         return query.getResultList();
     }
+
+    public static String returnValues(Produto p) {
+        String a = "";
+        a += p.getCodigo() + "#";
+        a += p.getNome() + "#";
+        a += p.getDescricao() + "#";
+        a += p.getQuantidadeAtual() + "#";
+        return a;
+    }
 }

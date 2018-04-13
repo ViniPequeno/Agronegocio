@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "funcionario")
-public class Funcionario implements Serializable{
+public class Funcionario implements Serializable {
 
     @Id
     private String CPF;
@@ -19,6 +19,7 @@ public class Funcionario implements Serializable{
     @Column(unique = true)
     private String nome;
     private String cargo;
+    private double salario;
     private char situacao;
 
     @ManyToMany(mappedBy = "funcionarios")
@@ -30,7 +31,6 @@ public class Funcionario implements Serializable{
     @Transient
     private static Funcionario getInstance;
 
-    
     public static Funcionario getInstance() {
         if (getInstance == null) {
             getInstance = new Funcionario();
@@ -84,6 +84,14 @@ public class Funcionario implements Serializable{
 
     public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
         this.estabelecimentos = estabelecimentos;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
     }
 
 }

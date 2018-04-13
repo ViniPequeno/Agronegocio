@@ -33,4 +33,14 @@ public class ConsultaFornecedores {
         query.setParameter("estabelecimento", estabelecimento);
         return query.getResultList();
     }
+
+    public static String returnValues(Fornecimento f) {
+        String a = "";
+        a += f.getCNPJ() + "#";
+        a += f.getVencimento() + "#";
+        a += f.getPagamento() + "#";
+        a += f.getQuantidade() + "#";
+
+        return a;
+    }
 }
