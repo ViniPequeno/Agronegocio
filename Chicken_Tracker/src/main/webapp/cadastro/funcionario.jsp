@@ -11,14 +11,14 @@
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-id-badge prefix grey-text"></i>
-                    <input type="text" id="inputCPF" name="inputCPF" class="form-control" required autofocus maxlength="8">
+                    <input type="text" id="inputCPF" name="inputCPF" class="form-control" required autofocus maxlength="14">
                     <label for="inputCPF">CPF</label>
                 </div>
                 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-money-bill-alt prefix grey-text"></i>
-                    <input type="text" id="inputRG" name="inputRG" class="form-control" required maxlength="7">
+                    <input type="text" id="inputRG" name="inputRG" class="form-control" required maxlength="14">
                     <label for="inputRG">RG</label>
                 </div>
 
@@ -53,6 +53,6 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
+<script src="../_JS/validador-de-cpf.js"></script>
 </body>
-
 </html>

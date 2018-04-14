@@ -102,7 +102,7 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/formUtils.js"></script>
+<script src="../_JS/formUtil.js"></script>
 <script>
     $("td").not(function () {
         return $("a", this).length != 0;
