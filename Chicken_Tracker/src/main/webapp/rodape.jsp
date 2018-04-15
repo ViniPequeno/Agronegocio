@@ -1,6 +1,6 @@
 
 <!--Footer-->
-<footer class="page-footer font-small stylish-color-dark pt-4 mt-4 fixed-bottom">
+<footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
 
     <!--Footer Links-->
     <div class="container text-center text-md-left">
@@ -66,7 +66,7 @@
                 <h5 class="mb-1">Registre-se gratuitamente</h5>
             </li>
             <li class="list-inline-item">
-                <a href="#!" class="btn btn-danger btn-rounded">Cadastre-se</a>
+                <a href="../cadastro/usuario.jsp" class="btn btn-danger btn-rounded">Cadastre-se</a>
             </li>
         </ul>
     </div>

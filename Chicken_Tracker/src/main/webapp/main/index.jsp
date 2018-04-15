@@ -97,7 +97,7 @@
         <div class="row text-center">
 
             <!--Grid column-->
-            <div class="col-md-3 mb-4">
+            <div class="col-lg-3 col-sm-6 col-12 mb-4">
 
                 <div class="avatar mx-auto">
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded img-fluid z-depth-1-half" alt="First sample avatar image">
@@ -125,7 +125,7 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-md-3 mb-4">
+            <div class="col-lg-3 col-sm-6 col-12 mb-4">
 
                 <div class="avatar mx-auto">
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" class="rounded img-fluid z-depth-1-half" alt="Second sample avatar image">
@@ -153,7 +153,7 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-md-3 mb-4">
+            <div class="col-lg-3 col-sm-6 col-12 mb-4">
 
                 <div class="avatar mx-auto">
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
@@ -181,7 +181,7 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-md-3 mb-4">
+            <div class="col-lg-3 col-sm-6 col-12 mb-4">
 
                 <div class="avatar mx-auto">
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
@@ -211,6 +211,11 @@
 
     </section>
     <!--Section: Team v.2-->
+</div>
+<div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+    <a href="#" class="btn-floating btn-large cyan text-center white-text">
+        <i class="fa fa-arrow-up"></i>
+    </a>
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/index.js"></script>
