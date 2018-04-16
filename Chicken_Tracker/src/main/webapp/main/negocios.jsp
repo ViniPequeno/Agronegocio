@@ -5,8 +5,10 @@
         <div class="card" style="margin-top: 20px">
             <div class="card-body">
                 <div class="mx-auto">
-                    <h2 class="py-5 font-weight-bold text-left">Lista de Negócios Cadastrados</h2>
+                    <h2 class="py-4 font-weight-bold text-left">Lista de Negócios Cadastrados</h2>
+                    <div class="md-form mb-5">
                     <input class="form-control pesquisar" type="text" placeholder="Pesquisar negócios" name="inputPesquisar">
+                    </div>
                     <table class="table table-hover table-responsive-md btn-table" style="margin-bottom: 20px">
                         <thead class="thead-dark">
                             <tr class="text-white">
