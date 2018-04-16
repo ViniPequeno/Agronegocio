@@ -72,13 +72,13 @@
                     <ul class="pagination pagination-circle pg-dark-grey mb-0" id="pg-link">
 
                         <!--First-->
-                        <li id="first-item" class="page-item disabled clearfix d-none d-md-block"><a class="page-link">First</a></li>
+                        <li id="first-item" class="page-item disabled clearfix d-none d-md-block"><a class="page-link">Primeiro</a></li>
 
                         <!--Arrow left-->
                         <li id="previous" class="page-item disabled">
                             <a class="page-link" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
+                                <span class="sr-only">Anterior</span>
                             </a>
                         </li>
 
@@ -86,12 +86,12 @@
                         <li id="next" class="page-item">
                             <a class="page-link" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
+                                <span class="sr-only">Próximo</span>
                             </a>
                         </li>
 
                         <!--Last-->
-                        <li id="last-item" class="page-item clearfix d-none d-md-block"><a class="page-link">Last</a></li>
+                        <li id="last-item" class="page-item clearfix d-none d-md-block"><a class="page-link">Último</a></li>
 
                     </ul>
                 </nav>
