@@ -1,66 +1,113 @@
-<% String css = "";%>
+<% String css = "../_CSS/seu_negocio.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <div class="container">
-    <a href="../main/index.jsp"><i class="fa fa-arrow-left mr-1" aria-hidden="true" style="margin-top: 25px"></i>Voltar</a>
-    <!--Table-->
-    <h2 class="py-5 font-weight-bold text-left">Negócios</h2>
-
     <%  //Gera tabela se houver algum registro
         List<Negocio> negocios;
         negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());
-        if (negocios.size() > 0){
+        if (negocios.size() > 0) {
     %>
+    <div class="card card-cascade narrower mt-5">
 
-    <table class="table table-hover table-responsive-md btn-table" id="tableDados">
-        <!--Table head-->
-        <thead class="blue-grey lighten-4">
-            <tr>
-                <th> </th>
-                <th>Nome</th>
-                <th>Proprietário</th>
-                <th>CNPJ</th>
-                <th>Email</th>
-                <th>Fone 1</th>
-                <th>Fone 2</th>
-                <th></th>
-            </tr>
-        </thead>
-        <!--Table head-->
+        <!--Card image-->
+        <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
 
-        <!--Table body-->
-        <tbody>
-            <% //Percorrer List de negócios e adiconando linhas à tabela
-                for (Negocio n : negocios) {
-                    String dataNegocio = ConsultaNegocio.returnValues(n);
-            %>
-            <tr data-negocio="<%=dataNegocio%>">
-                <th scope="row" class="pr-md-3 pr-5">
-                    <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>">
-                    <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
-                </th>
-                <td><%=n.getNome()%></td>
-                <td><%=n.getPerfil().getNome()%></td>
-                <td><%=n.getEmpresaCNPJ()%></td>
-                <td><%=n.getLinkEmail()%></td>
-                <td><%=n.getLinkFacebook()%></td>
-                <td><%=n.getLinkInstragram()%></td>
-                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
-                        <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
-            </tr>
-            <%}%>
-        </tbody>
-        <!--Table body-->
-    </table>
+            <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
+
+        </div>
+        <!--/Card image-->
+
+        <div class="px-4">
+            <!--Table-->
+            <table class="table table-hover table-responsive-md btn-table" id="tableDados">
+                <!--Table head-->
+                <thead>
+                    <tr>
+                        <th> </th>
+                        <th>Nome</th>
+                        <th>Proprietário</th>
+                        <th>CNPJ</th>
+                        <th>Email</th>
+                        <th>Fone 1</th>
+                        <th>Fone 2</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <!--Table head-->
+
+                <!--Table body-->
+                <tbody>
+                    <% //Percorrer List de negócios e adiconando linhas à tabela
+                        for (Negocio n : negocios) {
+                            String dataNegocio = ConsultaNegocio.returnValues(n);
+                    %>
+                    <tr data-negocio="<%=dataNegocio%>">
+                        <th scope="row" class="pr-md-3 pr-5 mt-0">
+                            <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>">
+                            <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
+                        </th>
+                        <td><%=n.getNome()%></td>
+                        <td><%=n.getPerfil().getNome()%></td>
+                        <td><%=n.getEmpresaCNPJ()%></td>
+                        <td><%=n.getLinkEmail()%></td>
+                        <td><%=n.getLinkFacebook()%></td>
+                        <td><%=n.getLinkInstragram()%></td>
+                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                                <i data-fa-transform="grow-4    " class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
+                    </tr>
+                    <%}%>
+                </tbody>
+                <!--Table body-->
+            </table>
+
+            <hr class="my-0">
+
+            <!--Bottom Table UI-->
+            <div class="d-flex justify-content-center">
+
+                <!--Pagination -->
+                <nav class="my-4 pt-2">
+                    <ul class="pagination pagination-circle pg-dark-grey mb-0" id="pg-link">
+
+                        <!--First-->
+                        <li id="first-item" class="page-item disabled clearfix d-none d-md-block"><a class="page-link">First</a></li>
+
+                        <!--Arrow left-->
+                        <li id="previous" class="page-item disabled">
+                            <a class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+
+                        <!--Arrow right-->
+                        <li id="next" class="page-item">
+                            <a class="page-link" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+
+                        <!--Last-->
+                        <li id="last-item" class="page-item clearfix d-none d-md-block"><a class="page-link">Last</a></li>
+
+                    </ul>
+                </nav>
+                <!--/Pagination -->
+
+            </div>
+            <!--Bottom Table UI-->
+        </div> 
+    </div>
     <!--Table-->
-    <%} else{%>
-     <h2 class="py-5 text-center">Nenhum negócio registrado ainda</h2>
+    <%} else {%>
+    <h2 class="py-5 text-center">Nenhum negócio registrado ainda</h2>
     <%}%>
 
-    <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
+    <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="" class="btn btn-danger btn-rounded mt-4" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
 
     <!-- Modal -->
