@@ -7,13 +7,16 @@ package br.com.avicultura.chicken_tracker.Utils;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import java.util.List;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 
 /**
  *
  * @author User
  */
-public class ExcluirTudo<T> {
+public class ExcluirTudo<T> extends HttpServlet{
     
     public boolean excluirTudo(List<T> lista) {
         Session s = HibernateFactory.getSession();
@@ -21,5 +24,11 @@ public class ExcluirTudo<T> {
             s.delete(t);
         }
         return false;
+    }
+    
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp){
+        
+        ,                                                       
     }
 }

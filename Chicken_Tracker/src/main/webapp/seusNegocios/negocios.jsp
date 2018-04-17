@@ -45,8 +45,8 @@
                     %>
                     <tr data-negocio="<%=dataNegocio%>">
                         <th scope="row" class="pr-md-3 pr-5 mt-0">
-                            <input type="checkbox" id="checkbox/<%=n.getEmpresaCNPJ()%>">
-                            <label for="checkbox/<%=n.getEmpresaCNPJ()%>" class="label-table" onclick="addToDeleteList(this)"></label>
+                            <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>"  onchange="addToDeleteList(this)">
+                            <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
                         </th>
                         <td><%=n.getNome()%></td>
                         <td><%=n.getPerfil().getNome()%></td>
@@ -124,7 +124,7 @@
                     <p>Todos os estabelecimentos associados a este negócio também serão apagados</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button formaction="/Chicken_Tracker/ExcluirTudo" type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
@@ -204,9 +204,7 @@ function addToDeleteList(obj) {
     var dados = linha.data('negocio').toString();
     var campo = dados.split("#");
     deleteList.push(campo[2]);
-    var chkBoxId = "#"+$(obj).attr('for');
-    alert(chkBoxId+":checked");
-    if ($(chkBoxId+":checked")) {
+    if ($(obj).is(':checked')) {
         alert("oi");
     } else {
         alert("poa");
