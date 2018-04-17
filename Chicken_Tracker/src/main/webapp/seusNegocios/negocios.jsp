@@ -45,8 +45,8 @@
                     %>
                     <tr data-negocio="<%=dataNegocio%>">
                         <th scope="row" class="pr-md-3 pr-5 mt-0">
-                            <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>"  onchange="addToDeleteList(this)">
-                            <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
+                            <input form="checks" type="checkbox" id="checkbox!<%=n.getEmpresaCNPJ()%>" name="checkbox!<%=n.getEmpresaCNPJ()%>">
+                            <label for="checkbox!<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
                         </th>
                         <td><%=n.getNome()%></td>
                         <td><%=n.getPerfil().getNome()%></td>
@@ -124,8 +124,10 @@
                     <p>Todos os estabelecimentos associados a este negócio também serão apagados</p>
                 </div>
                 <div class="modal-footer">
-                    <button formaction="/Chicken_Tracker/ExcluirTudo" type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Confirmar</button>
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <form id="checks" action="/Chicken_Tracker/NegocioDeleteServlet" method="post">
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -161,7 +163,6 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtil.js"></script>
 <script type="text/javascript">
-var deleteList = [];
 $("td").not(function () {
     return $("a", this).length != 0;
 }).click(function (event) {
@@ -198,18 +199,6 @@ $("td").not(function () {
     $("#fone1").text("Fone 1: " + fone1);
     $("#fone2").text("Fone 2: " + fone2);
 });
-
-function addToDeleteList(obj) {
-    var linha = $(obj).closest('tr');
-    var dados = linha.data('negocio').toString();
-    var campo = dados.split("#");
-    deleteList.push(campo[2]);
-    if ($(obj).is(':checked')) {
-        alert("oi");
-    } else {
-        alert("poa");
-    }
-}
 </script>
 </body>
 </html>
