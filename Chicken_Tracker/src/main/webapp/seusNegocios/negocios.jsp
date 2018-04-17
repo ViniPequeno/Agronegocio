@@ -45,8 +45,8 @@
                     %>
                     <tr data-negocio="<%=dataNegocio%>">
                         <th scope="row" class="pr-md-3 pr-5 mt-0">
-                            <input type="checkbox" id="checkbox<%=n.getEmpresaCNPJ()%>">
-                            <label for="checkbox<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
+                            <input type="checkbox" id="checkbox/<%=n.getEmpresaCNPJ()%>">
+                            <label for="checkbox/<%=n.getEmpresaCNPJ()%>" class="label-table" onclick="addToDeleteList(this)"></label>
                         </th>
                         <td><%=n.getNome()%></td>
                         <td><%=n.getPerfil().getNome()%></td>
@@ -160,41 +160,58 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtil.js"></script>
-<script>
-    $("td").not(function () {
-        return $("a", this).length != 0;
-    }).click(function (event) {
-        $("#detalhesNegocio").modal();
-        var linha = $(this).closest('tr');
-        var dados = linha.data('negocio').toString();
-        var campo = dados.split("#");
-        var nome = campo[0];
-        var proprietario = campo[1];
-        var cnpj = campo[2];
-        var email = campo[3];
-        var facebook = campo[4];
-        var instagram = campo[5];
+<script type="text/javascript">
+var deleteList = [];
+$("td").not(function () {
+    return $("a", this).length != 0;
+}).click(function (event) {
+    $("#detalhesNegocio").modal();
+    var linha = $(this).closest('tr');
+    var dados = linha.data('negocio').toString();
+    var campo = dados.split("#");
+    var nome = campo[0];
+    var proprietario = campo[1];
+    var cnpj = campo[2];
+    var email = campo[3];
+    var facebook = campo[4];
+    var instagram = campo[5];
 
-        var fones = campo[6].split("&");
-        var fone1 = fones[0];
-        var fone2 = fones[1];
-        $("#nome").text("Nome: " + nome);
+    var fones = campo[6].split("&");
+    var fone1 = fones[0];
+    var fone2 = fones[1];
 
-        $("#proprietario").text("Proprietário: " + proprietario);
+    var estabelecimentos = campo[7];
+    $("#nome").text("Nome: " + nome);
 
-        $("#cnpj").text("CNPJ: " + cnpj);
+    $("#proprietario").text("Proprietário: " + proprietario);
 
-        $("#email").text("Email: " + email);
+    $("#cnpj").text("CNPJ: " + cnpj);
 
-        $("#linkFB").text("Link da página do Facebook: " + facebook);
+    $("#email").text("Email: " + email);
 
-        $("#linkInstagram").text("Link da página do Instagram: " + instagram);
+    $("#linkFB").text("Link da página do Facebook: " + facebook);
 
-        $("#estabelecimentos").text("Estabelecimentos: " + dados);
+    $("#linkInstagram").text("Link da página do Instagram: " + instagram);
 
-        $("#fone1").text("Fone 1: " + fone1);
-        $("#fone2").text("Fone 2: " + fone2);
-    });
+    $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
+
+    $("#fone1").text("Fone 1: " + fone1);
+    $("#fone2").text("Fone 2: " + fone2);
+});
+
+function addToDeleteList(obj) {
+    var linha = $(obj).closest('tr');
+    var dados = linha.data('negocio').toString();
+    var campo = dados.split("#");
+    deleteList.push(campo[2]);
+    var chkBoxId = "#"+$(obj).attr('for');
+    alert(chkBoxId+":checked");
+    if ($(chkBoxId+":checked")) {
+        alert("oi");
+    } else {
+        alert("poa");
+    }
+}
 </script>
 </body>
 </html>
