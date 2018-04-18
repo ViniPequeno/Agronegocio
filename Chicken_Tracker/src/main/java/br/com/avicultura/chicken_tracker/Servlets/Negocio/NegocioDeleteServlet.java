@@ -49,7 +49,6 @@ public class NegocioDeleteServlet extends HttpServlet {
             }
             for (index = 0; index < cnpj.length; index++) {
                 n.setEmpresaCNPJ(cnpj[index]);
-                out.println(cnpj[index]);
                 String s = hup.deletar(n);
                 out.print(s);
             }

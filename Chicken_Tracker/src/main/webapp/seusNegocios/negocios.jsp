@@ -153,7 +153,7 @@
                     <p id="estabelecimentos"> Estabelecimentos: </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-outline-primary">Estabelecimentos</button>
                     <button type="button" class="btn btn-primary">Editar</button>
                 </div>
             </div>

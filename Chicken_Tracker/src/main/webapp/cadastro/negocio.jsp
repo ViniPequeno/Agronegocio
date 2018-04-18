@@ -66,5 +66,6 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
+<script src="../_JS/mascaras.js"></script>
 </body>
 </html>

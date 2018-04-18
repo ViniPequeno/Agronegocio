@@ -20,6 +20,7 @@ public class Negocio implements Serializable {
 
     @Id
     private String empresaCNPJ;
+    
     @Column(unique = true)
     private String nome;
     private String linkFacebook;

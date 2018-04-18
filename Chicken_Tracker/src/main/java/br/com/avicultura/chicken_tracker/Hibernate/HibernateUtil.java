@@ -35,6 +35,8 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
         session = (Session) HibernateFactory.getSession();
         session.beginTransaction();
         try {
+            this.session.flush();
+            this.session.clear();
             session.delete(classe);
             session.getTransaction().commit();
             message = "Salvo!";
@@ -43,6 +45,7 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
             message = e.getMessage();
         } finally {
             session.close();
+            HibernateFactory.closeSession();
         }
         return message;
     }
