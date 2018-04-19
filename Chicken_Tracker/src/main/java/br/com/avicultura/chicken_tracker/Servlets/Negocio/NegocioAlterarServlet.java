@@ -7,12 +7,14 @@ package br.com.avicultura.chicken_tracker.Servlets.Negocio;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Negocio;
+import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,17 +27,20 @@ public class NegocioAlterarServlet extends HttpServlet {
             throws ServletException, IOException {
         Negocio n = Negocio.getInstance();
         n.setNome(request.getParameter("inputNome"));
-        n.setEmpresaCNPJ(request.getParameter("inputEmpresaCNPJ"));
-        n.setLinkEmail(request.getParameter("inputLinkEmail"));
-        n.setLinkInstragram(request.getParameter("inputLinkInstragram"));
-        n.setLinkFacebook(request.getParameter("inputLinkFacebook"));
+        n.setEmpresaCNPJ(request.getParameter("inputCNPJ"));
+        n.setLinkEmail(request.getParameter("inputEmail"));
+        n.setLinkInstragram(request.getParameter("inputLinkInstagram"));
+        n.setLinkFacebook(request.getParameter("inputLinkFB"));
+        
+        HttpSession sessao = request.getSession();
+        n.setPerfil((Perfil)sessao.getAttribute("usuario"));
         //f.setEstabelecimentos();
         HibernateUtil<Negocio> hup = new HibernateUtil<>();
         String s = hup.atualizar(n);
         PrintWriter out = response.getWriter();
         out.print(s);
         response.sendRedirect("seusNegocios/negocios.jsp");
-
+        
     }
 
 }

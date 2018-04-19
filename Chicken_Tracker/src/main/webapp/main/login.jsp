@@ -32,5 +32,12 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
+<script>
+    var urlString = document.URL;
+    var url = new URL(urlString);
+    if(url.searchParams.get("password")=="false"){
+        alert("ok");
+    }
+</script>
 </body>
 </html>

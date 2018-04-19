@@ -30,8 +30,8 @@
                         <th>Proprietário</th>
                         <th>CNPJ</th>
                         <th>Email</th>
-                        <th>Fone 1</th>
-                        <th>Fone 2</th>
+                        <th>Link Facebook</th>
+                        <th>Link Instagram</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -54,8 +54,8 @@
                         <td><%=n.getLinkEmail()%></td>
                         <td><%=n.getLinkFacebook()%></td>
                         <td><%=n.getLinkInstragram()%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
-                                <i data-fa-transform="grow-4    " class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
+                        <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimentos.jsp" data-toggle="tooltip" data-placement="bottom" title="Mostrar Estabelecimentos" role="button">
+                                <i data-fa-transform="grow-4" class="fa fa-clipboard-list mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>
                 </tbody>
@@ -76,7 +76,7 @@
 
                         <!--Arrow left-->
                         <li id="previous" class="page-item disabled">
-                            <a class="page-link" aria-label="Previous">
+                            <a class="page-link" aria-label="Anterior">
                                 <span aria-hidden="true">&laquo;</span>
                                 <span class="sr-only">Anterior</span>
                             </a>
@@ -84,7 +84,7 @@
 
                         <!--Arrow right-->
                         <li id="next" class="page-item">
-                            <a class="page-link" aria-label="Next">
+                            <a class="page-link" aria-label="Próximo">
                                 <span aria-hidden="true">&raquo;</span>
                                 <span class="sr-only">Próximo</span>
                             </a>
@@ -126,7 +126,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                     <form id="checks" action="/Chicken_Tracker/NegocioDeleteServlet" method="post">
-                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id='bodyDetalhes'>
                     <p id="nome"> Nome: </p>
                     <p id="proprietario"> Proprietário: </p>
                     <p id="cnpj"> CNPJ: </p>
@@ -154,51 +154,104 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary">Estabelecimentos</button>
-                    <button type="button" class="btn btn-primary">Editar</button>
+                    <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/formUtil.js"></script>
+<script src="../_JS/formUtils.js"></script>
 <script type="text/javascript">
-$("td").not(function () {
-    return $("a", this).length != 0;
-}).click(function (event) {
-    $("#detalhesNegocio").modal();
-    var linha = $(this).closest('tr');
-    var dados = linha.data('negocio').toString();
-    var campo = dados.split("#");
-    var nome = campo[0];
-    var proprietario = campo[1];
-    var cnpj = campo[2];
-    var email = campo[3];
-    var facebook = campo[4];
-    var instagram = campo[5];
+    dataN = "";
+    var modalDetalhesInnerHTML = '<p id="nome"> Nome: </p>' +
+            '<p id="proprietario"> Proprietário: </p>' +
+            '<p id="cnpj"> CNPJ: </p>' +
+            '<p id="email"> Email: </p>' +
+            '<p id="linkFB"> Link da página do Facebook: </p>' +
+            '<p id="linkInstagram"> Link da página do Instagram: </p>' +
+            '<p id="fone1"> Fone 1: </p>' +
+            '<p id="fone2"> Fone 2: </p>' +
+            '<p id="estabelecimentos"> Estabelecimentos: </p>';
+    $("td").not(function () {
+        return $("a", this).length != 0;
+    }).click(function (event) {
+        $("#detalhesNegocio").modal();
+        $("#bodyDetalhes").html(modalDetalhesInnerHTML);
+        $("#btnEditarConfirmar").text("Editar");
+        var linha = $(this).closest('tr');
+        var dados = linha.data('negocio').toString();
+        var campo = dados.split("#");
+        dataN = campo;
+        var nome = campo[0];
+        var proprietario = campo[1];
+        var cnpj = campo[2];
+        var email = campo[3];
+        var facebook = campo[4];
+        var instagram = campo[5];
 
-    var fones = campo[6].split("&");
-    var fone1 = fones[0];
-    var fone2 = fones[1];
+        var fones = campo[6].split("&");
+        var fone1 = fones[0];
+        var fone2 = fones[1];
 
-    var estabelecimentos = campo[7];
-    $("#nome").text("Nome: " + nome);
+        var estabelecimentos = campo[7];
+        $("#nome").text("Nome: " + nome);
 
-    $("#proprietario").text("Proprietário: " + proprietario);
+        $("#proprietario").text("Proprietário: " + proprietario);
 
-    $("#cnpj").text("CNPJ: " + cnpj);
+        $("#cnpj").text("CNPJ: " + cnpj);
 
-    $("#email").text("Email: " + email);
+        $("#email").text("Email: " + email);
 
-    $("#linkFB").text("Link da página do Facebook: " + facebook);
+        $("#linkFB").text("Link da página do Facebook: " + facebook);
 
-    $("#linkInstagram").text("Link da página do Instagram: " + instagram);
+        $("#linkInstagram").text("Link da página do Instagram: " + instagram);
 
-    $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
+        $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
 
-    $("#fone1").text("Fone 1: " + fone1);
-    $("#fone2").text("Fone 2: " + fone2);
-});
+        $("#fone1").text("Fone 1: " + fone1);
+        $("#fone2").text("Fone 2: " + fone2);
+    });
+</script>
+<script>
+    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioAlterarServlet" name="formEditar">' +
+            '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>'+
+            '<input type="text" name="inputNome" id="inputNome" class="form-control" placeholder=" " autofocus required>' +
+            '<label for="inputNome">Nome</label></div>' +
+            '<div class="md-form"><i class="fa fa-envelope prefix grey-text"></i>'+
+            '<input type="text" name="inputEmail" id="inputEmail" class="form-control" placeholder=" " required>' +
+            '<label for="inputEmail">Email</label></div>' +
+            '<div class="md-form"><i class="far fa-id-card prefix grey-text"></i>'+
+            '<input type="text" name="inputCNPJ" id="inputCNPJ" class="form-control" placeholder=" " required>' +
+            '<label for="inputCNPJ">CNPJ</label></div>' +
+            '<div class="md-form"><i class="fab fa-facebook prefix grey-text"></i>'+
+            '<input type="text" name="inputLinkFB" id="inputLinkFB" class="form-control" placeholder=" " required>' +
+            '<label for="inputLinkFB">Facebook</label></div>' +
+            '<div class="md-form"><i class="fab fa-instagram prefix grey-text"></i>'+
+            '<input type="text" name="inputLinkInstagram" id="inputLinkInstagram" placeholder=" " class="form-control" required>' +
+            '<label for="inputLinkInstagram">Instagram</label></div>' +
+            '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>'+
+            '<input type="text" name="inputFone1" id="inputFone1" class="form-control" placeholder=" " required>' +
+            '<label for="inputFone1">Telefone 1</label></div>' +
+            '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>'+
+            '<input type="text" name="inputFone2" id="inputFone2" class="form-control" placeholder=" " required>' +
+            '<label for="inputFone2">Telefone 2</label></div>' +
+            '</form>';
+    $("#btnEditarConfirmar").click(function () {
+        if ($(this).text() == "Editar") {
+            $(this).text("Confirmar");
+            $("#bodyDetalhes").html(modalEditarInnerHTML);
+            $('#inputNome').val(dataN[0]).trigger("change");
+            $('#inputEmail').val(dataN[3]).trigger("change");
+            $('#inputCNPJ').val(dataN[2]).trigger("change");
+            $('#inputLinkFB').val(dataN[4]).trigger("change");
+            $('#inputLinkInstagram').val(dataN[5]).trigger("change");
+            $('#inputFone1').val(dataN[6].split("&")[0]).trigger("change");
+            $('#inputFone2').val(dataN[6].split("&")[1]).trigger("change");
+        } else {
+            formEditar.submit();
+        }
+    });
 </script>
 </body>
 </html>

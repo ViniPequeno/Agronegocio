@@ -33,6 +33,7 @@ $(document).ready(function () {
         $('#first-item').removeClass('disabled');
         $('#previous').removeClass('disabled');
         $('#last-item').addClass('disabled');
+        $('#next').addClass('disabled');
         $('#pg-link li').removeClass('active');
         $('#pg-link li.number:last').addClass('active');
         var currPage = $('#pg-link li.number:last').children('a').attr('rel');
@@ -47,6 +48,7 @@ $(document).ready(function () {
         $('#last-item').removeClass('disabled');
         $('#next').removeClass('disabled');
         $('#first-item').addClass('disabled');
+        $('#previous').addClass('disabled');
         $('#pg-link li').removeClass('active');
         $('#pg-link li.number:first').addClass('active');
         var currPage = $('#pg-link li.number:first').children('a').attr('rel');
@@ -55,7 +57,9 @@ $(document).ready(function () {
         $('#tableDados tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
                 css('display', 'table-row').animate({opacity: 1}, 300);
     });
-
+    
+    
+    //Quando clicar no botão de próxima página da tabela
     $('#next').bind('click', function () {
         $('#pg-link li.active').next().addClass('active');
         $('#pg-link li.active:first').removeClass('active');
@@ -69,11 +73,12 @@ $(document).ready(function () {
                 css('display', 'table-row').animate({opacity: 1}, 300);
     });
 
+    //Quando clicar no botão de página anterior da tabela
     $('#previous').bind('click', function () {
         $('#pg-link li.active').prev().addClass('active');
         $('#pg-link li.active:last').removeClass('active');
-
-        navigationButtons($('#pg-link li.active',numPages));
+        
+        navigationButtons($('#pg-link li.active'),numPages);
 
         var currPage = $('#pg-link li.active').children('a').attr('rel');
         var startItem = currPage * rowsShown;
@@ -91,7 +96,7 @@ function navigationButtons(element, numPages) {
         $('#first-item').removeClass('disabled');
         $('#previous').removeClass('disabled');
     }
-    if ($(element).text() == numPages) {
+    if ($(element).text() == (Math.ceil(numPages))) {
         $('#last-item').addClass('disabled');
         $('#next').addClass('disabled');
     } else {

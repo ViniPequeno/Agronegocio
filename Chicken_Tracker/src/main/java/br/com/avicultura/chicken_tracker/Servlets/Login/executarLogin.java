@@ -41,7 +41,7 @@ public class executarLogin extends HttpServlet {
         ConsultaPerfil cp = new ConsultaPerfil();
         Perfil p = cp.findById(request.getParameter("inputLogin"));
         if (p == null) {
-            //Usuario naão existe
+            response.sendRedirect("main/login.jsp?password=false");
         } else if (request.getParameter("inputSenha").equals(p.getSenha())) {
             sessao.setAttribute("usuario_logado", "true");
             sessao.setAttribute("nome_usuario", request.getParameter("inputLogin"));
