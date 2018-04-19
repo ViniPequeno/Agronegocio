@@ -26,6 +26,7 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
             message = e.getMessage();
         } finally {
             session.close();
+            HibernateFactory.closeSession();
         }
         return message;
     }
@@ -63,6 +64,7 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
             message = e.getMessage();
         } finally {
             session.close();
+            HibernateFactory.closeSession();
         }
         return message;
     }

@@ -41,10 +41,6 @@
         <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Funcionario</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EstabelecimentoDeleteServlet</servlet-name>
-        <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.EstabelecimentoDeleteServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>EstabelecimentoAlterarServlet</servlet-name>
         <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.EstabelecimentoAlterarServlet</servlet-class>
     </servlet>
@@ -155,10 +151,6 @@
     <servlet-mapping>
         <servlet-name>Funcionario</servlet-name>
         <url-pattern>/Funcionario</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EstabelecimentoDeleteServlet</servlet-name>
-        <url-pattern>/EstabelecimentoDeleteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EstabelecimentoAlterarServlet</servlet-name>

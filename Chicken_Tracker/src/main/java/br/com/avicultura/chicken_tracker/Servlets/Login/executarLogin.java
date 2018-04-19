@@ -36,7 +36,6 @@ public class executarLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html");
         HttpSession sessao = request.getSession();
         ConsultaPerfil cp = new ConsultaPerfil();

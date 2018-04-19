@@ -9,6 +9,8 @@ import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.LocalAves;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +25,33 @@ public class LocalAvesDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        LocalAves l = LocalAves.getInstance();
-        l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+        LocalAves la = LocalAves.getInstance();
         HibernateUtil<LocalAves> hup = new HibernateUtil<>();
-        String s = hup.deletar(l);
         PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        if (request.getParameter("inputCodigo") != null) {
+            la.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+            String s = hup.deletar(la);
+            out.print(s);
+            response.sendRedirect("seusNegocios/aviarios.jsp");
+        } else {
+            ArrayList<String> chkBoxIds = new ArrayList<String>();
+            Enumeration enumeration = request.getParameterNames();
+            while (enumeration.hasMoreElements()) {
+                String parameterName = (String) enumeration.nextElement();
+                chkBoxIds.add(parameterName);
+            }
+            out.println(chkBoxIds.size());
+            String[] codigo = new String[chkBoxIds.size()];
+            int index = 0;
+            for (String s : chkBoxIds) {
+                codigo[index] = s.split("!")[1];
+                index++;
+            }
+            for (index = 0; index < codigo.length; index++) {
+                la.setCodigo(Integer.parseInt(codigo[index]));
+                String s = hup.deletar(la);
+                out.print(s);
+            }
+        }
     }
 }

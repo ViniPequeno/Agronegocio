@@ -23,13 +23,13 @@ import javax.servlet.http.HttpSession;
  * @author User
  */
 public class NegocioServlet extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -41,7 +41,7 @@ public class NegocioServlet extends HttpServlet {
         n.setLinkFacebook(request.getParameter("inputLinkFB"));
         
         HttpSession sessao = request.getSession();
-        n.setPerfil((Perfil)sessao.getAttribute("usuario"));
+        n.setPerfil((Perfil) sessao.getAttribute("usuario"));
         
         n.setTelefones(new ArrayList<Telefones>());
         
@@ -49,7 +49,7 @@ public class NegocioServlet extends HttpServlet {
         t1.setTelefone(request.getParameter("inputFone1"));
         t1.setNegocio(n);
         n.getTelefones().add(t1);
-
+        
         Telefones t2 = new Telefones();
         t2.setTelefone(request.getParameter("inputFone2"));
         t2.setNegocio(n);
@@ -58,13 +58,11 @@ public class NegocioServlet extends HttpServlet {
         HibernateUtil<Negocio> hup = new HibernateUtil<>();
         String s = hup.salvar(n);
         PrintWriter out = response.getWriter();
-
-        out.println(s);
-        out.println(((Perfil) request.getAttribute("usuario")).getUsuario());
-        out.println(((Perfil) request.getAttribute("usuario")).getNome());
-        out.println((Perfil) request.getAttribute("usuario"));
+        out.println(((Perfil) request.getSession().getAttribute("usuario")).getUsuario());
+        out.println(((Perfil) request.getSession().getAttribute("usuario")).getNome());
+        out.println((Perfil) request.getSession().getAttribute("usuario"));
         out.println(request.getAttribute("usuario"));
         response.sendRedirect("seusNegocios/negocios.jsp");
     }
-
+    
 }
