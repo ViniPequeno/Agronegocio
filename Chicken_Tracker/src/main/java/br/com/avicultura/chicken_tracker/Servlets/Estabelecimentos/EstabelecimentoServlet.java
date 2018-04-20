@@ -7,6 +7,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,13 +22,13 @@ import javax.servlet.http.HttpSession;
  * @author User
  */
 public class EstabelecimentoServlet extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,13 +38,16 @@ public class EstabelecimentoServlet extends HttpServlet {
         e.setEndereco(request.getParameter("inputEndereco"));
         
         HttpSession sessao = request.getSession();
-        e.setPerfil((Perfil)sessao.getAttribute("usuario"));
+        e.setNegocio((Negocio) sessao.getAttribute("negocio"));
         
         HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
         String s = hup.salvar(e);
         PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/estabelecimentos.jsp");
+        if (s.equals("")) {
+            response.sendRedirect("seusNegocios/estabelecimentos.jsp");
+        } else {
+            out.print(s);
+        }
     }
-
+    
 }

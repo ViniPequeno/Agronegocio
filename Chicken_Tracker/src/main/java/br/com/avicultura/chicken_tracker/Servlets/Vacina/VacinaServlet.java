@@ -7,16 +7,9 @@ package br.com.avicultura.chicken_tracker.Servlets.Vacina;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
-import br.com.avicultura.chicken_tracker.Models.Negocio;
-import br.com.avicultura.chicken_tracker.Models.Perfil;
 import br.com.avicultura.chicken_tracker.Models.Vacina;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,13 +35,18 @@ public class VacinaServlet extends HttpServlet {
         v.setCodigo(Integer.parseInt(request.getParameter("inputUsuario")));
         //v.setDataProxima(request.getParameter("inputDataProxima"));
         //v.setDataRealizada(request.getParameter("inputDataRealizada"));
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        v.setEstabelecimento(e);
+        e.getVacinas().add(v);
         v.setDescricao(request.getParameter("inputDescricao"));
-        //p.setFoto(foto);
         HibernateUtil<Vacina> hup = new HibernateUtil<>();
         String s = hup.salvar(v);
         PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        if (s.equals("")) {
+            response.sendRedirect("seusNegocios/vacinas.jsp");
+        } else {
+            out.print(s);
+        }
     }
 
 }

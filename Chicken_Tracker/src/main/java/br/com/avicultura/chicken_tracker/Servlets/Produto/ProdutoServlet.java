@@ -38,15 +38,18 @@ public class ProdutoServlet extends HttpServlet {
         p.setQuantidadeMinima(Integer.parseInt(request.getParameter("inputMinimo")));
         p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxima")));
         p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputAtual")));
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        p.setEstabelecimento(e);
+        e.getProdutos().add(p);
         //p.setFoto(foto);
         HibernateUtil<Produto> hup = new HibernateUtil<>();
         String s = hup.salvar(p);
         PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        if (s.equals("")) {
+            response.sendRedirect("seusNegocios/produtos.jsp");
+        } else {
+            out.print(s);
+        }
     }
-
-   
-
 
 }

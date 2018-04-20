@@ -42,12 +42,14 @@ public class LocalAvesServlet extends HttpServlet {
         l.setArea(Double.parseDouble(request.getParameter("inputArea")));
         l.setDataAbertura(request.getParameter("inputDataAbertura"));
         l.setFuncao(request.getParameter("inputFuncao"));
-        //f.setEstabelecimentos();
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        l.setEstabelecimento(e);
+        e.getLocais().add(l);
         HibernateUtil<LocalAves> hup = new HibernateUtil<>();
         String s = hup.salvar(l);
         PrintWriter out = response.getWriter();
         out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        response.sendRedirect("seusNegocios/aviarios.jsp");
     }
 
     

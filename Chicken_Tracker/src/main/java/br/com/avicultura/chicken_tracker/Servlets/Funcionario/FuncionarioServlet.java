@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.Funcionario;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,10 +39,18 @@ public class FuncionarioServlet extends HttpServlet {
         f.setCargo(request.getParameter("inputCargo"));
         f.setRG(request.getParameter("inputRG"));
         f.setSituacao('A');
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        f.getEstabelecimentos().add(e);
+        e.getFuncionarios().add(f);
         HibernateUtil<Funcionario> hup = new HibernateUtil<>();
         PrintWriter out = response.getWriter();
         String s = hup.salvar(f);
-        out.print(s);
+        if (s.equals("")) {
+            response.sendRedirect("seusNegocios/funcionarios.jsp");
+        } else {
+            out.print(s);
+        }
+
     }
 
 }

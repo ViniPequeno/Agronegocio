@@ -19,13 +19,13 @@ import javax.servlet.http.HttpServletResponse;
  * @author User
  */
 public class FornecedorServlet extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,12 +35,17 @@ public class FornecedorServlet extends HttpServlet {
         f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
         f.setVencimento(request.getParameter("inputDataVencimento"));
         f.setTipo('C');
-        //f.setEstabelecimentos();
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        f.getEstabelecimentos().add(e);
+        e.getFornecimentos().add(f);
         HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
         String s = hup.salvar(f);
         PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        if (s.equals("")) {
+            response.sendRedirect("seusNegocios/fornecedores.jsp");
+        } else {
+            out.print(s);
+        }
     }
-
+    
 }

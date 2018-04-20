@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.Fornecimento;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,13 +20,13 @@ import javax.servlet.http.HttpServletResponse;
  * @author User
  */
 public class FornecimentoServlet extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,12 +36,17 @@ public class FornecimentoServlet extends HttpServlet {
         f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
         f.setVencimento(request.getParameter("inputDataVencimento"));
         f.setTipo('V');
-        //f.setEstabelecimentos();
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        f.getEstabelecimentos().add(e);
+        e.getFornecimentos().add(f);
         HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
         String s = hup.salvar(f);
         PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        if (s.equals("")) {
+            response.sendRedirect("seusNegocios/fornecimentos.jsp");
+        } else {
+            out.print(s);
+        }
     }
-
+    
 }
