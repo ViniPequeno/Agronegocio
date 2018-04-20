@@ -33,7 +33,7 @@ public class EstabelecimentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Estabelecimento e = Estabelecimento.getInstance();
-        e.setSufixoCNPJ(request.getParameter("inputSuficoCNPJ"));
+        e.setSufixoCNPJ(request.getParameter("inputSufixoCNPJ"));
         e.setCNAE(request.getParameter("inputCNAE"));
         e.setEndereco(request.getParameter("inputEndereco"));
         
@@ -44,7 +44,7 @@ public class EstabelecimentoServlet extends HttpServlet {
         String s = hup.salvar(e);
         PrintWriter out = response.getWriter();
         if (s.equals("")) {
-            response.sendRedirect("seusNegocios/estabelecimentos.jsp");
+            out.print(s);
         } else {
             out.print(s);
         }

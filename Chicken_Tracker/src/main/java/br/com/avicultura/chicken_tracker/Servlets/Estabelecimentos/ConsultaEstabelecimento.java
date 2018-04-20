@@ -19,7 +19,8 @@ public class ConsultaEstabelecimento {
 
     public static Estabelecimento findById(String id) {
         Session s = HibernateFactory.getSession();
-        return s.get(Estabelecimento.class, id);
+        Estabelecimento e = s.get(Estabelecimento.class, id);
+        return e;
     }
 
     public static List<Estabelecimento> returnListOfNegocio(String negocio) {

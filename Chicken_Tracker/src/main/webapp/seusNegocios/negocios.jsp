@@ -54,7 +54,7 @@
                         <td><%=n.getLinkEmail()%></td>
                         <td><%=n.getLinkFacebook()%></td>
                         <td><%=n.getLinkInstragram()%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimentos.jsp" data-toggle="tooltip" data-placement="bottom" title="Mostrar Estabelecimentos" role="button">
+                        <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimentos.jsp?negocio=<%=n.getEmpresaCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mostrar Estabelecimentos" role="button">
                                 <i data-fa-transform="grow-4" class="fa fa-clipboard-list mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>

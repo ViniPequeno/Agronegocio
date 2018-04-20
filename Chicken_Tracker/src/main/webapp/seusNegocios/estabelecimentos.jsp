@@ -2,13 +2,17 @@
 <%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento" %>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Perfil" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <div class="container">
 
-    <%List<Estabelecimento> estabelecimentos;
-        estabelecimentos = ConsultaEstabelecimento.returnList();
+    <%  if (sessao.getAttribute("negocio") == null) {
+            sessao.setAttribute("negocio", ConsultaNegocio.findById(request.getParameter("negocio")));
+        }
+        List<Estabelecimento> estabelecimentos;
+        estabelecimentos = ConsultaEstabelecimento.returnListOfNegocio(((Negocio) sessao.getAttribute("negocio")).getEmpresaCNPJ());
         if (estabelecimentos.size() > 0) {%>
 
     <div class="card card-cascade narrower mt-5">

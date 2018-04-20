@@ -48,7 +48,7 @@ public class executarLogin extends HttpServlet {
             sessao.setAttribute("usuario", p);
             response.sendRedirect("main/index.jsp");
         } else {
-            response.sendRedirect("main/login.jsp");
+            response.sendRedirect("main/login.jsp?password=false");
         }
 
     }

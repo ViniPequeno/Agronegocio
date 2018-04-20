@@ -19,6 +19,12 @@
             HttpSession sessao = request.getSession();
             if (sessao.getAttribute("usuario_logado") == null) {
                 sessao.setAttribute("usuario_logado", "false");
+                if(!request.getRequestURI().contains("negocios.jsp")
+                        &&!request.getRequestURI().contains("index.jsp")
+                        &&!request.getRequestURI().contains("login.jsp")
+                        &&!request.getRequestURI().contains("usuario.jsp")){
+                    response.sendRedirect("Chicken_Tracker/main/index.jsp");
+                }
             }
         %>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
