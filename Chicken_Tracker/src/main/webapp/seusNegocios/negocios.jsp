@@ -61,7 +61,7 @@
                 </tbody>
                 <!--Table body-->
             </table>
-
+            <!--Table-->
             <hr class="my-0">
 
             <!--Bottom Table UI-->
@@ -101,7 +101,6 @@
             <!--Bottom Table UI-->
         </div> 
     </div>
-    <!--Table-->
     <%} else {%>
     <h2 class="py-5 text-center">Nenhum negócio registrado ainda</h2>
     <%}%>
@@ -215,25 +214,25 @@
 </script>
 <script>
     var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioAlterarServlet" name="formEditar">' +
-            '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>'+
+            '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
             '<input type="text" name="inputNome" id="inputNome" class="form-control" placeholder=" " autofocus required>' +
             '<label for="inputNome">Nome</label></div>' +
-            '<div class="md-form"><i class="fa fa-envelope prefix grey-text"></i>'+
+            '<div class="md-form"><i class="fa fa-envelope prefix grey-text"></i>' +
             '<input type="text" name="inputEmail" id="inputEmail" class="form-control" placeholder=" " required>' +
             '<label for="inputEmail">Email</label></div>' +
-            '<div class="md-form"><i class="far fa-id-card prefix grey-text"></i>'+
+            '<div class="md-form"><i class="far fa-id-card prefix grey-text"></i>' +
             '<input type="text" name="inputCNPJ" id="inputCNPJ" class="form-control" placeholder=" " required>' +
             '<label for="inputCNPJ">CNPJ</label></div>' +
-            '<div class="md-form"><i class="fab fa-facebook prefix grey-text"></i>'+
+            '<div class="md-form"><i class="fab fa-facebook prefix grey-text"></i>' +
             '<input type="text" name="inputLinkFB" id="inputLinkFB" class="form-control" placeholder=" " required>' +
             '<label for="inputLinkFB">Facebook</label></div>' +
-            '<div class="md-form"><i class="fab fa-instagram prefix grey-text"></i>'+
+            '<div class="md-form"><i class="fab fa-instagram prefix grey-text"></i>' +
             '<input type="text" name="inputLinkInstagram" id="inputLinkInstagram" placeholder=" " class="form-control" required>' +
             '<label for="inputLinkInstagram">Instagram</label></div>' +
-            '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>'+
+            '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>' +
             '<input type="text" name="inputFone1" id="inputFone1" class="form-control" placeholder=" " required>' +
             '<label for="inputFone1">Telefone 1</label></div>' +
-            '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>'+
+            '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>' +
             '<input type="text" name="inputFone2" id="inputFone2" class="form-control" placeholder=" " required>' +
             '<label for="inputFone2">Telefone 2</label></div>' +
             '</form>';

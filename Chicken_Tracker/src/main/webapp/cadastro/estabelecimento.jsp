@@ -32,16 +32,16 @@
                     <label for="inputEndereco">Endereço</label>
                 </div>
 
-                <% List<Negocio> negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());%>
+                <!--<% //List<Negocio> negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());%>
                 <label>Negócio</label>
                 <select class="browser-default">
                     
                     <option value="" disabled selected>--Nenhum--</option>
-                    <%for(Negocio n : negocios){%>
-                    <option value="<%=n.getEmpresaCNPJ()%>"><%=n.getNome()%></option>
-                    <%}%>
+                    <%//for(Negocio n : negocios){%>
+                    <option value="<%=//n.getEmpresaCNPJ()%>"><%=//n.getNome()%></option>
+                    <%//}%>
                 </select>
-
+                -->
                 <div class="text-center mt-4">
                     <button class="btn btn-primary" type="submit">Confirmar</button>
                 </div>
