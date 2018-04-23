@@ -1,4 +1,4 @@
-<% String css = "";%>
+<% String css = "../_CSS/seu_negocio.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento" %>
@@ -51,15 +51,15 @@
                     %>
                     <tr data-estabelecimento="<%=dataEstabelecimento%>">
                         <th scope="row" class="pr-md-3 pr-5 mt-0">
-                            <input form="checks" type="checkbox" id="checkbox!<%=e.getCNAE()%>" name="checkbox!<%=e.getCNAE()%>">
-                            <label for="checkbox!<%=e.getCNAE()%>" class="label-table"></label>
+                            <input form="checks" type="checkbox" id="checkbox!<%=e.getSufixoCNPJ()%>" name="checkbox!<%=e.getSufixoCNPJ()%>">
+                            <label for="checkbox!<%=e.getSufixoCNPJ()%>" class="label-table"></label>
                         </th>
                         <td><%=e.getNegocio().getNome()%></td>
                         <td><%=e.getPerfil().getNome()%></td>
                         <td><%=e.getCNAE()%></td>
                         <td><%=e.getEndereco()%></td>
                         <td><%=e.getSufixoCNPJ()%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getCNAE()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
+                        <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
                                 <i class="fa fa-ellipsis-h mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>

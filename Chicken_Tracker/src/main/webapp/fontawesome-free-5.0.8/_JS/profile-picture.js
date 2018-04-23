@@ -1,9 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Profile picture
  * @author Daniel Salvagni <danielsalvagni@gmail.com>
@@ -13,7 +7,8 @@
 /**
  * Turn the globals into local variables.
  */
-; (function (window, $, undefined) {
+;
+(function (window, $, undefined) {
     if (!window.profilePicture) {
         window.profilePicture = profilePicture;
     }
@@ -198,11 +193,11 @@
             self.photoArea.addClass('photo--loading');
             image.onload = function () {
                 var ratio,
-                    newH, newW,
-                    w = this.width, h = this.height;
+                        newH, newW,
+                        w = this.width, h = this.height;
 
                 if (w < self.options.image.minWidth ||
-                    h < self.options.image.minHeight) {
+                        h < self.options.image.minHeight) {
                     self.photoArea.addClass('photo--error--image-size photo--empty');
                     setModel({});
 
@@ -267,7 +262,7 @@
             self.canvasContext.clearRect(0, 0, self.model.cropWidth, self.model.cropHeight);
             self.canvasContext.save();
             self.photoArea.addClass('photo--empty');
-            self.imageHelperCanvasContext.clearRect(0, 0, self.imageHelperCanvas.width,self.imageHelperCanvas.height);
+            self.imageHelperCanvasContext.clearRect(0, 0, self.imageHelperCanvas.width, self.imageHelperCanvas.height);
             self.imageHelperCanvasContext.save();
             setModel({});
 
@@ -366,7 +361,7 @@
                     self.photoArea.addClass('photo--loading');
                 }
                 reader.onloadend = function (data) {
-                    self.photoImg.css({ left: 0, top: 0 });
+                    self.photoImg.css({left: 0, top: 0});
                     var base64Image = data.target.result;
                     processFile(base64Image, file.type);
                 }
@@ -387,13 +382,13 @@
          */
         function registerImageDragEvents() {
             var $dragging, x, y, clientX, clientY;
-            if(self.options.imageHelper) {
+            if (self.options.imageHelper) {
                 self.photoHelper.on("mousedown touchstart", dragStart)
-                    .css('cursor','move');
+                        .css('cursor', 'move');
             } else {
                 self.photoFrame.on("mousedown touchstart", dragStart);
             }
-            
+
             /**
              * Stop dragging
              */
@@ -447,7 +442,8 @@
                     if (refresh) {
                         render();
                     }
-                };
+                }
+                ;
             });
 
             function dragStart(e) {
@@ -468,11 +464,11 @@
         function registerZoomEvents() {
 
             self.zoomControl
-                .attr('min', self.options.zoom.minValue)
-                .attr('max', self.options.zoom.maxValue)
-                .attr('step', self.options.zoom.step)
-                .val(self.options.zoom.initialValue)
-                .on('input', zoomChange);
+                    .attr('min', self.options.zoom.minValue)
+                    .attr('max', self.options.zoom.maxValue)
+                    .attr('step', self.options.zoom.step)
+                    .val(self.options.zoom.initialValue)
+                    .on('input', zoomChange);
 
             function zoomChange(e) {
                 self.model.zoom = Number(this.value);
@@ -538,7 +534,7 @@
                  */
                 y = Math.abs((newHeight - self.model.cropHeight)) * -1;
             }
-            return { x: x, y: y };
+            return {x: x, y: y};
         }
         /**
          * Resize the image
@@ -610,9 +606,9 @@
             self.model.zoom = scaleRatio;
 
             self.zoomControl
-                .attr('min', scaleRatio)
-                .attr('max', self.options.zoom.maxValue - scaleRatio)
-                .val(scaleRatio);
+                    .attr('min', scaleRatio)
+                    .attr('max', self.options.zoom.maxValue - scaleRatio)
+                    .val(scaleRatio);
 
             self.model.height = newHeight;
             self.model.width = newWidth;
@@ -656,7 +652,7 @@
              * Draw the helper
              */
             self.imageHelperCanvasContext.beginPath();
-            self.imageHelperCanvasContext.rect(0,0,self.imageHelperCanvas.width, self.imageHelperCanvas.height);
+            self.imageHelperCanvasContext.rect(0, 0, self.imageHelperCanvas.width, self.imageHelperCanvas.height);
             self.imageHelperCanvasContext.fillStyle = self.options.imageHelperColor;
             self.imageHelperCanvasContext.fill('evenodd');
             /**
@@ -679,14 +675,16 @@
             self.imageHelperCanvas = canvas;
             self.imageHelperCanvasContext = canvas.getContext('2d');
             self.imageHelperCanvasContext.mozImageSmoothingEnabled = false;
-                      self.imageHelperCanvasContext.msImageSmoothingEnabled = false;
+            self.imageHelperCanvasContext.msImageSmoothingEnabled = false;
             self.imageHelperCanvasContext.imageSmoothingEnabled = false;
         }
         /**
          * Return the image cropped as Base64 data URL
          */
         function getAsDataURL(quality) {
-            if (!quality) { quality = 1; }
+            if (!quality) {
+                quality = 1;
+            }
             return self.canvas.toDataURL(quality);
         }
     }
@@ -699,28 +697,27 @@
 
 
 
-$(function() {
-  
-/**
+$(function () {
+
+    /**
      * DEMO
-     */ 
+     */
     var p = new profilePicture('.profile', null,
-        {
-          imageHelper: true,
-            onRemove: function (type) {
-                $('.preview').hide().attr('src','');
-            },
-            onError: function (type) {
-                console.log('Error type: ' + type);
-            }
-        });
+            {
+                imageHelper: true,
+                onRemove: function (type) {
+                    $('.preview').hide().attr('src', '');
+                },
+                onError: function (type) {
+                    console.log('Error type: ' + type);
+                }
+            });
 
 
-    $('#previewBtn').on('click', function() {
-        $('.preview').show().attr('src',p.getAsDataURL());  
+    $('#previewBtn').on('click', function () {
+        $('.preview').show().attr('src', p.getAsDataURL());
     });
 
-    
-});
 
+});
 

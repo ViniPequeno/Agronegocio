@@ -153,7 +153,8 @@
                     <p id="estabelecimentos"> Estabelecimentos: </p>
                 </div>
                 <div class="modal-footer">
-                    <a id="linkToEstabelecimentos" href="" type="button" class="btn btn-outline-primary">Estabelecimentos</a>
+                    <a id="btnEstabelecimentos" href="" type="button" class="btn btn-outline-primary">Estabelecimentos</a>
+                    <button id="btnCancelarEdicao" type="button" class="btn btn-outline-primary d-none">Cancelar</button>
                     <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
@@ -164,6 +165,7 @@
 <script src="../_JS/formUtils.js"></script>
 <script type="text/javascript">
     dataN = "";
+    var linha;
     var modalDetalhesInnerHTML = '<p id="nome"> Nome: </p>' +
             '<p id="proprietario"> Proprietário: </p>' +
             '<p id="cnpj"> CNPJ: </p>' +
@@ -177,9 +179,14 @@
         return $("a", this).length != 0;
     }).click(function (event) {
         $("#detalhesNegocio").modal();
+        linha = $(this).closest('tr');
+        resetModalData();
+    });
+        
+    function resetModalData(){
         $("#bodyDetalhes").html(modalDetalhesInnerHTML);
         $("#btnEditarConfirmar").text("Editar");
-        var linha = $(this).closest('tr');
+        
         var dados = linha.data('negocio').toString();
         var campo = dados.split("#");
         dataN = campo;
@@ -195,9 +202,9 @@
         var fone2 = fones[1];
 
         var estabelecimentos = campo[7];
-        
-        $("#linkToEstabelecimentos").attr('href','../seusNegocios/estabelecimentos.jsp?negocio='+cnpj);
-        
+
+        $("#btnEstabelecimentos").attr('href', '../seusNegocios/estabelecimentos.jsp?negocio=' + cnpj);
+
         $("#nome").text("Nome: " + nome);
 
         $("#proprietario").text("Proprietário: " + proprietario);
@@ -214,7 +221,7 @@
 
         $("#fone1").text("Fone 1: " + fone1);
         $("#fone2").text("Fone 2: " + fone2);
-    });
+    }
 </script>
 <script>
     var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioAlterarServlet" name="formEditar">' +
@@ -240,9 +247,17 @@
             '<input type="text" name="inputFone2" id="inputFone2" class="form-control" placeholder=" " required>' +
             '<label for="inputFone2">Telefone 2</label></div>' +
             '</form>';
+    $('#btnCancelarEdicao').click(function () {
+        $(this).addClass('d-none');
+        $('#btnEstabelecimentos').removeClass('d-none');
+        $('#btnEditarConfirmar').text('Editar');
+        resetModalData();
+    });
     $("#btnEditarConfirmar").click(function () {
         if ($(this).text() == "Editar") {
             $(this).text("Confirmar");
+            $('#btnCancelarEdicao').removeClass('d-none');
+            $('#btnEstabelecimentos').addClass('d-none');
             $("#bodyDetalhes").html(modalEditarInnerHTML);
             $('#inputNome').val(dataN[0]).trigger("change");
             $('#inputEmail').val(dataN[3]).trigger("change");

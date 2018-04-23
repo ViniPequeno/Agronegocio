@@ -20,7 +20,7 @@ public class ConsultaLocalAves {
     public static LocalAves findById(String id, String estabelecimento) {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from LocalAves la where "
-                + "la.Estabelecimento.suficoCNPJ := estabelecimento and la.codigo =:id");
+                + "la.estabelecimento.sufixoCNPJ =:estabelecimento and la.codigo =:id");
         query.setParameter("id", id);
         query.setParameter("estabelecimento", estabelecimento);
         return (LocalAves) query.getSingleResult();
@@ -28,7 +28,7 @@ public class ConsultaLocalAves {
 
     public static List<LocalAves> returnList(String estabeleciemento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from LocalAves la where la.Estabelecimento.suficoCNPJ =:estabelecimento");
+        Query query = s.createQuery("from LocalAves la where la.estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estabelecimento", estabeleciemento);
         return query.getResultList();
     }

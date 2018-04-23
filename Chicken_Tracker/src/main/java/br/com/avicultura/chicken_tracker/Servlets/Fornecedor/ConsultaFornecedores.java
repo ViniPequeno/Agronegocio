@@ -19,19 +19,21 @@ public class ConsultaFornecedores {
 
     public static Fornecimento findById(String estabelecimento, String id) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Fornecimento f where  f.Estabelecimento.sufixoCNPJ =:estabelecimento"
+        Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
                 + " and f.CNPJ =: id and tipo = c");
         query.setParameter("estabelecimento", estabelecimento);
         query.setParameter("CNPJ", id);
-        return (Fornecimento) query.getSingleResult();
+        Fornecimento f = (Fornecimento)query.getSingleResult();
+        return f;
     }
 
     public static List<Fornecimento> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Fornecimento f where  f.Estabelecimento.sufixoCNPJ =:estabelecimento"
+        Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
                 + " and tipo = c");
         query.setParameter("estabelecimento", estabelecimento);
-        return query.getResultList();
+        List<Fornecimento> lista = query.getResultList();
+        return lista;
     }
 
     public static String returnValues(Fornecimento f) {

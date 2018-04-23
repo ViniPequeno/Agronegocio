@@ -50,7 +50,7 @@
                         <td><%=p.getNome()%></td>
                         <td><%=p.getQuantidadeAtual()%></td>
                         <td><%=p.getEstabelecimento()%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/produto.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Produto" role="button">
                                 <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>
@@ -147,7 +147,7 @@
                     <p id="estabelecimento"> Usado por: </p>
                 </div>
                 <div class="modal-footer">
-                    <a id="linkToProdutos" href="" type="button" class="btn btn-outline-primary">Produtos</a>
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
                     <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
@@ -157,13 +157,14 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtils.js"></script>
 <script>
-    dataP = "";
-    var modalDetalhesInnerHTML = '<p id="negocio">Negócio: </p>' +
-            '<p id="proprietario">Proprietário: </p>' +
-            '<p id="cnae">CNAE: </p>' +
-            '<p id="sufixoCNPJ"> Sufixo do CNPJ: </p>' +
-            '<p id="endereco"> Endereço: </p>' +
-            '<p id="qtdeFuncionarios">Quantidade de funcionários: </p>';
+    var dataP = "";
+    var modalDetalhesInnerHTML = '<p id="codigo"> Código </p>'+
+                    '<p id="nome"> Nome: </p>'+
+                    '<p id="qtdeAtual"> Em estoque: </p>'+
+                    '<p id="qtdeMin"> Quantidade Mínima: </p>'+
+                    '<p id="qtdeMax"> Quantidade Máxima: </p>'+
+                    '<p id="descricao"> Descrição: </p>'+
+                    '<p id="estabelecimento"> Usado por: </p>';
     $("td").not(function () {
         return $("a", this).length != 0;
     }).click(function () {

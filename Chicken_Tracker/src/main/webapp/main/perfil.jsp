@@ -1,11 +1,9 @@
-<% String css = "../_CSS/cadastro.css";%>
+<% String css = "../_CSS/login.css";%>
 <%@ include file="../cabecalho.jsp"%>
-
-<!-- Material form register -->
 <div class="container">
     <div class="card mx-auto mt-5">
         <div class="card-body">
-            <form action="/Chicken_Tracker/PerfilServlet" method="post">
+            <form action="/Chicken_Tracker/PerfilServlet" method="post" enctype='multipart/form-data'>
                 <p class="h1 text-center mb-4">Criar conta</p>
                 <div class="row">
                     <div class="col-md-4">
@@ -90,8 +88,6 @@
         </div>
     </div>
 </div>
-
 <%@include file="../rodape.jsp" %>
-<script src="../fontawesome-free-5.0.8/_JS/profile-picture.js"></script>
 </body>
 </html>

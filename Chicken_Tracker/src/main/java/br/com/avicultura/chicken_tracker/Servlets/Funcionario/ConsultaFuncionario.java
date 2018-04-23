@@ -19,21 +19,24 @@ public class ConsultaFuncionario {
 
     public static Funcionario findById(String id) {
         Session s = HibernateFactory.getSession();
-        return s.get(Funcionario.class, id);
+        Funcionario f = s.get(Funcionario.class, id);
+        return f;
     }
 
     public static List<Funcionario> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Funcionario f where "
-                + "f.Estabelecimento.sufixoCNPJ =:estabelecimento");
+                + "f.estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estabelecimento", estabelecimento);
-        return query.getResultList();
+        List<Funcionario> lista = query.getResultList();
+        return lista;
     }
 
     public static List<Funcionario> returnList() {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Funcionario");
-        return query.getResultList();
+        List<Funcionario> lista = query.getResultList();
+        return lista;
     }
 
     public static String returnValues(Funcionario f) {

@@ -41,13 +41,9 @@ public class EstabelecimentoServlet extends HttpServlet {
         e.setNegocio((Negocio) sessao.getAttribute("negocio"));
         
         HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
-        String s = hup.salvar(e);
+        String s = hup.salvar(e);   
         PrintWriter out = response.getWriter();
-        if (s.equals("")) {
-            response.sendRedirect("seusNegocios/estabelecimentos.jsp");
-        } else {
-            out.print(s);
-        }
+        response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio="+((Negocio) sessao.getAttribute("negocio")).getEmpresaCNPJ());
     }
     
 }

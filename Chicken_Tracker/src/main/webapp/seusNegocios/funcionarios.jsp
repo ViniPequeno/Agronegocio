@@ -7,7 +7,7 @@
     <!--Table-->
     <h2 class="py-5 font-weight-bold text-left">Gerenciar Funcionários</h2>
 
-    <%List<Funcionario> funcionarios;
+    <%  List<Funcionario> funcionarios;
         funcionarios = ConsultaFuncionario.returnList();
         if (funcionarios.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
@@ -40,7 +40,8 @@
                 <!--Table body-->
                 <tbody>
                     <%  for (Funcionario f : funcionarios) {%>
-                    <tr>
+                    String dataFuncionario = ConsultaFuncionario.returnValues(f);
+                    <tr data-funcionario>
                         <th scope="row" class="pr-md-3 pr-5">
                             <input type="checkbox" id="checkbox<%=f.getCPF()%>">
                             <label for="checkbox<%=f.getCPF()%>" class="label-table"></label>
@@ -137,7 +138,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="bodyDetalhes">
                     <p id="nome"> Nome: </p>
                     <p id="cargo"> Cargo:</p>
                     <p id="CPF"> CPF: </p>
@@ -147,7 +148,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Editar</button>
+                    <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
         </div>
@@ -156,28 +157,76 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtil.js"></script>
 <script>
+    var dataF = "";
+    var modalFuncInnerHTML = '<p id="nome"> Nome: </p>' +
+            '<p id="cargo"> Cargo:</p>' +
+            '<p id="CPF"> CPF: </p>' +
+            '<p id="RG"> RG: </p>' +
+            '<p id="situacao"> Situação: </p>' +
+            '<p id="estabelecimentos"> Locais de trabalho: </p>';
     $("td").not(function () {
         return $("a", this).length != 0;
     }).click(function () {
         $("#detalhesFuncionario").modal();
+        $("#bodyDetalhes").html(modalDetalhesInnerHTML);
+        $("#btnEditarConfirmar").text("Editar");
+
         var linha = $(this).closest('tr');
-        var celula = $(linha).children('td').eq(0);
-        $("#nome").text("Nome: " + celula.text());
+        var dados = linha.data('funcionario').toString();
+        var campo = dados.split("#");
+        dataP = campo;
 
-        celula = $(linha).children('td').eq(1);
-        $("#cargo").text("Cargo: " + celula.text());
+        var nome = campo[0];
+        var cargo = campo[1];
+        var CPF = campo[2];
+        var RG = campo[3];
+        var situacao = campo[4];
+        var estabelecimentos = campo[5];
 
-        celula = $(linha).children('td').eq(2);
-        $("#CPF").text("CPF: " + celula.text());
+        $("#nome").text("Nome: " + nome);
 
-        celula = $(linha).children('td').eq(3);
-        $("#RG").text("RG: " + celula.text());
+        $("#cargo").text("Cargo: " + cargo);
 
-        celula = $(linha).children('td').eq(4);
-        $("#situacao").text("Situação: " + celula.text());
+        $("#CPF").text("CPF: " + CPF);
 
-        celula = $(linha).children('td').eq(5);
-        $("#estabelecimentos").text("Locais de trabalho: " + celula.text());
+        $("#RG").text("RG: " + RG);
+
+        $("#situacao").text("Situação: " + situacao);
+
+        $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
+    });
+</script>
+<script>
+    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/FuncionarioAlterarServlet" name="formEditar">' +
+            '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
+            '<input type="text" id="inputNome" name="inputNome" class="form-control" required maxlength="80">' +
+            '<label for="inputNome">Nome</label></div>' +
+            '<div class="md-form"><i class="fa fa-id-card prefix grey-text"></i>' +
+            '<input type="text" id="inputCPF" name="inputCPF" class="form-control" required autofocus maxlength="14">' +
+            '<label for="inputCPF">CPF</label></div>' +
+            '<div class="md-form"><i class="fas fa-address-card prefix grey-text"></i>' +
+            '<input type="text" id="inputRG" name="inputRG" class="form-control" required maxlength="14">' +
+            '<label for="inputRG">RG</label></div>' +
+            '<div class="md-form"><i class="fa fa-clipboard prefix grey-text"></i>' +
+            '<input type="text" id="inputCargo" name="inputCargo" class="form-control" required maxlength="80">' +
+            '<label for="inputCargo">Cargo</label></div>' +
+            '<div class="md-form"><i class="fa fa-clipboard-list prefix grey-text"></i>' +
+            '<textarea id="inputSituacao" name="inputSituacao" class="form-control md-textarea" rows="3" required=""></textarea>' +
+            '<label for="inputSituacao">Situação</label></div>' +
+            '</form>';
+    $("#btnEditarConfirmar").click(function () {
+        if ($(this).text() == "Editar") {
+            $(this).text("Confirmar");
+            $("#bodyDetalhes").html(modalEditarInnerHTML);
+            $('#nome').val(dataP[0]).trigger("change");
+            $('#cargo').val(dataP[1]).trigger("change");
+            $('#CPF').val(dataP[2]).trigger("change");
+            $('#RG').val(dataP[3]).trigger("change");
+            $('#descricao').val(dataP[4]).trigger("change");
+            $('#estabelecimentos').val(dataP[5]).trigger("change");
+        } else {
+            formEditar.submit();
+        }
     });
 </script>
 </body>

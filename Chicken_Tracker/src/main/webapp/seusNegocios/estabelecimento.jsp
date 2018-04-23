@@ -7,25 +7,25 @@
     } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("estabelecimento").toString())) {
         sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
     }
-    Estabelecimento e = ConsultaEstabelecimento.findById(((Estabelecimento)sessao.getAttribute("estabelecimento")).getCNAE());
+    Estabelecimento e = (Estabelecimento)sessao.getAttribute("estabelecimento");
    %>
 <div class="container mt-lg-5">
-    <div class="row">
-        <div class="btn-group">
+    <div class=" text-center">
+        <div class="btn-group btn-group">
 
-            <a class="btn btn-green" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getCNAE()%>">Funcionários</a>
+            <a class="btn btn-green" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Funcionários</a>
 
-            <a class="btn btn-green" href="../seusNegocios/fornecedores.jsp?estabelecimento=<%=e.getCNAE()%>">Fornecedores</a>
+            <a class="btn btn-green" href="../seusNegocios/fornecedores.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Fornecedores</a>
 
-            <a class="btn btn-green" href="../seusNegocios/fornecimentos.jsp?estabelecimento=<%=e.getCNAE()%>">Fornecimentos</a>
+            <a class="btn btn-green" href="../seusNegocios/fornecimentos.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Fornecimentos</a>
 
-            <a class="btn btn-green" href="../seusNegocios/produtos.jsp?estabelecimento=<%=e.getCNAE()%>">Produtos</a>
+            <a class="btn btn-green" href="../seusNegocios/produtos.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Produtos</a>
 
-            <a class="btn btn-green" href="../seusNegocios/vacinas.jsp?estabelecimento=<%=e.getCNAE()%>">Vacinas</a>
+            <a class="btn btn-green" href="../seusNegocios/vacinas.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Vacinas</a>
 
-            <a class="btn btn-green" href="../seusNegocios/aviarios.jsp?estabelecimento=<%=e.getCNAE()%>">Aviários</a>
+            <a class="btn btn-green" href="../seusNegocios/aviarios.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Aviários</a>
 
-            <a class="btn btn-green" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getCNAE()%>">Desempenho</a>
+            <a class="btn btn-green" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Desempenho</a>
         </div>
     </div>
     <div class="row mt-lg-5">
