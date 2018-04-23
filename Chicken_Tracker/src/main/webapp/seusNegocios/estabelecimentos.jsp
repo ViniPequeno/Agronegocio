@@ -10,6 +10,8 @@
 
     <%  if (sessao.getAttribute("negocio") == null) {
             sessao.setAttribute("negocio", ConsultaNegocio.findById(request.getParameter("negocio")));
+        }else if(!sessao.getAttribute("negocio").toString().equals(request.getParameter("negocio").toString())){
+            sessao.setAttribute("negocio", ConsultaNegocio.findById(request.getParameter("negocio")));
         }
         List<Estabelecimento> estabelecimentos;
         estabelecimentos = ConsultaEstabelecimento.returnListOfNegocio(((Negocio) sessao.getAttribute("negocio")).getEmpresaCNPJ());
@@ -20,17 +22,17 @@
         <!--Card image-->
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
 
-            <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
+            <h4 class="white-text font-weight-bold text-uppercase mb-0">Estabelecimentos</h4>
 
         </div>
         <!--/Card image-->
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive-md btn-table">
+            <table class="table table-hover table-responsive-md btn-table" id="tableDados">
                 <!--Table head-->
-                <thead class="mdb-color darken-3">
-                    <tr class="text-white">
+                <thead>
+                    <tr>
                         <th> </th>
                         <th>Negócio</th>
                         <th>Proprietário</th>
@@ -57,8 +59,8 @@
                         <td><%=e.getCNAE()%></td>
                         <td><%=e.getEndereco()%></td>
                         <td><%=e.getSufixoCNPJ()%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/estabelecimento.jsp.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
-                                <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
+                        <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getCNAE()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
+                                <i class="fa fa-ellipsis-h mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>
                 </tbody>
@@ -127,7 +129,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/NegocioDeleteServlet" method="post">
+                    <form id="checks" action="/Chicken_Tracker/EstabelecimentoDeleteServlet" method="post">
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
@@ -148,7 +150,6 @@
                     <p id="proprietario">Proprietário: </p>
                     <p id="cnae">CNAE: </p>
                     <p id="sufixoCNPJ"> Sufixo do CNPJ: </p>
-                    <p id="empresaCNPJ"> CNPJ da empresa: </p>
                     <p id="endereco"> Endereço: </p>
                     <p id="qtdeFuncionarios">Quantidade de funcionários: </p>
                 </div>
@@ -168,7 +169,6 @@
             '<p id="proprietario">Proprietário: </p>' +
             '<p id="cnae">CNAE: </p>' +
             '<p id="sufixoCNPJ"> Sufixo do CNPJ: </p>' +
-            '<p id="empresaCNPJ"> CNPJ da empresa: </p>' +
             '<p id="endereco"> Endereço: </p>' +
             '<p id="qtdeFuncionarios">Quantidade de funcionários: </p>';
     $("td").not(function () {
@@ -187,9 +187,8 @@
         var proprietario = campo[1];
         var cnae = campo[2];
         var sufixoCNPJ = campo[3];
-        var empresaCNPJ = campo[4];
-        var endereco = campo[5];
-        var qtdeFuncionarios = campo[6];
+        var endereco = campo[4];
+        var qtdeFuncionarios = campo[5];
 
         $("#negocio").text("Negócio: " + negocio);
 
@@ -198,8 +197,6 @@
         $("#cnae").text("CNAE: " + cnae);
 
         $("#sufixoCNPJ").text("Sufixo do CNPJ: " + sufixoCNPJ);
-
-        $("#empresaCNPJ").text("CNPJ da empresa: " + empresaCNPJ);
 
         $("#endereco").text("Endereço: " + endereco);
 
@@ -222,13 +219,9 @@
         if ($(this).text() == "Editar") {
             $(this).text("Confirmar");
             $("#bodyDetalhes").html(modalEditarInnerHTML);
-            $('#negocio').val(dataE[0]).trigger("change");
-            $('#proprietario').val(dataE[1]).trigger("change");
-            $('#cnae').val(dataE[2]).trigger("change");
-            $('#sufixoCNPJ').val(dataE[3]).trigger("change");
-            $('#empresaCNPJ').val(dataE[4]).trigger("change");
-            $('#endereco').val(dataE[5]).trigger("change");
-            $('#qtdeFuncionarios').val(dataE[6]).trigger("change");
+            $('#inputCNAE').val(dataE[2]).trigger("change");
+            $('#inputSufixoCNPJ').val(dataE[3]).trigger("change");
+            $('#inputEndereco').val(dataE[4]).trigger("change");
         } else {
             formEditar.submit();
         }

@@ -1,0 +1,67 @@
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
+<% String css = "";%>
+<%@ include file="../cabecalho.jsp"%>
+<%  if (sessao.getAttribute("estabelecimento") == null) {
+        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
+    } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("estabelecimento").toString())) {
+        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
+    }
+    Estabelecimento e = ConsultaEstabelecimento.findById(((Estabelecimento)sessao.getAttribute("estabelecimento")).getCNAE());
+   %>
+<div class="container mt-lg-5">
+    <div class="row">
+        <div class="btn-group">
+
+            <a class="btn btn-green" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getCNAE()%>">Funcionários</a>
+
+            <a class="btn btn-green" href="../seusNegocios/fornecedores.jsp?estabelecimento=<%=e.getCNAE()%>">Fornecedores</a>
+
+            <a class="btn btn-green" href="../seusNegocios/fornecimentos.jsp?estabelecimento=<%=e.getCNAE()%>">Fornecimentos</a>
+
+            <a class="btn btn-green" href="../seusNegocios/produtos.jsp?estabelecimento=<%=e.getCNAE()%>">Produtos</a>
+
+            <a class="btn btn-green" href="../seusNegocios/vacinas.jsp?estabelecimento=<%=e.getCNAE()%>">Vacinas</a>
+
+            <a class="btn btn-green" href="../seusNegocios/aviarios.jsp?estabelecimento=<%=e.getCNAE()%>">Aviários</a>
+
+            <a class="btn btn-green" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getCNAE()%>">Desempenho</a>
+        </div>
+    </div>
+    <div class="row mt-lg-5">
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header">
+                    Dados
+                </div>
+                <div class="card-body">
+                    <p>Negócio: <%=e.getNegocio().getNome()%></p>
+                    <p>Proprietário: <%=e.getPerfil().getNome()%></p>
+                    <p>CNAE: <%=e.getCNAE()%></p>
+                    <p>Endereço: <%=e.getEndereco()%></p>
+                    <p>Sufixo do CNPJ: <%=e.getSufixoCNPJ()%></p>
+                    <p>Número de funcionários: <%=e.getFuncionarios().size()%></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header">
+                    Lucro diário
+                </div>
+                <div class="card-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+        <a href="#" class="btn-floating btn-large cyan text-center white-text">
+            <i class="fa fa-arrow-up"></i>
+        </a>
+    </div>
+</div>
+<%@include file="../rodape.jsp" %>
+<script src="../_JS/index.js"></script>
+</body>
+</html>

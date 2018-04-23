@@ -15,7 +15,10 @@ $(document).ready(function () {
     $('#tableDados tbody tr').hide();
     $('#tableDados tbody tr').slice(0, rowsShown).show();
     $('#pg-link li:nth-child(3)').addClass('active');
-
+    if($('#pg-link li:nth-last-child(1)').text()==$('#pg-link li:nth-child(5)').text()){
+        $('#last-item').addClass('disabled');
+        $('#next').addClass('disabled');
+    }
     //Quando clicar em algum índice de página da tabela
     $('#pg-link li.number').bind('click', function () {
         navigationButtons($(this),numPages);

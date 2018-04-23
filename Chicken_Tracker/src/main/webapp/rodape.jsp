@@ -120,7 +120,7 @@
 <script src="../Bootstrap/_JS/popper.min.js"></script>
 <script src="../Bootstrap/_JS/bootstrap.js"></script>
 <script src="../Bootstrap/_JS/mdb.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script src="../_JS/jquery.mask.js"></script>
 <script>
 // Tooltips Initialization
     $(function () {

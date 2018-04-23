@@ -33,8 +33,11 @@ public class ConsultaProduto {
         String a = "";
         a += p.getCodigo() + "#";
         a += p.getNome() + "#";
-        a += p.getDescricao() + "#";
         a += p.getQuantidadeAtual() + "#";
+        a += p.getQuantidadeMinima()+ "#";
+        a += p.getQuantidadeMaxima()+ "#";
+        a += p.getDescricao() + "#";
+        a += p.getEstabelecimento().getCNAE()+ "#";
         return a;
     }
 }

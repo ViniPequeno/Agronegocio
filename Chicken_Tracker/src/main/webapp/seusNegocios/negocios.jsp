@@ -124,13 +124,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/NegocioDeleteServlet" method="post">
+                    <form id="checks" class="mt-3" action="/Chicken_Tracker/NegocioDeleteServlet" method="post">
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Modal -->
     <div class="modal fade" id="detalhesNegocio" tabindex="-1" role="dialog" aria-labelledby="detalhesNegocio" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -152,7 +153,7 @@
                     <p id="estabelecimentos"> Estabelecimentos: </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary">Estabelecimentos</button>
+                    <a id="linkToEstabelecimentos" href="" type="button" class="btn btn-outline-primary">Estabelecimentos</a>
                     <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
@@ -194,6 +195,9 @@
         var fone2 = fones[1];
 
         var estabelecimentos = campo[7];
+        
+        $("#linkToEstabelecimentos").attr('href','../seusNegocios/estabelecimentos.jsp?negocio='+cnpj);
+        
         $("#nome").text("Nome: " + nome);
 
         $("#proprietario").text("Proprietário: " + proprietario);

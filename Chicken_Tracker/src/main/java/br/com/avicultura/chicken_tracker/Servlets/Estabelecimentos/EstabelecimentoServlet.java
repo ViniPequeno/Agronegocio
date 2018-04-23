@@ -36,15 +36,15 @@ public class EstabelecimentoServlet extends HttpServlet {
         e.setSufixoCNPJ(request.getParameter("inputSufixoCNPJ"));
         e.setCNAE(request.getParameter("inputCNAE"));
         e.setEndereco(request.getParameter("inputEndereco"));
-        
         HttpSession sessao = request.getSession();
+        e.setPerfil((Perfil) sessao.getAttribute("usuario"));
         e.setNegocio((Negocio) sessao.getAttribute("negocio"));
         
         HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
         String s = hup.salvar(e);
         PrintWriter out = response.getWriter();
         if (s.equals("")) {
-            out.print(s);
+            response.sendRedirect("seusNegocios/estabelecimentos.jsp");
         } else {
             out.print(s);
         }
