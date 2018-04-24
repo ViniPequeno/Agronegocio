@@ -32,12 +32,11 @@ public class VacinaServlet extends HttpServlet {
             throws ServletException, IOException {
         Vacina v = Vacina.getInstance();
         v.setNome(request.getParameter("inputNome"));
-        v.setCodigo(Integer.parseInt(request.getParameter("inputUsuario")));
+        v.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
         //v.setDataProxima(request.getParameter("inputDataProxima"));
         //v.setDataRealizada(request.getParameter("inputDataRealizada"));
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         v.setEstabelecimento(e);
-        e.getVacinas().add(v);
         v.setDescricao(request.getParameter("inputDescricao"));
         HibernateUtil<Vacina> hup = new HibernateUtil<>();
         String s = hup.salvar(v);

@@ -35,12 +35,11 @@ public class ProdutoServlet extends HttpServlet {
         p.setNome(request.getParameter("inputNome"));
         p.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
         p.setDescricao(request.getParameter("inputDescricao"));
-        p.setQuantidadeMinima(Integer.parseInt(request.getParameter("inputMinimo")));
-        p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxima")));
-        p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputAtual")));
+        p.setQuantidadeMinima(Integer.parseInt(request.getParameter("inputMinQtde")));
+        p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxQtde")));
+        p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputQtdeAtual")));
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         p.setEstabelecimento(e);
-        e.getProdutos().add(p);
         //p.setFoto(foto);
         HibernateUtil<Produto> hup = new HibernateUtil<>();
         String s = hup.salvar(p);

@@ -40,6 +40,7 @@ public class EstabelecimentoServlet extends HttpServlet {
         e.setPerfil((Perfil) sessao.getAttribute("usuario"));
         e.setNegocio((Negocio) sessao.getAttribute("negocio"));
         
+        e.setSufixoCNPJ(e.getNegocio().getEmpresaCNPJ()+e.getSufixoCNPJ());
         HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
         String s = hup.salvar(e);   
         PrintWriter out = response.getWriter();

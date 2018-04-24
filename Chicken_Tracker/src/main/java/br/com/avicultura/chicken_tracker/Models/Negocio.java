@@ -32,6 +32,7 @@ public class Negocio implements Serializable {
     @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;
+    
     @OneToMany(cascade = ALL, mappedBy = "negocio")
     private List<Estabelecimento> estabelecimentos;
 

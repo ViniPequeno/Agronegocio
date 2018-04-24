@@ -14,16 +14,22 @@ import javax.persistence.*;
 public class Fornecimento implements Serializable {
 
     @Id
+    @GeneratedValue
+    private Long id;
+
     private String CNPJ;
     private int quantidade;
     private double pagamento;
     private String vencimento;
     private char tipo;
 
-    @ManyToMany
-    private List<Produto> produtos;
-    @ManyToMany(mappedBy = "fornecimentos")
-    private List<Estabelecimento> estabelecimentos;
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
+
+    @ManyToOne
+    @JoinColumn(name = "estabelecimento_id")
+    private Estabelecimento estabelecimento;
 
     private Fornecimento() {
     }
@@ -36,6 +42,14 @@ public class Fornecimento implements Serializable {
             getInstance = new Fornecimento();
         }
         return getInstance;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCNPJ() {
@@ -78,20 +92,20 @@ public class Fornecimento implements Serializable {
         this.tipo = tipo;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public Produto getProdutos() {
+        return produto;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setProdutos(Produto produto) {
+        this.produto = produto;
     }
 
-    public List<Estabelecimento> getEstabelecimentos() {
-        return estabelecimentos;
+    public Estabelecimento getEstabelecimentos() {
+        return estabelecimento;
     }
 
-    public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
-        this.estabelecimentos = estabelecimentos;
+    public void setEstabelecimentos(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
     }
 
 }

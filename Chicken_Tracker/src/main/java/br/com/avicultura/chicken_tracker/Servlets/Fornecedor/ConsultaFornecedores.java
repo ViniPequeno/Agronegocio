@@ -17,11 +17,10 @@ import org.hibernate.Session;
  */
 public class ConsultaFornecedores {
 
-    public static Fornecimento findById(String estabelecimento, String id) {
+    public static Fornecimento findById(String id) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
-                + " and f.CNPJ =: id and tipo = c");
-        query.setParameter("estabelecimento", estabelecimento);
+        Query query = s.createQuery("from Fornecimento f where"
+                + " f.CNPJ =: id and tipo = c");
         query.setParameter("CNPJ", id);
         Fornecimento f = (Fornecimento)query.getSingleResult();
         return f;
@@ -30,7 +29,7 @@ public class ConsultaFornecedores {
     public static List<Fornecimento> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
-                + " and tipo = c");
+                + " and tipo = 'c'");
         query.setParameter("estabelecimento", estabelecimento);
         List<Fornecimento> lista = query.getResultList();
         return lista;

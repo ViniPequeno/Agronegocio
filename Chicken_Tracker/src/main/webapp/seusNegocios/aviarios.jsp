@@ -35,8 +35,8 @@
                 <td><%=l.getCodigo()%></td>
                 <td><%=l.getArea()%></td>
                 <td><%=l.getFuncao()%></td>
-                <td><%=l.getEstabelecimento()%></td>
-                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                <td><%=l.getEstabelecimento().getSufixoCNPJ()%></td>
+                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/aviario.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Aviário" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
             </tr>
             <%}%>
@@ -47,8 +47,8 @@
     <%} else {%>
     <h2 class="py-5 text-center">Nenhum local de aves registrado ainda</h2>
     <%}%>
-    <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
+    <a href="../cadastro/localAves.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo Aviário" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir aviários selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
 
     <!-- Modal -->

@@ -49,7 +49,7 @@
                         <td><%=p.getCodigo()%></td>
                         <td><%=p.getNome()%></td>
                         <td><%=p.getQuantidadeAtual()%></td>
-                        <td><%=p.getEstabelecimento()%></td>
+                        <td><%=p.getEstabelecimento().getSufixoCNPJ()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../cadastro/produto.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Produto" role="button">
                                 <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                     </tr>

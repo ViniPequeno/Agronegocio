@@ -18,7 +18,7 @@
                 <div class="md-form">
                     <i class="fa fa-money-bill-alt prefix grey-text"></i>
                     <input type="text" id="inputDataPrimeiraVacina" name="inputDataPrimeiraVacina" class="form-control" required maxlength="10">
-                    <label for="inputDataPrimeiraVacina">Data da primeira vacina:</label>
+                    <label for="inputDataPrimeiraVacina">Data da última vacina:</label>
                 </div>
 
                 <!-- Material input text -->

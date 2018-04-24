@@ -4,6 +4,7 @@ package br.com.avicultura.chicken_tracker.Models;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  *
@@ -22,8 +23,13 @@ public class Produto implements Serializable {
     private int quantidadeAtual;
     private int quantidadeMinima;
     private int quantidadeMaxima;
-    @ManyToMany(mappedBy = "produtos")
+    
+    
+    @OneToMany(cascade = ALL, mappedBy = "produto"
+            + "")
     private List<Fornecimento> fornecimentos;
+    
+    
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;

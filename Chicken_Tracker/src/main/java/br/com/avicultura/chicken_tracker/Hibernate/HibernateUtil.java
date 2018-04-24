@@ -20,7 +20,6 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
         try {
             session.save(classe);
             session.getTransaction().commit();
-            message = "Salvo!";
         } catch (Exception e) {
             session.getTransaction().rollback();
             message = e.getMessage();
@@ -40,7 +39,6 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
             this.session.clear();
             session.delete(classe);
             session.getTransaction().commit();
-            message = "Salvo!";
         } catch (Exception e) {
             session.getTransaction().rollback();
             message = e.getMessage();
@@ -58,7 +56,6 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
         try {
             session.update(classe);
             session.getTransaction().commit();
-            message = "Salvo!";
         } catch (Exception e) {
             session.getTransaction().rollback();
             message = e.getMessage();

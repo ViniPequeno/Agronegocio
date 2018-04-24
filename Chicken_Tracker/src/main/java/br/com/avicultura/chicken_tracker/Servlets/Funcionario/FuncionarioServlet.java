@@ -40,8 +40,8 @@ public class FuncionarioServlet extends HttpServlet {
         f.setRG(request.getParameter("inputRG"));
         f.setSituacao('A');
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-        f.getEstabelecimentos().add(e);
-        e.getFuncionarios().add(f);
+        //f.getEstabelecimentos().add(e);
+        //f.getFuncionarios().add(f);
         HibernateUtil<Funcionario> hup = new HibernateUtil<>();
         PrintWriter out = response.getWriter();
         String s = hup.salvar(f);

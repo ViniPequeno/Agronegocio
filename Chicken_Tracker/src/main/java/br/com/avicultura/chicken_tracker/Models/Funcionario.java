@@ -22,8 +22,8 @@ public class Funcionario implements Serializable {
     private double salario;
     private char situacao;
 
-    @ManyToMany(mappedBy = "funcionarios")
-    private List<Estabelecimento> estabelecimentos;
+    @ManyToMany(mappedBy = "funcionario")
+    private List<EstabelecimentoFuncionario> estabelecimentos;
 
     private Funcionario() {
     }
@@ -78,11 +78,11 @@ public class Funcionario implements Serializable {
         this.situacao = situacao;
     }
 
-    public List<Estabelecimento> getEstabelecimentos() {
+    public List<EstabelecimentoFuncionario> getEstabelecimentos() {
         return estabelecimentos;
     }
 
-    public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
+    public void setEstabelecimentos(List<EstabelecimentoFuncionario> estabelecimentos) {
         this.estabelecimentos = estabelecimentos;
     }
 

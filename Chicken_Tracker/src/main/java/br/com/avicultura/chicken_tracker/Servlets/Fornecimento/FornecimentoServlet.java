@@ -8,6 +8,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecimento;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
+import br.com.avicultura.chicken_tracker.Models.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,8 +38,7 @@ public class FornecimentoServlet extends HttpServlet {
         f.setVencimento(request.getParameter("inputDataVencimento"));
         f.setTipo('V');
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-        f.getEstabelecimentos().add(e);
-        e.getFornecimentos().add(f);
+        f.setEstabelecimentos(e);
         HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
         String s = hup.salvar(f);
         PrintWriter out = response.getWriter();

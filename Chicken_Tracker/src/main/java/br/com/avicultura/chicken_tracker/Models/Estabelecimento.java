@@ -21,17 +21,23 @@ public class Estabelecimento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;
+    
     @ManyToOne
     @JoinColumn(name = "negocio_id")
     private Negocio negocio;
-
+    
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Produto> produtos;
-
-    @ManyToMany
+    
+    
+    @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Fornecimento> fornecimentos;
-    @ManyToMany
-    private List<Funcionario> funcionarios;
+    
+    
+    @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
+    private List<EstabelecimentoFuncionario> funcionarios;
+
+    
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<LocalAves> locais;
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
@@ -106,11 +112,11 @@ public class Estabelecimento implements Serializable {
         this.fornecimentos = fornecimentos;
     }
 
-    public List<Funcionario> getFuncionarios() {
+    public List<EstabelecimentoFuncionario> getFuncionarios() {
         return funcionarios;
     }
 
-    public void setFuncionarios(List<Funcionario> funcionarios) {
+    public void setFuncionarios(List<EstabelecimentoFuncionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
 
