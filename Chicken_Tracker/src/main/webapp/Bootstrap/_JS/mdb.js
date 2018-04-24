@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB FREE: 4.4.5
+ * Version: MDB FREE: 4.5.1
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -28,15 +28,14 @@
 
 /*
 
-jquery-easing.js
-global.js
-velocity.js
-chart.js
-wow.js
-scrolling-nav.js
-waves.js
-forms-basic.js
-enhanced-modals.js
+  jquery.easing.js
+  velocity.min.js
+  chart.js
+  wow.js
+  scrolling-navbar.js
+  waves.js
+  forms-free.js
+  enhanced-modals.js
 
 */
 
@@ -1697,11 +1696,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) {
+  convert[from][to] = convert[func] = (function(func) { 
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-
+      
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -1729,12 +1728,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);
+      values = Array.prototype.slice.call(args);        
    }
 
    return this.setValues(space, values);
 };
-
+  
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -13203,6 +13202,7 @@ $(window).scroll(function () {
     }
   }
 });
+
 /*!
  * Waves v0.7.5
  * http://fian.my.id/Waves
@@ -13794,9 +13794,9 @@ $(window).scroll(function () {
 //Initialization
 Waves.attach('.btn:not(.btn-flat), .btn-floating', ['waves-light']);
 Waves.attach('.btn-flat', ['waves-effect']);
-Waves.attach('.view .mask', ['waves-light']);
+Waves.attach('.view a .mask', ['waves-light']);
 Waves.attach('.waves-light', ['waves-light']);
-Waves.attach('.navbar-nav a:not(.navbar-brand), .nav-icons li a, .navbar form, .nav-tabs .nav-item', ['waves-light']);
+Waves.attach('.navbar-nav a:not(.navbar-brand), .nav-icons li a, .navbar input, .nav-tabs .nav-item:not(.dropdown)', ['waves-light']);
 Waves.attach('.pager li a', ['waves-light']);
 Waves.attach('.pagination .page-item .page-link', ['waves-effect']);
 Waves.init();
@@ -13954,6 +13954,7 @@ Waves.init();
     $('body').on('keyup keydown', text_area_selector, textarea_auto_resize);
   });
 })(jQuery);
+
 /*
     Enhanced Bootstrap Modals
     https://mdbootstrap.com

@@ -33,8 +33,8 @@
             <div class="col-lg-7">
 
                 <!--Grid row-->
-                <div class="row pb-3">
-                    <div class="col-2 col-md-1">
+                <div class="row">
+                    <div class="col-1 ml-3">
                         <i class="fa fa-chart-area fa-lg light-green-text"></i>
                     </div>
                     <div class="col-10">
@@ -47,7 +47,7 @@
 
                 <!--Grid row-->
                 <div class="row pb-3">
-                    <div class="col-2 col-md-1">
+                    <div class="col-1 ml-3">
                         <i class="fa fa-bolt fa-lg cyan-text"></i>
                     </div>
                     <div class="col-10">
@@ -60,7 +60,7 @@
 
                 <!--Grid row-->
                 <div class="row pb-3">
-                    <div class="col-2 col-md-1">
+                    <div class="col-1 ml-3">
                         <i class="fa fa-users fa-lg indigo-text"></i>
                     </div>
                     <div class="col-10">
@@ -97,9 +97,9 @@
         <div class="row text-center">
 
             <!--Grid column-->
-            <div class="col-lg-3 col-sm-6 col-12 mb-4">
+            <div class="col-lg-3 col-md-6 mb-3">
 
-                <div class="avatar mx-auto">
+                <div class="avatar mx-auto my-3" style="max-width: 150px;">
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded img-fluid z-depth-1-half" alt="First sample avatar image">
                 </div>
                 <br>
@@ -125,9 +125,9 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-lg-3 col-sm-6 col-12 mb-4">
+            <div class="col-lg-3 col-md-6 mb-3">
 
-                <div class="avatar mx-auto">
+                <div class="avatar mx-auto my-3" style="max-width: 150px;">
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" class="rounded img-fluid z-depth-1-half" alt="Second sample avatar image">
                 </div>
                 <br>
@@ -153,14 +153,14 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-lg-3 col-sm-6 col-12 mb-4">
+            <div class="col-lg-3 col-md-6 mb-3">
 
-                <div class="avatar mx-auto">
+                <div class="avatar mx-auto my-3" style="max-width: 150px;">
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
-                    Gabriel San Martin
+                    <strong>Gabriel San Martin</strong>
                 </h4>
                 <h6 class="grey-text">Web Developer</h6>
 
@@ -181,14 +181,14 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-lg-3 col-sm-6 col-12 mb-4">
+            <div class="col-lg-3 col-md-6 mb-3">
 
-                <div class="avatar mx-auto">
+                <div class="avatar mx-auto my-3" style="max-width: 150px;">
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
-                    Wyller Sousa
+                    <strong>Wyller Douglas</strong>
                 </h4>
                 <h6 class="grey-text">Web Developer</h6>
 
@@ -213,7 +213,7 @@
     <!--Section: Team v.2-->
 </div>
 <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
-    <a href="#" class="btn-floating btn-large cyan text-center white-text">
+    <a href="#" class="btn btn-floating btn-large cyan text-center white-text">
         <i class="fa fa-arrow-up"></i>
     </a>
 </div>
