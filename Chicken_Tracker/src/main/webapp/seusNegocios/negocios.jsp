@@ -163,6 +163,7 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtils.js"></script>
+<script src="../_JS/mascara.js"></script>
 <script type="text/javascript">
     dataN = "";
     var linha;
@@ -266,6 +267,8 @@
             $('#inputLinkInstagram').val(dataN[5]).trigger("change");
             $('#inputFone1').val(dataN[6].split("&")[0]).trigger("change");
             $('#inputFone2').val(dataN[6].split("&")[1]).trigger("change");
+            var $seuCampo = $('#inputCNPJ')
+            $seuCampo.mask('00.000.000/0000-00', {reverse: true});
         } else {
             formEditar.submit();
         }
