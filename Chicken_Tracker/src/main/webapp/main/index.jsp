@@ -212,8 +212,8 @@
     </section>
     <!--Section: Team v.2-->
 </div>
-<div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
-    <a href="#" class="btn btn-floating btn-large cyan text-center white-text">
+<div class="fixed-action-btn smooth-scroll" style="bottom: 15px; right: 15px;">
+    <a href="#" class="btn btn-floating btn-large cyan text-center white-text" data-toggle="tooltip" data-placement="bottom" title="Ir para o topo">
         <i class="fa fa-arrow-up"></i>
     </a>
 </div>
