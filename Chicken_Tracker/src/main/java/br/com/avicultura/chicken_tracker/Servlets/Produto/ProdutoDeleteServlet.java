@@ -32,7 +32,7 @@ public class ProdutoDeleteServlet extends HttpServlet {
             p.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
             String s = hup.deletar(p);
             out.print(s);
-            response.sendRedirect("seusNegocios/negocios.jsp");
+            response.sendRedirect("seusNegocios/produtos.jsp");
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
@@ -40,7 +40,6 @@ public class ProdutoDeleteServlet extends HttpServlet {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
-            out.println(chkBoxIds.size());
             String[] codigo = new String[chkBoxIds.size()];
             int index = 0;
             for (String s : chkBoxIds) {

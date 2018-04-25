@@ -31,7 +31,6 @@ public class NegocioDeleteServlet extends HttpServlet {
         if (request.getParameter("inputEmpresaCNPJ") != null) {
             n.setEmpresaCNPJ(request.getParameter("inputEmpresaCNPJ"));
             String s = hup.deletar(n);
-            out.print(s);
             response.sendRedirect("seusNegocios/negocios.jsp");
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();

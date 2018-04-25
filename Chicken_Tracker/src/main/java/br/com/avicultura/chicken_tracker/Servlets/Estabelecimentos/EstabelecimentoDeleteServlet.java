@@ -31,7 +31,6 @@ public class EstabelecimentoDeleteServlet extends HttpServlet {
         if (request.getParameter("inputSufixoCNPJ") != null) {
             e.setSufixoCNPJ(request.getParameter("inputSufixoCNPJ"));
             String s = hup.deletar(e);
-            out.print(s);
             response.sendRedirect("seusNegocios/estabelecimentos.jsp");
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();

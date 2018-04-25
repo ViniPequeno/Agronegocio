@@ -45,6 +45,10 @@
         <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.EstabelecimentoAlterarServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EstabelecimentoDeleteServlet</servlet-name>
+        <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.EstabelecimentoDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>FornecedorDeleteServlet</servlet-name>
         <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Fornecedor.FornecedorDeleteServlet</servlet-class>
     </servlet>
@@ -155,6 +159,10 @@
     <servlet-mapping>
         <servlet-name>EstabelecimentoAlterarServlet</servlet-name>
         <url-pattern>/EstabelecimentoAlterarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EstabelecimentoDeleteServlet</servlet-name>
+        <url-pattern>/EstabelecimentoDeleteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FornecedorDeleteServlet</servlet-name>
