@@ -9,6 +9,8 @@ $(document).ready(function () {
     $seuCampoCpf.mask('00.000.000-0', {reverse: true});
     $seuCampoCpf = $("#inputCNAE");
     $seuCampoCpf.mask('00000-0/00', {reverse: true});
+    $seuCampoCpf = $("#inputSalario");
+    $seuCampoCpf.mask('R$ 000000.00', {reverse: true});
 });
 
 

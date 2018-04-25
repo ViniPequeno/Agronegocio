@@ -38,6 +38,7 @@ public class FuncionarioServlet extends HttpServlet {
         f.setCPF(request.getParameter("inputCPF"));
         f.setCargo(request.getParameter("inputCargo"));
         f.setRG(request.getParameter("inputRG"));
+        f.setSalario(Double.parseDouble(request.getParameter("inputSalario")));
         f.setSituacao('A');
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         //f.getEstabelecimentos().add(e);

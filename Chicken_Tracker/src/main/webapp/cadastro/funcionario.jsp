@@ -35,6 +35,13 @@
                     <input type="text" id="inputCargo" name="inputCargo" class="form-control" required maxlength="80">
                     <label for="inputCargo">Cargo</label>
                 </div>
+                
+                <!-- Material input text -->
+                <div class="md-form">
+                    <i class="fa fa-clipboard prefix grey-text"></i>
+                    <input type="text" id="inputSalario" name="inputSalario" class="form-control" required maxlength="80">
+                    <label for="inputSalario">Cargo</label>
+                </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
