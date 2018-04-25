@@ -42,5 +42,5 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
-</body>
+<script src="../_JS/mascara.js"></script></body>
 </html>

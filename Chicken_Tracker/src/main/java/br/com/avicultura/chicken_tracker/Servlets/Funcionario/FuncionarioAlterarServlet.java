@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.Funcionario;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,8 +34,8 @@ public class FuncionarioAlterarServlet extends HttpServlet {
         String s = hup.atualizar(f);
         PrintWriter out = response.getWriter();
         out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
-
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
     }
 
 }

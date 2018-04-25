@@ -37,8 +37,8 @@
         <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Fornecedor.FornecedorServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Funcionario</servlet-name>
-        <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Funcionario</servlet-class>
+        <servlet-name>FuncionarioServlet</servlet-name>
+        <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Funcionario.FuncionarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EstabelecimentoAlterarServlet</servlet-name>
@@ -65,7 +65,7 @@
         <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Fornecimento.FornecimentoAlterarServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FuncionarioDeletaServlet</servlet-name>
+        <servlet-name>FuncionarioDeleteServlet</servlet-name>
         <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Funcionario.FuncionarioDeleteServlet</servlet-class>
     </servlet>
     <servlet>
@@ -153,8 +153,8 @@
         <url-pattern>/FornecedorServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Funcionario</servlet-name>
-        <url-pattern>/Funcionario</url-pattern>
+        <servlet-name>FuncionarioServlet</servlet-name>
+        <url-pattern>/FuncionarioServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EstabelecimentoAlterarServlet</servlet-name>
@@ -181,8 +181,8 @@
         <url-pattern>/FornecimentoAlterarServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FuncionarioDeletaServlet</servlet-name>
-        <url-pattern>/FuncionarioDeletaServlet</url-pattern>
+        <servlet-name>FuncionarioDeleteServlet</servlet-name>
+        <url-pattern>/FuncionarioDeleteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FuncionarioAlterarServlet</servlet-name>

@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.LocalAves;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.LocalAves;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,11 +28,9 @@ public class LocalAvesDeleteServlet extends HttpServlet {
             throws ServletException, IOException {
         LocalAves la = LocalAves.getInstance();
         HibernateUtil<LocalAves> hup = new HibernateUtil<>();
-        PrintWriter out = response.getWriter();
         if (request.getParameter("inputCodigo") != null) {
             la.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
             String s = hup.deletar(la);
-            out.print(s);
             response.sendRedirect("seusNegocios/aviarios.jsp");
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
@@ -40,7 +39,6 @@ public class LocalAvesDeleteServlet extends HttpServlet {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
-            out.println(chkBoxIds.size());
             String[] codigo = new String[chkBoxIds.size()];
             int index = 0;
             for (String s : chkBoxIds) {
@@ -50,8 +48,9 @@ public class LocalAvesDeleteServlet extends HttpServlet {
             for (index = 0; index < codigo.length; index++) {
                 la.setCodigo(Integer.parseInt(codigo[index]));
                 String s = hup.deletar(la);
-                out.print(s);
             }
+            Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         }
     }
 }

@@ -40,8 +40,8 @@
 
                 <!--Table body-->
                 <tbody>
-                    <%  for (Funcionario f : funcionarios) {%>
-                    String dataFuncionario = ConsultaFuncionario.returnValues(f);
+                    <%  for (Funcionario f : funcionarios) {
+                    String dataFuncionario = ConsultaFuncionario.returnValues(f);%>
                     <tr data-funcionario>
                         <th scope="row" class="pr-md-3 pr-5">
                             <input type="checkbox" id="checkbox<%=f.getCPF()%>">
