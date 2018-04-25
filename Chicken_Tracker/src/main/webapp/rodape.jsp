@@ -8,50 +8,30 @@
 
             <!--First column-->
             <div class="col-md-4">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Footer Content</h5>
-                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
-                    amet, consectetur adipisicing elit.</p>
+                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Chicken Tracker</h5>
+                <p>O único website que trata da organização interna do tratamento dos produtos pertencentes ao ramo da avicultura.</p>
             </div>
             <!--/.First column-->
 
             <hr class="clearfix w-100 d-md-none">
 
             <!--Second column-->
-            <div class="col-md-2 mx-auto">
+            <div class="col-md-7 text-md-right">
                 <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Links</h5>
                 <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
+                    <li class="mb-2" >
+                        <a href="../main/negocios.jsp">Negócios</a>
+                    </li>
+                    <li class="mb-2" >
+                        <a href="../main/seu_negocio.jsp">Seus negócios</a>
+                    </li>
+                    <li class="mb-2" >
+                        <a href="#">Ajuda</a>
                     </li>
                 </ul>
             </div>
             <!--/.Second column-->
 
-            <hr class="clearfix w-100 d-md-none">
-
-            <!--Third column-->
-            <div class="col-md-2 mx-auto">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                </ul>
-            </div>
-            <!--/.Third column-->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!--Fourth column-->
-            <div class="col-md-2 mx-auto">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                </ul>
-            </div>
-            <!--/.Fourth column-->
         </div>
     </div>
     <!--/.Footer Links-->
@@ -110,7 +90,7 @@
     <!--Copyright-->
     <div class="footer-copyright py-3 text-center">
         © 2018 Copyright:
-        <a href="https://mdbootstrap.com/material-design-for-bootstrap/"> MDBootstrap.com </a>
+        <a href="../main/index.jsp"> Chicken Tracker </a>
     </div>
     <!--/.Copyright-->
 

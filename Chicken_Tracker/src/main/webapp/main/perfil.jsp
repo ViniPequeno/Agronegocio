@@ -1,10 +1,14 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Perfil"%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Perfil.ConsultaPerfil"%>
 <% String css = "../_CSS/login.css";%>
 <%@ include file="../cabecalho.jsp"%>
+<%String login = (String) sessao.getAttribute("nome_usuario");
+    Perfil p = ConsultaPerfil.findById(login);%>
 <div class="container">
     <div class="card mx-auto mt-5">
         <div class="card-body">
-            <form action="/Chicken_Tracker/PerfilServlet" method="post" enctype='multipart/form-data'>
-                <p class="h1 text-center mb-4">Criar conta</p>
+            <form action="/Chicken_Tracker/PerfilAlterarServlet" method="post" enctype='multipart/form-data'>
+                <p class="h1 text-center mb-4">Sua conta</p>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile">
@@ -47,21 +51,21 @@
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="50">
+                            <input type="text" id="inputNome" name="inputNome" value="<%=p.getNome()%>" class="form-control" required autofocus maxlength="50">
                             <label for="inputNome">Nome</label>
                         </div>
 
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-id-card prefix grey-text"></i>
-                            <input type="text" id="inputLogin"  name="inputLogin" class="form-control" required maxlength="20">
+                            <input type="text" id="inputLogin"  name="inputLogin" value="<%=p.getUsuario()%>" class="form-control" required maxlength="20">
                             <label for="inputLogin">Login</label>
                         </div>
 
                         <!-- Material input email -->
                         <div class="md-form">
                             <i class="fa fa-envelope prefix grey-text"></i>
-                            <input type="email" id="inputEmail" name="inputEmail" class="form-control" required maxlength="80">
+                            <input type="email" id="inputEmail" name="inputEmail" value="<%=p.getEmail()%>" class="form-control" required maxlength="80">
                             <label for="inputEmail">Email</label>
                         </div>
 
