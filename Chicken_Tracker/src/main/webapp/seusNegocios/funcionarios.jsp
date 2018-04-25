@@ -5,7 +5,7 @@
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
     <!--Table-->
-    <a href="estabelecimento.jsp"> Voltar </a>
+    <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>"> Voltar </a>
     <h2 class="py-5 font-weight-bold text-left">Gerenciar Funcionários</h2>
 
     <%  List<Funcionario> funcionarios;
@@ -52,7 +52,7 @@
                         <td><%=f.getCPF()%></td>
                         <td><%=f.getRG()%></td>
                         <td><%=f.getSituacao()%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/funcionario.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                                 <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>

@@ -46,7 +46,7 @@ public class FuncionarioServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String s = hup.salvar(f);
         if (s.equals("")) {
-            response.sendRedirect("seusNegocios/funcionarios.jsp");
+            response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento="+e.getSufixoCNPJ());
         } else {
             out.print(s);
         }
