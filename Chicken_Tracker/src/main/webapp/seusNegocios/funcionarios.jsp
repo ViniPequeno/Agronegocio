@@ -9,7 +9,7 @@
     <h2 class="py-5 font-weight-bold text-left">Gerenciar Funcionários</h2>
 
     <%  List<Funcionario> funcionarios;
-        funcionarios = ConsultaFuncionario.returnList();
+        funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"));
         if (funcionarios.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 
@@ -48,10 +48,10 @@
                             <label for="checkbox<%=f.getCPF()%>" class="label-table"></label>
                         </th>
                         <td><%=f.getNome()%></td>
-                        <td><%=f.getCargo()%></td>
+                        <td>cargo</td>
                         <td><%=f.getCPF()%></td>
                         <td><%=f.getRG()%></td>
-                        <td><%=f.getSituacao()%></td>
+                        <td>situacao</td>
                         <td><a class="btn btn-cyan btn-rounded" href="../cadastro/funcionario.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                                 <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                     </tr>

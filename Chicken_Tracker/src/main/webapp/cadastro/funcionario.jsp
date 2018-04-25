@@ -11,14 +11,14 @@
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="inputNome" name="inputNome" class="form-control" required maxlength="80">
+                    <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="80">
                     <label for="inputNome">Nome</label>
                 </div>
                 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-id-card prefix grey-text"></i>
-                    <input type="text" id="inputCPF" name="inputCPF" class="form-control" required autofocus maxlength="14">
+                    <input type="text" id="inputCPF" name="inputCPF" class="form-control" required maxlength="14">
                     <label for="inputCPF">CPF</label>
                 </div>
 
@@ -40,8 +40,9 @@
                 <div class="md-form">
                     <i class="fa fa-clipboard prefix grey-text"></i>
                     <input type="text" id="inputSalario" name="inputSalario" class="form-control" required maxlength="80">
-                    <label for="inputSalario">Cargo</label>
+                    <label for="inputSalario">Salario</label>
                 </div>
+                
 
                 <!-- Material input text -->
                 <div class="md-form">

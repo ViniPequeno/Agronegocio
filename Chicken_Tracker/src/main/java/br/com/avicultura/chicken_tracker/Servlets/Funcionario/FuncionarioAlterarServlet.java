@@ -27,9 +27,9 @@ public class FuncionarioAlterarServlet extends HttpServlet {
         Funcionario f = Funcionario.getInstance();
         f.setNome(request.getParameter("inputNome"));
         f.setCPF(request.getParameter("inputCPF"));
-        f.setCargo(request.getParameter("inputCargo"));
+        //f.setCargo(request.getParameter("inputCargo"));
         f.setRG(request.getParameter("inputRG"));
-        f.setSituacao('A');
+        //f.setSituacao('A');
         HibernateUtil<Funcionario> hup = new HibernateUtil<>();
         String s = hup.atualizar(f);
         PrintWriter out = response.getWriter();
