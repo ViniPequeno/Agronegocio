@@ -5,7 +5,7 @@
 <div class="container">
     <div class="card mx-auto mt-5">
         <div class="card-body">
-            <form action="/Chicken_Tracker/FuncionarioServlet" method="post">
+            <form action="/Chicken_Tracker/FuncionarioServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Funcionário</p>
                 
                 <!-- Material input text -->
@@ -62,5 +62,12 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/validador-de-cpf.js"></script>
 <script src="../_JS/mascara.js"></script>
+<script>
+    $('form[name="formCadastro"').submit(function(){
+       $('#inputSalario').unmask('R$ 000000.00');
+       $('#inputCPF').unmask('000.000.000-00');
+       $('#inputRG').unmask('00.000.000-0');
+    });
+</script>
 </body>
 </html>

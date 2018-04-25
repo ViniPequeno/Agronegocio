@@ -50,7 +50,7 @@
                         </th>
                         <td><%=n.getNome()%></td>
                         <td><%=n.getPerfil().getNome()%></td>
-                        <td><%=n.getEmpresaCNPJ()%></td>
+                        <td class="maskCNPJ"><%=n.getEmpresaCNPJ()%></td>
                         <td><%=n.getLinkEmail()%></td>
                         <td><%=n.getLinkFacebook()%></td>
                         <td><%=n.getLinkInstragram()%></td>
@@ -183,11 +183,11 @@
         linha = $(this).closest('tr');
         resetModalData();
     });
-        
-    function resetModalData(){
+
+    function resetModalData() {
         $("#bodyDetalhes").html(modalDetalhesInnerHTML);
         $("#btnEditarConfirmar").text("Editar");
-        
+
         var dados = linha.data('negocio').toString();
         var campo = dados.split("#");
         dataN = campo;
@@ -209,7 +209,8 @@
         $("#nome").text("Nome: " + nome);
 
         $("#proprietario").text("Proprietário: " + proprietario);
-
+        
+        cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
         $("#cnpj").text("CNPJ: " + cnpj);
 
         $("#email").text("Email: " + email);
@@ -267,12 +268,13 @@
             $('#inputLinkInstagram').val(dataN[5]).trigger("change");
             $('#inputFone1').val(dataN[6].split("&")[0]).trigger("change");
             $('#inputFone2').val(dataN[6].split("&")[1]).trigger("change");
-            var $seuCampo = $('#inputCNPJ')
-            $seuCampo.mask('00.000.000/0000-00', {reverse: true});
+            var $seuCampo = $('#inputCNPJ');
+            $seuCampo.mask('00.000.000', {reverse: false});
         } else {
             formEditar.submit();
         }
     });
+    $('.maskCNPJ').mask('00.000.000', {reverse: false});
 </script>
 </body>
 </html>
