@@ -5,7 +5,7 @@
 <div class="container">
     <div class="card mx-auto mt-5">
         <div class="card-body">
-            <form action="/Chicken_Tracker/NegocioServlet" method="post">
+            <form action="/Chicken_Tracker/NegocioServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Negócio</p>
 
                 <!-- Material input text -->
@@ -67,5 +67,10 @@
 
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/mascara.js"></script>
+<script>
+    $('form[name="formCadastro"').submit(function () {
+        $('#inputCNPJ').unmask('00.000.000');
+    });
+</script>
 </body>
 </html>

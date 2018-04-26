@@ -2,6 +2,7 @@
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
     <!--Table-->
+    <a href="estabelecimento.jsp"> Voltar </a>
     <h2 class="py-5 font-weight-bold text-left">Desempenho</h2>
 
     <table class="table table-hover table-responsive-md btn-table">

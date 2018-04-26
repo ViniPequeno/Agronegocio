@@ -6,7 +6,9 @@
 package br.com.avicultura.chicken_tracker.Servlets.Funcionario;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
+import br.com.avicultura.chicken_tracker.Models.EstabelecimentoFuncionario;
 import br.com.avicultura.chicken_tracker.Models.Funcionario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -25,10 +27,16 @@ public class ConsultaFuncionario {
 
     public static List<Funcionario> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Funcionario f where "
-                + "f.estabelecimento.sufixoCNPJ =:estabelecimento");
+        Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
+                + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estabelecimento", estabelecimento);
-        List<Funcionario> lista = query.getResultList();
+        List<EstabelecimentoFuncionario> listaEF = query.getResultList();
+        
+        List<Funcionario> lista = new ArrayList<>();
+        for(EstabelecimentoFuncionario ef : listaEF){
+            lista.add(ef.getFuncionario());
+        }
+        
         return lista;
     }
 
@@ -42,11 +50,11 @@ public class ConsultaFuncionario {
     public static String returnValues(Funcionario f) {
         String a = "";
         a += f.getCPF() + "#";
-        a += f.getCargo() + "#";
+        //a += f.getCargo() + "#";
         a += f.getNome() + "#";
         a += f.getRG() + "#";
-        a += f.getSalario() + "#";
-        a += f.getSituacao() + "#";
+        //a += f.getSalario() + "#";
+        //a += f.getSituacao() + "#";
 
         return a;
     }

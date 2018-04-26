@@ -27,11 +27,9 @@ public class NegocioDeleteServlet extends HttpServlet {
             throws ServletException, IOException {
         Negocio n = Negocio.getInstance();
         HibernateUtil<Negocio> hup = new HibernateUtil<>();
-        PrintWriter out = response.getWriter();
         if (request.getParameter("inputEmpresaCNPJ") != null) {
             n.setEmpresaCNPJ(request.getParameter("inputEmpresaCNPJ"));
             String s = hup.deletar(n);
-            out.print(s);
             response.sendRedirect("seusNegocios/negocios.jsp");
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
@@ -40,7 +38,6 @@ public class NegocioDeleteServlet extends HttpServlet {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
-            out.println(chkBoxIds.size());
             String[] cnpj = new String[chkBoxIds.size()];
             int index = 0;
             for (String s : chkBoxIds) {
@@ -50,8 +47,8 @@ public class NegocioDeleteServlet extends HttpServlet {
             for (index = 0; index < cnpj.length; index++) {
                 n.setEmpresaCNPJ(cnpj[index]);
                 String s = hup.deletar(n);
-                out.print(s);
             }
+            response.sendRedirect("seusNegocios/negocios.jsp");
         }
     }
 

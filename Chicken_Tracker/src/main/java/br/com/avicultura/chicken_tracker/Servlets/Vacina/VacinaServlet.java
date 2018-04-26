@@ -42,7 +42,7 @@ public class VacinaServlet extends HttpServlet {
         String s = hup.salvar(v);
         PrintWriter out = response.getWriter();
         if (s.equals("")) {
-            response.sendRedirect("seusNegocios/vacinas.jsp");
+            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento="+e.getSufixoCNPJ());
         } else {
             out.print(s);
         }

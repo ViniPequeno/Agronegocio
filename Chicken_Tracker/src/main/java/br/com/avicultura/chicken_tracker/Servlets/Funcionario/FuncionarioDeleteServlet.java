@@ -6,6 +6,8 @@
 package br.com.avicultura.chicken_tracker.Servlets.Funcionario;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
+import br.com.avicultura.chicken_tracker.Models.EstabelecimentoFuncionario;
 import br.com.avicultura.chicken_tracker.Models.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,13 +27,11 @@ public class FuncionarioDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Funcionario f = Funcionario.getInstance();
-        HibernateUtil<Funcionario> hup = new HibernateUtil<>();
-        PrintWriter out = response.getWriter();
+        EstabelecimentoFuncionario ef = EstabelecimentoFuncionario.getInstance();
+        HibernateUtil<EstabelecimentoFuncionario> hup = new HibernateUtil<>();
         if (request.getParameter("inputCPF") != null) {
-            f.setCPF(request.getParameter("inputCPF"));
-            String s = hup.deletar(f);
-            out.print(s);
+            ef.setId(Long.parseLong(request.getParameter("inputCPF")));
+            String s = hup.deletar(ef);
             response.sendRedirect("seusNegocios/funcionario.jsp");
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
@@ -40,7 +40,6 @@ public class FuncionarioDeleteServlet extends HttpServlet {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
-            out.println(chkBoxIds.size());
             String[] cpf = new String[chkBoxIds.size()];
             int index = 0;
             for (String s : chkBoxIds) {
@@ -48,10 +47,11 @@ public class FuncionarioDeleteServlet extends HttpServlet {
                 index++;
             }
             for (index = 0; index < cpf.length; index++) {
-                f.setCPF(cpf[index]);
-                String s = hup.deletar(f);
-                out.print(s);
+                ef.setId(Long.parseLong(cpf[index]));
+                String s = hup.deletar(ef);
             }
+            Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+            response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         }
     }
 

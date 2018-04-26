@@ -49,7 +49,7 @@ public class LocalAvesServlet extends HttpServlet {
         String s = hup.salvar(l);
         PrintWriter out = response.getWriter();
         out.print(s);
-        response.sendRedirect("seusNegocios/aviarios.jsp");
+        response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento="+e.getSufixoCNPJ());
     }
 
     

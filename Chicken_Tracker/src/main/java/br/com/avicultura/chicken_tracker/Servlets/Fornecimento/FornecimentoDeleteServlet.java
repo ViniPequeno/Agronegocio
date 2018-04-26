@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.Fornecimento;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,11 +28,9 @@ public class FornecimentoDeleteServlet extends HttpServlet {
             throws ServletException, IOException {
         Fornecimento f = Fornecimento.getInstance();
         HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
-        PrintWriter out = response.getWriter();
         if (request.getParameter("inputCNPJ") != null) {
             f.setCNPJ(request.getParameter("inputCNPJ"));
             String s = hup.deletar(f);
-            out.print(s);
             response.sendRedirect("seusNegocios/fornecimentos.jsp");
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
@@ -40,7 +39,6 @@ public class FornecimentoDeleteServlet extends HttpServlet {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
-            out.println(chkBoxIds.size());
             String[] cnpj = new String[chkBoxIds.size()];
             int index = 0;
             for (String s : chkBoxIds) {
@@ -50,8 +48,9 @@ public class FornecimentoDeleteServlet extends HttpServlet {
             for (index = 0; index < cnpj.length; index++) {
                 f.setCNPJ(cnpj[index]);
                 String s = hup.deletar(f);
-                out.print(s);
             }
+            Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+            response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
         }
     }
 

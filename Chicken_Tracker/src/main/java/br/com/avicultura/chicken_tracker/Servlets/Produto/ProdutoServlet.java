@@ -45,7 +45,8 @@ public class ProdutoServlet extends HttpServlet {
         String s = hup.salvar(p);
         PrintWriter out = response.getWriter();
         if (s.equals("")) {
-            response.sendRedirect("seusNegocios/produtos.jsp");
+            
+            response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento="+e.getSufixoCNPJ());
         } else {
             out.print(s);
         }

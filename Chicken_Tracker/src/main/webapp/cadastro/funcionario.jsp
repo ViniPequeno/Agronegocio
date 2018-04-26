@@ -5,20 +5,20 @@
 <div class="container">
     <div class="card mx-auto mt-5">
         <div class="card-body">
-            <form action="/Chicken_Tracker/FuncionarioServlet" method="post">
+            <form action="/Chicken_Tracker/FuncionarioServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Funcionário</p>
                 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="inputNome" name="inputNome" class="form-control" required maxlength="80">
+                    <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="80">
                     <label for="inputNome">Nome</label>
                 </div>
                 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-id-card prefix grey-text"></i>
-                    <input type="text" id="inputCPF" name="inputCPF" class="form-control" required autofocus maxlength="14">
+                    <input type="text" id="inputCPF" name="inputCPF" class="form-control" required maxlength="14">
                     <label for="inputCPF">CPF</label>
                 </div>
 
@@ -35,6 +35,14 @@
                     <input type="text" id="inputCargo" name="inputCargo" class="form-control" required maxlength="80">
                     <label for="inputCargo">Cargo</label>
                 </div>
+                
+                <!-- Material input text -->
+                <div class="md-form">
+                    <i class="fa fa-clipboard prefix grey-text"></i>
+                    <input type="text" id="inputSalario" name="inputSalario" class="form-control" required maxlength="80">
+                    <label for="inputSalario">Salario</label>
+                </div>
+                
 
                 <!-- Material input text -->
                 <div class="md-form">
@@ -54,6 +62,13 @@
 
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/validador-de-cpf.js"></script>
-<script src="../_JS/mascaras.js"></script>
+<script src="../_JS/mascara.js"></script>
+<script>
+    $('form[name="formCadastro"').submit(function(){
+       $('#inputSalario').unmask('R$ 000000.00');
+       $('#inputCPF').unmask('000.000.000-00');
+       $('#inputRG').unmask('00.000.000-0');
+    });
+</script>
 </body>
 </html>

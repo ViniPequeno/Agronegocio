@@ -43,7 +43,7 @@ public class FornecedorServlet extends HttpServlet {
         String s = hup.salvar(f);
         PrintWriter out = response.getWriter();
         if (s.equals("")) {
-            response.sendRedirect("seusNegocios/fornecedores.jsp");
+            response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento="+e.getSufixoCNPJ());
         } else {
             out.print(s);
         }

@@ -5,6 +5,7 @@
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
     <!--Table-->
+    <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>"> Voltar </a>
     <h2 class="py-5 font-weight-bold text-left">Locais das aves</h2>
 
     <%List<LocalAves> locaisAves;

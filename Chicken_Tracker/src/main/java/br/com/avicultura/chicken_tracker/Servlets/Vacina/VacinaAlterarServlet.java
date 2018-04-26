@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.Vacina;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Vacina;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,9 +32,8 @@ public class VacinaAlterarServlet extends HttpServlet {
         v.setDescricao(request.getParameter("inputDescricao"));
         HibernateUtil<Vacina> hup = new HibernateUtil<>();
         String s = hup.atualizar(v);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getSufixoCNPJ());
 
     }
 }

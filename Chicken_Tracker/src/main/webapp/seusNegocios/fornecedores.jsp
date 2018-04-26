@@ -5,6 +5,7 @@
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
     <!--Table-->
+    <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>"> Voltar </a>
     <h2 class="py-5 font-weight-bold text-left">Fornecedores</h2>
 
     <%List<Fornecimento> fornecedores;
@@ -36,7 +37,7 @@
                 <td><%=f.getPagamento()%></td>
                 <td><%=f.getQuantidade()%></td>
                 <td><%=f.getVencimento()%></td>
-                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/negocio.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
+                <td><a class="btn btn-cyan btn-rounded" href="../cadastro/fornecedor.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Fornecedor" role="button">
                         <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
             </tr>
             <%}%>
@@ -47,7 +48,7 @@
     <%} else {%>
     <h2 class="py-5 text-center">Nenhum fornecedor registrado ainda</h2>
     <%}%>
-    <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="../cadastro/fornecedor.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
     <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
 
@@ -60,9 +61,6 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <p>Todos os estabelecimentos associados a este negócio também serão apagados</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>

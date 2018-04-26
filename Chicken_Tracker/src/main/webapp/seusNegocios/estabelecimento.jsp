@@ -50,7 +50,7 @@
                     Lucro diário
                 </div>
                 <div class="card-body">
-                    
+                    <canvas style="align-content: center;"id="graficoLucro"></canvas>
                 </div>
             </div>
         </div>
@@ -62,6 +62,6 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/index.js"></script>
+<script src="../_JS/graficoLucro.js"></script>
 </body>
 </html>

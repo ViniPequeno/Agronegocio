@@ -16,7 +16,12 @@ public class EstabelecimentoFuncionario {
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
-
+    
+    private String cargo;
+    private double salario;
+    private char situacao;
+    
+    private EstabelecimentoFuncionario(){}
     @Transient
     private static EstabelecimentoFuncionario getInstance;
 
@@ -52,4 +57,29 @@ public class EstabelecimentoFuncionario {
     }
     
     
+     public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public char getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(char situacao) {
+        this.situacao = situacao;
+    }
+    
+    
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
 }

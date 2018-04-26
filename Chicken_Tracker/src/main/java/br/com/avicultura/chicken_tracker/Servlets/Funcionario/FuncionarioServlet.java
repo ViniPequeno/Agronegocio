@@ -7,6 +7,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Funcionario;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
+import br.com.avicultura.chicken_tracker.Models.EstabelecimentoFuncionario;
 import br.com.avicultura.chicken_tracker.Models.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,20 +34,29 @@ public class FuncionarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HibernateUtil<Funcionario> hupf = new HibernateUtil<>();
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        HibernateUtil<EstabelecimentoFuncionario> hupef = new HibernateUtil<>();
+        EstabelecimentoFuncionario ef = EstabelecimentoFuncionario.getInstance();
+        String s = "";
         Funcionario f = Funcionario.getInstance();
         f.setNome(request.getParameter("inputNome"));
         f.setCPF(request.getParameter("inputCPF"));
-        f.setCargo(request.getParameter("inputCargo"));
         f.setRG(request.getParameter("inputRG"));
-        f.setSituacao('A');
-        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-        //f.getEstabelecimentos().add(e);
-        //f.getFuncionarios().add(f);
-        HibernateUtil<Funcionario> hup = new HibernateUtil<>();
-        PrintWriter out = response.getWriter();
-        String s = hup.salvar(f);
+        if (ConsultaFuncionario.findById(f.getCPF()) == null) {
+            s = hupf.salvar(f);
+        }
         if (s.equals("")) {
-            response.sendRedirect("seusNegocios/funcionarios.jsp");
+            ef.setFuncionario(f);
+            ef.setEstabelecimento(e);
+            ef.setCargo(request.getParameter("inputCargo"));
+            ef.setSalario(Double.parseDouble(request.getParameter("inputSalario")));
+            ef.setSituacao('A');
+            s = hupef.salvar(ef);
+        }
+        PrintWriter out = response.getWriter();
+        if (s.equals("")) {
+            response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else {
             out.print(s);
         }

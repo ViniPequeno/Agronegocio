@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.Produto;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,12 +28,10 @@ public class ProdutoDeleteServlet extends HttpServlet {
             throws ServletException, IOException {
         Produto p = Produto.getInstance();
         HibernateUtil<Produto> hup = new HibernateUtil<>();
-        PrintWriter out = response.getWriter();
         if (request.getParameter("inputCodigo") != null) {
             p.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
             String s = hup.deletar(p);
-            out.print(s);
-            response.sendRedirect("seusNegocios/negocios.jsp");
+            response.sendRedirect("seusNegocios/produtos.jsp");
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
@@ -40,7 +39,6 @@ public class ProdutoDeleteServlet extends HttpServlet {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
-            out.println(chkBoxIds.size());
             String[] codigo = new String[chkBoxIds.size()];
             int index = 0;
             for (String s : chkBoxIds) {
@@ -50,8 +48,9 @@ public class ProdutoDeleteServlet extends HttpServlet {
             for (index = 0; index < codigo.length; index++) {
                 p.setCodigo(Integer.parseInt(codigo[index]));
                 String s = hup.deletar(p);
-                out.print(s);
             }
+            Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+            response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getSufixoCNPJ());
         }
     }
 

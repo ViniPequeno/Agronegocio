@@ -18,9 +18,6 @@ public class Funcionario implements Serializable {
     private String RG;
     @Column(unique = true)
     private String nome;
-    private String cargo;
-    private double salario;
-    private char situacao;
 
     @ManyToMany(mappedBy = "funcionario")
     private List<EstabelecimentoFuncionario> estabelecimentos;
@@ -62,36 +59,13 @@ public class Funcionario implements Serializable {
         this.nome = nome;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public char getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(char situacao) {
-        this.situacao = situacao;
-    }
-
+   
     public List<EstabelecimentoFuncionario> getEstabelecimentos() {
         return estabelecimentos;
     }
 
     public void setEstabelecimentos(List<EstabelecimentoFuncionario> estabelecimentos) {
         this.estabelecimentos = estabelecimentos;
-    }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(double salario) {
-        this.salario = salario;
     }
 
 }

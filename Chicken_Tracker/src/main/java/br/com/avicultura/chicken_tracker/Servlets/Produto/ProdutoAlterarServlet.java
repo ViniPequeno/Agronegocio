@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.Produto;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,9 +35,8 @@ public class ProdutoAlterarServlet extends HttpServlet {
         //f.setEstabelecimentos();
         HibernateUtil<Produto> hup = new HibernateUtil<>();
         String s = hup.atualizar(p);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getSufixoCNPJ());
 
     }
 }

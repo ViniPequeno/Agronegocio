@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.LocalAves;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.LocalAves;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,9 +34,9 @@ public class LocalAvesAlterarServlet extends HttpServlet {
         //f.setEstabelecimentos();
         HibernateUtil<LocalAves> hup = new HibernateUtil<>();
         String s = hup.atualizar(l);
-        PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
+
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
 
     }
 

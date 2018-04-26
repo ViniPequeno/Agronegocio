@@ -8,7 +8,7 @@
 <div class="container">
     <div class="card mx-auto mt-5">
         <div class="card-body">
-            <form action="/Chicken_Tracker/EstabelecimentoServlet" method="post">
+            <form action="/Chicken_Tracker/EstabelecimentoServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Estabeleciemnto</p>
 
                 <!-- Material input text -->
@@ -40,7 +40,13 @@
         </div>
     </div>
 </div>
-
 <%@include file="../rodape.jsp" %>
+<script src="../_JS/mascara.js"></script>
+<script>
+    $('form[name="formCadastro"').submit(function () {
+        $('#inputSufixoCNPJ').unmask('0000-00');
+        $('#inputCNAE').unmask('00000-0/00');
+    });
+</script>
 </body>
 </html>
