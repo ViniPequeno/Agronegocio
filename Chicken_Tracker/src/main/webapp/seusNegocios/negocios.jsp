@@ -219,7 +219,7 @@
 
         $("#linkInstagram").text("Link da página do Instagram: " + instagram);
 
-        $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
+        $("#estabelecimentos").text("Estabelecimentos: " + campo);
 
         $("#fone1").text("Fone 1: " + fone1);
         $("#fone2").text("Fone 2: " + fone2);

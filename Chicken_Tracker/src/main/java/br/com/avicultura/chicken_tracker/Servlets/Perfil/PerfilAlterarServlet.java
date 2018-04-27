@@ -26,24 +26,28 @@ public class PerfilAlterarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Perfil p = Perfil.getInstance();
         PrintWriter out = response.getWriter();
-        out.print(request.getParameter("inputNome"));   
-        out.print(request.getParameter("inputEmail"));   
-        out.print(request.getParameter("inputSenha"));   
+        out.print(request.getParameter("inputNome"));
+        out.print(request.getParameter("inputEmail"));
+        out.print(request.getParameter("inputSenha"));
         p.setNome(request.getParameter("inputNome"));
         p.setUsuario(request.getParameter("inputUsuario"));
         p.setEmail(request.getParameter("inputEmail"));
         p.setSenha(request.getParameter("inputSenha"));
-        
+
         HttpSession sessao = request.getSession();
         p.setUsuario(((Perfil) sessao.getAttribute("usuario")).getUsuario());
         //p.setFoto(foto);
         //f.setEstabelecimentos();
+
+        sessao.setAttribute("usuario_logado", "true");
+        sessao.setAttribute("nome_usuario", p.getUsuario());
+        sessao.setAttribute("usuario", p);
         HibernateUtil<Perfil> hup = new HibernateUtil<>();
         String s = hup.atualizar(p);
-        out.print(s);   
+        out.print(s);
 
     }
 }

@@ -1,6 +1,6 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Perfil"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Perfil.ConsultaPerfil"%>
-<% String css = "../_CSS/login.css";%>
+<% String css = "../_CSS/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <%String login = (String) sessao.getAttribute("nome_usuario");
     Perfil p = ConsultaPerfil.findById(login);%>
@@ -11,41 +11,6 @@
                 <p class="h1 text-center mb-4">Sua conta</p>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="profile">
-                            <div class="photo ">
-                                <input type="file" name="inputFoto" accept="image/*">
-                                <div class="photo__helper">
-                                    <div class="photo__frame photo__frame--circle">
-                                        <canvas class="photo__canvas"></canvas>
-                                        <div class="message is-empty">
-                                            <p class="message--desktop">Arraste sua foto até aqui ou procure no seu PC.</p>
-                                            <p class="message--mobile">Aperte aqui para escolher sua foto</p>
-                                        </div>
-                                        <div class="message is-loading">
-                                            <i class="fa fa-2x fa-spin fa-spinner"></i>
-                                        </div>
-                                        <div class="message is-dragover">
-                                            <i class="fa fa-2x fa-cloud-upload"></i>
-                                            <p>Drop your photo</p>
-                                        </div>
-                                        <div class="message is-wrong-file-type">
-                                            <p>Only images allowed.</p>
-                                            <p class="message--desktop">Drop your photo here or browse your computer.</p>
-                                            <p class="message--mobile">Tap here to select your picture.</p>
-                                        </div>
-                                        <div class="message is-wrong-image-size">
-                                            <p>Your photo must be larger than 350px.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="photo_options hide">
-                                    <div class="photo_zoom">
-                                        <input type="range" class="zoom-handler">
-                                    </div><a href="javascript:;" class="remove"><i class="fa fa-trash"></i></a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-8">
                         <!-- Material input text -->
@@ -93,5 +58,6 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
+<script src="../fontawesome-free-5.0.8/_JS/profile-picture.js"></script>
 </body>
 </html>
