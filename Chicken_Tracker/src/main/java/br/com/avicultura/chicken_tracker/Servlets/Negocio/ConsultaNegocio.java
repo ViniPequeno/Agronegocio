@@ -22,6 +22,13 @@ public class ConsultaNegocio {
         Negocio n = s.get(Negocio.class, id);
         return n;
     }
+    
+    public static List<Negocio> returnList() {
+        Session s = HibernateFactory.getSession();
+        Query query = s.createQuery("from Negocio");
+        List<Negocio> lista = query.getResultList();
+        return lista;
+    }
 
     public static List<Negocio> returnList(String usuario) {
         Session s = HibernateFactory.getSession();
