@@ -25,7 +25,7 @@ public class ConsultaNegocio {
     
     public static List<Negocio> returnList() {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("* from Negocio");
+        Query query = s.createQuery("from Negocio");
         List<Negocio> lista = query.getResultList();
         return lista;
     }
