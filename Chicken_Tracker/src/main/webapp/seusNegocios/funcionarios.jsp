@@ -4,9 +4,11 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Funcionario" %>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
-    <!--Table-->
-    <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>
-    <h2 class="py-5 font-weight-bold text-left">Gerenciar Funcionários</h2>
+
+    <h2 class="py-5 font-weight-bold text-left">
+        <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
+            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>
+        Gerenciar Funcionários</h2>
 
     <%  List<Funcionario> funcionarios;
         funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"));
@@ -41,7 +43,7 @@
                 <!--Table body-->
                 <tbody>
                     <%  for (Funcionario f : funcionarios) {
-                    String dataFuncionario = ConsultaFuncionario.returnValues(f);%>
+                            String dataFuncionario = ConsultaFuncionario.returnValues(f);%>
                     <tr data-funcionario>
                         <th scope="row" class="pr-md-3 pr-5">
                             <input type="checkbox" id="checkbox<%=f.getCPF()%>">
@@ -98,7 +100,6 @@
             <!--Bottom Table UI-->
         </div> 
     </div>
-    <!--Table-->
     <!--Table-->
     <%} else {%>
     <h2 class="py-5 text-center">Nenhum funcionário registrado ainda</h2>

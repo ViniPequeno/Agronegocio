@@ -4,9 +4,9 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Produto" %>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
-    <!--Table-->
-    <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>"> Voltar </a>
-    <h2 class="py-5 font-weight-bold text-left">Lista de produtos</h2>
+    <h2 class="py-5 font-weight-bold text-left">
+        <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
+            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Lista de produtos</h2>
 
     <%  List<Produto> produtos;
         produtos = ConsultaProduto.returnList(request.getParameter("estabelecimento"));

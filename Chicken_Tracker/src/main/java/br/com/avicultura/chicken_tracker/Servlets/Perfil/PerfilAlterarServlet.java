@@ -7,15 +7,16 @@ package br.com.avicultura.chicken_tracker.Servlets.Perfil;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -29,14 +30,34 @@ public class PerfilAlterarServlet extends HttpServlet {
 
         Perfil p = Perfil.getInstance();
         PrintWriter out = response.getWriter();
-        out.print(request.getParameter("inputNome"));
-        out.print(request.getParameter("inputEmail"));
-        out.print(request.getParameter("inputSenha"));
+        out.println(request.getParameter("inputLogin"));
+        out.println(request.getParameter("inputNome"));
+        out.println(request.getParameter("inputEmail"));
+        out.println(request.getParameter("inputSenha") + " oi");
+
+        InputStream inputStream = null; // input stream of the upload file
+        Part filePart = request.getPart("inputFoto");
+        if (filePart != null) {
+            // prints out some information for debugging
+            out.println(filePart.getName());
+            out.println(filePart.getSize());
+            out.println(filePart.getContentType());
+
+            // obtains input stream of the upload file
+            inputStream = filePart.getInputStream();
+            int bytesRead;
+            ByteArrayOutputStream b = new ByteArrayOutputStream();
+            while ((bytesRead = inputStream.read()) != -1) {
+                b.write(bytesRead);
+            }
+            byte[] bytes = b.toByteArray();
+            p.setFoto(bytes);
+        }
+
         p.setNome(request.getParameter("inputNome"));
-        p.setUsuario(request.getParameter("inputUsuario"));
+        p.setUsuario(request.getParameter("inputLogin"));
         p.setEmail(request.getParameter("inputEmail"));
         p.setSenha(request.getParameter("inputSenha"));
-
         HttpSession sessao = request.getSession();
         p.setUsuario(((Perfil) sessao.getAttribute("usuario")).getUsuario());
         //p.setFoto(foto);

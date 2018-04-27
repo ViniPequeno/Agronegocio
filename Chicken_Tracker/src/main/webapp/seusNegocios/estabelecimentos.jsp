@@ -56,9 +56,9 @@
                         </th>
                         <td><%=e.getNegocio().getNome()%></td>
                         <td><%=e.getPerfil().getNome()%></td>
-                        <td><%=e.getCNAE()%></td>
+                        <td class="maskCNAE"><%=e.getCNAE()%></td>
                         <td><%=e.getEndereco()%></td>
-                        <td><%=e.getSufixoCNPJ()%></td>
+                        <td class="maskSufixoCNPJ"><%=e.getSufixoCNPJ()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
                                 <i class="fa fa-ellipsis-h mr-1" aria-hidden="true"></i></a></td>
                     </tr>
@@ -185,8 +185,8 @@
 
         var negocio = campo[0];
         var proprietario = campo[1];
-        var cnae = campo[2];
-        var sufixoCNPJ = campo[3];
+        var sufixoCNPJ = campo[2];
+        var cnae = campo[3];
         var endereco = campo[4];
         var qtdeFuncionarios = campo[5];
 
@@ -194,8 +194,10 @@
 
         $("#proprietario").text("Proprietário: " + proprietario);
 
+        cnae = cnae.replace(/^(\d{5})(\d{1})(\d{2}).*/, '$1-$2/$3');
         $("#cnae").text("CNAE: " + cnae);
 
+        sufixoCNPJ = sufixoCNPJ.replace(/^(\d{4})(\d{2}).*/, '$1-$2');
         $("#sufixoCNPJ").text("Sufixo do CNPJ: " + sufixoCNPJ);
 
         $("#endereco").text("Endereço: " + endereco);
@@ -222,10 +224,16 @@
             $('#inputCNAE').val(dataE[2]).trigger("change");
             $('#inputSufixoCNPJ').val(dataE[3]).trigger("change");
             $('#inputEndereco').val(dataE[4]).trigger("change");
+            var field = $('#inputSufixoCNPJ');
+            field.mask('0000-00', {reverse: false});
+            field = $('#inputCNAE');
+            field.mask('00000-0/00', {reverse: false});
         } else {
             formEditar.submit();
         }
     });
+    $('.maskSufixoCNPJ').mask('0000-00', {reverse: false});
+    $('.maskCNAE').mask('00000-0/00', {reverse: false});
 </script>
 </body>
 </html>

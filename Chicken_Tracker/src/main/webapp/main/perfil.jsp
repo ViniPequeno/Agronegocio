@@ -6,12 +6,12 @@
     Perfil p = ConsultaPerfil.findById(login);%>
 <div class="container">
     <div class="card mx-auto mt-5">
+        <div class="card-header">
+            <p class="h1 text-center mb-4">Sua conta</p>
+        </div>
         <div class="card-body">
-            <form action="/Chicken_Tracker/PerfilAlterarServlet" method="post" enctype='multipart/form-data'>
-                <p class="h1 text-center mb-4">Sua conta</p>
+            <form action="/Chicken_Tracker/PerfilAlterarServlet" method="post" enctype="multipart/form-data">
                 <div class="row">
-                    <div class="col-md-4">
-                    </div>
                     <div class="col-md-8">
                         <!-- Material input text -->
                         <div class="md-form">
@@ -47,6 +47,7 @@
                             <input type="password" id="inputConfirmarSenha" class="form-control" required maxlength="255">
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
+                        <input type="file" name="inputFoto" id="inputFoto" accept="image/*">
                     </div>
                 </div>
                 <div class="text-center mt-4">

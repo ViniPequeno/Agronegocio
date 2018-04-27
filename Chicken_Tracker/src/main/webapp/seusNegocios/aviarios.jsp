@@ -4,13 +4,14 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.LocalAves" %>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
-    <!--Table-->
-    <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>"> Voltar </a>
-    <h2 class="py-5 font-weight-bold text-left">Locais das aves</h2>
+    <h2 class="py-5 font-weight-bold text-left">
+        <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
+            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Locais das aves</h2>
 
     <%List<LocalAves> locaisAves;
         locaisAves = ConsultaLocalAves.returnList(request.getParameter("estabelecimento"));
         if (locaisAves.size() > 0) {%>
+    <!--Table-->
     <table class="table table-hover table-responsive-md btn-table">
         <!--Table head-->
         <thead class="mdb-color darken-3">
