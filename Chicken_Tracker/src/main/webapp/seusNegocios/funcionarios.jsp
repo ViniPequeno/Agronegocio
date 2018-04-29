@@ -25,17 +25,17 @@
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive-md btn-table">
+            <table id="tableDados" class="table table-hover table-responsive-lg btn-table">
                 <!--Table head-->
-                <thead class="mdb-color darken-3">
-                    <tr class="text-white">
+                <thead>
+                    <tr>
                         <th></th>
                         <th>Nome</th>
                         <th>Cargo</th>
                         <th>CPF</th>
                         <th>RG</th>
+                        <th>Salário</th>
                         <th>Situação</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <!--Table head-->
@@ -43,19 +43,21 @@
                 <!--Table body-->
                 <tbody>
                     <%  for (Funcionario f : funcionarios) {
-                            String dataFuncionario = ConsultaFuncionario.returnValues(f);%>
-                    <tr data-funcionario>
+                            String dataFuncionario = ConsultaFuncionario.returnValues(f, request.getParameter("estabelecimento"));
+                            String cargo = dataFuncionario.split("#")[3];
+                            String situacao = dataFuncionario.split("#")[4];
+                            double salario = Double.parseDouble(dataFuncionario.split("#")[5]);%>
+                    <tr data-funcionario="<%=dataFuncionario%>">
                         <th scope="row" class="pr-md-3 pr-5">
                             <input type="checkbox" id="checkbox<%=f.getCPF()%>">
                             <label for="checkbox<%=f.getCPF()%>" class="label-table"></label>
                         </th>
                         <td><%=f.getNome()%></td>
-                        <td>cargo</td>
-                        <td><%=f.getCPF()%></td>
-                        <td><%=f.getRG()%></td>
-                        <td>situacao</td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/funcionario.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
-                                <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
+                        <td><%=cargo%></td>
+                        <td class="maskCPF"><%=f.getCPF()%></td>
+                        <td class="maskRG"><%=f.getRG()%></td>
+                        <td class="maskSalario">R$ <%=salario%></td>
+                        <td><%=situacao%></td>
                     </tr>
                     <%}%>
                 </tbody>
@@ -105,8 +107,8 @@
     <h2 class="py-5 text-center">Nenhum funcionário registrado ainda</h2>
     <%}%>
 
-    <a href="../cadastro/funcionario.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo funcionário" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir funcionário(s) selecionado(s)" role="button">
+    <a href="../cadastro/funcionario.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo funcionário" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="" class="btn btn-danger btn-rounded mt-4" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir funcionário(s) selecionado(s)" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
 
     <!-- Modal -->
@@ -145,8 +147,8 @@
                     <p id="cargo"> Cargo:</p>
                     <p id="CPF"> CPF: </p>
                     <p id="RG"> RG: </p>
+                    <p id="salario"> Salário: R$</p>
                     <p id="situacao"> Situação: </p>
-                    <p id="estabelecimentos"> Locais de trabalho: </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
@@ -157,15 +159,17 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/formUtil.js"></script>
+<script src="../_JS/formUtils.js"></script>
+<script src="../_JS/mascara.js"></script>
+<script src="../_JS/maskMoney.js"></script>
 <script>
     var dataF = "";
-    var modalFuncInnerHTML = '<p id="nome"> Nome: </p>' +
+    var modalDetalhesInnerHTML = '<p id="nome"> Nome: </p>' +
             '<p id="cargo"> Cargo:</p>' +
             '<p id="CPF"> CPF: </p>' +
             '<p id="RG"> RG: </p>' +
-            '<p id="situacao"> Situação: </p>' +
-            '<p id="estabelecimentos"> Locais de trabalho: </p>';
+            '<p id="salario"> Salário: R$</p>' +
+            '<p id="situacao"> Situação: </p>';
     $("td").not(function () {
         return $("a", this).length != 0;
     }).click(function () {
@@ -176,26 +180,28 @@
         var linha = $(this).closest('tr');
         var dados = linha.data('funcionario').toString();
         var campo = dados.split("#");
-        dataP = campo;
+        dataF = campo;
 
-        var nome = campo[0];
-        var cargo = campo[1];
-        var CPF = campo[2];
-        var RG = campo[3];
+        var CPF = campo[0];
+        var nome = campo[1];
+        var RG = campo[2];
+        var cargo = campo[3];
         var situacao = campo[4];
-        var estabelecimentos = campo[5];
+        var salario = campo[5];
 
         $("#nome").text("Nome: " + nome);
 
         $("#cargo").text("Cargo: " + cargo);
 
+        CPF = CPF.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
         $("#CPF").text("CPF: " + CPF);
 
+        RG = RG.replace(/^(\d{2})(\d{3})(\d{3})(\d{1}).*/, '$1.$2.$3-$4');
         $("#RG").text("RG: " + RG);
 
         $("#situacao").text("Situação: " + situacao);
 
-        $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
+        $("#salario").text("Salário: R$ " + salario);
     });
 </script>
 <script>
@@ -212,6 +218,9 @@
             '<div class="md-form"><i class="fa fa-clipboard prefix grey-text"></i>' +
             '<input type="text" id="inputCargo" name="inputCargo" class="form-control" required maxlength="80">' +
             '<label for="inputCargo">Cargo</label></div>' +
+            '<div class="md-form"><i class="fa fa-money-bill-alt prefix grey-text"></i>' +
+            '<input type="text" id="inputSalario" name="inputSalario" class="form-control" required maxlength="80">' +
+            '<label for="inputSalario">Salário</label></div>' +
             '<div class="md-form"><i class="fa fa-clipboard-list prefix grey-text"></i>' +
             '<textarea id="inputSituacao" name="inputSituacao" class="form-control md-textarea" rows="3" required=""></textarea>' +
             '<label for="inputSituacao">Situação</label></div>' +
@@ -220,16 +229,21 @@
         if ($(this).text() == "Editar") {
             $(this).text("Confirmar");
             $("#bodyDetalhes").html(modalEditarInnerHTML);
-            $('#nome').val(dataP[0]).trigger("change");
-            $('#cargo').val(dataP[1]).trigger("change");
-            $('#CPF').val(dataP[2]).trigger("change");
-            $('#RG').val(dataP[3]).trigger("change");
-            $('#descricao').val(dataP[4]).trigger("change");
-            $('#estabelecimentos').val(dataP[5]).trigger("change");
+            $('#inputCPF').val(dataF[0]).trigger("change");
+            $('#inputNome').val(dataF[1]).trigger("change");
+            $('#inputRG').val(dataF[2]).trigger("change");
+            $('#inputCargo').val(dataF[3]).trigger("change");
+            $('#inputSituacao').val(dataF[4]).trigger("change");
+            $('#inputSalario').val(dataF[5]).trigger("change");
+            $('#inputCPF').mask('000.000.000-00', {reverse: false});
+            $('#inputRG').mask('00.000.000-0', {reverse: false});
+            $('#inputSalario').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','}).trigger('mask.maskMoney');
         } else {
             formEditar.submit();
         }
     });
+    $('.maskCPF').mask('000.000.000-00', {reverse: false});
+    $('.maskRG').mask('00.000.000-0', {reverse: false});
 </script>
 </body>
 </html>

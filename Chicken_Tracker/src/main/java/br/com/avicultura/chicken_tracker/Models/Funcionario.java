@@ -58,7 +58,6 @@ public class Funcionario implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
    
     public List<EstabelecimentoFuncionario> getEstabelecimentos() {
         return estabelecimentos;

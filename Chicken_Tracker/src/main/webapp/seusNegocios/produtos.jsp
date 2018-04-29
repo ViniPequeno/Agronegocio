@@ -25,14 +25,13 @@
             <!--Table-->
             <table class="table table-hover table-responsive-md btn-table" id="tableDados">
                 <!--Table head-->
-                <thead class="mdb-color darken-3">
-                    <tr class="text-white">
+                <thead>
+                    <tr>
                         <th> </th>
                         <th>Código</th>
                         <th>Nome</th>
                         <th>Qtde. atual</th>
                         <th>Estabelecimento</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <!--Table head-->
@@ -51,8 +50,6 @@
                         <td><%=p.getNome()%></td>
                         <td><%=p.getQuantidadeAtual()%></td>
                         <td><%=p.getEstabelecimento().getSufixoCNPJ()%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/produto.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Produto" role="button">
-                                <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>
                 </tbody>
@@ -203,22 +200,22 @@
 </script>
 <script>
     var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/ProdutoAlterarServlet" name="formEditar">' +
-            '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
+            '<div class="md-form"><i class="fa fa-hashtag prefix grey-text"></i>' +
             '<input type="text" id="inputCodigo" name="inputCodigo" class="form-control" required autofocus maxlength="20">' +
             '<label for="inputCodigo">Código</label> </div>' +
-            '<div class="md-form"><i class="fa fa-money-bill-alt prefix grey-text"></i>' +
+            '<div class="md-form"><i class="fa fa-book prefix grey-text"></i>' +
             '<input type="text" id="inputNome" name="inputNome" class="form-control" required maxlength="50">' +
             '<label for="inputNome">Nome</label></div>' +
-            '<div class="md-form"><i class="fa fa-id-badge prefix grey-text"></i>' +
+            '<div class="md-form"><i class="fa fa-clipboard-list prefix grey-text"></i>' +
             '<input type="text" id="inputDescricao" name="inputDescricao" class="form-control md-textarea" required maxlength="100">' +
             '<label for="inputDescricao">Descrição</label></div>' +
-            '<div class="md-form">    <i class="fa fa-id-card prefix grey-text"></i>' +
+            '<div class="md-form">    <i class="fa fa-inbox prefix grey-text"></i>' +
             '<input type="text" id="inputQtdeAtual" name="inputQtdeAtual" class="form-control" required maxlength="10">' +
             '<label for="inputQtdeAtual">Quantidade atual</label> </div>' +
-            '<div class="md-form">     <i class="far fa-id-card prefix grey-text"></i>' +
+            '<div class="md-form">     <i class="fa fa-box prefix grey-text"></i>' +
             '<input type="text" id="inputMinQtde" name="inputMinQtde" class="form-control" required maxlength="10">' +
             '<label for="inputMinQtde">Quantidade Mínima</label> </div>' +
-            '<div class="md-form">  <i class="fa fa-envelope prefix grey-text"></i>' +
+            '<div class="md-form">  <i class="fa fa-boxes prefix grey-text"></i>' +
             '<input type="text" id="inputMaxQtde" name="inputMaxQtde" class="form-control" required maxlength="10">' +
             '<label for="inputMaxQtde">Quantidade Máxima</label> </div>' +
             '</form>';

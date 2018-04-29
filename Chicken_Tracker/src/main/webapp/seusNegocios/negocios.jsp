@@ -5,8 +5,8 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <div class="container">
     <%  //Gera tabela se houver algum registro
-        List<Negocio> negocios;
-        negocios = ConsultaNegocio.returnList(sessao.getAttribute("nome_usuario").toString());
+        List<Negocio> negocios = null;
+        negocios = ConsultaNegocio.returnListOfPerfil(sessao.getAttribute("nome_usuario").toString());
         if (negocios.size() > 0) {
     %>
     <div class="card card-cascade narrower mt-5">
@@ -21,7 +21,7 @@
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive-md btn-table" id="tableDados">
+            <table class="table table-hover table-responsive-lg btn-table" id="tableDados">
                 <!--Table head-->
                 <thead>
                     <tr>
@@ -219,7 +219,7 @@
 
         $("#linkInstagram").text("Link da página do Instagram: " + instagram);
 
-        $("#estabelecimentos").text("Estabelecimentos: " + campo);
+        $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
 
         $("#fone1").text("Fone 1: " + fone1);
         $("#fone2").text("Fone 2: " + fone2);

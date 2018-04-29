@@ -23,16 +23,17 @@ public class ConsultaNegocio {
         return n;
     }
     
-    public static List<Negocio> returnList() {
+    public static List<Negocio> returnListOfName(String nome) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Negocio");
+        Query query = s.createQuery("from Negocio n where n.nome like '%nome%'");
+        query.setParameter("nome", nome);
         List<Negocio> lista = query.getResultList();
         return lista;
     }
 
-    public static List<Negocio> returnList(String usuario) {
+    public static List<Negocio> returnListOfPerfil(String usuario) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Negocio n where n.perfil.usuario =:usuario");
+        Query query = s.createQuery("from Negocio n where n.perfil.usuario =:usuario order by n.nome asc");
         query.setParameter("usuario", usuario);
         List<Negocio> lista = query.getResultList();
         return lista;

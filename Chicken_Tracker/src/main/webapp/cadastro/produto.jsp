@@ -9,42 +9,42 @@
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-user prefix grey-text"></i>
+                    <i class="fa fa-hashtag prefix grey-text"></i>
                     <input type="text" id="inputCodigo" name="inputCodigo" class="form-control" required autofocus maxlength="20">
                     <label for="inputCodigo">Código</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-money-bill-alt prefix grey-text"></i>
+                    <i class="fa fa-book prefix grey-text"></i>
                     <input type="text" id="inputNome" name="inputNome" class="form-control" required maxlength="50">
                     <label for="inputNome">Nome</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-id-badge prefix grey-text"></i>
+                    <i class="fa fa-clipboard-list prefix grey-text"></i>
                     <input type="text" id="inputDescricao" name="inputDescricao" class="form-control md-textarea" required maxlength="100">
                     <label for="inputDescricao">Descrição</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-id-card prefix grey-text"></i>
+                    <i class="fa fa-inbox prefix grey-text"></i>
                     <input type="text" id="inputQtdeAtual" name="inputQtdeAtual" class="form-control" required maxlength="10">
                     <label for="inputQtdeAtual">Quantidade atual</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="far fa-id-card prefix grey-text"></i>
+                    <i class="fa fa-box prefix grey-text"></i>
                     <input type="text" id="inputMinQtde" name="inputMinQtde" class="form-control" required maxlength="10">
                     <label for="inputMinQtde">Quantidade Mínima</label>
                 </div>
 
                 <!-- Material input email -->
                 <div class="md-form">
-                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <i class="fa fa-boxes prefix grey-text"></i>
                     <input type="text" id="inputMaxQtde" name="inputMaxQtde" class="form-control" required maxlength="10">
                     <label for="inputMaxQtde">Quantidade Máxima</label>
                 </div>

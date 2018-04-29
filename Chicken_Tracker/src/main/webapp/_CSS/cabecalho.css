@@ -9,6 +9,8 @@ and open the template in the editor.
     Author     : user
 */
 
+html { height: 100%; }
+
 body {
     padding-top: 56px;
 }

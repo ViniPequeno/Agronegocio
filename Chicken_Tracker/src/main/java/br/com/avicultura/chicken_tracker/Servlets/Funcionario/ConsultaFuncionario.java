@@ -6,8 +6,10 @@
 package br.com.avicultura.chicken_tracker.Servlets.Funcionario;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
+import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.EstabelecimentoFuncionario;
 import br.com.avicultura.chicken_tracker.Models.Funcionario;
+import br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
@@ -31,12 +33,12 @@ public class ConsultaFuncionario {
                 + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estabelecimento", estabelecimento);
         List<EstabelecimentoFuncionario> listaEF = query.getResultList();
-        
+
         List<Funcionario> lista = new ArrayList<>();
-        for(EstabelecimentoFuncionario ef : listaEF){
+        for (EstabelecimentoFuncionario ef : listaEF) {
             lista.add(ef.getFuncionario());
         }
-        
+
         return lista;
     }
 
@@ -47,12 +49,20 @@ public class ConsultaFuncionario {
         return lista;
     }
 
-    public static String returnValues(Funcionario f) {
+    public static String returnValues(Funcionario f, String estabelecimento) {
         String a = "";
         a += f.getCPF() + "#";
         //a += f.getCargo() + "#";
         a += f.getNome() + "#";
         a += f.getRG() + "#";
+        Estabelecimento e = ConsultaEstabelecimento.findById(estabelecimento);
+        for (EstabelecimentoFuncionario ef : f.getEstabelecimentos()) {
+            if (e.equals(ef.getEstabelecimento())) {
+                a += ef.getCargo() + "#";
+                a += ef.getSituacao()+ "#";
+                a += ef.getSalario()+ "#";
+            }
+        }
         //a += f.getSalario() + "#";
         //a += f.getSituacao() + "#";
 

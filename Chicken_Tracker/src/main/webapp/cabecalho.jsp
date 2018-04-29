@@ -1,7 +1,8 @@
 <%@page language="java" contentType="text/html; charset=utf-8"%>
+<!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <meta charset=”utf-8”>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script defer src="../fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.js"></script>
         <link rel="stylesheet" type="text/css" href="../Bootstrap/_CSS/bootstrap.css">

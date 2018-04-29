@@ -34,15 +34,20 @@ public class FuncionarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         HibernateUtil<Funcionario> hupf = new HibernateUtil<>();
-        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         HibernateUtil<EstabelecimentoFuncionario> hupef = new HibernateUtil<>();
+        
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         EstabelecimentoFuncionario ef = EstabelecimentoFuncionario.getInstance();
+        
         String s = "";
         Funcionario f = Funcionario.getInstance();
+        
         f.setNome(request.getParameter("inputNome"));
         f.setCPF(request.getParameter("inputCPF"));
         f.setRG(request.getParameter("inputRG"));
+        
         if (ConsultaFuncionario.findById(f.getCPF()) == null) {
             s = hupf.salvar(f);
         }
@@ -54,7 +59,6 @@ public class FuncionarioServlet extends HttpServlet {
             ef.setSituacao('A');
             s = hupef.salvar(ef);
         }
-        PrintWriter out = response.getWriter();
         if (s.equals("")) {
             response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else {

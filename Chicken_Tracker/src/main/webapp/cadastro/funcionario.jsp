@@ -38,7 +38,7 @@
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-clipboard prefix grey-text"></i>
+                    <i class="fa fa-money-bill-alt prefix grey-text"></i>
                     <input type="text" id="inputSalario" name="inputSalario" class="form-control" required maxlength="80">
                     <label for="inputSalario">Salario</label>
                 </div>
@@ -63,9 +63,14 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/validador-de-cpf.js"></script>
 <script src="../_JS/mascara.js"></script>
+<script src="../_JS/maskMoney.js"></script>
 <script>
+    $('#inputSalario').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
     $('form[name="formCadastro"').submit(function () {
-        $('#inputSalario').unmask('R$ 000000-00');
+        $('#inputSalario').maskMoney('destroy');
+        $('#inputSalario').maskMoney({thousands: '', decimal: '.'});
+        $('#inputSalario').maskMoney('mask');
+        alert($('#inputSalario').val());
         $('#inputCPF').unmask('000.000.000-00');
         $('#inputRG').unmask('00.000.000-0');
     });

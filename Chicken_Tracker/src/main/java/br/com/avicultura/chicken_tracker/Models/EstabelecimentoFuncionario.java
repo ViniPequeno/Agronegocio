@@ -56,8 +56,7 @@ public class EstabelecimentoFuncionario {
         this.funcionario = funcionario;
     }
     
-    
-     public String getCargo() {
+    public String getCargo() {
         return cargo;
     }
 
@@ -72,7 +71,6 @@ public class EstabelecimentoFuncionario {
     public void setSituacao(char situacao) {
         this.situacao = situacao;
     }
-    
     
     public double getSalario() {
         return salario;

@@ -13,7 +13,6 @@
 <div class="container card">
     <!--Section: Features v.3-->
     <section>
-        <h1 id="oi">123456</h1>
         <!--Section heading-->
         <h2 class="py-5 font-weight-bold text-center">Por que é tão bom?</h2>
         <!--Section description-->

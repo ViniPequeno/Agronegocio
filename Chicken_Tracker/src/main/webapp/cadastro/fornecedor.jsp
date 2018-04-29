@@ -17,7 +17,7 @@
                 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-money-bill-alt prefix grey-text"></i>
+                    <i class="fa fa-box prefix grey-text"></i>
                     <input type="text" id="inputQtde" name="inputQtde" class="form-control" required  maxlength="5">
                     <label for="inputQtde">Quantidade</label>
                 </div>
@@ -45,6 +45,9 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
+<script src="../_JS/maskMoney.js"></script>
+<script>
+    $('#inputValorPagamento').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
+</script>
 </body>
-
 </html>

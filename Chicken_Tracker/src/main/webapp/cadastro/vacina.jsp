@@ -16,14 +16,14 @@
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-money-bill-alt prefix grey-text"></i>
+                    <i class="fa fa-calendar prefix grey-text"></i>
                     <input type="text" id="inputDataPrimeiraVacina" name="inputDataPrimeiraVacina" class="form-control" required maxlength="10">
-                    <label for="inputDataPrimeiraVacina">Data da última vacina:</label>
+                    <label for="inputDataPrimeiraVacina">Data da primeira vacina:</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
-                    <i class="fa fa-id-badge prefix grey-text"></i>
+                    <i class="fa fa-calendar-plus prefix grey-text"></i>
                     <input type="text" id="inputDataProximaVacina" name="inputDataProximaVacina" class="form-control" required maxlength="10">
                     <label for="inputDataProximaVacina">Data da próxima vacina</label>
                 </div>
