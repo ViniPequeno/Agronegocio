@@ -28,6 +28,7 @@ public class ProdutoDeleteServlet extends HttpServlet {
             throws ServletException, IOException {
         Produto p = Produto.getInstance();
         HibernateUtil<Produto> hup = new HibernateUtil<>();
+        PrintWriter w = response.getWriter();
         if (request.getParameter("inputCodigo") != null) {
             p.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
             String s = hup.deletar(p);
@@ -38,6 +39,7 @@ public class ProdutoDeleteServlet extends HttpServlet {
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
+                w.println(parameterName);
             }
             String[] codigo = new String[chkBoxIds.size()];
             int index = 0;
@@ -48,6 +50,7 @@ public class ProdutoDeleteServlet extends HttpServlet {
             for (index = 0; index < codigo.length; index++) {
                 p.setCodigo(Integer.parseInt(codigo[index]));
                 String s = hup.deletar(p);
+                w.print(s);
             }
             Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
             response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getSufixoCNPJ());

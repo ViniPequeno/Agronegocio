@@ -43,7 +43,7 @@
                     %>
                     <tr data-produto="<%=dataProduto%>">
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input form="checks" type="checkbox" id="checkbox!<%=p.getCodigo()%>">
+                            <input form="checks" type="checkbox" id="checkbox!<%=p.getCodigo()%>" name="checkbox!<%=p.getCodigo()%>">
                             <label for="checkbox!<%=p.getCodigo()%>" class="label-table"></label>
                         </th>
                         <td><%=p.getCodigo()%></td>
