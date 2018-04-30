@@ -32,28 +32,32 @@ public class FornecedorServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Fornecimento f = Fornecimento.getInstance();
-        PrintWriter out = response.getWriter();
-        f.setCNPJ(request.getParameter("inputCNPJ"));
-        if (ConsultaFornecedores.findById(f.getCNPJ()) == null) {
-            f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
-            f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
+        if (request.getParameter("fornecedor").equals("pagar")) {
+            Pagamento p = Pagamento.getInstance();
+        } else {
+            Fornecimento f = Fornecimento.getInstance();
+            PrintWriter out = response.getWriter();
+            f.setCNPJ(request.getParameter("inputCNPJ"));
+            if (ConsultaFornecedores.findById(f.getCNPJ()) == null) {
+                f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
+                f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
 
-            DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
-            try {
-                f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
-            } catch (ParseException ex) {
-            }
+                DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+                try {
+                    f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
+                } catch (ParseException ex) {
+                }
 
-            f.setTipo('C');
-            Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-            f.setEstabelecimento(e);
-            HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
-            String s = hup.salvar(f);
-            if (s.equals("")) {
-                response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
-            } else {
-                out.print(s);
+                f.setTipo('C');
+                Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+                f.setEstabelecimento(e);
+                HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
+                String s = hup.salvar(f);
+                if (s.equals("")) {
+                    response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                } else {
+                    out.print(s);
+                }
             }
         }
     }

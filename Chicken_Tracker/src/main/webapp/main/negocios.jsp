@@ -23,7 +23,7 @@
                     </div>
                 </form>
             </div>
-            <%  if(request.getParameter("search") != null){
+            <%  if(request.getParameter("search").equals("")){
                     String search = request.getParameter("search");
                     List<Negocio> negocios;
                     negocios = ConsultaNegocio.returnListOfName(search);

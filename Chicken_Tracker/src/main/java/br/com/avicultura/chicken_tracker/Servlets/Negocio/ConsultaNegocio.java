@@ -25,8 +25,8 @@ public class ConsultaNegocio {
     
     public static List<Negocio> returnListOfName(String nome) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Negocio n where n.nome like '%nome%'");
-        query.setParameter("nome", nome);
+        Query query = s.createQuery("from Negocio");
+        //query.setParameter("nome", "");
         List<Negocio> lista = query.getResultList();
         return lista;
     }

@@ -37,7 +37,7 @@
                 </div>
                 
                 <div class="text-center mt-4">
-                    <button class="btn btn-primary" type="submit">Confirmar</button>
+                    <button class="btn btn-primary" name="fornecedor" value="cadastrar" type="submit">Confirmar</button>
                 </div>
             </form>
             <!-- Material form register -->
