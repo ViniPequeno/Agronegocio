@@ -50,7 +50,7 @@
                     Lucro diário
                 </div>
                 <div class="card-body">
-                    <canvas style="align-content: center;"id="graficoLucro"></canvas>
+                    <canvas style="align-content: center;" id="graficoLucro"></canvas>
                 </div>
             </div>
         </div>

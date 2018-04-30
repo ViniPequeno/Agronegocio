@@ -1,4 +1,4 @@
-<% String css = "";%>
+<% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Fornecimento.ConsultaFornecimento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Fornecimento" %>
@@ -25,8 +25,8 @@
             <!--Table-->
             <table class="table table-hover table-responsive-md btn-table" id="tableDados">
                 <!--Table head-->
-                <thead class="mdb-color darken-3">
-                    <tr class="text-white">
+                <thead>
+                    <tr>
                         <th> </th>
                         <th>CNPJ</th>
                         <th>Preço</th>
@@ -42,7 +42,7 @@
                     <%  for (Fornecimento f : fornecimentos) {%>
                     <tr>
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input type="checkbox" id="checkbox<%=f.getCNPJ()%>">
+                            <input type="checkbox" id="checkbox<%=f.getCNPJ()%>" name="checkbox<%=f.getCNPJ()%>">
                             <label for="checkbox<%=f.getCNPJ()%>" class="label-table"></label>
                         </th>
                         <td><%=f.getCNPJ()%></td>
@@ -99,8 +99,8 @@
     <%} else {%>
     <h2 class="py-5 text-center">Nenhum fornecimento registrado ainda</h2>
     <%}%>
-    <a href="../cadastro/fornecimento.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir fornecimento selecionados" role="button">
+    <a href="../cadastro/fornecimento.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="" class="btn btn-danger btn-rounded mt-4" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir fornecimento selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
 
     <!-- Modal -->
@@ -122,6 +122,7 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/formUtil.js"></script>
+<script src="../_JS/formUtils.js"></script>
+<script src="../_JS/mascara.js"></script>
 </body>
 </html>

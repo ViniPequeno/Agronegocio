@@ -7,7 +7,7 @@ var myLineChart = new Chart(ctxL, {
         color: "rgba(0,0,0,1.0)",
         datasets: [
             {
-                label: "Lucro",
+                label: "Ganhos",
                 backgroundColor: "rgba(220,220,220,0.2)",
                 borderWidth: 2,
                 borderColor: "rgba(150,200,0,1)",

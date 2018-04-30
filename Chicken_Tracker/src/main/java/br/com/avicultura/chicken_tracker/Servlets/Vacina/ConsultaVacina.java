@@ -7,9 +7,9 @@ package br.com.avicultura.chicken_tracker.Servlets.Vacina;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Vacina;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.Query;
-import javax.persistence.TemporalType;
 import org.hibernate.Session;
 
 /**
@@ -32,11 +32,13 @@ public class ConsultaVacina {
 
     public static String returnValues(Vacina v) {
         String a = "";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         a += v.getCodigo() + "#";
         a += v.getNome() + "#";
         a += v.getDescricao() + "#";
-        a += v.getDataRealizada() + "#";
-        a += v.getDataProxima() + "#";
+        a += dateFormat.format(v.getDataRealizada()) + "#";
+        a += dateFormat.format(v.getDataProxima()) + "#";
+        a += v.getEstabelecimento().getSufixoCNPJ()+ "#";
 
         return a;
     }

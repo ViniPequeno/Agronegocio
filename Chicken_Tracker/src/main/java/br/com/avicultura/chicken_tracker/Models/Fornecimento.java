@@ -20,7 +20,7 @@ public class Fornecimento implements Serializable {
     private String CNPJ;
     private int quantidade;
     private double pagamento;
-    private String vencimento;
+    private Date vencimento;
     private char tipo;
 
     @ManyToOne
@@ -76,11 +76,11 @@ public class Fornecimento implements Serializable {
         this.pagamento = pagamento;
     }
 
-    public String getVencimento() {
+    public Date getVencimento() {
         return vencimento;
     }
 
-    public void setVencimento(String vencimento) {
+    public void setVencimento(Date vencimento) {
         this.vencimento = vencimento;
     }
 
@@ -100,11 +100,11 @@ public class Fornecimento implements Serializable {
         this.produto = produto;
     }
 
-    public Estabelecimento getEstabelecimentos() {
+    public Estabelecimento getEstabelecimento() {
         return estabelecimento;
     }
 
-    public void setEstabelecimentos(Estabelecimento estabelecimento) {
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
         this.estabelecimento = estabelecimento;
     }
 

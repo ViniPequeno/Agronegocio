@@ -1,10 +1,11 @@
 <% String css = "";%>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
-    <!--Table-->
-    <a href="estabelecimento.jsp"> Voltar </a>
-    <h2 class="py-5 font-weight-bold text-left">Desempenho</h2>
+    <h2 class="py-5 font-weight-bold text-left">
+        <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
+            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Desempenho</h2>
 
+    <!--Table-->
     <table class="table table-hover table-responsive-md btn-table">
         <!--Table head-->
         <thead class="mdb-color darken-3">

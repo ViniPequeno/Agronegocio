@@ -16,14 +16,14 @@
             <hr class="clearfix w-100 d-md-none">
 
             <!--Second column-->
-            <div class="col-md-7 text-md-right">
+            <div class="col-md-8 text-md-right">
                 <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Links</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2" >
                         <a href="../main/negocios.jsp">Negócios</a>
                     </li>
                     <li class="mb-2" >
-                        <a href="../main/seu_negocio.jsp">Seus negócios</a>
+                        <a href="../seusNegocios/negocios.jsp">Seus negócios</a>
                     </li>
                     <li class="mb-2" >
                         <a href="#">Ajuda</a>

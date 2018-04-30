@@ -19,7 +19,7 @@ public class Funcionario implements Serializable {
     @Column(unique = true)
     private String nome;
 
-    @ManyToMany(mappedBy = "funcionario")
+    @OneToMany(mappedBy = "funcionario")
     private List<EstabelecimentoFuncionario> estabelecimentos;
 
     private Funcionario() {

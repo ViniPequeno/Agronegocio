@@ -10,6 +10,9 @@ import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Vacina;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +36,14 @@ public class VacinaServlet extends HttpServlet {
         Vacina v = Vacina.getInstance();
         v.setNome(request.getParameter("inputNome"));
         v.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
-        //v.setDataProxima(request.getParameter("inputDataProxima"));
-        //v.setDataRealizada(request.getParameter("inputDataRealizada"));
+        
+        DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+        try {
+            v.setDataRealizada(formatter.parse(request.getParameter("inputDataPrimeiraVacina")));
+            v.setDataProxima(formatter.parse(request.getParameter("inputDataProximaVacina")));
+        } catch (ParseException ex) {
+        }
+        
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         v.setEstabelecimento(e);
         v.setDescricao(request.getParameter("inputDescricao"));

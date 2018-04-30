@@ -26,7 +26,7 @@
                 <div class="md-form">
                     <i class="fa fa-money-bill-alt prefix grey-text"></i>
                     <input type="text" id="inputValorPagamento" name="inputValorPagamento" class="form-control" required maxlength="20">
-                    <label for="inputFormaPagamento">Valor do pagamento</label>
+                    <label for="inputValorPagamento">Valor do pagamento</label>
                 </div>
 
                 <!-- Material input text -->
@@ -45,6 +45,7 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
+<script src="../_JS/mascara.js"></script>
 <script src="../_JS/maskMoney.js"></script>
 <script>
     $('#inputValorPagamento').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});

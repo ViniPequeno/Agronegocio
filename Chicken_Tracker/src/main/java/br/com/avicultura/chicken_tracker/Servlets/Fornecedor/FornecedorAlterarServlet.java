@@ -11,6 +11,9 @@ import br.com.avicultura.chicken_tracker.Models.Fornecimento;
 import br.com.avicultura.chicken_tracker.Models.Negocio;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,14 +32,20 @@ public class FornecedorAlterarServlet extends HttpServlet {
         f.setCNPJ(request.getParameter("inputCNPJ"));
         f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
         f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
-        f.setVencimento(request.getParameter("inputDataVencimento"));
+
+        DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+        try {
+            f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
+        } catch (ParseException ex) {
+        }
+
         f.setTipo('C');
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        f.setEstabelecimento(e);
         HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
         String s = hup.atualizar(f);
         PrintWriter out = response.getWriter();
         out.print(s);
-        response.sendRedirect("seusNegocios/negocios.jsp");
-        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
 
     }

@@ -1,4 +1,4 @@
-<% String css = "";%>
+<% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Funcionario.ConsultaFuncionario" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Funcionario" %>
@@ -49,7 +49,7 @@
                             double salario = Double.parseDouble(dataFuncionario.split("#")[5]);%>
                     <tr data-funcionario="<%=dataFuncionario%>">
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input type="checkbox" id="checkbox<%=f.getCPF()%>">
+                            <input type="checkbox" id="checkbox<%=f.getCPF()%>" name="checkbox<%=f.getCPF()%>">
                             <label for="checkbox<%=f.getCPF()%>" class="label-table"></label>
                         </th>
                         <td><%=f.getNome()%></td>

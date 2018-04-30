@@ -1,4 +1,4 @@
-<% String css = "";%>
+<% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Produto" %>
@@ -136,7 +136,7 @@
                     </button>
                 </div>
                 <div class="modal-body" id='bodyDetalhes'>
-                    <p id="codigo"> Código </p>
+                    <p id="codigo"> Código: </p>
                     <p id="nome"> Nome: </p>
                     <p id="qtdeAtual"> Em estoque: </p>
                     <p id="qtdeMin"> Quantidade Mínima: </p>

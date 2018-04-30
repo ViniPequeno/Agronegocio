@@ -45,6 +45,7 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
+<script src="../_JS/mascara.js"></script>
 <script src="../_JS/maskMoney.js"></script>
 <script>
     $('#inputValorPagamento').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
