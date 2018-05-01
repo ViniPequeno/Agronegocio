@@ -50,13 +50,19 @@ public class FornecedorServlet extends HttpServlet {
             p.setAno(ano);
             p.setEstabelecimento(e);
             p.setTipo('G');
-            List<Fornecimento> list = ConsultaFornecedores.returnList(e.getSufixoCNPJ());
             f = ConsultaFornecedores.findById(fornecedor);
-            for(Fornecimento f1 :list){
-                p.setValor(f.getPagamento());
-                
+            p.setValor(f.getPagamento());
+            p.setDescricao("Pagamento do fornecedor " + f.getCNPJ() + " no valor: " + p.getValor()
+                        + "referente ao produto "+f.getProdutos().getNome()+ " quantidade igual a"
+                        +f.getQuantidade() + "na data " + p.getDia() 
+                        + "/" + p.getMes() + "/" + p.getAno());
+            HibernateUtil<Pagamento> hup = new HibernateUtil<>();
+            s = hup.salvar(p);
+            if (s.equals("")) {
+                response.sendRedirect("seusNegocios/fornecedor.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            } else {
+                out.print(s);
             }
-            
         } else {
             f.setCNPJ(request.getParameter("inputCNPJ"));
             if (ConsultaFornecedores.findById(f.getCNPJ()) == null) {
