@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,11 +34,30 @@ public class FornecedorServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("fornecedor").equals("pagar")) {
+        Fornecimento f = Fornecimento.getInstance();
+        PrintWriter out = response.getWriter();
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        String s = "";
+        if (request.getParameter("fornecedor").contains("pagar-")) {
             Pagamento p = Pagamento.getInstance();
+            GregorianCalendar gc = new GregorianCalendar();
+            int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
+            int mes = gc.get(GregorianCalendar.MONTH+1);
+            int ano = gc.get(GregorianCalendar.YEAR);
+            String fornecedor = request.getParameter("fornecedor").substring(6);
+            p.setDia(dia);
+            p.setMes(mes);
+            p.setAno(ano);
+            p.setEstabelecimento(e);
+            p.setTipo('G');
+            List<Fornecimento> list = ConsultaFornecedores.returnList(e.getSufixoCNPJ());
+            f = ConsultaFornecedores.findById(fornecedor);
+            for(Fornecimento f1 :list){
+                p.setValor(f.getPagamento());
+                
+            }
+            
         } else {
-            Fornecimento f = Fornecimento.getInstance();
-            PrintWriter out = response.getWriter();
             f.setCNPJ(request.getParameter("inputCNPJ"));
             if (ConsultaFornecedores.findById(f.getCNPJ()) == null) {
                 f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
@@ -49,10 +70,10 @@ public class FornecedorServlet extends HttpServlet {
                 }
 
                 f.setTipo('C');
-                Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+                
                 f.setEstabelecimento(e);
                 HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
-                String s = hup.salvar(f);
+                s = hup.salvar(f);
                 if (s.equals("")) {
                     response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
                 } else {

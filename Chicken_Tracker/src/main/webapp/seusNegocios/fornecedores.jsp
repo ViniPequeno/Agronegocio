@@ -52,6 +52,13 @@
                         <td><%=f.getVencimento()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../cadastro/fornecedor.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Fornecedor" role="button">
                                 <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
+                        <td>
+                            <form method="post" action="/Chicken_Tracker/FornecedorServlet">
+                                <button type="submit" name="fornecedor" value="pagar-<%=f.getCNPJ()%>">
+                                    Efetuar
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     <%}%>
                 </tbody>

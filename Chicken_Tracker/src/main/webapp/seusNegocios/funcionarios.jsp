@@ -9,6 +9,14 @@
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>
         Gerenciar Funcionários</h2>
+            
+            <div> 
+             <form method="post" action="/Chicken_Tracker/FuncionarioServlet">
+                  <button type="submit" name="funcionario" value="pagar">  
+                      Pagar todos
+                  </button>
+            </form>
+            </div> 
 
     <%  List<Funcionario> funcionarios;
         funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"));
@@ -29,7 +37,7 @@
                 <!--Table head-->
                 <thead>
                     <tr>
-                        <th></th>
+                           <th></th>
                         <th>Nome</th>
                         <th>Cargo</th>
                         <th>CPF</th>

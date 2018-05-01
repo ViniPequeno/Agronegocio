@@ -18,8 +18,13 @@ public class Pagamento implements Serializable {
     private int dia;
     private int mes;
     private int ano;
+    private double valor;
     private String descricao;
     private char tipo;
+    
+    @ManyToOne
+    @JoinColumn(name = "estabelecimento_id", nullable = false)
+    private Estabelecimento estabelecimento;
 
     private Pagamento() {
     }
@@ -81,4 +86,22 @@ public class Pagamento implements Serializable {
         this.tipo = tipo;
     }
 
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    
+    
 }

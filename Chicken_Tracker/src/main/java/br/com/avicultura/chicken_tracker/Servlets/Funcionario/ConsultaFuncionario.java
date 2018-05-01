@@ -42,6 +42,16 @@ public class ConsultaFuncionario {
         return lista;
     }
 
+    public static List<EstabelecimentoFuncionario> returnListFuncionario(String estabelecimento) {
+        Session s = HibernateFactory.getSession();
+        Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
+                + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
+        query.setParameter("estabelecimento", estabelecimento);
+        List<EstabelecimentoFuncionario> listaEF = query.getResultList();
+
+        return listaEF;
+    }
+
     public static List<Funcionario> returnList() {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Funcionario");
@@ -59,8 +69,8 @@ public class ConsultaFuncionario {
         for (EstabelecimentoFuncionario ef : f.getEstabelecimentos()) {
             if (e.equals(ef.getEstabelecimento())) {
                 a += ef.getCargo() + "#";
-                a += ef.getSituacao()+ "#";
-                a += ef.getSalario()+ "#";
+                a += ef.getSituacao() + "#";
+                a += ef.getSalario() + "#";
             }
         }
         //a += f.getSalario() + "#";

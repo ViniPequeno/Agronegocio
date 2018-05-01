@@ -29,6 +29,8 @@ public class Estabelecimento implements Serializable {
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Produto> produtos;
     
+    @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
+    private List<Pagamento> pagamentos;
     
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Fornecimento> fornecimentos;
