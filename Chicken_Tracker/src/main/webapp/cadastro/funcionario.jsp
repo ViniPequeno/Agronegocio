@@ -67,10 +67,8 @@
 <script>
     $('#inputSalario').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
     $('form[name="formCadastro"').submit(function () {
-        $('#inputSalario').maskMoney('destroy');
-        $('#inputSalario').maskMoney({thousands: '', decimal: '.'});
-        $('#inputSalario').maskMoney('mask');
-        alert($('#inputSalario').val());
+        var value = $('#inputSalario').maskMoney('unmasked')[0];
+        $('#inputSalario').val(value);
         $('#inputCPF').unmask('000.000.000-00');
         $('#inputRG').unmask('00.000.000-0');
     });
