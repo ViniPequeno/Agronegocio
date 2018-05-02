@@ -10,7 +10,6 @@
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
             <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
         </div>
-            <% System.out.println("Entrou aqui");%>
             <div class="md-form mb-5">
                 <form method="get" action="negocios.jsp">
                     <div class="row">
@@ -24,18 +23,16 @@
                     </div>
                 </form>
             </div>
-        <% System.out.println("Entrou aqui");%>
             <%  
                 List<Negocio> negocios;
                 if(request.getParameter("search") != null){
                     String search = request.getParameter("search");
-                    negocios = ConsultaNegocio.returnListOfName(search);
+                    negocios = ConsultaNegocio.returnListBySearch(search);
                 }else{
                     negocios = ConsultaNegocio.returnList();
                 }
                 if (negocios.size() > 0) {
             %>
-            <% System.out.println("Entrou aqui 2");%>
             <table class="table table-hover table-responsive-md btn-table table-bordered" style="margin-bottom: 20px">
                 <thead class="thead-dark">
                     <tr class="text-white">
@@ -54,7 +51,7 @@
                     %>   
                         <tr data-negocio="<%=data%>">
                             <td><%=n.getNome()%></td>
-                            <td><%=n.getNome()%></td>
+                            <td><%=n.getPerfil().getNome()%></td>
                             <td><%=n.getEmpresaCNPJ()%></td>
                             <td><%=n.getLinkEmail()%></td>
                             <%

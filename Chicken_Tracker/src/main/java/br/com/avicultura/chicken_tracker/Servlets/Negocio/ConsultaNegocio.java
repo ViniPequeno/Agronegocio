@@ -23,10 +23,10 @@ public class ConsultaNegocio {
         return n;
     }
     
-    public static List<Negocio> returnListOfName(String nome) {
+    public static List<Negocio> returnListBySearch(String nome) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Negocio");
-        //query.setParameter("search", nome);
+        Query query = s.createQuery("from Negocio as n where n.nome = '%:search%'");
+        query.setParameter("search", nome);
         List<Negocio> lista = query.getResultList();
         return lista;
     }
