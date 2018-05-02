@@ -26,7 +26,14 @@ public class ConsultaNegocio {
     public static List<Negocio> returnListOfName(String nome) {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Negocio");
-        //query.setParameter("nome", "");
+        //query.setParameter("search", nome);
+        List<Negocio> lista = query.getResultList();
+        return lista;
+    }
+    
+    public static List<Negocio> returnList() {
+        Session s = HibernateFactory.getSession();
+        Query query = s.createQuery("from Negocio");
         List<Negocio> lista = query.getResultList();
         return lista;
     }
