@@ -17,6 +17,7 @@ public class Estabelecimento implements Serializable {
     private String sufixoCNPJ;
     private String CNAE;
     private String endereco;
+    private double saldo;
 
     @ManyToOne
     @JoinColumn(name = "perfil_id")
@@ -45,6 +46,10 @@ public class Estabelecimento implements Serializable {
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Vacina> vacinas;
 
+    @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
+    private List<Producao> producoes;
+    
+    
     private Estabelecimento() {
     }
 
@@ -138,4 +143,21 @@ public class Estabelecimento implements Serializable {
         this.vacinas = vacinas;
     }
 
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public List<Pagamento> getPagamentos() {
+        return pagamentos;
+    }
+
+    public void setPagamentos(List<Pagamento> pagamentos) {
+        this.pagamentos = pagamentos;
+    }
+
+    
 }

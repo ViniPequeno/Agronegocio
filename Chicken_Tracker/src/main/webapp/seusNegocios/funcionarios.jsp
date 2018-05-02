@@ -57,7 +57,7 @@
                             double salario = Double.parseDouble(dataFuncionario.split("#")[5]);%>
                     <tr data-funcionario="<%=dataFuncionario%>">
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input type="checkbox" id="checkbox!<%=f.getCPF()%>" name="checkbox!<%=f.getCPF()%>">
+                            <input form="checks" type="checkbox" id="checkbox!<%=f.getCPF()%>" name="checkbox!<%=f.getCPF()%>">
                             <label for="checkbox!<%=f.getCPF()%>" class="label-table"></label>
                         </th>
                         <td><%=f.getNome()%></td>

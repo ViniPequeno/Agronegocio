@@ -3,7 +3,9 @@ package br.com.avicultura.chicken_tracker.Models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  *
@@ -23,9 +25,16 @@ public class LocalAves implements Serializable {
     private String dataFechamento;
     
     @ManyToOne
-    @JoinColumn(name = "Estabelecimento_id")
+    @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
 
+    @ManyToOne
+    @JoinColumn(name ="produto_id")
+    private Produto produto;
+    
+    @OneToMany(cascade = ALL, mappedBy = "localave")
+    private List<Producao> producoes;
+    
     private LocalAves() {
     }
 
@@ -104,4 +113,14 @@ public class LocalAves implements Serializable {
         this.estabelecimento = estabelecimento;
     }
 
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+    
+    
+    
 }

@@ -52,6 +52,7 @@ Contributor(s):
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="br.com.avicultura.chicken_tracker.Models.Perfil"/>
     <mapping class="br.com.avicultura.chicken_tracker.Models.Pagamento"/>
+    <mapping class="br.com.avicultura.chicken_tracker.Models.Producao"/>
     <mapping class="br.com.avicultura.chicken_tracker.Models.Estabelecimento"/>
     <mapping class="br.com.avicultura.chicken_tracker.Models.EstabelecimentoFuncionario"/>
     <mapping class="br.com.avicultura.chicken_tracker.Models.Fornecimento"/>

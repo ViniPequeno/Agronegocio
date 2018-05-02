@@ -36,24 +36,25 @@ public class LocalAvesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         LocalAves l = LocalAves.getInstance();
-        l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
-        l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
-        l.setLargura(Double.parseDouble(request.getParameter("inputLargura")));
-        l.setArea(Double.parseDouble(request.getParameter("inputArea")));
-        l.setDataAbertura(request.getParameter("inputDataAbertura"));
-        l.setFuncao(request.getParameter("inputFuncao"));
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-        l.setEstabelecimento(e);
-        e.getLocais().add(l);
-        HibernateUtil<LocalAves> hup = new HibernateUtil<>();
-        String s = hup.salvar(l);
+        String s = "";
         PrintWriter out = response.getWriter();
-        out.print(s);
-        response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento="+e.getSufixoCNPJ());
+        if (request.getParameter("aviario").equals("cadastrar")) {
+            l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+            l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
+            l.setLargura(Double.parseDouble(request.getParameter("inputLargura")));
+            l.setArea(Double.parseDouble(request.getParameter("inputArea")));
+            l.setDataAbertura(request.getParameter("inputDataAbertura"));
+            l.setFuncao(request.getParameter("inputFuncao"));
+            l.setEstabelecimento(e);
+            e.getLocais().add(l);
+            HibernateUtil<LocalAves> hup = new HibernateUtil<>();
+            s = hup.salvar(l);
+            out.print(s);
+            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+        } else {
+
+        }
     }
-
-    
-
-    
 
 }

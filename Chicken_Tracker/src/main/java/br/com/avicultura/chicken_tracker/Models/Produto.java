@@ -23,17 +23,20 @@ public class Produto implements Serializable {
     private int quantidadeAtual;
     private int quantidadeMinima;
     private int quantidadeMaxima;
+    private char tipo;
     
-    
-    @OneToMany(cascade = ALL, mappedBy = "produto"
-            + "")
+    @OneToMany(cascade = ALL, mappedBy = "produto")
     private List<Fornecimento> fornecimentos;
     
+    @OneToMany()
+    private List<Produto> produtos;
     
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
 
+    @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
+    private List<Producao> producoes;
     private Produto() {
     }
 
@@ -112,4 +115,21 @@ public class Produto implements Serializable {
         this.estabelecimento = estabelecimento;
     }
 
+    public char getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(char tipo) {
+        this.tipo = tipo;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    
 }

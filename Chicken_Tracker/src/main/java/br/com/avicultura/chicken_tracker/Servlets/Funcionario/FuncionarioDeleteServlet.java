@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.avicultura.chicken_tracker.Servlets.Funcionario;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.EstabelecimentoFuncionario;
+import br.com.avicultura.chicken_tracker.Models.Funcionario;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.servlet.ServletException;
@@ -21,11 +18,16 @@ import javax.servlet.http.HttpServletResponse;
  * @author User
  */
 public class FuncionarioDeleteServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EstabelecimentoFuncionario ef = EstabelecimentoFuncionario.getInstance();
+        Funcionario f = Funcionario.getInstance();
+        Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+
         HibernateUtil<EstabelecimentoFuncionario> hup = new HibernateUtil<>();
+        PrintWriter out = response.getWriter();
         if (request.getParameter("inputCPF") != null) {
             ef.setId(Long.parseLong(request.getParameter("inputCPF")));
             String s = hup.deletar(ef);
@@ -44,10 +46,10 @@ public class FuncionarioDeleteServlet extends HttpServlet {
                 index++;
             }
             for (index = 0; index < cpf.length; index++) {
-                ef.setId(Long.parseLong(cpf[index]));
+                f = ConsultaFuncionario.findById(cpf[index]);
+                ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), f.getCPF());
                 String s = hup.deletar(ef);
             }
-            Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
             response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         }
     }

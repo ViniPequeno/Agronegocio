@@ -26,6 +26,7 @@ public class Negocio implements Serializable {
     private String linkFacebook;
     private String linkInstragram;
     private String linkEmail;
+    private double lucroTotal;
     @OneToMany(cascade = ALL, mappedBy = "negocio")
     private List<Telefones> telefones;
 
