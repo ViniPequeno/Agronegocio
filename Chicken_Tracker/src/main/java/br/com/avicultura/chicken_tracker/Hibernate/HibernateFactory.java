@@ -20,12 +20,13 @@ public class HibernateFactory {
         if (session == null) {
             session = sessionFactory.openSession();
             sessionThread.set(session);
+            
         }
         return session;
     }
 
     public static void closeSession() {
-            Session session = (Session) sessionThread.get();
+        Session session = (Session) sessionThread.get();
         sessionThread.set(null);
         if (session != null && session.isOpen()) {
             session.flush();
