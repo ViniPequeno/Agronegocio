@@ -1,34 +1,41 @@
-<%@page import="br.com.avicultura.chicken_tracker.Models.Telefones"%>
 <% String css = "../_CSS/negocios.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Telefones"%>
 <div class="container">
     <div class="card card-cascade narrower mt-5">
         <!--Card image-->
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
             <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
         </div>
-        <div class="px-4">
+            <% System.out.println("Entrou aqui");%>
             <div class="md-form mb-5">
                 <form method="get" action="negocios.jsp">
                     <div class="row">
                         <div class="col-4">
-                            <input class="form-control pesquisar" type="text" placeholder="Pesquisar negócios" name="search">
+                            <input style="margin-left: 25px" class="form-control" type="text" placeholder="Pesquisar negócios" name="search">
                         </div>
+                        <div class="col-1"></div>
                         <div class="col-2">
-                            <input class="form-control botao" type="submit" value="Pesquisar">
+                            <input class="form-control" type="submit" value="Pesquisar">
                         </div>
                     </div>
                 </form>
             </div>
-            <%  if(request.getParameter("search").equals("")){
+        <% System.out.println("Entrou aqui");%>
+            <%  
+                List<Negocio> negocios;
+                if(request.getParameter("search") != null){
                     String search = request.getParameter("search");
-                    List<Negocio> negocios;
                     negocios = ConsultaNegocio.returnListOfName(search);
-                    if (negocios.size() > 0) {
+                }else{
+                    negocios = ConsultaNegocio.returnList();
+                }
+                if (negocios.size() > 0) {
             %>
+            <% System.out.println("Entrou aqui 2");%>
             <table class="table table-hover table-responsive-md btn-table table-bordered" style="margin-bottom: 20px">
                 <thead class="thead-dark">
                     <tr class="text-white">
@@ -60,9 +67,9 @@
                     <%}%>
                 </tbody>
             </table>
-        </div>
+        
     </div>
-    <%}} else {%>
+    <%} else {%>
     <h2 class="py-5 text-center">Nenhum negócio registrado.</h2>
     <%}%>
     <!-- Modal -->
