@@ -84,11 +84,10 @@ public class FuncionarioServlet extends HttpServlet {
                 ef.setFuncionario(f);
                 ef.setEstabelecimento(e);
                 ef.setCargo(request.getParameter("inputCargo"));
-                String salario = request.getParameter("inputSalario").substring(3);
-                salario = salario.replace(",", "");
-                salario = salario.replace(".", "");
-                out.print(salario);
+                String salario = request.getParameter("inputSalario");
+                out.println(salario);
                 ef.setSalario(Double.parseDouble(salario));
+                out.println(ef.getSalario());
                 ef.setSituacao('A');
                 s = hupef.salvar(ef);
             }

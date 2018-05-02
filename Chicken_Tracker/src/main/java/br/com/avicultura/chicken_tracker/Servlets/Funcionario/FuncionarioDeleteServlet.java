@@ -8,9 +8,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Funcionario;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.EstabelecimentoFuncionario;
-import br.com.avicultura.chicken_tracker.Models.Funcionario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.servlet.ServletException;
@@ -23,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author User
  */
 public class FuncionarioDeleteServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -18,8 +18,10 @@ import org.hibernate.Session;
 public class ConsultaPerfil {
 
     public static Perfil findById(String id) {
+        Perfil p;
         Session s = HibernateFactory.getSession();
-        return s.get(Perfil.class, id);
+        p = s.get(Perfil.class, id);
+        return p;
     }
 
     public static List<Perfil> returnList() {
