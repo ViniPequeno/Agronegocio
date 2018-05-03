@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Vacina.ConsultaVacina"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Fornecimento.ConsultaFornecimento" %>
@@ -39,8 +41,10 @@
 
                 <!--Table body-->
                 <tbody>
-                    <%  for (Fornecimento f : fornecimentos) {%>
-                    <tr>
+                    <%  for (Fornecimento f : fornecimentos) {
+                        String dataFornecimento = ConsultaFornecimento.returnValues(f);
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");%>
+                    <tr data-fornecimento="<%=dataFornecimento%>">
                         <th scope="row" class="pr-md-3 pr-5">
                             <input type="checkbox" id="checkbox<%=f.getCNPJ()%>" name="checkbox<%=f.getCNPJ()%>">
                             <label for="checkbox<%=f.getCNPJ()%>" class="label-table"></label>
@@ -48,7 +52,7 @@
                         <td><%=f.getCNPJ()%></td>
                         <td><%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
-                        <td><%=f.getVencimento()%></td>
+                        <td><%=dateFormat.format(f.getVencimento())%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../cadastro/fornecimento.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
                                 <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                     </tr>

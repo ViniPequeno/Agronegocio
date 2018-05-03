@@ -1,4 +1,7 @@
-<% String css = "../css/cadastro.css";%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Produto"%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto"%>
+<% String css = "../_CSS/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 
 <!-- Material form register -->
@@ -14,7 +17,7 @@
                     <input type="text" id="inputCNPJ" name="inputCNPJ" class="form-control" required autofocus maxlength="8">
                     <label for="inputCNPJ">CNPJ</label>
                 </div>
-                
+
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-box prefix grey-text"></i>
@@ -35,7 +38,15 @@
                     <input type="text" id="inputDataVencimento" name="inputDataVencimento" class="form-control" required maxlength="10">
                     <label for="inputDataVencimento">Data de vencimento</label>
                 </div>
-                
+                <div class="md-form">
+                    <select name="inputProduto" id="inputProduto">
+                        <% Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+                            for (Produto p : ConsultaProduto.returnListEstoque(e.getSufixoCNPJ())) {%>
+                        <option value="<%=p.getCodigo()%>"><%=p.getNome()%></option>
+                        <% }%>
+                    </select>
+                </div>
+
                 <div class="text-center mt-4">
                     <button class="btn btn-primary" name="fornecedor" value="cadastrar" type="submit">Confirmar</button>
                 </div>
@@ -49,6 +60,10 @@
 <script src="../_JS/maskMoney.js"></script>
 <script>
     $('#inputValorPagamento').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
+    $('form[name="formCadastro"').submit(function () {
+        var value = $('#inputValorPagamento').maskMoney('unmasked')[0];
+        $('#inputValorPagamento').val(value)
+    });
 </script>
 </body>
 </html>

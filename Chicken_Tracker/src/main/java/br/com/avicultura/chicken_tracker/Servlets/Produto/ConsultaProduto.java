@@ -19,13 +19,29 @@ public class ConsultaProduto {
 
     public static Produto findById(String id) {
         Session s = HibernateFactory.getSession();
-        Produto p = s.get(Produto.class, id);
+        Produto p = s.get(Produto.class,new Integer(id));
         return p;
     }
 
     public static List<Produto> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento");
+        query.setParameter("estabelecimento", estabelecimento);
+        List<Produto> lista = query.getResultList();
+        return lista;
+    }
+    
+    public static List<Produto> returnListEstoque(String estabelecimento){//select do fornecedor
+        Session s = HibernateFactory.getSession();
+        Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'E'");
+        query.setParameter("estabelecimento", estabelecimento);
+        List<Produto> lista = query.getResultList();
+        return lista;
+    }
+    
+    public static List<Produto> returnListProduto(String estabelecimento){//select do fornecedor
+        Session s = HibernateFactory.getSession();
+        Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'P'");
         query.setParameter("estabelecimento", estabelecimento);
         List<Produto> lista = query.getResultList();
         return lista;

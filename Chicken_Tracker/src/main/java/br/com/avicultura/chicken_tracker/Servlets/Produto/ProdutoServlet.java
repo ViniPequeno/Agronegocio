@@ -38,6 +38,11 @@ public class ProdutoServlet extends HttpServlet {
         p.setQuantidadeMinima(Integer.parseInt(request.getParameter("inputMinQtde")));
         p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxQtde")));
         p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputQtdeAtual")));
+        if(request.getParameter("inputTipo").equals("1")){
+           p.setTipo('P');
+        }else{
+            p.setTipo('E');
+        }
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         p.setEstabelecimento(e);
         //p.setFoto(foto);

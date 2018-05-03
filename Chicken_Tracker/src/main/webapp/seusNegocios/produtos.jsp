@@ -31,6 +31,7 @@
                         <th>Código</th>
                         <th>Nome</th>
                         <th>Qtde. atual</th>
+                        <th>Tipo</th>
                         <th>Estabelecimento</th>
                     </tr>
                 </thead>
@@ -49,6 +50,8 @@
                         <td><%=p.getCodigo()%></td>
                         <td><%=p.getNome()%></td>
                         <td><%=p.getQuantidadeAtual()%></td>
+                        <% String tipo = p.getTipo()=='P'?"Produção":"Estoque";%>
+                        <td><%=tipo%></td>
                         <td><%=p.getEstabelecimento().getSufixoCNPJ()%></td>
                     </tr>
                     <%}%>

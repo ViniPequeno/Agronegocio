@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Fornecedor.ConsultaFornecedores" %>
@@ -40,8 +41,10 @@
 
                 <!--Table body-->
                 <tbody>
-                    <%  for (Fornecimento f : fornecedores) {%>
-                    <tr>
+                    <%  for (Fornecimento f : fornecedores) {
+                        String dataFornecedor = ConsultaFornecedores.returnValues(f);
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");%>
+                    <tr data-fornecedor="<%=dataFornecedor%>">
                         <th scope="row" class="pr-md-3 pr-5">
                             <input type="checkbox" id="checkbox!<%=f.getCNPJ()%>" name="checkbox!<%=f.getCNPJ()%>">
                             <label for="checkbox!<%=f.getCNPJ()%>" class="label-table"></label>
@@ -49,7 +52,7 @@
                         <td><%=f.getCNPJ()%></td>
                         <td><%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
-                        <td><%=f.getVencimento()%></td>
+                        <td><%=dateFormat.format(f.getVencimento())%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../cadastro/fornecedor.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Fornecedor" role="button">
                                 <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                         <td>

@@ -11,6 +11,7 @@ import br.com.avicultura.chicken_tracker.Models.Fornecimento;
 import br.com.avicultura.chicken_tracker.Models.Pagamento;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import br.com.avicultura.chicken_tracker.Servlets.Fornecedor.ConsultaFornecedores;
+import br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -79,7 +80,7 @@ public class FornecimentoServlet extends HttpServlet {
             }
 
             f.setTipo('V');
-
+            f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
             f.setEstabelecimento(e);
             HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
             s = hup.salvar(f);

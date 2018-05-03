@@ -48,6 +48,14 @@
                     <input type="text" id="inputMaxQtde" name="inputMaxQtde" class="form-control" required maxlength="10">
                     <label for="inputMaxQtde">Quantidade Máxima</label>
                 </div>
+                <div>
+                    <i class="fa fa-box prefix grey-text"></i>
+                    <select name="inputTipo" id="inputTipo">
+                        <option value="1">Produção</option> 
+                        <option value="2">Estoque</option> 
+                    </select>
+                    <label for="inputTipo">Tipo</label>
+                </div>
                 <div class="text-center mt-4">
                     <button class="btn btn-green" type="submit">Confirmar</button>
                 </div>

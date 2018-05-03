@@ -33,7 +33,7 @@
                 }
                 if (negocios.size() > 0) {
             %>
-            <table class="table table-hover table-responsive-md btn-table table-bordered" style="margin-bottom: 20px">
+            <table class="table table-hover table-responsive-md btn-table table-bordered" id="tableDados" style="margin-bottom: 20px;">
                 <thead class="thead-dark">
                     <tr class="text-white">
                         <th>Nome</th>
@@ -194,5 +194,55 @@
     }
 </script>
 <%@include file="../rodape.jsp" %>
+<script type="text/javascript">
+    dataN = "";
+    var linha;
+    $("td").not(function () {
+        return $("a", this).length != 0;
+    }).click(function (event) {
+        $("#detalhesNegocio").modal();
+        linha = $(this).closest('tr');
+        resetModalData();
+    });
+
+    function resetModalData() {
+        var dados = linha.data('negocio').toString();
+        var campo = dados.split("#");
+        dataN = campo;
+        var nome = campo[0];
+        var proprietario = campo[1];
+        var cnpj = campo[2];
+        var email = campo[3];
+        var facebook = campo[4];
+        var instagram = campo[5];
+
+        var fones = campo[6].split("&");
+        var fone1 = fones[0];
+        var fone2 = fones[1];
+
+        var estabelecimentos = campo[7];
+
+        $("#btnEstabelecimentos").attr('href', '../seusNegocios/estabelecimentos.jsp?negocio=' + cnpj);
+
+        $("#nome").text("Nome: " + nome);
+
+        $("#proprietario").text("Proprietário: " + proprietario);
+        
+        cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
+        $("#cnpj").text("CNPJ: " + cnpj);
+
+        $("#email").text("Email: " + email);
+
+        $("#linkFB").text("Link da página do Facebook: " + facebook);
+
+        $("#linkInstagram").text("Link da página do Instagram: " + instagram);
+
+        $("#estabelecimentos").text("Estabelecimentos: " + dados);
+
+        $("#fone1").text("Fone 1: " + fone1);
+        $("#fone2").text("Fone 2: " + fone2);
+    }
+</script>
+<script src="../_JS/formUtils.js"></script>
 </body>
 </html>
