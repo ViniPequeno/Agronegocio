@@ -26,6 +26,7 @@ public class ProdutoDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Produto p = Produto.getInstance();
         HibernateUtil<Produto> hup = new HibernateUtil<>();
         PrintWriter w = response.getWriter();

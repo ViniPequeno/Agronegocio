@@ -24,6 +24,7 @@ public class LocalAvesAlterarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         LocalAves l = LocalAves.getInstance();
         l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
         l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));

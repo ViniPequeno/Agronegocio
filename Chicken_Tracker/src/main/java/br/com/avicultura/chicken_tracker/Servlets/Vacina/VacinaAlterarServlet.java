@@ -24,6 +24,7 @@ public class VacinaAlterarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Vacina v = Vacina.getInstance();
         v.setNome(request.getParameter("inputNome"));
         v.setCodigo(Integer.parseInt(request.getParameter("inputUsuario")));

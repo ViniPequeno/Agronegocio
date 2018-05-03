@@ -32,6 +32,7 @@ public class EstabelecimentoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Estabelecimento e = Estabelecimento.getInstance();
         e.setSufixoCNPJ(request.getParameter("inputSufixoCNPJ"));
         e.setCNAE(request.getParameter("inputCNAE"));

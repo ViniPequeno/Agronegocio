@@ -24,6 +24,7 @@ public class ProdutoAlterarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Produto p = Produto.getInstance();
         p.setNome(request.getParameter("inputNome"));
         p.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));

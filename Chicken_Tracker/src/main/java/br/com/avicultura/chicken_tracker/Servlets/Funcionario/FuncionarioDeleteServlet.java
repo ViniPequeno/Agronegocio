@@ -22,6 +22,7 @@ public class FuncionarioDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         EstabelecimentoFuncionario ef = EstabelecimentoFuncionario.getInstance();
         Funcionario f = Funcionario.getInstance();
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");

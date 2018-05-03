@@ -30,6 +30,7 @@ public class PerfilServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
 
         PrintWriter out = response.getWriter();
         Session session = HibernateFactory.getSession();

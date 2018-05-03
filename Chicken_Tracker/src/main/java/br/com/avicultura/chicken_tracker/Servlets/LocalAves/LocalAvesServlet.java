@@ -35,11 +35,13 @@ public class LocalAvesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         LocalAves l = LocalAves.getInstance();
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         String s = "";
         PrintWriter out = response.getWriter();
-        if (request.getParameter("aviario").equals("cadastrar")) {
+        String param = request.getParameter("aviario");
+        if (param != null && param.equals("cadastrar")) {
             l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
             l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
             l.setLargura(Double.parseDouble(request.getParameter("inputLargura")));

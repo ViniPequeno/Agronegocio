@@ -25,6 +25,7 @@ public class NegocioAlterarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Negocio n = Negocio.getInstance();
         n.setNome(request.getParameter("inputNome"));
         n.setEmpresaCNPJ(request.getParameter("inputCNPJ"));

@@ -218,6 +218,6 @@
     </a>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/index.js"></script>
+<script type="text/javascript" src="../_JS/index.js"></script>
 </body>
 </html>

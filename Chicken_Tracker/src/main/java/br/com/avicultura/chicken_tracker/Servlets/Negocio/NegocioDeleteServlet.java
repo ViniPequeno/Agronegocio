@@ -25,6 +25,7 @@ public class NegocioDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Negocio n = Negocio.getInstance();
         HibernateUtil<Negocio> hup = new HibernateUtil<>();
         if (request.getParameter("inputEmpresaCNPJ") != null) {

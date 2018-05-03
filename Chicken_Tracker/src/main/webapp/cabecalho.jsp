@@ -1,9 +1,9 @@
-<%@ page pageEncoding="UTF-8"%>
-<%@page language="java" contentType="text/html; charset=ISO-8859-1"%>
+<%@ page pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script defer src="../fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.js"></script>
         <link rel="stylesheet" type="text/css" href="../Bootstrap/_CSS/bootstrap.css">
@@ -39,13 +39,13 @@
             <div class="collapse navbar-collapse trer" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../main/negocios.jsp"><i class="fa fa-suitcase mr-1" aria-hidden="true"></i>NegÃ³cios</a>
+                        <a class="nav-link" href="../main/negocios.jsp"><i class="fa fa-suitcase mr-1" aria-hidden="true"></i>Negócios</a>
                     </li>
                     <%
                         if (!(sessao.isNew() || sessao.getAttribute("usuario_logado").equals("false"))) {
                     %>
                     <li class="nav-item">
-                        <a class="nav-link" href="../seusNegocios/negocios.jsp"><i class="fa fa-suitcase mr-1" aria-hidden="true"></i>Seus NegÃ³cios</a>
+                        <a class="nav-link" href="../seusNegocios/negocios.jsp"><i class="fa fa-suitcase mr-1" aria-hidden="true"></i>Seus Negócios</a>
                     </li>
                     <% }%>
                 </ul>

@@ -27,6 +27,7 @@ public class FornecimentoAlterarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Fornecimento f = Fornecimento.getInstance();
         f.setCNPJ(request.getParameter("inputCNPJ"));
         f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));

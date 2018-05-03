@@ -25,6 +25,7 @@ public class EstabelecimentoDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Estabelecimento e = Estabelecimento.getInstance();
         HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
         if (request.getParameter("inputSufixoCNPJ") != null) {

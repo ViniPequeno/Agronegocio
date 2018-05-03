@@ -26,6 +26,7 @@ public class LocalAvesDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         LocalAves la = LocalAves.getInstance();
         HibernateUtil<LocalAves> hup = new HibernateUtil<>();
         if (request.getParameter("inputCodigo") != null) {

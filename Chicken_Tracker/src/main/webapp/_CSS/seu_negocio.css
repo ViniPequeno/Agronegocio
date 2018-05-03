@@ -7,6 +7,13 @@ and open the template in the editor.
     Created on : 20/03/2018, 19:17:22
     Author     : user
 */
-table th label{
+table.btn-table th label{
     margin-top: 7px !important;
+}
+
+#tableEstabelecimento tr:first-child th {
+    border: none;
+}
+#tableEstabelecimento tr:first-child td {
+    border: none;
 }
