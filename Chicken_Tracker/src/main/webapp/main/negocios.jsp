@@ -11,7 +11,7 @@
             <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
         </div>
             <div class="md-form mb-5">
-                <form method="get" action="negocios.jsp">
+                <form method="get" action="">
                     <div class="row">
                         <div class="col-4">
                             <input style="margin-left: 25px" class="form-control" type="text" placeholder="Pesquisar negócios" name="search">
@@ -25,11 +25,11 @@
             </div>
             <%  
                 List<Negocio> negocios;
-                if(request.getParameter("search") != null){
+                if(request.getParameter("search") == null){
+                    negocios = ConsultaNegocio.returnList();
+                }else{
                     String search = request.getParameter("search");
                     negocios = ConsultaNegocio.returnListBySearch(search);
-                }else{
-                    negocios = ConsultaNegocio.returnList();
                 }
                 if (negocios.size() > 0) {
             %>

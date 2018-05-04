@@ -38,7 +38,7 @@ public class NegocioServlet extends HttpServlet {
         n.setNome(request.getParameter("inputNome"));
         n.setEmpresaCNPJ(request.getParameter("inputCNPJ"));
         n.setLinkEmail(request.getParameter("inputEmail"));
-        n.setLinkInstragram(request.getParameter("inputLinkInstagram"));
+        n.setLinkInstagram(request.getParameter("inputLinkInstagram"));
         n.setLinkFacebook(request.getParameter("inputLinkFB"));
         
         HttpSession sessao = request.getSession();

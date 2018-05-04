@@ -24,7 +24,7 @@ public class Negocio implements Serializable {
     @Column(unique = true)
     private String nome;
     private String linkFacebook;
-    private String linkInstragram;
+    private String linkInstagram;
     private String linkEmail;
     private double lucroTotal;
     @OneToMany(cascade = ALL, mappedBy = "negocio")
@@ -75,12 +75,12 @@ public class Negocio implements Serializable {
         this.linkFacebook = linkFacebook;
     }
 
-    public String getLinkInstragram() {
-        return linkInstragram;
+    public String getLinkInstagram() {
+        return linkInstagram;
     }
 
-    public void setLinkInstragram(String linkInstragram) {
-        this.linkInstragram = linkInstragram;
+    public void setLinkInstagram(String linkInstagram) {
+        this.linkInstagram = linkInstagram;
     }
 
     public String getLinkEmail() {

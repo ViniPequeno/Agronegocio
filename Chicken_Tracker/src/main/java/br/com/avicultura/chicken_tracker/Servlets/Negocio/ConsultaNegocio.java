@@ -23,10 +23,9 @@ public class ConsultaNegocio {
         return n;
     }
     
-    public static List<Negocio> returnListBySearch(String nome) {
+    public static List<Negocio> returnListBySearch(String search) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Negocio as n where n.nome = '%:search%'");
-        query.setParameter("search", nome);
+        Query query = s.createQuery("from Negocio as n where n.nome = '%" + search + "%'");
         List<Negocio> lista = query.getResultList();
         return lista;
     }
@@ -53,7 +52,7 @@ public class ConsultaNegocio {
         a += negocio.getEmpresaCNPJ() + "#";
         a += negocio.getLinkEmail() + "#";
         a += negocio.getLinkFacebook()+ "#";
-        a += negocio.getLinkInstragram()+ "#";
+        a += negocio.getLinkInstagram()+ "#";
         for (int i = 0; i < negocio.getTelefones().size(); i++) {
             a += negocio.getTelefones().get(i).getTelefone();
            if(i!= negocio.getTelefones().size()-1){
