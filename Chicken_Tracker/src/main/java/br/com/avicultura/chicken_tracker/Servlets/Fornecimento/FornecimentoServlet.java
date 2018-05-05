@@ -17,6 +17,8 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,30 +46,51 @@ public class FornecimentoServlet extends HttpServlet {
         String s = "";
         PrintWriter out = response.getWriter();
         if (request.getParameter("fornecimento").equals("pagar")) {
-            Pagamento p = Pagamento.getInstance();
-            GregorianCalendar gc = new GregorianCalendar();
-            int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
-            int mes = gc.get(GregorianCalendar.MONTH + 1);
-            int ano = gc.get(GregorianCalendar.YEAR);
-            String fornecedor = request.getParameter("fornecedor").substring(6);
-            p.setDia(dia);
-            p.setMes(mes);
-            p.setAno(ano);
-            p.setEstabelecimento(e);
-            p.setTipo('G');
-            f = ConsultaFornecedores.findById(fornecedor);
-            p.setValor(f.getPagamento());
-            p.setDescricao("Pagamento do fornecedor " + f.getCNPJ() + " no valor: " + p.getValor()
-                    + "referente ao produto " + f.getProdutos().getNome() + " quantidade igual a"
-                    + f.getQuantidade() + "na data " + p.getDia()
-                    + "/" + p.getMes() + "/" + p.getAno());
-            HibernateUtil<Pagamento> hup = new HibernateUtil<>();
-            s = hup.salvar(p);
-            if (s.equals("")) {
-                response.sendRedirect("seusNegocios/fornecedor.jsp?estabelecimento=" + e.getSufixoCNPJ());
-            } else {
-                out.print(s);
+            ArrayList<String> chkBoxIds = new ArrayList<String>();
+            Enumeration enumeration = request.getParameterNames();
+            while (enumeration.hasMoreElements()) {
+                String parameterName = (String) enumeration.nextElement();
+                chkBoxIds.add(parameterName);
             }
+            String[] cnpj = new String[chkBoxIds.size()];
+            int index = 0;
+            for (String s1 : chkBoxIds) {
+                cnpj[index] = s1.split("!")[1];
+                index++;
+            }
+
+            HibernateUtil<Pagamento> hup = new HibernateUtil<>();
+            HibernateUtil<Produto> hupro = new HibernateUtil<>();
+            HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
+            for (index = 0; index < cnpj.length; index++) {
+                f = ConsultaFornecimento.findById(cnpj[index], e.getSufixoCNPJ());
+                Pagamento p = Pagamento.getInstance();
+                GregorianCalendar gc = new GregorianCalendar();
+                int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
+                int mes = gc.get(GregorianCalendar.MONTH + 1);
+                int ano = gc.get(GregorianCalendar.YEAR);
+                p.setDia(dia);
+                p.setMes(mes);
+                p.setAno(ano);
+                p.setEstabelecimento(e);
+                p.setTipo('G');
+                p.setValor(f.getPagamento());
+                p.setDescricao("Pagamento do fornecimento " + f.getCNPJ() + " no valor: " + p.getValor()
+                        + "referente ao produto " + f.getProdutos().getNome() + " quantidade igual a"
+                        + f.getQuantidade() + "na data " + p.getDia()
+                        + "/" + p.getMes() + "/" + p.getAno());
+                e.setSaldo(e.getSaldo()+p.getValor());
+                f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual()-f.getQuantidade());
+                s = hup.salvar(p);
+                hue.atualizar(e);
+                hupro.atualizar(f.getProdutos());
+                if (s.equals("")) {
+                    response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                } else {
+                    out.print(s);
+                }
+            }
+
         } else {
 
             f.setCNPJ(request.getParameter("inputCNPJ"));

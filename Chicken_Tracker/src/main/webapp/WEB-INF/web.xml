@@ -116,6 +116,10 @@
         <servlet-name>ExcluirTudo</servlet-name>
         <servlet-class>br.com.avicultura.chicken_tracker.Utils.ExcluirTudo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PagamentoServlet</servlet-name>
+        <servlet-class>br.com.avicultura.chicken_tracker.Servlets.Pagamento.PagamentoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>executarLogin</servlet-name>
         <url-pattern>/executarLogin</url-pattern>
@@ -231,6 +235,10 @@
     <servlet-mapping>
         <servlet-name>ExcluirTudo</servlet-name>
         <url-pattern>/ExcluirTudo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PagamentoServlet</servlet-name>
+        <url-pattern>/PagamentoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

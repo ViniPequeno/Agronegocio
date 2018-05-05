@@ -12,6 +12,8 @@ import br.com.avicultura.chicken_tracker.Models.Funcionario;
 import br.com.avicultura.chicken_tracker.Models.Pagamento;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -45,30 +47,56 @@ public class FuncionarioServlet extends HttpServlet {
         Funcionario f = Funcionario.getInstance();
         String s = "";
         if (request.getParameter("funcionario").equals("pagar")) {
-            Pagamento p = Pagamento.getInstance();
-            GregorianCalendar gc = new GregorianCalendar();
-            int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
-            int mes = gc.get(GregorianCalendar.MONTH+1);
-            int ano = gc.get(GregorianCalendar.YEAR);
-            p.setDia(dia);
-            p.setMes(mes);
-           
-            p.setAno(ano);
-            p.setEstabelecimento(e);
-            List<EstabelecimentoFuncionario> list = ConsultaFuncionario.returnListFuncionario(e.getSufixoCNPJ());
-            HibernateUtil<Pagamento> hup = new HibernateUtil<>();
-            for (EstabelecimentoFuncionario ef1 : list) {
-                p.setValor(ef1.getSalario());
-                p.setDescricao("Pagamento do funcionário " + ef1.getFuncionario().getNome() + " no valor: " + p.getValor()
-                        + " na data " + p.getDia() + "/" + p.getMes() + "/" + p.getAno());
-                p.setTipo('G');
-                s = hup.salvar(p);
+            ArrayList<String> chkBoxIds = new ArrayList<String>();
+            Enumeration enumeration = request.getParameterNames();
+            while (enumeration.hasMoreElements()) {
+                String parameterName = (String) enumeration.nextElement();
+                chkBoxIds.add(parameterName);
             }
-            if (s.equals("")) {
-                response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            String[] cpf = new String[chkBoxIds.size()];
+            double total = 0;
+            int index = 0;
+            for (String s1 : chkBoxIds) {
+                cpf[index] = s1.split("!")[1];
+                index++;
+            }
+            for (index = 0; index < cpf.length; index++) {
+                ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), cpf[index]);
+                total += ef.getSalario();
+            }
+            if (e.getSaldo() >= total) {
+                Pagamento p = Pagamento.getInstance();
+                GregorianCalendar gc = new GregorianCalendar();
+                int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
+                int mes = gc.get(GregorianCalendar.MONTH + 1);
+                int ano = gc.get(GregorianCalendar.YEAR);
+                p.setDia(dia);
+                p.setMes(mes);
+                p.setAno(ano);
+                p.setEstabelecimento(e);
+                List<EstabelecimentoFuncionario> list = ConsultaFuncionario.returnListFuncionario(e.getSufixoCNPJ());
+                HibernateUtil<Pagamento> hup = new HibernateUtil<>();
+                HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
+                for (index = 0; index < cpf.length; index++) {
+                    ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), cpf[index]);
+                    p.setValor(ef.getSalario());
+                    p.setDescricao("Pagamento do funcionário " + ef.getFuncionario().getNome() + " no valor: " + p.getValor()
+                            + " na data " + p.getDia() + "/" + p.getMes() + "/" + p.getAno());
+                    p.setTipo('G');
+                    e.setSaldo(e.getSaldo()-p.getValor());
+                    s = hup.salvar(p);
+                    hue.atualizar(e);
+                }
+                if (s.equals("")) {
+                    
+                    response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                } else {
+                    out.print(s);
+                }
             } else {
-                out.print(s);
+                //erro SALDO INSUFICIENTE
             }
+
         } else {
             HibernateUtil<Funcionario> hupf = new HibernateUtil<>();
             HibernateUtil<EstabelecimentoFuncionario> hupef = new HibernateUtil<>();
