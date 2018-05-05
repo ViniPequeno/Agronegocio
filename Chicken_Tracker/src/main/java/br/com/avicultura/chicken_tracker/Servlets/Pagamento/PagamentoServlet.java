@@ -10,6 +10,7 @@ import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Pagamento;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +39,13 @@ public class PagamentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Pagamento p = Pagamento.getInstance();
+        GregorianCalendar gc = new GregorianCalendar();
+        int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
+        int mes = gc.get(GregorianCalendar.MONTH+1);
+        int ano = gc.get(GregorianCalendar.YEAR);
+        p.setDia(dia);
+        p.setMes(mes);
+        p.setAno(ano);
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         p.setEstabelecimento(e);
         p.setDescricao(request.getParameter("inputDescricao"));
