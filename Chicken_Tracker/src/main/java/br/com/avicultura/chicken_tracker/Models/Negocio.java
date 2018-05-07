@@ -27,6 +27,7 @@ public class Negocio implements Serializable {
     private String linkInstagram;
     private String linkEmail;
     private double lucroTotal;
+    
     @OneToMany(cascade = ALL, mappedBy = "negocio")
     private List<Telefones> telefones;
 
@@ -113,6 +114,14 @@ public class Negocio implements Serializable {
 
     public void setTelefones(List<Telefones> telefones) {
         this.telefones = telefones;
+    }
+
+    public double getLucroTotal() {
+        return lucroTotal;
+    }
+
+    public void setLucroTotal(double lucroTotal) {
+        this.lucroTotal = lucroTotal;
     }
 
 }

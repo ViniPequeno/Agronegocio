@@ -35,10 +35,12 @@ public class EstabelecimentoDeleteServlet extends HttpServlet {
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
+            
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
+            
             String[] cnpj = new String[chkBoxIds.size()];
             int index = 0;
             for (String s : chkBoxIds) {

@@ -5,6 +5,7 @@
  */
 package br.com.avicultura.chicken_tracker.Models;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Telefones")
-public class Telefones {
+public class Telefones implements Serializable{
 
     @Id
     private String telefone;
