@@ -98,6 +98,4 @@ public class Perfil implements Serializable {
     public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
         this.estabelecimentos = estabelecimentos;
     }
-
-    
 }

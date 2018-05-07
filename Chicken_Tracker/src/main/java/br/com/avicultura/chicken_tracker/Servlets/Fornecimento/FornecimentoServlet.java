@@ -40,7 +40,7 @@ public class FornecimentoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8"); 
         Fornecimento f = Fornecimento.getInstance();
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         String s = "";

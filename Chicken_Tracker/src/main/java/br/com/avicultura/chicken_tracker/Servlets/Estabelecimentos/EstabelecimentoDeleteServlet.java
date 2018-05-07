@@ -28,6 +28,7 @@ public class EstabelecimentoDeleteServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Estabelecimento e = Estabelecimento.getInstance();
         HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
+        
         if (request.getParameter("inputSufixoCNPJ") != null) {
             e.setSufixoCNPJ(request.getParameter("inputSufixoCNPJ"));
             String s = hup.deletar(e);
@@ -47,11 +48,14 @@ public class EstabelecimentoDeleteServlet extends HttpServlet {
                 cnpj[index] = s.split("!")[1];
                 index++;
             }
+            
             for (index = 0; index < cnpj.length; index++) {
                 e.setSufixoCNPJ(cnpj[index]);
                 String s = hup.deletar(e);
             }
+            
             Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+            
             response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio=" + n.getEmpresaCNPJ());
         }
     }

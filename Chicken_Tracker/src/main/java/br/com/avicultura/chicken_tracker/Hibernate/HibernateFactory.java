@@ -32,5 +32,6 @@ public class HibernateFactory {
             session.flush();
             session.close();
         }
+        sessionFactory.close();
     }
 }
