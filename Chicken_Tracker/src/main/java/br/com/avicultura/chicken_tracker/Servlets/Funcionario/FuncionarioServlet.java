@@ -46,6 +46,7 @@ public class FuncionarioServlet extends HttpServlet {
         EstabelecimentoFuncionario ef = EstabelecimentoFuncionario.getInstance();
         Funcionario f = Funcionario.getInstance();
         String s = "";
+        out.println(request.getParameter("funcionario"));
         if (request.getParameter("funcionario").equals("pagar")) {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
@@ -121,7 +122,7 @@ public class FuncionarioServlet extends HttpServlet {
                 s = hupef.salvar(ef);
             }
             if (s.equals("")) {
-                response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                //response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
             } else {
                 out.print(s);
             }

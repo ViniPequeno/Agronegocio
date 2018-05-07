@@ -10,14 +10,6 @@
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>
         Gerenciar Funcionários</h2>
 
-    <div> 
-        <form method="post" action="/Chicken_Tracker/FuncionarioServlet">
-            <button class="btn btn-primary" type="submit" name="funcionario" value="pagar">  
-                Pagar todos
-            </button>
-        </form>
-    </div> 
-
     <%  List<Funcionario> funcionarios;
         funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"));
         if (funcionarios.size() > 0) {%>
@@ -33,7 +25,7 @@
 
         <div class="px-4">
             <!--Table-->
-            <table id="tableDados" class="table table-hover table-responsive-lg btn-table">
+            <table id="tableDados" class="table table-hover table-responsive-lg">
                 <!--Table head-->
                 <thead>
                     <tr>
@@ -116,8 +108,34 @@
     <%}%>
 
     <a href="../cadastro/funcionario.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo funcionário" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded mt-4" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir funcionário(s) selecionado(s)" role="button">
+    <a href="" class="btn btn-danger btn-rounded mt-4 disabled" id="btnExcluir" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir funcionário(s) selecionado(s)" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+    <a href="" class="btn btn-primary btn-rounded mt-4 disabled" id="btnPagar" data-toggle="modal" data-target="#pagarSelecionados" data-tooltip="true" data-placement="bottom" title="Pagar funcionário(s) selecionado(s)" role="button">
+        <i class="fa fa-money-bill-alt mr-1" aria-hidden="true"></i></a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="pagarSelecionados" tabindex="-1" role="dialog" aria-labelledby="pagarSelecionados" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelPagar">Pagar funcionários</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Todos os funcionários selecionados terão seus devidos salários considerados pagos.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <form id="checks" action="/Chicken_Tracker/FuncionarioServlet" method="post">
+                        <input type="hidden" name="funcionario" value="pagar" />
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">

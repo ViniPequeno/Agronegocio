@@ -6,7 +6,7 @@
 <div class="container">
     <h2 class="py-5 font-weight-bold text-left">
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
-            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Locais das aves</h2>
+            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Locais de aves</h2>
 
     <%List<LocalAves> locaisAves;
         locaisAves = ConsultaLocalAves.returnList(request.getParameter("estabelecimento"));
@@ -16,7 +16,7 @@
         <!--Card image-->
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
 
-            <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
+            <h4 class="white-text font-weight-bold text-uppercase mb-0">Locais de aves</h4>
 
         </div>
         <!--/Card image-->
@@ -100,8 +100,34 @@
     <h2 class="py-5 text-center">Nenhum local de aves registrado ainda</h2>
     <%}%>
     <a href="../cadastro/localAves.jsp" class="btn btn-light-green btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Novo Aviário" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir aviários selecionados" role="button">
+    <a href="" class="btn btn-danger btn-rounded disabled" id="btnExcluir" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir aviários selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+    <a href="" class="btn btn-primary btn-rounded mt-4 disabled" id="btnPagar" data-toggle="modal" data-target="#pagarSelecionados" data-tooltip="true" data-placement="bottom" title="Atualizar estoque" role="button">
+        <i class="fa fa-boxes mr-1" aria-hidden="true"></i></a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="pagarSelecionados" tabindex="-1" role="dialog" aria-labelledby="pagarSelecionados" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelPagar">Pagar funcionários</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>O estoque será atualizado de acordo com produtos produzidos em cada aviário selecionado.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <form id="checks" action="/Chicken_Tracker/LocalAvesServlet" method="post">
+                        <input type="hidden" name="aviario" value="atualizarEstoque" />
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">

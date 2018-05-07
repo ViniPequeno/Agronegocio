@@ -53,7 +53,7 @@
                         <td class="maskCNPJ"><%=n.getEmpresaCNPJ()%></td>
                         <td><%=n.getLinkEmail()%></td>
                         <td><%=n.getLinkFacebook()%></td>
-                        <td><%=n.getLinkInstragram()%></td>
+                        <td><%=n.getLinkInstagram()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimentos.jsp?negocio=<%=n.getEmpresaCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mostrar Estabelecimentos" role="button">
                                 <i data-fa-transform="grow-4" class="fa fa-clipboard-list mr-1" aria-hidden="true"></i></a></td>
                     </tr>
@@ -106,7 +106,7 @@
     <%}%>
 
     <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded mt-4" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
+    <a href="" class="btn btn-danger btn-rounded mt-4 disabled" data-toggle="modal" id="btnExcluir" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
 
     <!-- Modal -->
@@ -209,7 +209,7 @@
         $("#nome").text("Nome: " + nome);
 
         $("#proprietario").text("Proprietário: " + proprietario);
-        
+
         cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
         $("#cnpj").text("CNPJ: " + cnpj);
 

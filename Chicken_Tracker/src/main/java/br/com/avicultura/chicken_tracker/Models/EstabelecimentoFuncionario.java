@@ -1,10 +1,11 @@
 package br.com.avicultura.chicken_tracker.Models;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "estabelecimentofuncionario")
-public class EstabelecimentoFuncionario {
+public class EstabelecimentoFuncionario implements Serializable {
     
     @Id
     @GeneratedValue

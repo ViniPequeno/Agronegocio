@@ -103,7 +103,7 @@
     <%}%>
 
     <a href="../cadastro/produto.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo produto" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded mt-4" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir produtos selecionados" role="button">
+    <a href="" class="btn btn-danger btn-rounded mt-4 disabled" id="btnExcluir" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir produtos selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
 
     <!-- Modal -->

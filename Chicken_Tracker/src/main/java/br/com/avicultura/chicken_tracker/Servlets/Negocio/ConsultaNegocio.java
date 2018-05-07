@@ -22,10 +22,19 @@ public class ConsultaNegocio {
         Negocio n = s.get(Negocio.class, id);
         return n;
     }
+
+    public static List<Negocio> returnListOfPerfil(String usuario) {
+        Session s = HibernateFactory.getSession();
+        Query query = s.createQuery("from Negocio n where n.perfil.usuario =:usuario order by n.nome asc");
+        query.setParameter("usuario", usuario);
+        List<Negocio> lista = query.getResultList();
+        return lista;
+    }
     
     public static List<Negocio> returnListBySearch(String search) {
         Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Negocio as n where n.nome = '%" + search + "%'");
+        Query query = s.createQuery("from Negocio as n where n.nome like :search");
+        query.setParameter("search", "%"+search+"%");
         List<Negocio> lista = query.getResultList();
         return lista;
     }
@@ -33,14 +42,6 @@ public class ConsultaNegocio {
     public static List<Negocio> returnList() {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Negocio");
-        List<Negocio> lista = query.getResultList();
-        return lista;
-    }
-
-    public static List<Negocio> returnListOfPerfil(String usuario) {
-        Session s = HibernateFactory.getSession();
-        Query query = s.createQuery("from Negocio n where n.perfil.usuario =:usuario order by n.nome asc");
-        query.setParameter("usuario", usuario);
         List<Negocio> lista = query.getResultList();
         return lista;
     }

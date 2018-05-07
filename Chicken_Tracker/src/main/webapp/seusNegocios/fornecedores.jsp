@@ -42,8 +42,8 @@
                 <!--Table body-->
                 <tbody>
                     <%  for (Fornecimento f : fornecedores) {
-                        String dataFornecedor = ConsultaFornecedores.returnValues(f);
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");%>
+                            String dataFornecedor = ConsultaFornecedores.returnValues(f);
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");%>
                     <tr data-fornecedor="<%=dataFornecedor%>">
                         <th scope="row" class="pr-md-3 pr-5">
                             <input type="checkbox" id="checkbox!<%=f.getCNPJ()%>" name="checkbox!<%=f.getCNPJ()%>">
@@ -111,8 +111,10 @@
     <h2 class="py-5 text-center">Nenhum fornecedor registrado ainda</h2>
     <%}%>
     <a href="../cadastro/fornecedor.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded mt-4" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
+    <a href="" class="btn btn-danger btn-rounded mt-4 disabled" id="btnExcluir" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+    <a href="" class="btn btn-primary btn-rounded mt-4 disabled" id="btnPagar" data-toggle="modal" data-target="#pagarSelecionados" data-tooltip="true" data-placement="bottom" title="Pagar fornecedore(s) selecionado(s)" role="button">
+        <i class="fa fa-money-bill-alt mr-1" aria-hidden="true"></i></a>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
@@ -131,6 +133,31 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="pagarSelecionados" tabindex="-1" role="dialog" aria-labelledby="pagarSelecionados" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelPagar">Pagar funcionários</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Todos os fornecedores selecionados terão suas devidas contas consideradas pagas.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <form id="checks" action="/Chicken_Tracker/FornecedorServlet" method="post">
+                        <input type="hidden" name="fornecedor" value="pagar" />
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtils.js"></script>

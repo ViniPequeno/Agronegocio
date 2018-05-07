@@ -111,7 +111,7 @@
     <%}%>
 
     <a href="../cadastro/estabelecimento.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo estabelecimento" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded mt-4" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir estabelecimentos selecionados" role="button">
+    <a href="" class="btn btn-danger btn-rounded mt-4 disabled" id="btnExcluir" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir estabelecimentos selecionados" role="button">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
 
     <!-- Modal -->
@@ -129,7 +129,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" class="mt-3" action="/Chicken_Tracker/EstabelecimentoDeleteServlet" method="post">
+                    <form id="checks" action="/Chicken_Tracker/EstabelecimentoDeleteServlet" method="post">
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>

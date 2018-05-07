@@ -3,6 +3,17 @@ $(function () {
     $('[data-tooltip="true"]').tooltip();
 });
 
+$('input[type=checkbox]').on("click", function () {
+    if ($('input[type=checkbox]:checked').length > 0) {
+        if ($('#btnExcluir').hasClass('disabled'))
+            $('#btnExcluir').removeClass('disabled');
+        if ($('#btnPagar').hasClass('disabled'))
+            $('#btnPagar').removeClass('disabled');
+    } else {
+        $('#btnExcluir').addClass('disabled');
+        $('#btnPagar').addClass('disabled');
+    }
+});
 
 $(document).ready(function () {
     var rowsShown = 2;
@@ -15,13 +26,13 @@ $(document).ready(function () {
     $('#tableDados tbody tr').hide();
     $('#tableDados tbody tr').slice(0, rowsShown).show();
     $('#pg-link li:nth-child(3)').addClass('active');
-    if($('#pg-link li:nth-last-child(1)').text()==$('#pg-link li:nth-child(5)').text()){
+    if ($('#pg-link li:nth-last-child(1)').text() == $('#pg-link li:nth-child(5)').text()) {
         $('#last-item').addClass('disabled');
         $('#next').addClass('disabled');
     }
     //Quando clicar em algum índice de página da tabela
     $('#pg-link li.number').bind('click', function () {
-        navigationButtons($(this),numPages);
+        navigationButtons($(this), numPages);
         $('#pg-link li').removeClass('active');
         $(this).addClass('active');
         var currPage = $(this).children('a').attr('rel');
@@ -60,14 +71,14 @@ $(document).ready(function () {
         $('#tableDados tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
                 css('display', 'table-row').animate({opacity: 1}, 300);
     });
-    
-    
+
+
     //Quando clicar no botão de próxima página da tabela
     $('#next').bind('click', function () {
         $('#pg-link li.active').next().addClass('active');
         $('#pg-link li.active:first').removeClass('active');
 
-        navigationButtons($('#pg-link li.active'),numPages);
+        navigationButtons($('#pg-link li.active'), numPages);
 
         var currPage = $('#pg-link li.active').children('a').attr('rel');
         var startItem = currPage * rowsShown;
@@ -80,8 +91,8 @@ $(document).ready(function () {
     $('#previous').bind('click', function () {
         $('#pg-link li.active').prev().addClass('active');
         $('#pg-link li.active:last').removeClass('active');
-        
-        navigationButtons($('#pg-link li.active'),numPages);
+
+        navigationButtons($('#pg-link li.active'), numPages);
 
         var currPage = $('#pg-link li.active').children('a').attr('rel');
         var startItem = currPage * rowsShown;
