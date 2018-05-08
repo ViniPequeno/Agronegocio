@@ -18,8 +18,10 @@ public class AppContextListener implements ServletContextListener {
     }
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        HibernateFactory.closeSession();
-    	
+        if (HibernateFactory.getSession().isJoinedToTransaction()) {
+            HibernateFactory.closeSession();
+        }
+
     }
-	
+
 }

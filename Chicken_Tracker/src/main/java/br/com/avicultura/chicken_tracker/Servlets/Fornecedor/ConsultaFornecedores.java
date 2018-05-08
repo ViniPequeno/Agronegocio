@@ -21,7 +21,7 @@ public class ConsultaFornecedores {
         Session s = HibernateFactory.getSession();
         Query query = s.createQuery("from Fornecimento f where"
                 + " f.CNPJ =: id and tipo = c");
-        query.setParameter("CNPJ", id);
+        query.setParameter("id", id);
         Fornecimento f = (Fornecimento)query.getSingleResult();
         return f;
     }
