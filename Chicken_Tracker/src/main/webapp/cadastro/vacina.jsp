@@ -1,4 +1,4 @@
-<% String css = "../css/cadastro.css";%>
+<% String css = "../_CSS/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">

@@ -3,7 +3,7 @@
 <!-- Material form register -->
 <div class="container">
     <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-lg-5">
-        <div class="card z-depth-3">
+        <div class="card narrower">
             <div class="card-body">
                 <!-- Material form login -->
                 <form action="/Chicken_Tracker/executarLogin" method="post">

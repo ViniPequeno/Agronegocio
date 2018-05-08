@@ -8,33 +8,45 @@
             <form action="/Chicken_Tracker/FuncionarioServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Funcionário</p>
 
-                <!-- Material input text -->
-                <div class="md-form">
-                    <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="80">
-                    <label for="inputNome">Nome</label>
+                <div class="form-row">
+                    <!-- Material input text -->
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="80">
+                            <label for="inputNome">Nome</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Material input text -->
+                        <div class="md-form">
+                            <i class="fa fa-clipboard prefix grey-text"></i>
+                            <input type="text" id="inputCargo" name="inputCargo" class="form-control" required maxlength="80">
+                            <label for="inputCargo">Cargo</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <!-- Material input text -->
+                        <div class="md-form">
+                            <i class="fa fa-id-card prefix grey-text"></i>
+                            <input type="text" id="inputCPF" name="inputCPF" class="form-control" required maxlength="14">
+                            <label for="inputCPF">CPF</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Material input text -->
+                        <div class="md-form">
+                            <i class="fas fa-address-card prefix grey-text"></i>
+                            <input type="text" id="inputRG" name="inputRG" class="form-control" required maxlength="14">
+                            <label for="inputRG">RG</label>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Material input text -->
-                <div class="md-form">
-                    <i class="fa fa-id-card prefix grey-text"></i>
-                    <input type="text" id="inputCPF" name="inputCPF" class="form-control" required maxlength="14">
-                    <label for="inputCPF">CPF</label>
-                </div>
-
-                <!-- Material input text -->
-                <div class="md-form">
-                    <i class="fas fa-address-card prefix grey-text"></i>
-                    <input type="text" id="inputRG" name="inputRG" class="form-control" required maxlength="14">
-                    <label for="inputRG">RG</label>
-                </div>
-
-                <!-- Material input text -->
-                <div class="md-form">
-                    <i class="fa fa-clipboard prefix grey-text"></i>
-                    <input type="text" id="inputCargo" name="inputCargo" class="form-control" required maxlength="80">
-                    <label for="inputCargo">Cargo</label>
-                </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
@@ -53,6 +65,7 @@
 
                 <div class="text-center mt-4">
                     <button class="btn btn-primary" name="funcionario" value="cadastrar" type="submit">Confirmar</button>
+                    <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>
             <!-- Material form register -->
