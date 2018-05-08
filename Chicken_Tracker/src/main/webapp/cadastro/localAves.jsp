@@ -89,6 +89,7 @@
                 </div>
                 <div class="text-center mt-4">
                     <button class="btn btn-primary" type="submit">Confirmar</button>
+                    <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>
             <!-- Material form register -->
@@ -103,5 +104,6 @@
     $('#inputComprimento').maskMoney({suffix: ' m', thousands: '.', decimal: ','});
     $('#inputArea').maskMoney({suffix: ' m²', thousands: '.', decimal: ','});
 </script>
+<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

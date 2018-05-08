@@ -86,5 +86,6 @@
         $('#inputRG').unmask('00.000.000-0');
     });
 </script>
+<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

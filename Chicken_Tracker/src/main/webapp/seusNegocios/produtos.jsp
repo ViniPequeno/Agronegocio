@@ -156,7 +156,7 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/formUtils.js"></script>
+<script src="../_JS/paginacaoTabelas.js"></script>
 <script>
     var dataP = "";
     var modalDetalhesInnerHTML = '<p id="codigo"> Código </p>'+

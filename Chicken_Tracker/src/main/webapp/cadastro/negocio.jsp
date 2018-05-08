@@ -91,5 +91,6 @@
         $('#inputCNPJ').unmask('00.000.000');
     });
 </script>
+<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

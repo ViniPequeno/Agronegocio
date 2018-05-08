@@ -48,6 +48,7 @@
                 </div>
                 <div class="text-center mt-4">
                     <button class="btn btn-primary" name="fornecimento" value="cadastrar" type="submit">Confirmar</button>
+                    <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>
             <!-- Material form register -->
@@ -64,5 +65,6 @@
         $('#inputValorPagamento').val(value)
     });
 </script>
+<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

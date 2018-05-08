@@ -93,5 +93,6 @@
 
 <%@include file="../rodape.jsp" %>
 <script src="../fontawesome-free-5.0.8/_JS/profile-picture.js"></script>
+<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

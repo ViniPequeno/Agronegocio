@@ -53,5 +53,6 @@
         $('#inputCNAE').unmask('00000-0/00');
     });
 </script>
+<script src="../_JS/formUtils.js"></script>
 </body>
 </html>
