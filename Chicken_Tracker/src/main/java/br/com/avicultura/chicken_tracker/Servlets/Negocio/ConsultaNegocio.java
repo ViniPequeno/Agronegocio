@@ -20,7 +20,17 @@ public class ConsultaNegocio {
 
     public static Negocio findById(String id) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Negocio n = s.get(Negocio.class, id);
+        Negocio n = null;
+        try {
+            s.beginTransaction();
+            n = s.get(Negocio.class, id);
+            s.getTransaction().commit();
+            return n;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return n;
     }
 
@@ -36,7 +46,7 @@ public class ConsultaNegocio {
             return lista;
         } catch (HibernateException e) {
             s.getTransaction().rollback();
-        }finally{
+        } finally {
             s.close();
         }
         return lista;
@@ -44,16 +54,36 @@ public class ConsultaNegocio {
 
     public static List<Negocio> returnListBySearch(String search) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Negocio as n where n.nome like :search");
-        query.setParameter("search", "%" + search + "%");
-        List<Negocio> lista = query.getResultList();
+        List<Negocio> lista = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Negocio as n where n.nome like :search");
+            query.setParameter("search", "%" + search + "%");
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return lista;
     }
 
     public static List<Negocio> returnList() {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Negocio");
-        List<Negocio> lista = query.getResultList();
+        List<Negocio> lista = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Negocio");
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return lista;
     }
 

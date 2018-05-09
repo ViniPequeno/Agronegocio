@@ -9,6 +9,7 @@ import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import java.util.List;
 import javax.persistence.Query;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
@@ -19,31 +20,71 @@ public class ConsultaProduto {
 
     public static Produto findById(String id) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Produto p = s.get(Produto.class,new Integer(id));
+        Produto p = null;
+        try {
+            s.beginTransaction();
+            p = s.get(Produto.class, id);
+            s.getTransaction().commit();
+            return p;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return p;
     }
 
     public static List<Produto> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento");
-        query.setParameter("estabelecimento", estabelecimento);
-        List<Produto> lista = query.getResultList();
+        List<Produto> lista = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento");
+            query.setParameter("estabelecimento", estabelecimento);
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return lista;
     }
-    
-    public static List<Produto> returnListEstoque(String estabelecimento){//select do fornecedor
+
+    public static List<Produto> returnListEstoque(String estabelecimento) {//select do fornecedor
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'E'");
-        query.setParameter("estabelecimento", estabelecimento);
-        List<Produto> lista = query.getResultList();
+        List<Produto> lista = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'E'");
+            query.setParameter("estabelecimento", estabelecimento);
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return lista;
     }
-    
-    public static List<Produto> returnListProduto(String estabelecimento){//select do fornecedor
+
+    public static List<Produto> returnListProduto(String estabelecimento) {//select do fornecedor
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'P'");
-        query.setParameter("estabelecimento", estabelecimento);
-        List<Produto> lista = query.getResultList();
+        List<Produto> lista = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'P'");
+            query.setParameter("estabelecimento", estabelecimento);
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return lista;
     }
 
@@ -52,10 +93,10 @@ public class ConsultaProduto {
         a += p.getCodigo() + "#";
         a += p.getNome() + "#";
         a += p.getQuantidadeAtual() + "#";
-        a += p.getQuantidadeMinima()+ "#";
-        a += p.getQuantidadeMaxima()+ "#";
+        a += p.getQuantidadeMinima() + "#";
+        a += p.getQuantidadeMaxima() + "#";
         a += p.getDescricao() + "#";
-        a += p.getEstabelecimento().getSufixoCNPJ()+ "#";
+        a += p.getEstabelecimento().getSufixoCNPJ() + "#";
         return a;
     }
 }

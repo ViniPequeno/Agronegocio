@@ -9,6 +9,7 @@ import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
 import java.util.List;
 import javax.persistence.Query;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
@@ -19,19 +20,39 @@ public class ConsultaFornecedores {
 
     public static Fornecimento findById(String id) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Fornecimento f where"
-                + " f.CNPJ =: id and tipo = c");
-        query.setParameter("id", id);
-        Fornecimento f = (Fornecimento)query.getSingleResult();
+        Fornecimento f = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Fornecimento f where"
+                    + " f.CNPJ =: id and tipo = c");
+            query.setParameter("id", id);
+            f = (Fornecimento) query.getSingleResult();
+            s.getTransaction().commit();
+            return f;
+        } catch (HibernateException ex) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return f;
     }
 
     public static List<Fornecimento> returnList(String estabelecimento) {
+        List<Fornecimento> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
-                + " and tipo = 'c'");
-        query.setParameter("estabelecimento", estabelecimento);
-        List<Fornecimento> lista = query.getResultList();
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
+                    + " and tipo = 'c'");
+            query.setParameter("estabelecimento", estabelecimento);
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException ex) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return lista;
     }
 

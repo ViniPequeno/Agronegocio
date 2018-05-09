@@ -10,6 +10,7 @@ import br.com.avicultura.chicken_tracker.Models.Vacina;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.Query;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
@@ -20,14 +21,36 @@ public class ConsultaVacina {
 
     public static Vacina findById(String id) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        return s.get(Vacina.class, id);
+        Vacina v = null;
+        try {
+            s.beginTransaction();
+            v = s.get(Vacina.class, id);
+            s.getTransaction().commit();
+            return v;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
+        return v;
     }
 
     public static List<Vacina> returnList(String estabelecimento) {
+        List<Vacina> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Vacina v where v.estabelecimento.sufixoCNPJ =:estabelecimento");
-        query.setParameter("estabelecimento", estabelecimento);
-        return query.getResultList();
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Vacina v where v.estabelecimento.sufixoCNPJ =:estabelecimento");
+            query.setParameter("estabelecimento", estabelecimento);
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
+        return lista;
     }
 
     public static String returnValues(Vacina v) {
@@ -38,7 +61,7 @@ public class ConsultaVacina {
         a += v.getDescricao() + "#";
         a += dateFormat.format(v.getDataRealizada()) + "#";
         a += dateFormat.format(v.getDataProxima()) + "#";
-        a += v.getEstabelecimento().getSufixoCNPJ()+ "#";
+        a += v.getEstabelecimento().getSufixoCNPJ() + "#";
 
         return a;
     }

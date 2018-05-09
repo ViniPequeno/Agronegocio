@@ -9,6 +9,7 @@ import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Pagamento;
 import java.util.List;
 import javax.persistence.Query;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
@@ -16,13 +17,23 @@ import org.hibernate.Session;
  * @author vinic
  */
 public class ConsultaPagamento {
-    
+
     public static List<Pagamento> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:estabelecimento"
-                + "ORDEY BY ano DESC, mes DESC, dia DESC, valor DESC");
-        query.setParameter("estabelecimento", estabelecimento);
-        List<Pagamento> lista = query.getResultList();
+        List<Pagamento> lista = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:estabelecimento"
+                    + "ORDEY BY ano DESC, mes DESC, dia DESC, valor DESC");
+            query.setParameter("estabelecimento", estabelecimento);
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return lista;
     }
 }

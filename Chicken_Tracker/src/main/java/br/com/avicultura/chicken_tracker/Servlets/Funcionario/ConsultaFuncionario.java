@@ -12,8 +12,8 @@ import br.com.avicultura.chicken_tracker.Models.Funcionario;
 import br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
@@ -24,49 +24,97 @@ public class ConsultaFuncionario {
 
     public static Funcionario findById(String id) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Funcionario f = s.get(Funcionario.class, id);
+        Funcionario f = null;
+        try {
+            s.beginTransaction();
+            f = s.get(Funcionario.class, id);
+            s.getTransaction().commit();
+            return f;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return f;
     }
 
     public static List<Funcionario> returnList(String estabelecimento) {
+        List<Funcionario> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
-                + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
-        query.setParameter("estabelecimento", estabelecimento);
-        List<EstabelecimentoFuncionario> listaEF = query.getResultList();
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
+                    + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
+            query.setParameter("estabelecimento", estabelecimento);
+            List<EstabelecimentoFuncionario> listaEF = query.getResultList();
+            s.getTransaction().commit();
 
-        List<Funcionario> lista = new ArrayList<>();
-        for (EstabelecimentoFuncionario ef : listaEF) {
-            lista.add(ef.getFuncionario());
+            lista = new ArrayList<>();
+            for (EstabelecimentoFuncionario ef : listaEF) {
+                lista.add(ef.getFuncionario());
+            }
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
         }
-
         return lista;
     }
 
     public static List<EstabelecimentoFuncionario> returnListFuncionario(String estabelecimento) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
-                + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
-        query.setParameter("estabelecimento", estabelecimento);
-        List<EstabelecimentoFuncionario> listaEF = query.getResultList();
-
+        List<EstabelecimentoFuncionario> listaEF = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
+                    + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
+            query.setParameter("estabelecimento", estabelecimento);
+            listaEF = query.getResultList();
+            s.getTransaction().commit();
+            return listaEF;
+        } catch (HibernateException ex) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return listaEF;
     }
 
-    public static EstabelecimentoFuncionario returnFuncionario(String e, String f){
+    public static EstabelecimentoFuncionario returnFuncionario(String e, String f) {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
-                + "ef.estabelecimento.sufixoCNPJ =:e and ef.funcionario.CPF=:f");
-        query.setParameter("e", e);
-        query.setParameter("f", f);
-        EstabelecimentoFuncionario ef = (EstabelecimentoFuncionario) query.getResultList().get(0);
-
+        EstabelecimentoFuncionario ef = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
+                    + "ef.estabelecimento.sufixoCNPJ =:e and ef.funcionario.CPF=:f");
+            query.setParameter("e", e);
+            query.setParameter("f", f);
+            ef = (EstabelecimentoFuncionario) query.getResultList().get(0);
+            s.getTransaction().commit();
+            return ef;
+        } catch (HibernateException ex) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return ef;
     }
+
     public static List<Funcionario> returnList() {
+        List<Funcionario> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Funcionario");
-        List<Funcionario> lista = query.getResultList();
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Funcionario");
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
         return lista;
     }
 

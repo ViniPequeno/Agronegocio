@@ -28,7 +28,7 @@ public class ConsultaPerfil {
             return p;
         } catch (HibernateException e) {
             s.getTransaction().rollback();
-        }finally{
+        } finally {
             s.close();
         }
         return p;
@@ -36,8 +36,19 @@ public class ConsultaPerfil {
 
     public static List<Perfil> returnList() {
         Session s = HibernateFactory.getSessionFactory().openSession();
-        Query query = s.createQuery("from Perfil");
-        return query.getResultList();
+        List<Perfil> lista = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Perfil");
+            lista = query.getResultList();
+            s.getTransaction().commit();
+            return lista;
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
+        return lista;
     }
 
     public static String returnValues(Perfil p) {
