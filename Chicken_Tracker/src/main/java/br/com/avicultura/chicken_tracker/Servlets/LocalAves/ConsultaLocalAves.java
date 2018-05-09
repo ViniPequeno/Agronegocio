@@ -18,7 +18,7 @@ import org.hibernate.Session;
 public class ConsultaLocalAves {
 
     public static LocalAves findById(String id, String estabelecimento) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from LocalAves la where "
                 + "la.estabelecimento.sufixoCNPJ =:estabelecimento and la.codigo =:id");
         query.setParameter("id", id);
@@ -27,7 +27,7 @@ public class ConsultaLocalAves {
     }
 
     public static List<LocalAves> returnList(String estabeleciemento) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from LocalAves la where la.estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estabelecimento", estabeleciemento);
         return query.getResultList();

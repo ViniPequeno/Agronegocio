@@ -1,37 +1,40 @@
 package br.com.avicultura.chicken_tracker.Hibernate;
 
-import org.hibernate.Session;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 public class HibernateFactory {
 
     private static SessionFactory sessionFactory;
-    private static final ThreadLocal sessionThread;
 
-    static {
-        sessionThread = new ThreadLocal();
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+    /**
+     * * Initializes the Hibernate SessionFactory.
+     */
+    public static synchronized void initSessionFactory() {
+        if (getSessionFactory() != null) {
+            throw new IllegalStateException("Hibernate SessionFactory is already initialized");
+        }
+        try {
+            sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        } catch (HibernateException he) {
+            System.err.println("Error creating Session: " + he);
+            throw new ExceptionInInitializerError(he);
+        }
     }
 
-    public static Session getSession() {
-        Session session = (Session) sessionThread.get();
-        if (session == null) {
-            session = sessionFactory.openSession();
-            sessionThread.set(session);
-            
-        }
-        return session;
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 
     public static void closeSession() {
-        Session session = (Session) sessionThread.get();
-        sessionThread.set(null);
-        if (session != null && session.isOpen()) {
-            session.flush();
-            session.close();
+        if (sessionFactory != null) {
+            try {
+                sessionFactory.close();
+            } catch (HibernateException ignored) {
+                System.err.println("Couldn't close SessionFactory" + ignored);
+            }
         }
-        sessionFactory.close();
     }
 }

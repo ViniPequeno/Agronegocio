@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -22,10 +23,24 @@ public class Telefones implements Serializable{
 
     @Id
     private String telefone;
+    
     @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Negocio negocio;
 
+    private Telefones() {
+    }
+
+    @Transient
+    private static Telefones getInstance;
+    
+    public static Telefones getInstance() {
+        if (getInstance == null) {
+            getInstance = new Telefones();
+        }
+        return getInstance;
+    }
+    
     public String getTelefone() {
         return telefone;
     }

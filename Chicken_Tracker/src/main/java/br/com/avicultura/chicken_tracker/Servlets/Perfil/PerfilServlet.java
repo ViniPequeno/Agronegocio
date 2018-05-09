@@ -33,7 +33,7 @@ public class PerfilServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         PrintWriter out = response.getWriter();
-        Session session = HibernateFactory.getSession();
+        Session session = HibernateFactory.getSessionFactory().openSession();
         String login = request.getSession().getAttribute("nome_usuario").toString();
         Perfil object1 = (Perfil) session.get(Perfil.class, login); // It will get data of which have imageId=1
         byte[] getImageInBytes = object1.getFoto();  // image convert in byte form

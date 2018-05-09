@@ -18,14 +18,14 @@ import org.hibernate.Session;
 public class ConsultaEstabelecimento {
 
     public static Estabelecimento findById(String id) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Estabelecimento e = s.get(Estabelecimento.class, id);
         return e;
     }
 
     public static List<Estabelecimento> returnListOfNegocio(String negocio) {
         List<Estabelecimento> lista;
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from Estabelecimento e where e.negocio.empresaCNPJ=:negocio");
         query.setParameter("negocio", negocio);
         lista = query.getResultList();
@@ -34,7 +34,7 @@ public class ConsultaEstabelecimento {
 
     public static List<Estabelecimento> returnListOfUsuario(String usuario) {
         List<Estabelecimento> lista;
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from Estabelecimento where perfil.usuario=:usuario");
         query.setParameter("usuario", usuario);
         lista = query.getResultList();
@@ -43,7 +43,7 @@ public class ConsultaEstabelecimento {
 
     public static List<Estabelecimento> returnList() {
         List<Estabelecimento> lista;
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from Estabelecimento");
         lista = query.getResultList();
         return lista;

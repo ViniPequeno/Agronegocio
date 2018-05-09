@@ -30,7 +30,7 @@ public class FuncionarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-////        Session s = HibernateFactory.getSession();
+////        Session s = HibernateFactory.getSessionFactory().openSession();
 ////        Query query = s.createQuery("from perfil");
 ////        List<Perfil> list = query.getResultList();
 //          response.sendRedirect("manter");
@@ -109,6 +109,7 @@ public class FuncionarioServlet extends HttpServlet {
 
             if (ConsultaFuncionario.findById(f.getCPF()) == null) {
                 s = hupf.salvar(f);
+                out.print(s);
             }
             if (s.equals("")) {
                 ef.setFuncionario(f);
@@ -120,9 +121,10 @@ public class FuncionarioServlet extends HttpServlet {
                 out.println(ef.getSalario());
                 ef.setSituacao('A');
                 s = hupef.salvar(ef);
+                out.print(s);
             }
             if (s.equals("")) {
-                //response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
             } else {
                 out.print(s);
             }

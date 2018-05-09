@@ -131,7 +131,9 @@
         </div>
     </div>
 </div>
+<%@include file="../rodape.jsp" %>
 <script src="../_JS/paginacaoTabelas.js"></script>
+<script src="../_JS/formUtils.js"></script>
 <script type="text/javascript">
     dataN = "";
     var linha;
@@ -193,7 +195,6 @@
         $("#fone2").text("Fone 2: " + fone2);
     }
 </script>
-<%@include file="../rodape.jsp" %>
 <script type="text/javascript">
     dataN = "";
     var linha;
@@ -243,6 +244,5 @@
         $("#fone2").text("Fone 2: " + fone2);
     }
 </script>
-<script src="../_JS/paginacaoTabelas.js"></script>
 </body>
 </html>

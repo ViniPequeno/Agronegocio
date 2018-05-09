@@ -12,6 +12,7 @@ import br.com.avicultura.chicken_tracker.Models.Funcionario;
 import br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 import org.hibernate.Session;
 
@@ -22,13 +23,13 @@ import org.hibernate.Session;
 public class ConsultaFuncionario {
 
     public static Funcionario findById(String id) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Funcionario f = s.get(Funcionario.class, id);
         return f;
     }
 
     public static List<Funcionario> returnList(String estabelecimento) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
                 + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estabelecimento", estabelecimento);
@@ -43,7 +44,7 @@ public class ConsultaFuncionario {
     }
 
     public static List<EstabelecimentoFuncionario> returnListFuncionario(String estabelecimento) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
                 + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estabelecimento", estabelecimento);
@@ -53,7 +54,7 @@ public class ConsultaFuncionario {
     }
 
     public static EstabelecimentoFuncionario returnFuncionario(String e, String f){
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
                 + "ef.estabelecimento.sufixoCNPJ =:e and ef.funcionario.CPF=:f");
         query.setParameter("e", e);
@@ -63,7 +64,7 @@ public class ConsultaFuncionario {
         return ef;
     }
     public static List<Funcionario> returnList() {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from Funcionario");
         List<Funcionario> lista = query.getResultList();
         return lista;
@@ -76,8 +77,8 @@ public class ConsultaFuncionario {
         a += f.getNome() + "#";
         a += f.getRG() + "#";
         Estabelecimento e = ConsultaEstabelecimento.findById(estabelecimento);
-        for (EstabelecimentoFuncionario ef : f.getEstabelecimentos()) {
-            if (e.equals(ef.getEstabelecimento())) {
+        for (EstabelecimentoFuncionario ef : e.getFuncionarios()) {
+            if (f.getCPF().equals(ef.getFuncionario().getCPF())) {
                 a += ef.getCargo() + "#";
                 a += ef.getSituacao() + "#";
                 a += ef.getSalario() + "#";

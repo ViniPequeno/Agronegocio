@@ -6,7 +6,6 @@
 package br.com.avicultura.chicken_tracker.ServletListener;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -15,10 +14,11 @@ import javax.servlet.annotation.WebListener;
 public class AppContextListener implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
+        HibernateFactory.initSessionFactory();
     }
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        if (HibernateFactory.getSession().isJoinedToTransaction()) {
+        if (HibernateFactory.getSessionFactory().isOpen()) {
             HibernateFactory.closeSession();
         }
 

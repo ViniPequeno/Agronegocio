@@ -56,9 +56,9 @@
                         </th>
                         <td><%=e.getNegocio().getNome()%></td>
                         <td><%=e.getPerfil().getNome()%></td>
-                        <td class="maskCNAE"><%=e.getCNAE()%></td>
+                        <td class="CNAE"><%=e.getCNAE()%></td>
                         <td><%=e.getEndereco()%></td>
-                        <td class="maskSufixoCNPJ"><%=e.getSufixoCNPJ()%></td>
+                        <td class="sufixoCNPJ"><%=e.getSufixoCNPJ()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
                                 <i class="fa fa-ellipsis-h mr-1" aria-hidden="true"></i></a></td>
                     </tr>
@@ -110,9 +110,11 @@
     <h2 class="py-5 text-center">Nenhum estabelecimento registrado ainda</h2>
     <%}%>
 
-    <a href="../cadastro/estabelecimento.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo estabelecimento" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded mt-4 disabled" id="btnExcluir" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir estabelecimentos selecionados" role="button">
+    <a href="../cadastro/estabelecimento.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Novo estabelecimento" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir estabelecimentos selecionados">
+        <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+    </span>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
@@ -163,6 +165,8 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/paginacaoTabelas.js"></script>
+<script src="../_JS/formUtils.js"></script>
+<script src="../_JS/mascara.js"></script>
 <script>
     dataE = "";
     var modalDetalhesInnerHTML = '<p id="negocio">Negócio: </p>' +
@@ -221,8 +225,9 @@
         if ($(this).text() == "Editar") {
             $(this).text("Confirmar");
             $("#bodyDetalhes").html(modalEditarInnerHTML);
-            $('#inputCNAE').val(dataE[2]).trigger("change");
-            $('#inputSufixoCNPJ').val(dataE[3]).trigger("change");
+            initInputs();
+            $('#inputSufixoCNPJ').val(dataE[2]).trigger("change");
+            $('#inputCNAE').val(dataE[3]).trigger("change");
             $('#inputEndereco').val(dataE[4]).trigger("change");
             var field = $('#inputSufixoCNPJ');
             field.mask('0000-00', {reverse: false});
@@ -232,8 +237,6 @@
             formEditar.submit();
         }
     });
-    $('.maskSufixoCNPJ').mask('0000-00', {reverse: false});
-    $('.maskCNAE').mask('00000-0/00', {reverse: false});
 </script>
 </body>
 </html>

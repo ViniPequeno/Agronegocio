@@ -18,7 +18,7 @@ import org.hibernate.Session;
 public class ConsultaFornecedores {
 
     public static Fornecimento findById(String id) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from Fornecimento f where"
                 + " f.CNPJ =: id and tipo = c");
         query.setParameter("id", id);
@@ -27,7 +27,7 @@ public class ConsultaFornecedores {
     }
 
     public static List<Fornecimento> returnList(String estabelecimento) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
                 + " and tipo = 'c'");
         query.setParameter("estabelecimento", estabelecimento);

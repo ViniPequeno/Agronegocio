@@ -18,7 +18,7 @@ import org.hibernate.Session;
 public class ConsultaPagamento {
     
     public static List<Pagamento> returnList(String estabelecimento) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:estabelecimento"
                 + "ORDEY BY ano DESC, mes DESC, dia DESC, valor DESC");
         query.setParameter("estabelecimento", estabelecimento);

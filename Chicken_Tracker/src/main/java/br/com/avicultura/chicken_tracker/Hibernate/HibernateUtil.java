@@ -15,7 +15,7 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
 
     @Override
     public String salvar(T classe) {
-        session = (Session) HibernateFactory.getSession();
+        session =  HibernateFactory.getSessionFactory().openSession();
         session.beginTransaction();
         try {
             session.save(classe);
@@ -31,7 +31,7 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
 
     @Override
     public String deletar(T classe) {
-        session = (Session) HibernateFactory.getSession();
+        session = HibernateFactory.getSessionFactory().openSession();
         session.beginTransaction();
         try {
             this.session.flush();
@@ -49,7 +49,7 @@ public class HibernateUtil<T> implements InterfaceDAO<T> {
 
     @Override
     public String atualizar(T classe) {
-        session = (Session) HibernateFactory.getSession();
+        session =HibernateFactory.getSessionFactory().openSession();
         session.beginTransaction();
         try {
             session.update(classe);

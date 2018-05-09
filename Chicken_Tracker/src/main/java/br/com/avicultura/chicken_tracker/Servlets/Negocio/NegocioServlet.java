@@ -35,6 +35,7 @@ public class NegocioServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         
+        PrintWriter out = response.getWriter();
         Negocio n = Negocio.getInstance();
         n.setNome(request.getParameter("inputNome"));
         n.setEmpresaCNPJ(request.getParameter("inputCNPJ"));
@@ -47,23 +48,27 @@ public class NegocioServlet extends HttpServlet {
         
         n.setTelefones(new ArrayList<Telefones>());
         
-        Telefones t1 = new Telefones();
-        t1.setTelefone(request.getParameter("inputFone1"));
-        t1.setNegocio(n);
-        n.getTelefones().add(t1);
-        
-        Telefones t2 = new Telefones();
-        t2.setTelefone(request.getParameter("inputFone2"));
-        t2.setNegocio(n);
-        n.getTelefones().add(t2);
-        
         HibernateUtil<Negocio> hup = new HibernateUtil<>();
         String s = hup.salvar(n);
-        PrintWriter out = response.getWriter();
-        out.println(((Perfil) request.getSession().getAttribute("usuario")).getUsuario());
-        out.println(((Perfil) request.getSession().getAttribute("usuario")).getNome());
-        out.println((Perfil) request.getSession().getAttribute("usuario"));
-        out.println(request.getAttribute("usuario"));
+        out.println(s);
+        
+        HibernateUtil<Telefones> hup2 = new HibernateUtil<>();
+        Telefones t1 = Telefones.getInstance();
+        t1.setTelefone(request.getParameter("inputFone1"));
+        out.println(request.getParameter("inputFone1"));
+        t1.setNegocio(n);
+        n.getTelefones().add(t1);
+        s=hup2.salvar(t1);
+        out.println(s);
+        
+        Telefones t2 = Telefones.getInstance();
+        t2.setTelefone(request.getParameter("inputFone2"));
+        out.println(request.getParameter("inputFone2"));
+        t2.setNegocio(n);
+        n.getTelefones().add(t2);
+        s=hup2.salvar(t2);
+        out.println(s);
+        
         response.sendRedirect("seusNegocios/negocios.jsp");
     }
     

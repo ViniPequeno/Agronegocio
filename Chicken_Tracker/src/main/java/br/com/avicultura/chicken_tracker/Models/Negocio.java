@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 import static javax.persistence.CascadeType.ALL;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -28,6 +30,7 @@ public class Negocio implements Serializable {
     private String linkEmail;
     private double lucroTotal;
     
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = ALL, mappedBy = "negocio")
     private List<Telefones> telefones;
 
@@ -35,6 +38,7 @@ public class Negocio implements Serializable {
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;
     
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = ALL, mappedBy = "negocio")
     private List<Estabelecimento> estabelecimentos;
 

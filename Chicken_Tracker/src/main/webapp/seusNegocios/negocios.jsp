@@ -105,9 +105,12 @@
     <h2 class="py-5 text-center">Nenhum negócio registrado ainda</h2>
     <%}%>
 
-    <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded mt-4 disabled" data-toggle="modal" id="btnExcluir" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir negócios selecionados" role="button">
-        <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+    <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+
+    <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir negócios selecionados">
+        <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
+            <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+    </span>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
@@ -124,7 +127,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" class="mt-3" action="/Chicken_Tracker/NegocioDeleteServlet" method="post">
+                    <form id="checks" action="/Chicken_Tracker/NegocioDeleteServlet" method="post">
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
@@ -163,6 +166,7 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/paginacaoTabelas.js"></script>
+<script src="../_JS/formUtils.js"></script>
 <script src="../_JS/mascara.js"></script>
 <script type="text/javascript">
     dataN = "";
@@ -261,6 +265,7 @@
             $('#btnCancelarEdicao').removeClass('d-none');
             $('#btnEstabelecimentos').addClass('d-none');
             $("#bodyDetalhes").html(modalEditarInnerHTML);
+            initInputs();
             $('#inputNome').val(dataN[0]).trigger("change");
             $('#inputEmail').val(dataN[3]).trigger("change");
             $('#inputCNPJ').val(dataN[2]).trigger("change");
@@ -270,6 +275,7 @@
             $('#inputFone2').val(dataN[6].split("&")[1]).trigger("change");
             var $seuCampo = $('#inputCNPJ');
             $seuCampo.mask('00.000.000', {reverse: false});
+            initInputs();
         } else {
             formEditar.submit();
         }

@@ -104,10 +104,14 @@
     <h2 class="py-5 text-center">Nenhum fornecimento registrado ainda</h2>
     <%}%>
     <a href="../cadastro/fornecimento.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-danger btn-rounded mt-4 disabled" id="btnExcluir" data-toggle="modal" data-target="#confirmarExclusao" data-tooltip="true" data-placement="bottom" title="Excluir fornecimento selecionados" role="button">
+    <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir fornecimentos selecionados">
+        <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
-    <a href="" class="btn btn-primary btn-rounded mt-4 disabled" id="btnPagar" data-toggle="modal" data-target="#pagarSelecionados" data-tooltip="true" data-placement="bottom" title="Pagar fornecimento(s) selecionado(s)" role="button">
-        <i class="fa fa-money-bill-alt mr-1" aria-hidden="true"></i></a>
+    </span>
+    <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Pagar fornecimento(s) selecionado(s)">
+        <a href="" class="btn btn-primary btn-rounded mt-4 disabled mb-0" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
+            <i class="fa fa-money-bill-alt mr-1" aria-hidden="true"></i></a>
+    </span>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
@@ -154,6 +158,7 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/paginacaoTabelas.js"></script>
+<script src="../_JS/formUtils.js"></script>
 <script src="../_JS/mascara.js"></script>
 </body>
 </html>

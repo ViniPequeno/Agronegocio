@@ -44,6 +44,8 @@ public class EstabelecimentoServlet extends HttpServlet {
         HibernateUtil<Estabelecimento> hup = new HibernateUtil<>();
         String s = hup.salvar(e);   
         PrintWriter out = response.getWriter();
+        out.println(s);
+        out.println(((Negocio) sessao.getAttribute("negocio")).getEmpresaCNPJ());
         response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio="+((Negocio) sessao.getAttribute("negocio")).getEmpresaCNPJ());
     }
     

@@ -19,12 +19,12 @@ import org.hibernate.Session;
 public class ConsultaVacina {
 
     public static Vacina findById(String id) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         return s.get(Vacina.class, id);
     }
 
     public static List<Vacina> returnList(String estabelecimento) {
-        Session s = HibernateFactory.getSession();
+        Session s = HibernateFactory.getSessionFactory().openSession();
         Query query = s.createQuery("from Vacina v where v.estabelecimento.sufixoCNPJ =:estabelecimento");
         query.setParameter("estabelecimento", estabelecimento);
         return query.getResultList();

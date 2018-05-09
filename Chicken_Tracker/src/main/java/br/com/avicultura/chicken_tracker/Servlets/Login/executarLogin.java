@@ -38,8 +38,7 @@ public class executarLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession sessao = request.getSession();
-        ConsultaPerfil cp = new ConsultaPerfil();
-        Perfil p = cp.findById(request.getParameter("inputLogin"));
+        Perfil p = ConsultaPerfil.findById(request.getParameter("inputLogin"));
         if (p == null) {
             response.sendRedirect("main/login.jsp?password=false");
         } else if (request.getParameter("inputSenha").equals(p.getSenha())) {
