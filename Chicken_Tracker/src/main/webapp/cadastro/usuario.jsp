@@ -47,35 +47,38 @@
                     </div>
                     <div class="col-md-8">
                         <!-- Material input text -->
-                        <div class="md-form">
+                        <div class="md-form form-group mt-5">
                             <i class="fa fa-user prefix grey-text"></i>
                             <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="50">
-                            <label for="inputNome">Nome</label>
+                            <label for="inputNome">Nome Completo</label>
                         </div>
 
                         <!-- Material input text -->
-                        <div class="md-form">
+                        <div class="md-form form-group mt-5">
                             <i class="fa fa-id-card prefix grey-text"></i>
                             <input type="text" id="inputLogin"  name="inputLogin" class="form-control" required maxlength="20">
                             <label for="inputLogin">Login</label>
                         </div>
 
-                        <!-- Material input email -->
-                        <div class="md-form">
+                        <!-- Material input -->
+                        <div class="md-form form-group mt-5">
                             <i class="fa fa-envelope prefix grey-text"></i>
-                            <input type="email" id="inputEmail" name="inputEmail" class="form-control" required maxlength="80">
-                            <label for="inputEmail">Email</label>
+                            <input type="email" id="inputEmail" name="inputEmail" class="form-control validate" required maxlength="80">
+                            <label for="inputEmail" data-error="Email inválido">Digite seu email</label>
                         </div>
 
                         <!-- Material input text -->
-                        <div class="md-form"> 
+                        <div class="md-form form-group mt-5"> 
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputSenha"  name="inputSenha" class="form-control" required maxlength="255">
+                            <input type="password" id="inputSenha"  name="inputSenha" class="form-control" aria-describedby="senhaDescricao" required maxlength="255">
                             <label for="inputSenha">Senha</label>
+                            <small id="senhaDescricao" class="form-text text-muted">
+                                Sua senha deve ter entre 8-20 caracteres, ter letras e números, e não deve ter espaços, caracteres especiais, ou emoji.
+                            </small>
                         </div>
 
                         <!-- Material input text -->
-                        <div class="md-form">
+                        <div class="md-form form-group mt-5">
                             <i class="fa fa-lock prefix grey-text"></i>
                             <input type="password" id="inputConfirmarSenha" class="form-control" required maxlength="255">
                             <label for="inputConfirmarSenha">Confirmar senha</label>

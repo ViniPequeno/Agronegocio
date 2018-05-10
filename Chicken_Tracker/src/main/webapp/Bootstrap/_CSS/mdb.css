@@ -9767,8 +9767,8 @@ body.scrollable {
 .md-form input[type=search]:focus:not([readonly]),
 .md-form textarea.md-textarea:focus:not([readonly]) {
     -webkit-box-shadow: 0 1px 0 0 yellowgreen;
-    box-shadow: 0 1px 0 0 yellowgreen;
-    border-bottom: 1px solid yellowgreen;
+    box-shadow: 0 1px 0 0 #4caf50;
+    border-bottom: 1px solid #4caf50;
 }
 .md-form input[type=text]:focus:not([readonly]) + label,
 .md-form input[type=password]:focus:not([readonly]) + label,
@@ -9782,7 +9782,7 @@ body.scrollable {
 .md-form input[type=search-md]:focus:not([readonly]) + label,
 .md-form input[type=search]:focus:not([readonly]) + label,
 .md-form textarea.md-textarea:focus:not([readonly]) + label {
-    color: yellowgreen;
+    color: #4caf50;
 }
 .md-form input[type=text] + label:after,
 .md-form input[type=password] + label:after,
