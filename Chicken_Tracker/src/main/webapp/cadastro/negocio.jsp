@@ -86,11 +86,12 @@
 
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/mascara.js"></script>
+<script src="../_JS/formUtils.js"></script>
 <script>
     $('form[name="formCadastro"').submit(function () {
         $('#inputCNPJ').unmask('00.000.000');
     });
+    initInputs();
 </script>
-<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

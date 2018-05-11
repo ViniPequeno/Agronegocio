@@ -24,7 +24,7 @@ public class ConsultaPagamento {
         try {
             s.beginTransaction();
             Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:estabelecimento"
-                    + "ORDEY BY ano DESC, mes DESC, dia DESC, valor DESC");
+                    + " ORDER BY ano DESC, mes DESC, dia DESC, valor DESC");
             query.setParameter("estabelecimento", estabelecimento);
             lista = query.getResultList();
             s.getTransaction().commit();

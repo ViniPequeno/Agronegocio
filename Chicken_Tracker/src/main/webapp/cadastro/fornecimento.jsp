@@ -62,7 +62,7 @@
     $('#inputValorPagamento').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
     $('form[name="formCadastro"').submit(function () {
         var value = $('#inputValorPagamento').maskMoney('unmasked')[0];
-        $('#inputValorPagamento').val(value)
+        $('#inputValorPagamento').val(value);
     });
 </script>
 <script src="../_JS/formUtils.js"></script>

@@ -13,7 +13,7 @@
     <h2 class="py-5 font-weight-bold text-left">
         <a href="negocios.jsp?negocio=<%=request.getParameter("negocio")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Estabelecimento: <%=e.getSufixoCNPJ()%></h2>
-    <div class=" text-center">
+    <div class="text-center">
         <a class="btn blue-grey darken-4 white-text" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Funcionários</a>
 
         <a class="btn blue-grey darken-3 white-text" href="../seusNegocios/fornecedores.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Fornecedores</a>
@@ -26,6 +26,9 @@
 
         <a class="btn blue-grey lighten-1 white-text" href="../seusNegocios/aviarios.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Aviários</a>
 
+        <a class="btn blue-grey lighten-1 white-text" href="../seusNegocios/pagamentos.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Pagamentos</a>
+
+        <a class="btn blue-grey lighten-1 white-text" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Desempenho</a>
     </div>
     <div class="row mt-lg-5">
         <div class="col-lg-5">
@@ -60,7 +63,6 @@
                             <td> <%=e.getFuncionarios().size()%> </td>
                         </tr>
                     </table>
-                    <a class="btn blue-grey lighten-2 white-text" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Desempenho</a>
                 </div>
             </div>
         </div>

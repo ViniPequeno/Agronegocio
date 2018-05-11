@@ -41,7 +41,7 @@ public class PagamentoServlet extends HttpServlet {
         Pagamento p = Pagamento.getInstance();
         GregorianCalendar gc = new GregorianCalendar();
         int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
-        int mes = gc.get(GregorianCalendar.MONTH+1);
+        int mes = gc.get(GregorianCalendar.MONTH + 1);
         int ano = gc.get(GregorianCalendar.YEAR);
         p.setDia(dia);
         p.setMes(mes);
@@ -58,14 +58,12 @@ public class PagamentoServlet extends HttpServlet {
         }
         HibernateUtil<Pagamento> hup = new HibernateUtil<>();
         HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
-        String s = hup.salvar(p);
-        hue.atualizar(e);
+        
         PrintWriter out = response.getWriter();
-        if (s.equals("")) {
-            response.sendRedirect("seusNegocios/pagamentos.jsp");
-        } else {
-            out.println(s);
-        }
+        String s = hup.salvar(p);
+        out.println(s);
+        s = hue.atualizar(e);
+        out.println(s);
 
     }
 

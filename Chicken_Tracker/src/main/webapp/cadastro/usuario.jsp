@@ -56,7 +56,7 @@
                         <!-- Material input text -->
                         <div class="md-form form-group mt-5">
                             <i class="fa fa-id-card prefix grey-text"></i>
-                            <input type="text" id="inputLogin"  name="inputLogin" class="form-control" required maxlength="20">
+                            <input type="text" id="inputLogin"  name="inputLogin" class="form-control" length="20" required maxlength="20">
                             <label for="inputLogin">Login</label>
                         </div>
 

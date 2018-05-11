@@ -12,6 +12,7 @@ $(document).ready(function () {
     $("#inputDataVencimento").mask('00/00/0000', {reverse: false});
     $("#inputDataAbertura").mask('00/00/0000', {reverse: false});
     $("#inputDataFechamento").mask('00/00/0000', {reverse: false});
+    $("#inputData").mask('00/00/0000', {reverse: false});
 });
 
 

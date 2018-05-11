@@ -12,7 +12,7 @@ and open the template in the editor.
     margin-top: 40px;
 }
 
-body .container:first-of-type{
+body + .container:first-of-type{
     margin-top: 20px;
 }
 

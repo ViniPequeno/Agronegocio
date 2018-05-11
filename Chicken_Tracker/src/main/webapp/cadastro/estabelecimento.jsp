@@ -47,12 +47,13 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/mascara.js"></script>
+<script src="../_JS/formUtils.js"></script>
 <script>
     $('form[name="formCadastro"').submit(function () {
         $('#inputSufixoCNPJ').unmask('0000-00');
         $('#inputCNAE').unmask('00000-0/00');
     });
+    initInputs();
 </script>
-<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

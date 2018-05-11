@@ -33,6 +33,7 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
+<script src="../_JS/formUtils.js"></script>
 <script>
     var urlString = document.URL;
     $(document).ready(function () {
@@ -41,7 +42,7 @@
         if (url.searchParams.get("login") == "false") {
             $("#inputLogin").addClass('invalid');
             $("label[for='inputLogin']").addClass('active');
-            $("#inputLogin").attr("placeholder", "Login inválido");
+            $("#inputLogin").attr("placeholder", "Login não encontrado");
         }
         if (url.searchParams.get("password") == "false") {
             $("#inputSenha").addClass('invalid');
@@ -49,20 +50,22 @@
             $("#inputSenha").attr("placeholder", "Senha inválida");
         }
     });
-    $("#inputSenha").blur(function () {
+    $("#inputSenha").change(function () {
         $("#inputSenha").removeClass('valid');
         var url = new URL(urlString);
         if (url.searchParams.get("password") == "false") {
             $("#inputSenha").addClass('invalid');
             if ($("#inputSenha").val().length == 0) {
                 $("label[for='inputSenha']").addClass('active');
-                } else {
+            } else {
                 $("#inputSenha").removeClass('invalid');
             }
         }
     });
-    $("#inputLogin").blur(function () {
-        $("#inputLogin").removeClass('valid');
+    $("#inputSenha").blur(function () {
+        $("#inputSenha").removeClass('valid');
+    });
+    $("#inputLogin").change(function () {
         var url = new URL(urlString);
         if (url.searchParams.get("login") == "false") {
             $("#inputLogin").addClass('invalid');
@@ -73,7 +76,10 @@
             }
         }
     });
+    $("#inputLogin").blur(function () {
+        $("#inputLogin").removeClass('valid');
+    });
+    initInputs();
 </script>
-<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

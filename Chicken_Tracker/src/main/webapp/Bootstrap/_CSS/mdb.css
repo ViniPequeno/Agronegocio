@@ -9761,12 +9761,13 @@ body.scrollable {
 .md-form input[type=time]:focus:not([readonly]),
 .md-form input[type=date]:focus:not([readonly]),
 .md-form input[type=datetime-local]:focus:not([readonly]),
+.md-form input[type=radio]:focus:not([readonly]),
 .md-form input[type=tel]:focus:not([readonly]),
 .md-form input[type=number]:focus:not([readonly]),
 .md-form input[type=search-md]:focus:not([readonly]),
 .md-form input[type=search]:focus:not([readonly]),
 .md-form textarea.md-textarea:focus:not([readonly]) {
-    -webkit-box-shadow: 0 1px 0 0 yellowgreen;
+    -webkit-box-shadow: 0 1px 0 0 #4caf50;
     box-shadow: 0 1px 0 0 #4caf50;
     border-bottom: 1px solid #4caf50;
 }
@@ -9779,6 +9780,7 @@ body.scrollable {
 .md-form input[type=datetime-local]:focus:not([readonly]) + label,
 .md-form input[type=tel]:focus:not([readonly]) + label,
 .md-form input[type=number]:focus:not([readonly]) + label,
+.md-form input[type=radio]:focus:not([readonly]) + label,
 .md-form input[type=search-md]:focus:not([readonly]) + label,
 .md-form input[type=search]:focus:not([readonly]) + label,
 .md-form textarea.md-textarea:focus:not([readonly]) + label {
@@ -10056,8 +10058,8 @@ input[type=radio] {
 }
 
 [type=radio]:checked + label:after {
-    border-color: #4285f4;
-    background-color: #4285f4;
+    border-color: #4caf50;
+    background-color: #4caf50;
     z-index: 0;
     -webkit-transform: scale(1.02);
     -ms-transform: scale(1.02);
@@ -10083,7 +10085,7 @@ input[type=radio] {
 }
 
 [type=radio].with-gap:checked + label:before {
-    border-color: #4285f4
+    border-color: #4caf50
 }
 
 [type=radio].with-gap:checked + label:after {

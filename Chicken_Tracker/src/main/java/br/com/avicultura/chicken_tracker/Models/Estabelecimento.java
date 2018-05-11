@@ -36,11 +36,9 @@ public class Estabelecimento implements Serializable {
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Fornecimento> fornecimentos;
     
-    
-    @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
+    @OneToMany(fetch = FetchType.EAGER, cascade = ALL, mappedBy = "estabelecimento")
     private List<EstabelecimentoFuncionario> funcionarios;
 
-    
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<LocalAves> locais;
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
