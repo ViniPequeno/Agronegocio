@@ -9,4 +9,4 @@ function initInputs() {
         $(this).prev().addClass('grey-text');
     });
 }
-$(document).ready(initInputs);
+initInputs();
