@@ -40,14 +40,15 @@ public class FornecimentoDeleteServlet extends HttpServlet {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
-            String[] cnpj = new String[chkBoxIds.size()];
+            String[] id = new String[chkBoxIds.size()];
             int index = 0;
             for (String s : chkBoxIds) {
-                cnpj[index] = s.split("!")[1];
+                id[index] = s.split("!")[1];
                 index++;
             }
-            for (index = 0; index < cnpj.length; index++) {
-                f.setCNPJ(cnpj[index]);
+            for (index = 0; index < id.length; index++) {
+                Long longID = Long.parseLong(id[index]);
+                f.setId(longID);
                 String s = hup.deletar(f);
             }
             Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");

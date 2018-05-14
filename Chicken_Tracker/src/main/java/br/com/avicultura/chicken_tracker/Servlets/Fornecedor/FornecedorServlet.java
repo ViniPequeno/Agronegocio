@@ -106,7 +106,7 @@ public class FornecedorServlet extends HttpServlet {
                 if (s.equals("")) {
                     response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
                 } else {
-                    out.print(s);
+                    out.println(s);
                 }
             }
         }

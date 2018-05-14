@@ -63,6 +63,7 @@
     $('form[name="formCadastro"').submit(function () {
         var value = $('#inputValorPagamento').maskMoney('unmasked')[0];
         $('#inputValorPagamento').val(value);
+        $('#inputCNPJ').unmask('00.000.000');
     });
 </script>
 <script src="../_JS/formUtils.js"></script>

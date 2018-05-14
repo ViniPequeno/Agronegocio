@@ -21,9 +21,10 @@ public class ConsultaProduto {
     public static Produto findById(String id) {
         Session s = HibernateFactory.getSessionFactory().openSession();
         Produto p = null;
+        Integer intID = Integer.parseInt(id);
         try {
             s.beginTransaction();
-            p = s.get(Produto.class, id);
+            p = s.get(Produto.class, intID);
             s.getTransaction().commit();
             return p;
         } catch (HibernateException e) {

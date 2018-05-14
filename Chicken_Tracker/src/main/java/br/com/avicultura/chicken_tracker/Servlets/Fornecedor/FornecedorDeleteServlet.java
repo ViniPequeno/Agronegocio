@@ -9,6 +9,7 @@ import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.servlet.ServletException;
@@ -28,6 +29,7 @@ public class FornecedorDeleteServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Fornecimento f = Fornecimento.getInstance();
         HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
+        PrintWriter out = response.getWriter();
         if (request.getParameter("inputCNPJ") != null) {
             f.setCNPJ(request.getParameter("inputCNPJ"));
             String s = hup.deletar(f);
@@ -39,15 +41,17 @@ public class FornecedorDeleteServlet extends HttpServlet {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
-            String[] cnpj = new String[chkBoxIds.size()];
+            String[] id = new String[chkBoxIds.size()];
             int index = 0;
             for (String s : chkBoxIds) {
-                cnpj[index] = s.split("!")[1];
+                id[index] = s.split("!")[1];
                 index++;
             }
-            for (index = 0; index < cnpj.length; index++) {
-                f.setCNPJ(cnpj[index]);
+            for (index = 0; index < id.length; index++) {
+                Long longID = Long.parseLong(id[index]);
+                f.setId(longID);
                 String s = hup.deletar(f);
+                out.println(s);
             }
             Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
             response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());

@@ -8,6 +8,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecedor;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -21,12 +22,17 @@ public class ConsultaFornecedores {
     public static Fornecimento findById(String id) {
         Session s = HibernateFactory.getSessionFactory().openSession();
         Fornecimento f = null;
+        Long longID = Long.parseLong(id);
         try {
             s.beginTransaction();
             Query query = s.createQuery("from Fornecimento f where"
-                    + " f.CNPJ =: id and tipo = c");
-            query.setParameter("id", id);
+                    + " f.CNPJ =:id and f.tipo ='c'");
+            query.setParameter("id", longID.toString());
+            try{
             f = (Fornecimento) query.getSingleResult();
+            }catch(NoResultException e){
+                f = null;
+            }
             s.getTransaction().commit();
             return f;
         } catch (HibernateException ex) {

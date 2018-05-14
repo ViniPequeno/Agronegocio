@@ -8,7 +8,7 @@
 <div class="container">
     <div class="card mx-auto mt-5">
         <div class="card-body">
-            <form action="/Chicken_Tracker/FornecedorServlet" method="post">
+            <form action="/Chicken_Tracker/FornecedorServlet" method="post" name="formCadastro">
                 <p class="h1 text-center mb-4">Novo Fornecedor</p>
 
                 <!-- Material input text -->
@@ -63,7 +63,8 @@
     $('#inputValorPagamento').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
     $('form[name="formCadastro"').submit(function () {
         var value = $('#inputValorPagamento').maskMoney('unmasked')[0];
-        $('#inputValorPagamento').val(value)
+        $('#inputValorPagamento').val(value);
+        $('#inputCNPJ').unmask('00.000.000');
     });
 </script>
 <script src="../_JS/formUtils.js"></script>

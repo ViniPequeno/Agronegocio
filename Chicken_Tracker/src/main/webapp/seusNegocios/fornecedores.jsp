@@ -35,6 +35,7 @@
                         <th>Quantidade</th>
                         <th>Data de vencimento</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <!--Table head-->
@@ -46,19 +47,19 @@
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");%>
                     <tr data-fornecedor="<%=dataFornecedor%>">
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input type="checkbox" id="checkbox!<%=f.getCNPJ()%>" name="checkbox!<%=f.getCNPJ()%>">
-                            <label for="checkbox!<%=f.getCNPJ()%>" class="label-table"></label>
+                            <input form="checks" type="checkbox" id="checkbox!<%=f.getId()%>" name="checkbox!<%=f.getId()%>">
+                            <label for="checkbox!<%=f.getId()%>" class="label-table"></label>
                         </th>
-                        <td><%=f.getCNPJ()%></td>
-                        <td><%=f.getPagamento()%></td>
+                        <td class="CNPJ"><%=f.getCNPJ()%></td>
+                        <td>R$ <%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
                         <td><%=dateFormat.format(f.getVencimento())%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../cadastro/fornecedor.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Fornecedor" role="button">
                                 <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                         <td>
                             <form method="post" action="/Chicken_Tracker/FornecedorServlet">
-                                <button type="submit" name="fornecedor" value="pagar-<%=f.getCNPJ()%>">
-                                    Efetuar
+                                <button class="btn btn-primary btn-rounded" type="submit" name="fornecedor" value="pagar-<%=f.getCNPJ()%>">
+                                    <i class="fa fa-money-bill-alt mr-1" aria-hidden="true"></i>Pagar
                                 </button>
                             </form>
                         </td>
@@ -110,13 +111,13 @@
     <%} else {%>
     <h2 class="py-5 text-center">Nenhum fornecedor registrado ainda</h2>
     <%}%>
-    <a href="../cadastro/fornecedor.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="../cadastro/fornecedor.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo fornecedor" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir fornecedores selecionados">
-        <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
+        <a href="" class="btn btn-danger btn-rounded mt-4 disabled" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
             <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
     </span>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Pagar fornecedore(s) selecionado(s)">
-        <a href="" class="btn btn-primary btn-rounded mt-4 disabled mb-0" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
+        <a href="" class="btn btn-primary btn-rounded mt-4 disabled" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
             <i class="fa fa-money-bill-alt mr-1" aria-hidden="true"></i></a>
     </span>
 
@@ -133,7 +134,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/FornecedorDeleteServlet" method="post">
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </form>
                 </div>
             </div>
         </div>

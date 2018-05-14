@@ -46,11 +46,11 @@
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");%>
                     <tr data-fornecimento="<%=dataFornecimento%>">
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input type="checkbox" id="checkbox<%=f.getCNPJ()%>" name="checkbox<%=f.getCNPJ()%>">
-                            <label for="checkbox<%=f.getCNPJ()%>" class="label-table"></label>
+                            <input form="checks" type="checkbox" id="checkbox!<%=f.getCNPJ()%>" name="checkbox!<%=f.getCNPJ()%>">
+                            <label for="checkbox!<%=f.getCNPJ()%>" class="label-table"></label>
                         </th>
-                        <td><%=f.getCNPJ()%></td>
-                        <td><%=f.getPagamento()%></td>
+                        <td class="CNPJ"><%=f.getCNPJ()%></td>
+                        <td>R$ <%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
                         <td><%=dateFormat.format(f.getVencimento())%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../cadastro/fornecimento.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
@@ -103,7 +103,7 @@
     <%} else {%>
     <h2 class="py-5 text-center">Nenhum fornecimento registrado ainda</h2>
     <%}%>
-    <a href="../cadastro/fornecimento.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="../cadastro/fornecimento.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo fornecimento" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir fornecimentos selecionados">
         <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
         <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
@@ -125,7 +125,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/FornecimentoDeleteServlet" method="post">
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </form>
                 </div>
             </div>
         </div>

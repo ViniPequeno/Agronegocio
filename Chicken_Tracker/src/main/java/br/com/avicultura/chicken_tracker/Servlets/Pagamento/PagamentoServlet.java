@@ -58,13 +58,14 @@ public class PagamentoServlet extends HttpServlet {
         }
         HibernateUtil<Pagamento> hup = new HibernateUtil<>();
         HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
-        
+
         PrintWriter out = response.getWriter();
         String s = hup.salvar(p);
         out.println(s);
         s = hue.atualizar(e);
         out.println(s);
 
+        response.sendRedirect("seusNegocios/pagamentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
     }
 
 }
