@@ -1,10 +1,22 @@
 //line
+Chart.pluginService.register({
+    beforeDraw: function (chart, easing) {
+        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+            var ctx = chart.chart.ctx;
+            var chartArea = chart.chartArea;
+
+            ctx.save();
+            ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
+            ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+            ctx.restore();
+        }
+    }
+});
 var ctxL = document.getElementById("graficoLucro").getContext('2d');
 var myLineChart = new Chart(ctxL, {
     type: 'line',
     data: {
         labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho"],
-        color: "rgba(0,0,0,1.0)",
         datasets: [
             {
                 label: "Ganhos",
@@ -35,6 +47,9 @@ var myLineChart = new Chart(ctxL, {
         ]
     },
     options: {
-        responsive: true
+        responsive: true,
+        chartArea: {
+            backgroundColor: 'rgba(0, 0, 20, 0.9)'
+        }
     }
 });

@@ -55,7 +55,7 @@
                             <label for="checkbox!<%=e.getSufixoCNPJ()%>" class="label-table"></label>
                         </th>
                         <td><%=e.getNegocio().getNome()%></td>
-                        <td><%=e.getPerfil().getNome()%></td>
+                        <td class="proprietario"><%=e.getPerfil().getNome()%></td>
                         <td class="CNAE"><%=e.getCNAE()%></td>
                         <td><%=e.getEndereco()%></td>
                         <td class="sufixoCNPJ"><%=e.getSufixoCNPJ()%></td>

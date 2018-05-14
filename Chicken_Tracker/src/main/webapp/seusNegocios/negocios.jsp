@@ -49,7 +49,7 @@
                             <label for="checkbox!<%=n.getEmpresaCNPJ()%>" class="label-table"></label>
                         </th>
                         <td><%=n.getNome()%></td>
-                        <td><%=n.getPerfil().getNome()%></td>
+                        <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="maskCNPJ"><%=n.getEmpresaCNPJ()%></td>
                         <td><%=n.getLinkEmail()%></td>
                         <td><%=n.getLinkFacebook()%></td>

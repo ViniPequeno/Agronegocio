@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
 <% String css = "../_CSS/seu_negocio.css";%>
@@ -11,7 +12,7 @@
 %>
 <div class="container mt-lg-4">
     <h2 class="py-5 font-weight-bold text-left">
-        <a href="negocios.jsp?negocio=<%=request.getParameter("negocio")%>">
+        <a href="estabelecimentos.jsp?negocio=<%=((Negocio)session.getAttribute("negocio")).getEmpresaCNPJ()%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Estabelecimento: <%=e.getSufixoCNPJ()%></h2>
     <div class="text-center">
         <a class="btn blue-grey darken-4 white-text" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Funcionários</a>

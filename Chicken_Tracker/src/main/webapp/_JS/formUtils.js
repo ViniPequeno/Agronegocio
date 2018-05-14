@@ -9,4 +9,9 @@ function initInputs() {
         $(this).prev().addClass('grey-text');
     });
 }
+
+$('.proprietario').each(function () {
+    var nome = $(this).html().split(" ");
+    $(this).html(nome[0] + " " + nome[1]);
+});
 initInputs();

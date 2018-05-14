@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : user
 */
 table.btn-table th label{
-    margin-top: 7px !important;
+    margin-top: 10px !important;
 }
 
 #tableEstabelecimento tr:first-child th {

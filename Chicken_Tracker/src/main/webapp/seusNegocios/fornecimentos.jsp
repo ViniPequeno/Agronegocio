@@ -25,7 +25,7 @@
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive-md btn-table" id="tableDados">
+            <table class="table table-hover table-responsive-md" id="tableDados">
                 <!--Table head-->
                 <thead>
                     <tr>
@@ -34,7 +34,6 @@
                         <th>Preço</th>
                         <th>Quantidade</th>
                         <th>Data de vencimento</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <!--Table head-->
@@ -53,8 +52,6 @@
                         <td>R$ <%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
                         <td><%=dateFormat.format(f.getVencimento())%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/fornecimento.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Negócio" role="button">
-                                <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>
                 </tbody>

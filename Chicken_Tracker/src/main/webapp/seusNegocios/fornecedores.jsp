@@ -35,7 +35,6 @@
                         <th>Quantidade</th>
                         <th>Data de vencimento</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <!--Table head-->
@@ -54,8 +53,6 @@
                         <td>R$ <%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
                         <td><%=dateFormat.format(f.getVencimento())%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../cadastro/fornecedor.jsp" data-toggle="tooltip" data-placement="bottom" title="Editar Fornecedor" role="button">
-                                <i class="fa fa-edit mr-1" aria-hidden="true"></i></a></td>
                         <td>
                             <form method="post" action="/Chicken_Tracker/FornecedorServlet">
                                 <button class="btn btn-primary btn-rounded" type="submit" name="fornecedor" value="pagar-<%=f.getCNPJ()%>">
