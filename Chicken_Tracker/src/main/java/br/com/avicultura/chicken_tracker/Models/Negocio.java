@@ -32,7 +32,7 @@ public class Negocio implements Serializable {
     
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = ALL, mappedBy = "negocio")
-    private List<Telefones> telefones;
+    private List<Telefone> telefones;
 
     @ManyToOne
     @JoinColumn(name = "perfil_id")
@@ -112,11 +112,11 @@ public class Negocio implements Serializable {
         this.estabelecimentos = estabelecimentos;
     }
 
-    public List<Telefones> getTelefones() {
+    public List<Telefone> getTelefones() {
         return telefones;
     }
 
-    public void setTelefones(List<Telefones> telefones) {
+    public void setTelefones(List<Telefone> telefones) {
         this.telefones = telefones;
     }
 

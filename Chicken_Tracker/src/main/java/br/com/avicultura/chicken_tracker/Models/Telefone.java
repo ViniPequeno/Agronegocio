@@ -18,8 +18,8 @@ import javax.persistence.Transient;
  * @author User
  */
 @Entity
-@Table(name = "Telefones")
-public class Telefones implements Serializable{
+@Table(name = "telefone")
+public class Telefone implements Serializable{
 
     @Id
     private String telefone;
@@ -28,15 +28,15 @@ public class Telefones implements Serializable{
     @JoinColumn(name = "perfil_id")
     private Negocio negocio;
 
-    private Telefones() {
+    private Telefone() {
     }
 
     @Transient
-    private static Telefones getInstance;
+    private static Telefone getInstance;
     
-    public static Telefones getInstance() {
+    public static Telefone getInstance() {
         if (getInstance == null) {
-            getInstance = new Telefones();
+            getInstance = new Telefone();
         }
         return getInstance;
     }

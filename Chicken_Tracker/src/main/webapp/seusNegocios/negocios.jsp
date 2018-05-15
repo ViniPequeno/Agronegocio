@@ -1,8 +1,8 @@
 <% String css = "../_CSS/seu_negocio.css";%>
-<%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
+<%@ include file="../cabecalho.jsp"%>
 <div class="container">
     <%  //Gera tabela se houver algum registro
         List<Negocio> negocios = null;

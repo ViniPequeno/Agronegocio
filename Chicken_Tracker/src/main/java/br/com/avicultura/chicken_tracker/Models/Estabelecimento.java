@@ -157,5 +157,12 @@ public class Estabelecimento implements Serializable {
         this.pagamentos = pagamentos;
     }
 
+    public List<Producao> getProducoes() {
+        return producoes;
+    }
+
+    public void setProducoes(List<Producao> producoes) {
+        this.producoes = producoes;
+    }
     
 }

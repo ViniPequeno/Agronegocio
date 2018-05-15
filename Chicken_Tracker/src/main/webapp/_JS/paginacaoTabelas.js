@@ -11,6 +11,13 @@ $('input[type=checkbox]').on("click", function () {
 });
 
 $(document).ready(function () {
+    if ($('input[type=checkbox]:checked').length > 0) {
+        if ($('#btnExcluir').hasClass('disabled'))
+            $('#btnExcluir').removeClass('disabled');
+        if ($('#btnPagar').hasClass('disabled'))
+            $('#btnPagar').removeClass('disabled');
+    }
+    
     var rowsShown = 5;
     var rowsTotal = $('#tableDados tbody tr').length;
     var numPages = rowsTotal / rowsShown;

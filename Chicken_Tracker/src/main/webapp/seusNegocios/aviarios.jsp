@@ -23,7 +23,7 @@
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive-md btn-table" id="tableDados">
+            <table class="table table-hover table-responsive-md" id="tableDados">
                 <!--Table head-->
                 <thead>
                     <tr>
@@ -31,7 +31,7 @@
                         <th>Código</th>
                         <th>Área</th>
                         <th>Função</th>
-                        <th>Estabelecimento</th>
+                        <th>Produto</th>
                     </tr>
                 </thead>
                 <!--Table head-->
@@ -47,7 +47,7 @@
                         <td><%=l.getCodigo()%></td>
                         <td><%=l.getArea()%></td>
                         <td><%=l.getFuncao()%></td>
-                        <td><%=l.getEstabelecimento().getSufixoCNPJ()%></td>
+                        <td><%=l.getProduto().getNome()%></td>
                     </tr>
                     <%}%>
                 </tbody>

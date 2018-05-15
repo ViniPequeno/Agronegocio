@@ -1,5 +1,5 @@
-<%@page import="java.text.SimpleDateFormat"%>
 <% String css = "../_CSS/seu_negocio.css";%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Fornecedor.ConsultaFornecedores" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Fornecimento" %>
@@ -53,12 +53,8 @@
                         <td>R$ <%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
                         <td><%=dateFormat.format(f.getVencimento())%></td>
-                        <td>
-                            <form method="post" action="/Chicken_Tracker/FornecedorServlet">
-                                <button class="btn btn-primary btn-rounded" type="submit" name="fornecedor" value="pagar-<%=f.getCNPJ()%>">
-                                    <i class="fa fa-money-bill-alt mr-1" aria-hidden="true"></i>Pagar
-                                </button>
-                            </form>
+                        <td><a href="" class="btn btn-primary btn-rounded" role="button" data-toggle="modal" data-target="#pagarSelecionados">
+                                <i class="fa fa-money-bill-alt fa-lg mr-1" aria-hidden="true"></i>Pagar</a>
                         </td>
                     </tr>
                     <%}%>
@@ -108,14 +104,14 @@
     <%} else {%>
     <h2 class="py-5 text-center">Nenhum fornecedor registrado ainda</h2>
     <%}%>
-    <a href="../cadastro/fornecedor.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo fornecedor" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="../cadastro/fornecedor.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo fornecedor" role="button"><i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir fornecedores selecionados">
         <a href="" class="btn btn-danger btn-rounded mt-4 disabled" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
-            <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+            <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Pagar fornecedore(s) selecionado(s)">
         <a href="" class="btn btn-primary btn-rounded mt-4 disabled" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
-            <i class="fa fa-money-bill-alt mr-1" aria-hidden="true"></i></a>
+            <i class="fa fa-money-bill-alt fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
 
 
@@ -155,7 +151,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                     <form id="checks" action="/Chicken_Tracker/FornecedorServlet" method="post">
-                        <input type="hidden" name="fornecedor" value="pagar" />
+                        <input type="hidden" name="fornecedor" value="pagar"/>
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>

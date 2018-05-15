@@ -113,12 +113,12 @@
                     <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
                 </a>
                 <!--Dribbble-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-dribbble ">
-                    <i data-fa-transform="grow-8" class="fab fa-dribbble"></i>
+                <a type="button" class="btn-floating btn-sm mx-1  btn-email ">
+                    <i data-fa-transform="grow-8" class="fa fa-envelope"></i>
                 </a>
                 <!--Twitter-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-tw ">
-                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
+                <a type="button" class="btn-floating btn-sm mx-1  btn-git ">
+                    <i data-fa-transform="grow-8" class="fab fa-github"></i>
                 </a>
 
             </div>
