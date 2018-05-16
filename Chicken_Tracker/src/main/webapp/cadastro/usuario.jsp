@@ -5,7 +5,7 @@
 <div class="container">
     <div class="card mx-auto mt-5">
         <div class="card-body">
-            <form action="/Chicken_Tracker/PerfilServlet" method="post">
+            <form action="/Chicken_Tracker/PerfilServlet" method="post" autocomplete="off">
                 <p class="h1 text-center mb-4">Criar conta</p>
                 <div class="row">
                     <div class="col-md-4">

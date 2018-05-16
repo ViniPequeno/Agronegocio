@@ -23,14 +23,14 @@
         <div class="row pt-2">
 
             <!--Grid column-->
-            <div class="col-lg-5 text-center text-lg-left">
+            <div class="col-xl-5 mt-xl-4 text-center text-lg-left">
                 <canvas style="align-content: center;"id="lineChart"></canvas>
                 <br>
             </div>
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-lg-7">
+            <div class="col-xl-7">
 
                 <!--Grid row-->
                 <div class="row">

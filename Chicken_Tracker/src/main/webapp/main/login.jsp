@@ -18,7 +18,7 @@
                     <!-- Material input password -->
                     <div class="md-form form-group mt-5">
                         <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="inputSenha" name="inputSenha" class="form-control validate" required>
+                        <input type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="off">
                         <label for="inputSenha" data-error="">Senha</label>
                     </div>
                     <a class="small ml-4" href="">Esqueceu sua senha?</a>
@@ -33,12 +33,11 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/formUtils.js"></script>
 <script>
+    $('input + label').addClass('active');
     var urlString = document.URL;
     $(document).ready(function () {
         var url = new URL(urlString);
-        $("#status-login").hide();
         if (url.searchParams.get("login") == "false") {
             $("#inputLogin").addClass('invalid');
             $("label[for='inputLogin']").addClass('active');
@@ -79,7 +78,7 @@
     $("#inputLogin").blur(function () {
         $("#inputLogin").removeClass('valid');
     });
-    initInputs();
 </script>
+<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

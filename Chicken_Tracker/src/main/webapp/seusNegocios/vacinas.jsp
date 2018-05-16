@@ -104,10 +104,11 @@
     <h2 class="py-5 text-center">Nenhuma vacina registrada ainda</h2>
     <%}%>
 
-    <a href="../cadastro/vacina.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Nova vacina" role="button"><i class="fa fa-plus mr-1" aria-hidden="true"></i></a>
+    <a href="../cadastro/vacina.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Nova vacina" role="button">
+        <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir vacinas selecionadas">
         <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
-            <i class="fa fa-trash mr-1" aria-hidden="true"></i></a>
+            <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">

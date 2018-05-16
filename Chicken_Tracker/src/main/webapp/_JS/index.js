@@ -35,6 +35,12 @@ var myLineChart = new Chart(ctxL, {
         ]
     },
     options: {
+        title: {
+            display: true,
+            position: 'top',
+            text: ['Título'],
+            fontSize: 14
+        },
         responsive: true
     }
 });
