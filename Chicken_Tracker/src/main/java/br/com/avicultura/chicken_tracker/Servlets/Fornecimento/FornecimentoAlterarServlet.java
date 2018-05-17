@@ -33,7 +33,7 @@ public class FornecimentoAlterarServlet extends HttpServlet {
         f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
         f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
 
-        DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         try {
             f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
         } catch (ParseException ex) {

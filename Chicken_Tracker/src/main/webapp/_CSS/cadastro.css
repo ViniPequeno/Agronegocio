@@ -20,6 +20,13 @@ body + .container:first-of-type{
     margin-top: 20px;
 }
 
+.md-form label[data-error] {
+    width: 100% !important;
+}
+.md-form label {
+    text-align: left !important;
+}
+
 /*DEMO*/
 .preview {
     margin: 10px;

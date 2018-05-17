@@ -1,3 +1,5 @@
+var CPFvalido = false;
+
 function validarCPF(cpfEnviado) {
     cpfEnviado = cpfEnviado.replace(/[^\d]+/g, '');
     if (cpfEnviado == '')
@@ -33,38 +35,10 @@ function validarCPF(cpfEnviado) {
 
     return true;
 }
-
-function validateForm() {
-    var name =  document.getElementById('inputNome').value;
-    if (name == "") {
-        document.getElementById('status').innerHTML = "Name cannot be empty";
-        return false;
+$('#inputCPF').blur(function(){
+    CPFvalido = validarCPF($(this).val());
+    if(CPFvalido==false && $(this).val()!=""){
+        $(this).removeClass('valid');
+        $(this).addClass('invalid');
     }
-    var email =  document.getElementById('inputCPF').value;
-    if (email == "") {
-        document.getElementById('status').innerHTML = "Email cannot be empty";
-        return false;
-    } else {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(!re.test(email)){
-            document.getElementById('status').innerHTML = "Email format invalid";
-            return false;
-        }
-    }
-    var subject =  document.getElementById('inputCargo').value;
-    if (subject == "") {
-        document.getElementById('status').innerHTML = "Subject cannot be empty";
-        return false;
-    }
-    var message =  document.getElementById('inputSituacao').value;
-    if (message == "") {
-        document.getElementById('status').innerHTML = "Message cannot be empty";
-        return false;
-    }
-    document.getElementById('status').innerHTML = "Sending...";
-    document.getElementById('funcio').submit();
-
-}
-$('#inputCPF').change(function(){
-    alert(validarCPF($(this).val()));
 });

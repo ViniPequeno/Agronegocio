@@ -49,7 +49,7 @@
                             double salario = Double.parseDouble(dataFuncionario.split("#")[5]);%>
                     <tr data-funcionario="<%=dataFuncionario%>">
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input form="checks" type="checkbox" id="checkbox!<%=f.getCPF()%>" name="checkbox!<%=f.getCPF()%>">
+                            <input form="checksExcluir" type="checkbox" id="checkbox!<%=f.getCPF()%>" name="checkbox!<%=f.getCPF()%>">
                             <label for="checkbox!<%=f.getCPF()%>" class="label-table"></label>
                         </th>
                         <td><%=f.getNome()%></td>
@@ -133,7 +133,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FuncionarioServlet" method="post">
+                    <form id="checksPagar" action="/Chicken_Tracker/FuncionarioServlet" method="post">
                         <input type="hidden" name="funcionario" value="pagar" />
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FuncionarioDeleteServlet" method="post">
+                    <form id="checksExcluir" action="/Chicken_Tracker/FuncionarioDeleteServlet" method="post">
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>

@@ -70,7 +70,7 @@
                         <!-- Material input text -->
                         <div class="md-form form-group mt-5"> 
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputSenha"  name="inputSenha" class="form-control" aria-describedby="senhaDescricao" required maxlength="255">
+                            <input type="password" id="inputSenha" name="inputSenha" class="form-control" aria-describedby="senhaDescricao" required maxlength="20">
                             <label for="inputSenha">Senha</label>
                             <small id="senhaDescricao" class="form-text text-muted">
                                 Sua senha deve ter entre 8-20 caracteres, ter letras e números, e não deve ter espaços, caracteres especiais, ou emoji.

@@ -21,7 +21,7 @@
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive-lg btn-table" id="tableDados">
+            <table class="table table-hover table-responsive btn-table" id="tableDados">
                 <!--Table head-->
                 <thead>
                     <tr>
@@ -55,7 +55,7 @@
                         <td><%=n.getLinkFacebook()%></td>
                         <td><%=n.getLinkInstagram()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimentos.jsp?negocio=<%=n.getEmpresaCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mostrar Estabelecimentos" role="button">
-                                <i data-fa-transform="grow-4" class="fa fa-clipboard-list mr-1" aria-hidden="true"></i></a></td>
+                                <i data-fa-transform="grow-8" class="fa fa-clipboard-list mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>
                 </tbody>

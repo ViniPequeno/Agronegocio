@@ -30,10 +30,10 @@
                 <div class="form-row">
                     <div class="col-md-6">
                         <!-- Material input text -->
-                        <div class="md-form">
+                        <div class="md-form form-group">
                             <i class="fa fa-id-card prefix grey-text"></i>
-                            <input type="text" id="inputCPF" name="inputCPF" class="form-control" required maxlength="14">
-                            <label for="inputCPF">CPF</label>
+                            <input type="text" id="inputCPF" name="inputCPF" class="form-control validate" required maxlength="14">
+                            <label for="inputCPF" data-error="CPF inválido" data-sucess="CPF válido">CPF</label>
                         </div>
                     </div>
 
@@ -80,10 +80,14 @@
 <script>
     $('#inputSalario').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
     $('form[name="formCadastro"').submit(function () {
-        var value = $('#inputSalario').maskMoney('unmasked')[0];
-        $('#inputSalario').val(value);
-        $('#inputCPF').unmask('000.000.000-00');
-        $('#inputRG').unmask('00.000.000-0');
+        if (!CPFvalido) {
+            event.preventDefault();
+        } else {
+            var value = $('#inputSalario').maskMoney('unmasked')[0];
+            $('#inputSalario').val(value);
+            $('#inputCPF').unmask('000.000.000-00');
+            $('#inputRG').unmask('00.000.000-0');
+        }
     });
 </script>
 <script src="../_JS/formUtils.js"></script>
