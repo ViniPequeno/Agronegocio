@@ -100,24 +100,24 @@
             <div class="col-lg-3 col-md-6 mb-3">
 
                 <div class="avatar mx-auto my-3" style="max-width: 150px;">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded img-fluid z-depth-1-half" alt="First sample avatar image">
+                    <img src="../img/dev.jpeg" class="rounded img-fluid z-depth-1-half" alt="First sample avatar image" width="200" height="200">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
                     Pedro Vinicius
                 </h4>
-                <h6 class="grey-text">Photographer</h6>
+                <h6 class="grey-text">Desenvolvedor Back-end</h6>
 
                 <!--Facebook-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-fb ">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/profile.php?id=100006546753271" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
                 </a>
-                <!--Dribbble-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-email ">
-                    <i data-fa-transform="grow-8" class="fa fa-envelope"></i>
-                </a>
                 <!--Twitter-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-git ">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
+                </a>
+                <!--GitHub-->
+                <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="https://github.com/ViniPequeno" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-github"></i>
                 </a>
 
@@ -128,24 +128,24 @@
             <div class="col-lg-3 col-md-6 mb-3">
 
                 <div class="avatar mx-auto my-3" style="max-width: 150px;">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" class="rounded img-fluid z-depth-1-half" alt="Second sample avatar image">
+                    <img src="../img/dev2.jpeg" class="rounded img-fluid z-depth-1-half" alt="Second sample avatar image" width="200" height="200">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
                     Victor Yan
                 </h4>
-                <h6 class="grey-text">Front-end Developer</h6>
+                <h6 class="grey-text">Desenvolvedor Front-End</h6>
 
-                <!--Email-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-email ">
-                    <i data-fa-transform="grow-8" class="fa fa-envelope"></i>
-                </a>
                 <!--Facebook-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-fb ">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/victor.yan.92?ref=br_rs" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
                 </a>
+                <!--Twitter-->
+                <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="https://twitter.com/supervictor7095" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
+                </a>
                 <!--GitHub-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-git ">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="https://github.com/Victor7095" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-github"></i>
                 </a>
 
@@ -156,25 +156,25 @@
             <div class="col-lg-3 col-md-6 mb-3">
 
                 <div class="avatar mx-auto my-3" style="max-width: 150px;">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
+                    <img src="../img/dev3.jpeg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image" width="200" height="200">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
                     <strong>Gabriel San Martin</strong>
                 </h4>
-                <h6 class="grey-text">Web Developer</h6>
+                <h6 class="grey-text">Desenvolvedor Web</h6>
 
-                <!--Linkedin-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-li">
-                    <i data-fa-transform="grow-8" class="fab fa-linkedin "></i>
+                <!--Facebook-->
+                <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/profile.php?id=100010879563084" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
                 </a>
                 <!--Twitter-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-tw">
-                    <i data-fa-transform="grow-8" class="fab fa-twitter "></i>
+                <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="https://twitter.com/Paperzord" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
                 </a>
-                <!--Pinterest-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-pin">
-                    <i data-fa-transform="grow-8" class="fab fa-pinterest "></i>
+                <!--GitHub-->
+                <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="https://github.com/Dabwiel" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-github"></i>
                 </a>
 
             </div>
@@ -184,25 +184,25 @@
             <div class="col-lg-3 col-md-6 mb-3">
 
                 <div class="avatar mx-auto my-3" style="max-width: 150px;">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
+                    <img src="../img/dev4.jpeg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image" width="200" height="200">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
                     <strong>Wyller Douglas</strong>
                 </h4>
-                <h6 class="grey-text">Web Developer</h6>
+                <h6 class="grey-text">Desenvolvedor Web</h6>
 
-                <!--Linkedin-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-li">
-                    <i data-fa-transform="grow-8" class="fab fa-linkedin "></i>
+                <!--Facebook-->
+                <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/profile.php?id=100012432752260" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
                 </a>
                 <!--Twitter-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-tw">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-twitter "></i>
                 </a>
-                <!--Pinterest-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-pin">
-                    <i data-fa-transform="grow-8" class="fab fa-pinterest "></i>
+                <!--GitHub-->
+                <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-github"></i>
                 </a>
 
             </div>

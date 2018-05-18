@@ -9,24 +9,19 @@
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
             <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
         </div>
-            <div class="md-form mb-5">
-                <form method="get" action="">
-                    <div class="row">
-                        <div class="col-4">
-                            <input style="margin-left: 25px" class="form-control" type="text" placeholder="Pesquisar negócios" name="search">
-                        </div>
-                        <div class="col-1"></div>
-                        <div class="col-2">
-                            <input class="form-control" type="submit" value="Pesquisar">
-                        </div>
+        <div class="md-form mb-5">
+            <form method="get" action="">
+                <div class="row">
+                    <div class="col-4">
+                        <input style="margin-left: 25px" class="form-control" type="text" placeholder="Pesquisar negócios" name="search">
                     </div>
-                </form>
-            </div>
-            <%  
+                </div>
+            </form>
+            <%
                 List<Negocio> negocios;
-                if(request.getParameter("search") == null){
+                if (request.getParameter("search") == null) {
                     negocios = ConsultaNegocio.returnList();
-                }else{
+                } else {
                     String search = request.getParameter("search");
                     negocios = ConsultaNegocio.returnListBySearch(search);
                 }
@@ -44,63 +39,72 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% 
-                        for(Negocio n : negocios){
-                             String data = ConsultaNegocio.returnValues(n);
+                    <%
+                        for (Negocio n : negocios) {
+                            String data = ConsultaNegocio.returnValues(n);
                     %>   
-                        <tr data-negocio="<%=data%>">
-                            <td><%=n.getNome()%></td>
-                            <td><%=n.getPerfil().getNome()%></td>
-                            <td><%=n.getEmpresaCNPJ()%></td>
-                            <td><%=n.getLinkEmail()%></td>
-                            <td><%=n.getTelefone1()%></td>
-                            <td><%=n.getTelefone2()%></td>
-                        </tr>
+                    <tr data-negocio="<%=data%>">
+                        <td><%=n.getNome()%></td>
+                        <td><%=n.getPerfil().getNome()%></td>
+                        <td><%=n.getEmpresaCNPJ()%></td>
+                        <td><%=n.getLinkEmail()%></td>
+                        <td><%=n.getTelefone1()%></td>
+                        <td><%=n.getTelefone2()%></td>
+                    </tr>
                     <%}%>
-                </tbody>
-            </table>
-            <!--Table-->
-            <hr class="my-0">
+                <div class="col-1"></div>
+                <div class="col-2">
+                    <input class="form-control" type="submit" value="Pesquisar">
+                </div>
+        </div>
+        </form>
 
-            <!--Bottom Table UI-->
-            <div class="d-flex justify-content-center">
+        </tbody>
+        </table>
+                    
+        <%}else {%>
+        <h2 class="py-5 text-center">Nenhum negócio registrado.</h2>
+        <%}%>
+        <!--Table-->
+        <hr class="my-0">
 
-                <!--Pagination -->
-                <nav class="my-4 pt-2">
-                    <ul class="pagination pagination-circle pg-dark-grey mb-0" id="pg-link">
+        <!--Bottom Table UI-->
+        <div class="d-flex justify-content-center">
 
-                        <!--First-->
-                        <li id="first-item" class="page-item disabled clearfix d-none d-md-block"><a class="page-link">Primeiro</a></li>
+            <!--Pagination -->
+            <nav class="my-4 pt-2">
+                <ul class="pagination pagination-circle pg-dark-grey mb-0" id="pg-link">
 
-                        <!--Arrow left-->
-                        <li id="previous" class="page-item disabled">
-                            <a class="page-link" aria-label="Anterior">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Anterior</span>
-                            </a>
-                        </li>
+                    <!--First-->
+                    <li id="first-item" class="page-item disabled clearfix d-none d-md-block"><a class="page-link">Primeiro</a></li>
 
-                        <!--Arrow right-->
-                        <li id="next" class="page-item">
-                            <a class="page-link" aria-label="Próximo">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Próximo</span>
-                            </a>
-                        </li>
+                    <!--Arrow left-->
+                    <li id="previous" class="page-item disabled">
+                        <a class="page-link" aria-label="Anterior">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                    </li>
 
-                        <!--Last-->
-                        <li id="last-item" class="page-item clearfix d-none d-md-block"><a class="page-link">Último</a></li>
+                    <!--Arrow right-->
+                    <li id="next" class="page-item">
+                        <a class="page-link" aria-label="Próximo">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Próximo</span>
+                        </a>
+                    </li>
 
-                    </ul>
-                </nav>
-                <!--/Pagination -->
+                    <!--Last-->
+                    <li id="last-item" class="page-item clearfix d-none d-md-block"><a class="page-link">Último</a></li>
 
-            </div>
-            <!--Bottom Table UI-->
+                </ul>
+            </nav>
+            <!--/Pagination -->
+
+        </div>
+        <!--Bottom Table UI-->
     </div>
-    <%} else {%>
-    <h2 class="py-5 text-center">Nenhum negócio registrado.</h2>
-    <%}%>
+
     <!-- Modal -->
     <div class="modal fade" id="detalhesNegocio" tabindex="-1" role="dialog" aria-labelledby="detalhesNegocio" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -174,7 +178,7 @@
         $("#nome").text("Nome: " + nome);
 
         $("#proprietario").text("Proprietário: " + proprietario);
-        
+
         cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
         $("#cnpj").text("CNPJ: " + cnpj);
 
@@ -223,7 +227,7 @@
         $("#nome").text("Nome: " + nome);
 
         $("#proprietario").text("Proprietário: " + proprietario);
-        
+
         cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
         $("#cnpj").text("CNPJ: " + cnpj);
 

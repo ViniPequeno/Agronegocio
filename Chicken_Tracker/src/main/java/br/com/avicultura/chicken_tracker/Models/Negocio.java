@@ -31,7 +31,8 @@ public class Negocio implements Serializable {
     private double lucroTotal;
     private String telefone1;
     private String telefone2;
-
+    private String fone1;
+    private String fone2;
     @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;
@@ -108,7 +109,6 @@ public class Negocio implements Serializable {
     public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
         this.estabelecimentos = estabelecimentos;
     }
-
     public String getTelefone1() {
         return telefone1;
     }
@@ -131,6 +131,22 @@ public class Negocio implements Serializable {
 
     public void setLucroTotal(double lucroTotal) {
         this.lucroTotal = lucroTotal;
+    }
+
+    public String getFone1() {
+        return fone1;
+    }
+
+    public void setFone1(String fone1) {
+        this.fone1 = fone1;
+    }
+
+    public String getFone2() {
+        return fone2;
+    }
+
+    public void setFone2(String fone2) {
+        this.fone2 = fone2;
     }
 
 }
