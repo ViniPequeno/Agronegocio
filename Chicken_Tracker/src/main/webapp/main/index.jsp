@@ -100,13 +100,13 @@
             <div class="col-lg-3 col-md-6 mb-3">
 
                 <div class="avatar mx-auto my-3" style="max-width: 150px;">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded img-fluid z-depth-1-half" alt="First sample avatar image">
+                    <img src="../img/dev.jpeg" class="rounded img-fluid z-depth-1-half" alt="First sample avatar image">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
                     Pedro Vinicius
                 </h4>
-                <h6 class="grey-text">Photographer</h6>
+                <h6 class="grey-text">Desenvolvedor Back-end</h6>
 
                 <!--Facebook-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-fb ">
@@ -128,13 +128,13 @@
             <div class="col-lg-3 col-md-6 mb-3">
 
                 <div class="avatar mx-auto my-3" style="max-width: 150px;">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" class="rounded img-fluid z-depth-1-half" alt="Second sample avatar image">
+                    <img src="../img/dev2.jpeg" class="rounded img-fluid z-depth-1-half" alt="Second sample avatar image">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
                     Victor Yan
                 </h4>
-                <h6 class="grey-text">Front-end Developer</h6>
+                <h6 class="grey-text">Desenvolvedor Front-End</h6>
 
                 <!--Email-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-email ">
@@ -156,13 +156,13 @@
             <div class="col-lg-3 col-md-6 mb-3">
 
                 <div class="avatar mx-auto my-3" style="max-width: 150px;">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
+                    <img src="../img/dev3.jpeg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
                     <strong>Gabriel San Martin</strong>
                 </h4>
-                <h6 class="grey-text">Web Developer</h6>
+                <h6 class="grey-text">Desenvolvedor Web</h6>
 
                 <!--Linkedin-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-li">
@@ -184,13 +184,13 @@
             <div class="col-lg-3 col-md-6 mb-3">
 
                 <div class="avatar mx-auto my-3" style="max-width: 150px;">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
+                    <img src="../img/dev4.jpeg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image">
                 </div>
                 <br>
                 <h4 class="font-weight-bold dark-grey-text">
                     <strong>Wyller Douglas</strong>
                 </h4>
-                <h6 class="grey-text">Web Developer</h6>
+                <h6 class="grey-text">Desenvolvedor Web</h6>
 
                 <!--Linkedin-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-li">
