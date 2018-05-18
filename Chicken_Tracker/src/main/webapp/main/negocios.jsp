@@ -10,98 +10,102 @@
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
             <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
         </div>
-            <div class="md-form mb-5">
-                <form method="get" action="">
-                    <div class="row">
-                        <div class="col-4">
-                            <input style="margin-left: 25px" class="form-control" type="text" placeholder="Pesquisar negócios" name="search">
-                        </div>
-                        <div class="col-1"></div>
-                        <div class="col-2">
-                            <input class="form-control" type="submit" value="Pesquisar">
-                        </div>
+        <div class="md-form mb-5">
+            <form method="get" action="">
+                <div class="row">
+                    <div class="col-4">
+                        <input style="margin-left: 25px" class="form-control" type="text" placeholder="Pesquisar negócios" name="search">
                     </div>
-                </form>
-            </div>
-            <%  
-                List<Negocio> negocios;
-                if(request.getParameter("search") == null){
-                    negocios = ConsultaNegocio.returnList();
-                }else{
-                    String search = request.getParameter("search");
-                    negocios = ConsultaNegocio.returnListBySearch(search);
-                }
-                if (negocios.size() > 0) {
-            %>
-            <table class="table table-hover table-responsive-md btn-table table-bordered" id="tableDados" style="margin-bottom: 20px;">
-                <thead class="thead-dark">
-                    <tr class="text-white">
-                        <th>Nome</th>
-                        <th>Proprietário</th>
-                        <th>CNPJ</th>
-                        <th>Email</th>
-                        <th>Fone 1</th>
-                        <th>Fone 2</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% 
-                        for(Negocio n : negocios){
-                             String data = ConsultaNegocio.returnValues(n);
-                    %>   
-                        <tr data-negocio="<%=data%>">
-                            <td><%=n.getNome()%></td>
-                            <td><%=n.getPerfil().getNome()%></td>
-                            <td><%=n.getEmpresaCNPJ()%></td>
-                            <td><%=n.getLinkEmail()%></td>
-                            <%
-                                List<Telefone> telefones = n.getTelefones();
-                                for(Telefone t : telefones){
-                            %>
-                                <td><%=t.getTelefone()%></td>
-                            <%}%>
-                        </tr>
+                    <div class="col-1"></div>
+                    <div class="col-2">
+                        <input class="form-control" type="submit" value="Pesquisar">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <%
+            List<Negocio> negocios;
+            if (request.getParameter("search") == null) {
+                negocios = ConsultaNegocio.returnList();
+            } else {
+                String search = request.getParameter("search");
+                negocios = ConsultaNegocio.returnListBySearch(search);
+            }
+            if (negocios.size() > 0) {
+        %>
+        <table class="table table-hover table-responsive-md btn-table table-bordered" id="tableDados" style="margin-bottom: 20px;">
+            <thead class="thead-dark">
+                <tr class="text-white">
+                    <th>Nome</th>
+                    <th>Proprietário</th>
+                    <th>CNPJ</th>
+                    <th>Email</th>
+                    <th>Fone 1</th>
+                    <th>Fone 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    for (Negocio n : negocios) {
+                        String data = ConsultaNegocio.returnValues(n);
+                %>   
+                <tr data-negocio="<%=data%>">
+                    <td><%=n.getNome()%></td>
+                    <td><%=n.getPerfil().getNome()%></td>
+                    <td><%=n.getEmpresaCNPJ()%></td>
+                    <td><%=n.getLinkEmail()%></td>
+                    <%if(n.getFone1().equals(null)){%>
+                        <td>-/-</td>
+                    <%}else{%>
+                        <td><%=n.getFone1()%></td>
                     <%}%>
-                </tbody>
-            </table>
-            <!--Table-->
-            <hr class="my-0">
+                    <%if(n.getFone2().equals(null)){%>
+                        <td>-/-</td>
+                    <%}else{%>
+                        <td><%=n.getFone2()%></td>
+                    <%}%>
+                </tr>
+                <%}%>
+            </tbody>
+        </table>
+        <!--Table-->
+        <hr class="my-0">
 
-            <!--Bottom Table UI-->
-            <div class="d-flex justify-content-center">
+        <!--Bottom Table UI-->
+        <div class="d-flex justify-content-center">
 
-                <!--Pagination -->
-                <nav class="my-4 pt-2">
-                    <ul class="pagination pagination-circle pg-dark-grey mb-0" id="pg-link">
+            <!--Pagination -->
+            <nav class="my-4 pt-2">
+                <ul class="pagination pagination-circle pg-dark-grey mb-0" id="pg-link">
 
-                        <!--First-->
-                        <li id="first-item" class="page-item disabled clearfix d-none d-md-block"><a class="page-link">Primeiro</a></li>
+                    <!--First-->
+                    <li id="first-item" class="page-item disabled clearfix d-none d-md-block"><a class="page-link">Primeiro</a></li>
 
-                        <!--Arrow left-->
-                        <li id="previous" class="page-item disabled">
-                            <a class="page-link" aria-label="Anterior">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Anterior</span>
-                            </a>
-                        </li>
+                    <!--Arrow left-->
+                    <li id="previous" class="page-item disabled">
+                        <a class="page-link" aria-label="Anterior">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                    </li>
 
-                        <!--Arrow right-->
-                        <li id="next" class="page-item">
-                            <a class="page-link" aria-label="Próximo">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Próximo</span>
-                            </a>
-                        </li>
+                    <!--Arrow right-->
+                    <li id="next" class="page-item">
+                        <a class="page-link" aria-label="Próximo">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Próximo</span>
+                        </a>
+                    </li>
 
-                        <!--Last-->
-                        <li id="last-item" class="page-item clearfix d-none d-md-block"><a class="page-link">Último</a></li>
+                    <!--Last-->
+                    <li id="last-item" class="page-item clearfix d-none d-md-block"><a class="page-link">Último</a></li>
 
-                    </ul>
-                </nav>
-                <!--/Pagination -->
+                </ul>
+            </nav>
+            <!--/Pagination -->
 
-            </div>
-            <!--Bottom Table UI-->
+        </div>
+        <!--Bottom Table UI-->
     </div>
     <%} else {%>
     <h2 class="py-5 text-center">Nenhum negócio registrado.</h2>
@@ -179,7 +183,7 @@
         $("#nome").text("Nome: " + nome);
 
         $("#proprietario").text("Proprietário: " + proprietario);
-        
+
         cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
         $("#cnpj").text("CNPJ: " + cnpj);
 
@@ -228,7 +232,7 @@
         $("#nome").text("Nome: " + nome);
 
         $("#proprietario").text("Proprietário: " + proprietario);
-        
+
         cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
         $("#cnpj").text("CNPJ: " + cnpj);
 
