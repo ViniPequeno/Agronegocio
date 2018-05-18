@@ -22,7 +22,7 @@
         <div class="px-4">
             <!--Table-->
             <table class="table table-hover table-responsive-md btn-table" id="tableDados">
-                <!--Table head-->
+                <!--Table head-->  
                 <thead>
                     <tr>
                         <th> </th>
@@ -282,6 +282,6 @@
         }
     });
     $('.maskCNPJ').mask('00.000.000', {reverse: false});
-</script>
+</script> 
 </body>
 </html>
