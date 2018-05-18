@@ -36,4 +36,31 @@ public class ConsultaPagamento {
         }
         return lista;
     }
+    
+    public static String seteDias(){
+        String st;
+        /* 
+        Formato:
+        dia/mes/ano/somatoria!dia/mes/ano/somatoria...
+        */
+        return st="";
+    }
+    
+    public static String trintaDias(){
+        String st;
+        /* 
+        Formato:
+        dia/mes/ano/somatoria!dia/mes/ano/somatoria...
+        */
+        return st="";
+    }
+    
+    public static String dozeMeses(){
+        String st;
+        /* 
+        Formato:
+        mes/ano/somatoria!mes/ano/somatoria...
+        */
+        return st="";
+    }
 }

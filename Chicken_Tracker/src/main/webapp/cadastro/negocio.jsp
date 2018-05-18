@@ -40,8 +40,8 @@
                         <!-- Material input phone -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text"></i>
-                            <input type="text" id="inputFone1" name="inputTelefone1" class="form-control" required maxlength="9">
-                            <label for="inputFone1">Telefone 1:</label>
+                            <input type="text" id="inputTelefone1" name="inputTelefone1" class="form-control" required maxlength="9">
+                            <label for="inputTelefone1">Telefone 1:</label>
                         </div>
                     </div>
 
@@ -49,8 +49,8 @@
                         <!-- Material input phone -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text"></i>
-                            <input type="text" id="inputFone2" name="inputTelefone2" class="form-control" required maxlength="9">
-                            <label for="inputFone2">Telefone 2:</label>
+                            <input type="text" id="inputTelefone2" name="inputTelefone2" class="form-control" required maxlength="9">
+                            <label for="inputTelefone2">Telefone 2:</label>
                         </div>
                     </div>
                 </div>

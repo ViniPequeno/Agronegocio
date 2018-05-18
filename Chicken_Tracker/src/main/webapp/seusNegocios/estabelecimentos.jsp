@@ -37,7 +37,6 @@
                         <th>Negócio</th>
                         <th>Proprietário</th>
                         <th>CNAE</th>
-                        <th>Endereço</th>
                         <th>Sufixo CNPJ</th>
                         <th></th>
                     </tr>
@@ -57,7 +56,6 @@
                         <td><%=e.getNegocio().getNome()%></td>
                         <td class="proprietario"><%=e.getPerfil().getNome()%></td>
                         <td class="CNAE"><%=e.getCNAE()%></td>
-                        <td><%=e.getEndereco()%></td>
                         <td class="sufixoCNPJ"><%=e.getSufixoCNPJ()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
                                 <i class="fa fa-ellipsis-h mr-1" aria-hidden="true"></i></a></td>
@@ -174,7 +172,9 @@
             '<p id="proprietario">Proprietário: </p>' +
             '<p id="cnae">CNAE: </p>' +
             '<p id="sufixoCNPJ"> Sufixo do CNPJ: </p>' +
+            '<p id="CEP"> CEP: </p>' +
             '<p id="endereco"> Endereço: </p>' +
+            '<p id="cidade-uf"> Cidade: </p>' +
             '<p id="qtdeFuncionarios">Quantidade de funcionários: </p>';
     $("td").not(function () {
         return $("a", this).length != 0;
@@ -192,8 +192,12 @@
         var proprietario = campo[1];
         var sufixoCNPJ = campo[2];
         var cnae = campo[3];
-        var endereco = campo[4];
-        var qtdeFuncionarios = campo[5];
+        var CEP = campo[4];
+        var rua = campo[5];
+        var bairro = campo[6];
+        var cidade = campo[7];
+        var estado = campo[8];
+        var qtdeFuncionarios = campo[9];
 
         $("#negocio").text("Negócio: " + negocio);
 
@@ -205,7 +209,11 @@
         sufixoCNPJ = sufixoCNPJ.replace(/^(\d{4})(\d{2}).*/, '$1-$2');
         $("#sufixoCNPJ").text("Sufixo do CNPJ: " + sufixoCNPJ);
 
-        $("#endereco").text("Endereço: " + endereco);
+        $("#CEP").text("CEP: " + CEP);
+        
+        $("#endereco").text("Endereço: " + rua+", "+bairro+", ");
+        
+        $("#cidade-uf").text("Cidade: "+cidade+", "+estado);
 
         $("#qtdeFuncionarios").text("Quantidade de funcionários: " + qtdeFuncionarios);
     });
@@ -218,9 +226,21 @@
             '<div class="md-form"><i class="fa fa-money-bill-alt prefix grey-text"></i>' +
             '<input type="text" id="inputCNAE" name="inputCNAE" class="form-control" required maxlength="7">' +
             '<label for="inputCNAE">CNAE</label></div>' +
-            '<div class="md-form"><i class="fa fa-warehouse prefix grey-text"></i>' +
-            '<input type="text" id="inputEndereco" name="inputEndereco" class="form-control" required maxlength="80">' +
-            '<label for="inputEndereco">Endereço</label> </div>' +
+            '<div class="md-form">' +
+            '<input type="text" id="inputCEP" name="inputCEP" class="form-control" required maxlength="80">' +
+            '<label for="inputCEP">CEP</label> </div>' +
+            '<div class="md-form">' +
+            '<input type="text" id="inputRua" name="inputRua" class="form-control" required maxlength="80">' +
+            '<label for="inputRua">Rua</label> </div>' +
+            '<div class="md-form">' +
+            '<input type="text" id="inputBairro" name="inputBairro" class="form-control" required maxlength="80">' +
+            '<label for="inputBairro">Bairro</label> </div>' +
+            '<div class="md-form">' +
+            '<input type="text" id="inputCidade" name="inputCidade" class="form-control" required maxlength="80">' +
+            '<label for="inputCidade">Cidade</label> </div>' +
+            '<div class="md-form">' +
+            '<input type="text" id="inputEstado" name="inputEstado" class="form-control" required maxlength="80">' +
+            '<label for="inputEstado">Estado</label> </div>' +
             '</form>';
     $("#btnEditarConfirmar").click(function () {
         if ($(this).text() == "Editar") {
@@ -229,7 +249,11 @@
             initInputs();
             $('#inputSufixoCNPJ').val(dataE[2]).trigger("change");
             $('#inputCNAE').val(dataE[3]).trigger("change");
-            $('#inputEndereco').val(dataE[4]).trigger("change");
+            $('#inputCEP').val(dataE[4]).trigger("change");
+            $('#inputRua').val(dataE[5]).trigger("change");
+            $('#inputBairro').val(dataE[6]).trigger("change");
+            $('#inputCidade').val(dataE[7]).trigger("change");
+            $('#inputEstado').val(dataE[8]).trigger("change");
             var field = $('#inputSufixoCNPJ');
             field.mask('0000-00', {reverse: false});
             field = $('#inputCNAE');

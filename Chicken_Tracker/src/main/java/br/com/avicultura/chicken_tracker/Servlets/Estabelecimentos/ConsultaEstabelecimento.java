@@ -143,6 +143,13 @@ public class ConsultaEstabelecimento {
         }
         return lista;
     }
+    
+    
+        /* 
+        
+        Formato:
+        dia/mes/ano/somatoria!dia/mes/ano/somatoria...
+        */
 
     public static List<Pagamento> returnGanhos(String estabelecimento, int tipo, int tempo) {
         // 1 - 7 dias
@@ -213,7 +220,11 @@ public class ConsultaEstabelecimento {
         a += e.getPerfil().getNome() + "#";
         a += e.getSufixoCNPJ() + "#";
         a += e.getCNAE() + "#";
-        a += e.getEndereco() + "#";
+        a += e.getCEP()+ "#";
+        a += e.getRua()+ "#";
+        a += e.getBairro()+ "#";
+        a += e.getCidade()+ "#";
+        a += e.getEstado()+ "#";
         a += e.getFuncionarios().size() + "#";
 
         return a;

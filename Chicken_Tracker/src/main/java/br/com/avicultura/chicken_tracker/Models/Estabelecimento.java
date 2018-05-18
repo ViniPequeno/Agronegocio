@@ -25,7 +25,13 @@ public class Estabelecimento implements Serializable {
     private Negocio negocio;
     
     private String CNAE;
-    private String endereco;
+    
+    private String CEP;
+    private String rua;
+    private String bairro;
+    private String cidade;
+    private String estado;
+    
     private double saldo;
 
     @ManyToOne
@@ -75,12 +81,44 @@ public class Estabelecimento implements Serializable {
         this.CNAE = CNAE;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getCEP() {
+        return CEP;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Perfil getPerfil() {

@@ -21,7 +21,7 @@
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive btn-table" id="tableDados">
+            <table class="table table-hover table-responsive-md btn-table" id="tableDados">
                 <!--Table head-->
                 <thead>
                     <tr>
@@ -246,11 +246,11 @@
             '<input type="text" name="inputLinkInstagram" id="inputLinkInstagram" placeholder=" " class="form-control" required>' +
             '<label for="inputLinkInstagram">Instagram</label></div>' +
             '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>' +
-            '<input type="text" name="inputFone1" id="inputFone1" class="form-control" placeholder=" " required>' +
-            '<label for="inputFone1">Telefone 1</label></div>' +
+            '<input type="text" name="inputTelefone1" id="inputTelefone1" class="form-control" placeholder=" " required>' +
+            '<label for="inputTelefone1">Telefone 1</label></div>' +
             '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>' +
-            '<input type="text" name="inputFone2" id="inputFone2" class="form-control" placeholder=" " required>' +
-            '<label for="inputFone2">Telefone 2</label></div>' +
+            '<input type="text" name="inputTelefone2" id="inputTelefone2" class="form-control" placeholder=" " required>' +
+            '<label for="inputTelefone2">Telefone 2</label></div>' +
             '</form>';
     $('#btnCancelarEdicao').click(function () {
         $(this).addClass('d-none');

@@ -29,12 +29,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Material input text -->
-                <div class="md-form">
-                    <i class="fa fa-warehouse prefix grey-text"></i>
-                    <input type="text" id="inputEndereco" name="inputEndereco" class="form-control" required maxlength="80">
-                    <label for="inputEndereco">Endereço</label>
-                </div>
                 <p class="h5 mt-5">
                     <i class="fa fa-warehouse grey-text fa-lg mr-2"></i>Endereço</p>
                 <div class="form-row">
@@ -66,8 +60,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="md-form">
-                            <input type="text" id="inputUF" name="inputUF" class="form-control" disabled required maxlength="80">
-                            <label class="disabled" for="inputUF">UF</label>
+                            <input type="text" id="inputEstado" name="inputEstado" class="form-control" disabled required maxlength="80">
+                            <label class="disabled" for="inputEstado">UF</label>
                         </div>
                     </div>
                 </div>
@@ -100,7 +94,7 @@
             $("#inputRua").val("");
             $("#inputBairro").val("");
             $("#inputCidade").val("");
-            $("#inputUF").val("");
+            $("#inputEstado").val("");
         }
 
         //Quando o campo cep perde o foco.
@@ -122,7 +116,7 @@
                     $("#inputRua").val("...");
                     $("#inputBairro").val("...");
                     $("#inputCidade").val("...");
-                    $("#inputUF").val("...");
+                    $("#inputEstado").val("...");
 
                     //Consulta o webservice viacep.com.br/
                     $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
@@ -135,8 +129,8 @@
                             $("#inputBairro").trigger('change');
                             $("#inputCidade").val(dados.localidade);
                             $("#inputCidade").trigger('change');
-                            $("#inputUF").val(dados.uf);
-                            $("#inputUF").trigger('change');
+                            $("#inputEstado").val(dados.uf);
+                            $("#inputEstado").trigger('change');
                         } //end if.
                         else {
                             //CEP pesquisado não foi encontrado.

@@ -45,7 +45,11 @@ public class EstabelecimentoServlet extends HttpServlet {
         if (butao.equals("cadastrar")) {
             e.setSufixoCNPJ(request.getParameter("inputSufixoCNPJ"));
             e.setCNAE(request.getParameter("inputCNAE"));
-            e.setEndereco(request.getParameter("inputEndereco"));
+            e.setCEP(request.getParameter("inputCEP"));
+            e.setRua(request.getParameter("inputRua"));
+            e.setBairro(request.getParameter("inputBairro"));
+            e.setCidade(request.getParameter("inputCidade"));
+            e.setEstado(request.getParameter("inputEstado"));
             HttpSession sessao = request.getSession();
             e.setPerfil((Perfil) sessao.getAttribute("usuario"));
             e.setNegocio(n);
@@ -53,13 +57,23 @@ public class EstabelecimentoServlet extends HttpServlet {
             if (string.equals("")) {
                 response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio=" + n.getEmpresaCNPJ());
             } else {
+                out.println(request.getParameter("inputCEP"));
+                out.println(request.getParameter("inputRua"));
+                out.println(request.getParameter("inputBairro"));
+                out.println(request.getParameter("inputCidade"));
+                out.println(request.getParameter("inputEstado"));
+                out.println("oi");
                 out.println(string);
             }
             
         } else if (butao.equals("alterar")) {
             e.setSufixoCNPJ(request.getParameter("inputSuficoCNPJ"));
             e.setCNAE(request.getParameter("inputCNAE"));
-            e.setEndereco(request.getParameter("inputEndereco"));
+            e.setCEP(request.getParameter("inputCEP"));
+            e.setRua(request.getParameter("inputRua"));
+            e.setBairro(request.getParameter("inputBairro"));
+            e.setCidade(request.getParameter("inputCidade"));
+            e.setEstado(request.getParameter("inputEstado"));
             e.setNegocio(n);
             string = hup.atualizar(e);
             response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio=" + n.getEmpresaCNPJ());
