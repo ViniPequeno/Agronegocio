@@ -8,7 +8,6 @@ package br.com.avicultura.chicken_tracker.Servlets.Negocio;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
-import br.com.avicultura.chicken_tracker.Models.Telefone;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -42,31 +41,14 @@ public class NegocioServlet extends HttpServlet {
         n.setLinkEmail(request.getParameter("inputEmail"));
         n.setLinkInstagram(request.getParameter("inputLinkInstagram"));
         n.setLinkFacebook(request.getParameter("inputLinkFB"));
+        n.setFone1(request.getParameter("inputFone1"));
+        n.setFone2(request.getParameter("inputFone2"));
         
         HttpSession sessao = request.getSession();
         n.setPerfil((Perfil) sessao.getAttribute("usuario"));
-        
-        n.setTelefones(new ArrayList<Telefone>());
-        
+                
         HibernateUtil<Negocio> hup = new HibernateUtil<>();
         String s = hup.salvar(n);
-        out.println(s);
-        
-        HibernateUtil<Telefone> hup2 = new HibernateUtil<>();
-        Telefone t1 = Telefone.getInstance();
-        t1.setTelefone(request.getParameter("inputFone1"));
-        out.println(request.getParameter("inputFone1"));
-        t1.setNegocio(n);
-        n.getTelefones().add(t1);
-        s=hup2.salvar(t1);
-        out.println(s);
-        
-        Telefone t2 = Telefone.getInstance();
-        t2.setTelefone(request.getParameter("inputFone2"));
-        out.println(request.getParameter("inputFone2"));
-        t2.setNegocio(n);
-        n.getTelefones().add(t2);
-        s=hup2.salvar(t2);
         out.println(s);
         
         response.sendRedirect("seusNegocios/negocios.jsp");

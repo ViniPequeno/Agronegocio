@@ -30,9 +30,8 @@ public class Negocio implements Serializable {
     private String linkEmail;
     private double lucroTotal;
     
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = ALL, mappedBy = "negocio")
-    private List<Telefone> telefones;
+    private String fone1;
+    private String fone2;
 
     @ManyToOne
     @JoinColumn(name = "perfil_id")
@@ -112,20 +111,28 @@ public class Negocio implements Serializable {
         this.estabelecimentos = estabelecimentos;
     }
 
-    public List<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public void setTelefones(List<Telefone> telefones) {
-        this.telefones = telefones;
-    }
-
     public double getLucroTotal() {
         return lucroTotal;
     }
 
     public void setLucroTotal(double lucroTotal) {
         this.lucroTotal = lucroTotal;
+    }
+
+    public String getFone1() {
+        return fone1;
+    }
+
+    public void setFone1(String fone1) {
+        this.fone1 = fone1;
+    }
+
+    public String getFone2() {
+        return fone2;
+    }
+
+    public void setFone2(String fone2) {
+        this.fone2 = fone2;
     }
 
 }
