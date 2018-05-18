@@ -1,3 +1,5 @@
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Vacina.ConsultaVacina"%>
 <% String css = "../_CSS/seu_negocio.css";%>
@@ -10,7 +12,14 @@
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Fornecimentos</h2>
 
-    <%List<Fornecimento> fornecimentos;
+    <%
+        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+        if (sessao.getAttribute("estabelecimento") == null) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio").toString())) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        }
+        List<Fornecimento> fornecimentos;
         fornecimentos = ConsultaFornecimento.returnList(request.getParameter("estabelecimento"));
         if (fornecimentos.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
@@ -104,7 +113,7 @@
         <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir fornecimentos selecionados">
         <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
-        <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
+            <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Pagar fornecimento(s) selecionado(s)">
         <a href="" class="btn btn-primary btn-rounded mt-4 disabled mb-0" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
@@ -123,8 +132,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FornecimentoDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/FornecimentoServlet" method="post">
+                        <button name="fornecimento" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>

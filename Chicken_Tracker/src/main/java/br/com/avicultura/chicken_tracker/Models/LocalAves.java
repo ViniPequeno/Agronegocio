@@ -20,8 +20,8 @@ public class LocalAves implements Serializable {
     private double largura;
     private double comprimento;
     private double area;
-    private String funcao;
     private String dataAbertura;
+    @Column(nullable = true)
     private String dataFechamento;
     private int quantidade;
     
@@ -80,14 +80,6 @@ public class LocalAves implements Serializable {
 
     public void setArea(double area) {
         this.area = area;
-    }
-
-    public String getFuncao() {
-        return funcao;
-    }
-
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
     }
 
     public String getDataAbertura() {

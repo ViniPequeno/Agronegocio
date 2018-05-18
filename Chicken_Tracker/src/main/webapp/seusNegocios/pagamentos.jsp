@@ -120,7 +120,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/PagamentoDeleteServlet" method="post">
+                    <form id="checks" action="/Chicken_Tracker/PagamentoServlet" method="post">
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>

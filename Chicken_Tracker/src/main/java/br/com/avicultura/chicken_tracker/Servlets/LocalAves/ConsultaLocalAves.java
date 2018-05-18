@@ -36,7 +36,6 @@ public class ConsultaLocalAves {
     public static String returnValues(LocalAves la) {
         String a = "";
         a += la.getCodigo() + "#";
-        a += la.getFuncao() + "#";
         a += la.getArea() + "#";
         a += la.getDataAbertura() + "#";
         a += la.getDataFechamento() + "#";

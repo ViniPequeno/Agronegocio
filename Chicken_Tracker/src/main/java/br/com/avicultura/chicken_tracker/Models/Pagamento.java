@@ -23,7 +23,7 @@ public class Pagamento implements Serializable {
     private char tipo;
     
     @ManyToOne
-    @JoinColumn(name = "estabelecimento_id", nullable = false)
+    @JoinColumn(name="estabelecimento_id", nullable = false)
     private Estabelecimento estabelecimento;
 
     private Pagamento() {

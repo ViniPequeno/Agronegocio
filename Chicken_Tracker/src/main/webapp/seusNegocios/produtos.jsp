@@ -122,8 +122,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/ProdutoDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/ProdutoServlet" method="post">
+                        <button name="produto" value="alterar" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
+                    <button name="produto" value="editar" type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
         </div>
@@ -204,7 +204,7 @@
     });
 </script>
 <script>
-    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/ProdutoAlterarServlet" name="formEditar">' +
+    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/ProdutoServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-hashtag prefix grey-text"></i>' +
             '<input type="text" id="inputCodigo" name="inputCodigo" class="form-control" required autofocus maxlength="20">' +
             '<label for="inputCodigo">Código</label> </div>' +

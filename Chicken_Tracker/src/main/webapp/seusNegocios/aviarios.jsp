@@ -1,3 +1,5 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.LocalAves.ConsultaLocalAves" %>
@@ -8,7 +10,15 @@
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Locais de aves</h2>
 
-    <%List<LocalAves> locaisAves;
+
+    <%
+        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+        if (sessao.getAttribute("estabelecimento") == null) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio").toString())) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        }
+        List<LocalAves> locaisAves;
         locaisAves = ConsultaLocalAves.returnList(request.getParameter("estabelecimento"));
         if (locaisAves.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
@@ -30,7 +40,6 @@
                         <th> </th>
                         <th>Código</th>
                         <th>Área</th>
-                        <th>Função</th>
                         <th>Produto</th>
                     </tr>
                 </thead>
@@ -46,7 +55,6 @@
                         </th>
                         <td><%=l.getCodigo()%></td>
                         <td><%=l.getArea()%></td>
-                        <td><%=l.getFuncao()%></td>
                         <td><%=l.getProduto().getNome()%></td>
                     </tr>
                     <%}%>
@@ -100,7 +108,7 @@
         <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir aviários selecionados">
         <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
-        <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
+            <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Atualizar estoque">
         <a href="" class="btn btn-primary btn-rounded mt-4 disabled mb-0" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
@@ -124,7 +132,7 @@
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                     <form id="checks" action="/Chicken_Tracker/LocalAvesServlet" method="post">
                         <input type="hidden" name="aviario" value="atualizarEstoque" />
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                        <button name="aviario" value="pagar" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -146,7 +154,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Confirmar</button>
+                    <button name="aviario" value="excluir" type="button" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>

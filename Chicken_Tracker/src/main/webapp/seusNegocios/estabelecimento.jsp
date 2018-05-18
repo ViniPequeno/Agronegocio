@@ -3,10 +3,12 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@ include file="../cabecalho.jsp"%>
-<%  if (sessao.getAttribute("estabelecimento") == null) {
-        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
+<%  
+    Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+    if (sessao.getAttribute("estabelecimento") == null) {
+        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
     } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("estabelecimento").toString())) {
-        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
+        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
     }
     Estabelecimento e = (Estabelecimento) sessao.getAttribute("estabelecimento");
 %>

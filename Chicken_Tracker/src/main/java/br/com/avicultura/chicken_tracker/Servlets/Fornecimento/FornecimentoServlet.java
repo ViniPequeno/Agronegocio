@@ -40,12 +40,15 @@ public class FornecimentoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8"); 
+        request.setCharacterEncoding("UTF-8");
         Fornecimento f = Fornecimento.getInstance();
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-        String s = "";
-        PrintWriter out = response.getWriter();
-        if (request.getParameter("fornecimento").equals("pagar")) {
+        HibernateUtil<Pagamento> hup = new HibernateUtil<>();
+        HibernateUtil<Produto> hupro = new HibernateUtil<>();
+        HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
+        HibernateUtil<Fornecimento> huf = new HibernateUtil<>();
+        String butao = request.getParameter("fornecimento");
+        if (butao.equals("pagar")) {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
@@ -59,9 +62,6 @@ public class FornecimentoServlet extends HttpServlet {
                 index++;
             }
 
-            HibernateUtil<Pagamento> hup = new HibernateUtil<>();
-            HibernateUtil<Produto> hupro = new HibernateUtil<>();
-            HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
             for (index = 0; index < cnpj.length; index++) {
                 f = ConsultaFornecimento.findById(cnpj[index], e.getSufixoCNPJ());
                 Pagamento p = Pagamento.getInstance();
@@ -79,20 +79,14 @@ public class FornecimentoServlet extends HttpServlet {
                         + "referente ao produto " + f.getProdutos().getNome() + " quantidade igual a"
                         + f.getQuantidade() + "na data " + p.getDia()
                         + "/" + p.getMes() + "/" + p.getAno());
-                e.setSaldo(e.getSaldo()+p.getValor());
-                f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual()-f.getQuantidade());
-                s = hup.salvar(p);
+                e.setSaldo(e.getSaldo() + p.getValor());
+                f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() - f.getQuantidade());
+                hup.salvar(p);
                 hue.atualizar(e);
                 hupro.atualizar(f.getProdutos());
-                if (s.equals("")) {
-                    response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getSufixoCNPJ());
-                } else {
-                    out.print(s);
-                }
+                response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getSufixoCNPJ());
             }
-
-        } else {
-
+        } else if (butao.equals("cadastrar")) {
             f.setCNPJ(request.getParameter("inputCNPJ"));
             f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
             f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
@@ -106,13 +100,37 @@ public class FornecimentoServlet extends HttpServlet {
             f.setTipo('V');
             f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
             f.setEstabelecimento(e);
-            HibernateUtil<Fornecimento> hup = new HibernateUtil<>();
-            s = hup.salvar(f);
-            if (s.equals("")) {
-                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
-            } else {
-                out.print(s);
+            huf.salvar(f);
+            response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
+            f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
+            try {
+                f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
+            } catch (ParseException ex) {
             }
+            f.setTipo('V');
+            f.setEstabelecimento(e);
+            huf.atualizar(f);
+            response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+        } else {
+            ArrayList<String> chkBoxIds = new ArrayList<String>();
+            Enumeration enumeration = request.getParameterNames();
+            while (enumeration.hasMoreElements()) {
+                String parameterName = (String) enumeration.nextElement();
+                chkBoxIds.add(parameterName);
+            }
+            String[] id = new String[chkBoxIds.size()];
+            int index = 0;
+            for (String s : chkBoxIds) {
+                id[index] = s.split("!")[1];
+                index++;
+            }
+            for (index = 0; index < id.length; index++) {
+                Long longID = Long.parseLong(id[index]);
+                f.setId(longID);
+                huf.deletar(f);
+            }
+            response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
         }
     }
 }

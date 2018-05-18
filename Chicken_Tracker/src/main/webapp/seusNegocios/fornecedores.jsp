@@ -1,3 +1,5 @@
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -10,7 +12,14 @@
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Fornecedores</h2>
 
-    <%List<Fornecimento> fornecedores;
+    <%
+        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+        if (sessao.getAttribute("estabelecimento") == null) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio").toString())) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        }
+        List<Fornecimento> fornecedores;
         fornecedores = ConsultaFornecedores.returnList(request.getParameter("estabelecimento"));
         if (fornecedores.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
@@ -128,8 +137,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FornecedorDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/FornecedorServlet" method="post">
+                        <button name="fornecedor" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>

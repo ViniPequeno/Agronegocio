@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <button class="btn btn-primary" name="funcionario" value="cadastrar" type="submit">Confirmar</button>
+                    <button name="funcionario" value="cadastrar" class="btn btn-primary" name="funcionario" value="cadastrar" type="submit">Confirmar</button>
                     <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>

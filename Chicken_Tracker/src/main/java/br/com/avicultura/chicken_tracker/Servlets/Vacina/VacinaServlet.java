@@ -9,10 +9,11 @@ import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Vacina;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,26 +36,55 @@ public class VacinaServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         Vacina v = Vacina.getInstance();
-        v.setNome(request.getParameter("inputNome"));
-        v.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
-        
-        DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
-        try {
-            v.setDataRealizada(formatter.parse(request.getParameter("inputDataPrimeiraVacina")));
-            v.setDataProxima(formatter.parse(request.getParameter("inputDataProximaVacina")));
-        } catch (ParseException ex) {
-        }
-        
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-        v.setEstabelecimento(e);
-        v.setDescricao(request.getParameter("inputDescricao"));
         HibernateUtil<Vacina> hup = new HibernateUtil<>();
-        String s = hup.salvar(v);
-        PrintWriter out = response.getWriter();
-        if (s.equals("")) {
-            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento="+e.getSufixoCNPJ());
+        String butao = request.getParameter("Vacina");
+
+        if (butao.equals("cadastrar")) {
+            v.setNome(request.getParameter("inputNome"));
+            v.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
+
+            DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+            try {
+                v.setDataRealizada(formatter.parse(request.getParameter("inputDataPrimeiraVacina")));
+                v.setDataProxima(formatter.parse(request.getParameter("inputDataProximaVacina")));
+            } catch (ParseException ex) {
+            }
+
+            v.setEstabelecimento(e);
+            v.setDescricao(request.getParameter("inputDescricao"));
+            hup.salvar(v);
+            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getSufixoCNPJ());
+        } else if (butao.equals("alterar")) {
+            v.setNome(request.getParameter("inputNome"));
+            v.setCodigo(Integer.parseInt(request.getParameter("inputUsuario")));
+            DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+            try {
+                v.setDataRealizada(formatter.parse(request.getParameter("inputDataPrimeiraVacina")));
+                v.setDataProxima(formatter.parse(request.getParameter("inputDataProximaVacina")));
+            } catch (ParseException ex) {
+            }
+            v.setDescricao(request.getParameter("inputDescricao"));
+            hup.atualizar(v);
+            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else {
-            out.print(s);
+            ArrayList<String> chkBoxIds = new ArrayList<String>();
+            Enumeration enumeration = request.getParameterNames();
+            while (enumeration.hasMoreElements()) {
+                String parameterName = (String) enumeration.nextElement();
+                chkBoxIds.add(parameterName);
+            }
+            String[] codigo = new String[chkBoxIds.size()];
+            int index = 0;
+            for (String s : chkBoxIds) {
+                codigo[index] = s.split("!")[1];
+                index++;
+            }
+            for (index = 0; index < codigo.length; index++) {
+                v.setCodigo(Integer.parseInt(codigo[index]));
+                String s = hup.deletar(v);
+            }
+            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getSufixoCNPJ());
         }
     }
 

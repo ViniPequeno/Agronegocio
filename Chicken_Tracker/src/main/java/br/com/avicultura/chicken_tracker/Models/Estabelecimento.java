@@ -14,7 +14,16 @@ import static javax.persistence.CascadeType.ALL;
 public class Estabelecimento implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(name="sufixoCNPJ_id")
     private String sufixoCNPJ;
+    
+    @ManyToOne
+    @JoinColumn(name = "negocio_id")
+    private Negocio negocio;
+    
     private String CNAE;
     private String endereco;
     private double saldo;
@@ -22,10 +31,7 @@ public class Estabelecimento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;
-    
-    @ManyToOne
-    @JoinColumn(name = "negocio_id")
-    private Negocio negocio;
+ 
     
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Produto> produtos;
@@ -61,14 +67,6 @@ public class Estabelecimento implements Serializable {
         return getInstance;
     }
 
-    public String getSufixoCNPJ() {
-        return sufixoCNPJ;
-    }
-
-    public void setSufixoCNPJ(String sufixoCNPJ) {
-        this.sufixoCNPJ = sufixoCNPJ;
-    }
-
     public String getCNAE() {
         return CNAE;
     }
@@ -93,13 +91,6 @@ public class Estabelecimento implements Serializable {
         this.perfil = perfil;
     }
 
-    public Negocio getNegocio() {
-        return negocio;
-    }
-
-    public void setNegocio(Negocio negocio) {
-        this.negocio = negocio;
-    }
 
     public List<Produto> getProdutos() {
         return produtos;
@@ -164,5 +155,32 @@ public class Estabelecimento implements Serializable {
     public void setProducoes(List<Producao> producoes) {
         this.producoes = producoes;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSufixoCNPJ() {
+        return sufixoCNPJ;
+    }
+
+    public void setSufixoCNPJ(String sufixoCNPJ) {
+        this.sufixoCNPJ = sufixoCNPJ;
+    }
+
+    public Negocio getNegocio() {
+        return negocio;
+    }
+
+    public void setNegocio(Negocio negocio) {
+        this.negocio = negocio;
+    }
+
+   
+    
     
 }

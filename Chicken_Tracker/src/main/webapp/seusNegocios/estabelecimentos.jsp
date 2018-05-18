@@ -132,8 +132,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/EstabelecimentoDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/EstabelecimentoServlet" method="post">
+                        <button name="estabelecimento" type="submit" value="excluir" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -158,7 +158,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
+                    <button name="estabelecimento" value="alterar" type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
         </div>
@@ -211,7 +211,7 @@
     });
 </script>
 <script>
-    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/EstabelecimentoAlterarServlet" name="formEditar">' +
+    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/EstabelecimentoServlet" >' +
             '<div class="md-form"><i class="fa fa-id-badge prefix grey-text"></i>' +
             '<input type="text" id="inputSufixoCNPJ" name="inputSufixoCNPJ" class="form-control" required autofocus maxlength="8">' +
             '<label for="inputSufixoCNPJ">Sufixo CNPJ</label></div>' +

@@ -128,8 +128,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/NegocioDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/NegocioServlet" method="post">
+                        <button name="negocio" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -159,7 +159,7 @@
                 <div class="modal-footer">
                     <a id="btnEstabelecimentos" href="" type="button" class="btn btn-outline-primary">Estabelecimentos</a>
                     <button id="btnCancelarEdicao" type="button" class="btn btn-outline-primary d-none">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
+                    <button name="negocio" value="alterar" type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
         </div>
@@ -231,7 +231,7 @@
     }
 </script>
 <script>
-    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioAlterarServlet" name="formEditar">' +
+    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
             '<input type="text" name="inputNome" id="inputNome" class="form-control" placeholder=" " autofocus required>' +
             '<label for="inputNome">Nome</label></div>' +

@@ -1,3 +1,7 @@
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Funcionario.ConsultaFuncionario" %>
@@ -10,7 +14,14 @@
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>
         Gerenciar Funcionários</h2>
 
-    <%  List<Funcionario> funcionarios;
+    <%  
+        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+        if (sessao.getAttribute("estabelecimento") == null) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio").toString())) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        }
+        List<Funcionario> funcionarios;
         funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"));
         if (funcionarios.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
@@ -43,7 +54,7 @@
                 <!--Table body-->
                 <tbody>
                     <%  for (Funcionario f : funcionarios) {
-                            String dataFuncionario = ConsultaFuncionario.returnValues(f, request.getParameter("estabelecimento"));
+                            String dataFuncionario = ConsultaFuncionario.returnValues(f, request.getParameter("estabelecimento"), n);
                             String cargo = dataFuncionario.split("#")[3];
                             String situacao = dataFuncionario.split("#")[4];
                             double salario = Double.parseDouble(dataFuncionario.split("#")[5]);%>
@@ -157,8 +168,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checksExcluir" action="/Chicken_Tracker/FuncionarioDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <form id="checksExcluir" action="/Chicken_Tracker/FuncionarioServlet" method="post">
+                        <button name="funcionario" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -185,7 +196,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
+                    <button name="funcionario" value="alterar" type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
         </div>
@@ -239,7 +250,7 @@
     });
 </script>
 <script>
-    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/FuncionarioAlterarServlet" name="formEditar">' +
+    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/FuncionarioServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
             '<input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="80">' +
             '<label for="inputNome">Nome</label></div>' +

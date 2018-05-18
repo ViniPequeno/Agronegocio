@@ -18,18 +18,18 @@ public class Producao {
     private int mes;
     private int ano;
     
+    
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
-    
-    @ManyToOne
-    @JoinColumn(name = "produto_id")
-    private Produto produto;
             
     @ManyToOne
     @JoinColumn(name = "localaves_id")
     private LocalAves localave;
     
+    @ManyToOne
+    @JoinColumn(name = "´produto_id")
+    private Produto produto;
     
     private Producao(){}
     @Transient
@@ -89,13 +89,6 @@ public class Producao {
         this.estabelecimento = estabelecimento;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
 
     public LocalAves getLocalaves() {
         return localave;
@@ -103,6 +96,22 @@ public class Producao {
 
     public void setLocalaves(LocalAves localaves) {
         this.localave = localaves;
+    }
+
+    public LocalAves getLocalave() {
+        return localave;
+    }
+
+    public void setLocalave(LocalAves localave) {
+        this.localave = localave;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
     
     

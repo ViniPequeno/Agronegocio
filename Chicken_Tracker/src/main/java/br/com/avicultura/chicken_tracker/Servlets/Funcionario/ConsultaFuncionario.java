@@ -9,6 +9,7 @@ import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.EstabelecimentoFuncionario;
 import br.com.avicultura.chicken_tracker.Models.Funcionario;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,13 +119,13 @@ public class ConsultaFuncionario {
         return lista;
     }
 
-    public static String returnValues(Funcionario f, String estabelecimento) {
+    public static String returnValues(Funcionario f, String estabelecimento, Negocio n) {
         String a = "";
         a += f.getCPF() + "#";
         //a += f.getCargo() + "#";
         a += f.getNome() + "#";
         a += f.getRG() + "#";
-        Estabelecimento e = ConsultaEstabelecimento.findById(estabelecimento);
+        Estabelecimento e = ConsultaEstabelecimento.findById(estabelecimento, n);
         for (EstabelecimentoFuncionario ef : e.getFuncionarios()) {
             if (f.getCPF().equals(ef.getFuncionario().getCPF())) {
                 a += ef.getCargo() + "#";

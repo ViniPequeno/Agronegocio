@@ -37,14 +37,14 @@
                         <!-- Material input text -->
                         <div class="md-form"> 
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputSenha"  name="inputSenha" class="form-control" required maxlength="255">
+                            <input type="password" id="inputSenha"  name="inputSenha" class="form-control" required minlength="8" maxlength="20">
                             <label for="inputSenha">Senha</label>
                         </div>
 
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputConfirmarSenha" class="form-control" required maxlength="255">
+                            <input type="password" id="inputConfirmarSenha" class="form-control" required minlength="8" maxlength="20">
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
                         <input type="file" name="inputFoto" id="inputFoto" accept="image/*">

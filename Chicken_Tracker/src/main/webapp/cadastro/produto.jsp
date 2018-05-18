@@ -70,7 +70,7 @@
                     <label for="inputTipo">Tipo</label>
                 </div>
                 <div class="text-right mt-4">
-                    <button class="btn btn-primary" type="submit">Confirmar</button>
+                    <button name="produto" value="cadastrar" class="btn btn-primary" type="submit">Confirmar</button>
                     <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>

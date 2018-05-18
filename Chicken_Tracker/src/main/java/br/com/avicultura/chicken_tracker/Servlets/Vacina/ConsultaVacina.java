@@ -61,7 +61,7 @@ public class ConsultaVacina {
         a += v.getDescricao() + "#";
         a += dateFormat.format(v.getDataRealizada()) + "#";
         a += dateFormat.format(v.getDataProxima()) + "#";
-        a += v.getEstabelecimento().getSufixoCNPJ() + "#";
+        a += v.getEstabelecimento().getSufixoCNPJ()+ "#";
 
         return a;
     }

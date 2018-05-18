@@ -40,7 +40,7 @@
                         <!-- Material input phone -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text"></i>
-                            <input type="text" id="inputFone1" name="inputFone1" class="form-control" required maxlength="9">
+                            <input type="text" id="inputFone1" name="inputTelefone1" class="form-control" required maxlength="9">
                             <label for="inputFone1">Telefone 1:</label>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <!-- Material input phone -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text"></i>
-                            <input type="text" id="inputFone2" name="inputFone2" class="form-control" required maxlength="9">
+                            <input type="text" id="inputFone2" name="inputTelefone2" class="form-control" required maxlength="9">
                             <label for="inputFone2">Telefone 2:</label>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="mt-4 text-right">
-                    <button class="btn btn-primary" type="submit">Confirmar</button>
+                    <button name="negocio" value="cadastrar" class="btn btn-primary" type="submit">Confirmar</button>
                     <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>

@@ -18,7 +18,7 @@
                     <!-- Material input password -->
                     <div class="md-form form-group mt-5">
                         <i class="fa fa-lock prefix grey-text"></i>
-                        <input type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="off">
+                        <input minlength="8" maxlength="20" type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="off">
                         <label for="inputSenha" data-error="">Senha</label>
                     </div>
                     <a class="small ml-4" href="">Esqueceu sua senha?</a>
