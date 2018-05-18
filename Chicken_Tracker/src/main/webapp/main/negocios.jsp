@@ -3,7 +3,6 @@
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
-<%@page import="br.com.avicultura.chicken_tracker.Models.Telefone"%>
 <div class="container">
     <div class="card card-cascade narrower mt-5">
         <!--Card image-->
@@ -54,12 +53,8 @@
                             <td><%=n.getPerfil().getNome()%></td>
                             <td><%=n.getEmpresaCNPJ()%></td>
                             <td><%=n.getLinkEmail()%></td>
-                            <%
-                                List<Telefone> telefones = n.getTelefones();
-                                for(Telefone t : telefones){
-                            %>
-                                <td><%=t.getTelefone()%></td>
-                            <%}%>
+                            <td><%=n.getFone1()%></td>
+                            <td><%=n.getFone2()%></td>
                         </tr>
                     <%}%>
                 </tbody>

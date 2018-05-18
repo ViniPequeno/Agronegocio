@@ -61,7 +61,6 @@ Contributor(s):
     <mapping class="br.com.avicultura.chicken_tracker.Models.Vacina"/>
     <mapping class="br.com.avicultura.chicken_tracker.Models.Negocio"/>
     <mapping class="br.com.avicultura.chicken_tracker.Models.LocalAves"/>
-    <mapping class="br.com.avicultura.chicken_tracker.Models.Telefone"/>
     <mapping class="br.com.avicultura.chicken_tracker.Models.Produto"/>
   </session-factory>
 </hibernate-configuration>

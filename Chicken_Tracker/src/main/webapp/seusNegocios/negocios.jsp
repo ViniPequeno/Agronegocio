@@ -21,7 +21,7 @@
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive btn-table" id="tableDados">
+            <table class="table table-hover table-responsive-md btn-table" id="tableDados">
                 <!--Table head-->
                 <thead>
                     <tr>
