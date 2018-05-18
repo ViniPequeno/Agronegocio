@@ -112,12 +112,12 @@
                 <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/profile.php?id=100006546753271" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
                 </a>
-                <!--Dribbble-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-email ">
-                    <i data-fa-transform="grow-8" class="fa fa-envelope"></i>
-                </a>
                 <!--Twitter-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-git ">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
+                </a>
+                <!--GitHub-->
+                <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="https://github.com/ViniPequeno" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-github"></i>
                 </a>
 
@@ -140,12 +140,12 @@
                 <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/victor.yan.92?ref=br_rs" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
                 </a>
-                <!--Facebook-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-fb ">
-                    <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
+                <!--Twitter-->
+                <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="https://twitter.com/supervictor7095" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
                 </a>
                 <!--GitHub-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-git ">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="https://github.com/Victor7095" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-github"></i>
                 </a>
 
@@ -164,16 +164,16 @@
                 </h4>
                 <h6 class="grey-text">Desenvolvedor Web</h6>
 
-                <!--Linkedin-->
+                <!--Facebook-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/profile.php?id=100010879563084" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
                 </a>
                 <!--Twitter-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-tw">
-                    <i data-fa-transform="grow-8" class="fab fa-twitter "></i>
+                <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="https://twitter.com/Paperzord" target="_blank">
+                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
                 </a>
                 <!--GitHub-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-git ">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="https://github.com/Dabwiel" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-github"></i>
                 </a>
 
@@ -192,16 +192,16 @@
                 </h4>
                 <h6 class="grey-text">Desenvolvedor Web</h6>
 
-                <!--Linkedin-->
+                <!--Facebook-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/profile.php?id=100012432752260" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
                 </a>
                 <!--Twitter-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-tw">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-twitter "></i>
                 </a>
                 <!--GitHub-->
-                <a type="button" class="btn-floating btn-sm mx-1  btn-git ">
+                <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="" target="_blank">
                     <i data-fa-transform="grow-8" class="fab fa-github"></i>
                 </a>
 
