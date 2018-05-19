@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Produto"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto"%>
@@ -41,7 +42,8 @@
                 <div class="md-form">
                     <select name="inputProduto" id="inputProduto">
                         <% Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-                            for (Produto p : ConsultaProduto.returnListEstoque(e.getSufixoCNPJ())) {%>
+                            for (Produto p : ConsultaProduto.returnListEstoque(e.getSufixoCNPJ(),
+                                    (Negocio) request.getSession().getAttribute("negocio"))) {%>
                         <option value="<%=p.getCodigo()%>"><%=p.getNome()%></option>
                         <% }%>
                     </select>

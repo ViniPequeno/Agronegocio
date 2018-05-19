@@ -8,6 +8,7 @@ package br.com.avicultura.chicken_tracker.Servlets.LocalAves;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.LocalAves;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Producao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,6 +40,7 @@ public class LocalAvesServlet extends HttpServlet {
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         String butao = request.getParameter("aviario");
         HibernateUtil<LocalAves> hup = new HibernateUtil<>();
+        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         if (butao != null && butao.equals("atualizarEstoque")) {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
@@ -62,7 +64,7 @@ public class LocalAvesServlet extends HttpServlet {
             p.setAno(ano);
             p.setEstabelecimento(e);
             for (index = 0; index < codigo.length; index++) {
-                l = ConsultaLocalAves.findById(codigo[index], e.getSufixoCNPJ());
+                l = ConsultaLocalAves.findById(codigo[index], e.getSufixoCNPJ(), n);
                 p.setProduto(l.getProduto());
                 p.setLocalave(l);
                 p.setQuantidade(l.getQuantidade());
@@ -76,6 +78,7 @@ public class LocalAvesServlet extends HttpServlet {
             l.setArea(Double.parseDouble(request.getParameter("inputArea")));
             l.setDataAbertura(request.getParameter("inputDataAbertura"));
             l.setEstabelecimento(e);
+            l.setNegocio(n.getEmpresaCNPJ());
             e.getLocais().add(l);
             hup.salvar(l);
             response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
@@ -86,6 +89,7 @@ public class LocalAvesServlet extends HttpServlet {
             l.setArea(Double.parseDouble(request.getParameter("inputArea")));
             l.setDataAbertura(request.getParameter("inputDataAbertura"));
             l.setEstabelecimento(e);
+            l.setNegocio(n.getEmpresaCNPJ());
             hup.atualizar(l);
             response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else {

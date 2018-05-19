@@ -20,7 +20,7 @@
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
         }
         List<Fornecimento> fornecimentos;
-        fornecimentos = ConsultaFornecimento.returnList(request.getParameter("estabelecimento"));
+        fornecimentos = ConsultaFornecimento.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
         if (fornecimentos.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 

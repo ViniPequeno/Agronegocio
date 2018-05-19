@@ -26,8 +26,6 @@ public class Perfil implements Serializable {
 
     @OneToMany(cascade = ALL, mappedBy = "perfil")
     private List<Negocio> negocios;
-    @OneToMany(cascade = ALL, mappedBy = "perfil")
-    private List<Estabelecimento> estabelecimentos;
 
     @Transient
     private static Perfil getInstance;
@@ -91,11 +89,4 @@ public class Perfil implements Serializable {
         this.negocios = negocios;
     }
 
-    public List<Estabelecimento> getEstabelecimentos() {
-        return estabelecimentos;
-    }
-
-    public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
-        this.estabelecimentos = estabelecimentos;
-    }
 }

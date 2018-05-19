@@ -60,23 +60,6 @@ public class ConsultaEstabelecimento {
         return lista;
     }
 
-    public static List<Estabelecimento> returnListOfUsuario(String usuario) {
-        List<Estabelecimento> lista = null;
-        Session s = HibernateFactory.getSessionFactory().openSession();
-        try {
-            s.beginTransaction();
-            Query query = s.createQuery("from Estabelecimento where perfil.usuario=:usuario");
-            query.setParameter("usuario", usuario);
-            lista = query.getResultList();
-            s.getTransaction().commit();
-            return lista;
-        } catch (HibernateException e) {
-            s.getTransaction().rollback();
-        } finally {
-            s.close();
-        }
-        return lista;
-    }
 
     public static List<Estabelecimento> returnList() {
         List<Estabelecimento> lista = null;

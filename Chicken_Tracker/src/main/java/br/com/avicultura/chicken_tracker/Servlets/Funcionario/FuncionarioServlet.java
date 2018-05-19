@@ -9,6 +9,7 @@ import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.EstabelecimentoFuncionario;
 import br.com.avicultura.chicken_tracker.Models.Funcionario;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Pagamento;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,7 +49,7 @@ public class FuncionarioServlet extends HttpServlet {
         HibernateUtil<EstabelecimentoFuncionario> hupef = new HibernateUtil<>();
         HibernateUtil<Pagamento> hup = new HibernateUtil<>();
         HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
-
+        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         if (butao.equals("pagar")) {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
@@ -64,7 +65,7 @@ public class FuncionarioServlet extends HttpServlet {
                 index++;
             }
             for (index = 0; index < cpf.length; index++) {
-                ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), cpf[index]);
+                ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), cpf[index], n);
                 total += ef.getSalario();
             }
             if (e.getSaldo() >= total) {
@@ -77,10 +78,10 @@ public class FuncionarioServlet extends HttpServlet {
                 p.setMes(mes);
                 p.setAno(ano);
                 p.setEstabelecimento(e);
-                List<EstabelecimentoFuncionario> list = ConsultaFuncionario.returnListFuncionario(e.getSufixoCNPJ());
+                List<EstabelecimentoFuncionario> list = ConsultaFuncionario.returnListFuncionario(e.getSufixoCNPJ(), n);
 
                 for (index = 0; index < cpf.length; index++) {
-                    ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), cpf[index]);
+                    ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), cpf[index], n);
                     p.setValor(ef.getSalario());
                     p.setDescricao("Pagamento do funcionário " + ef.getFuncionario().getNome() + " no valor: " + p.getValor()
                             + " na data " + p.getDia() + "/" + p.getMes() + "/" + p.getAno());
@@ -109,6 +110,7 @@ public class FuncionarioServlet extends HttpServlet {
                 String salario = request.getParameter("inputSalario");
                 ef.setSalario(Double.parseDouble(salario));
                 ef.setSituacao('A');
+                ef.setNegocio(n.getEmpresaCNPJ());
                 hupef.salvar(ef);
             }
             response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
@@ -117,6 +119,7 @@ public class FuncionarioServlet extends HttpServlet {
             ef.setSalario(Double.parseDouble(request.getParameter("inputSalario")));
             ef.setCargo(request.getParameter("inputCargo"));
             ef.setSituacao(request.getParameter("inputSituacao").charAt(0));
+            ef.setNegocio(n.getEmpresaCNPJ());
             hupef.atualizar(ef);
             response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else {
@@ -134,7 +137,7 @@ public class FuncionarioServlet extends HttpServlet {
             }
             for (index = 0; index < cpf.length; index++) {
                 f = ConsultaFuncionario.findById(cpf[index]);
-                ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), f.getCPF());
+                ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), f.getCPF(), n);
                 hupef.deletar(ef);
             }
             response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());

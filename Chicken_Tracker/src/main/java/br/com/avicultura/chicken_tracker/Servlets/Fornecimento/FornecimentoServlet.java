@@ -100,6 +100,7 @@ public class FornecimentoServlet extends HttpServlet {
             f.setTipo('V');
             f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
             f.setEstabelecimento(e);
+            f.setNegocio(e.getNegocio().getEmpresaCNPJ());
             huf.salvar(f);
             response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
             f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));

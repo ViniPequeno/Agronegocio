@@ -58,10 +58,6 @@
                             <td class="sufixoCNPJ"> <%=e.getSufixoCNPJ()%> </td>
                         </tr>
                         <tr>
-                            <th> Endereço </th>
-                            <td> <%=e.getEndereco()%> </td>
-                        </tr>
-                        <tr>
                             <th> Número de funcionários: </th>
                             <td> <%=e.getFuncionarios().size()%> </td>
                         </tr>

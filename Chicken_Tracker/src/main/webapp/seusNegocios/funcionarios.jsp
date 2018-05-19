@@ -22,7 +22,7 @@
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
         }
         List<Funcionario> funcionarios;
-        funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"));
+        funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
         if (funcionarios.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 

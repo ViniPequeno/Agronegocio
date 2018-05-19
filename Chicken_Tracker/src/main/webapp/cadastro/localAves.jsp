@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Produto"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
@@ -65,7 +66,7 @@
                         <label class="grey-text" for='inputProduto'>Produto</label>
                         <select name="inputProduto" id="inputProduto">
                             <% Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-                                for (Produto p : ConsultaProduto.returnListProduto(e.getSufixoCNPJ())) {%>
+                                for (Produto p : ConsultaProduto.returnListProduto(e.getSufixoCNPJ(), (Negocio) request.getSession().getAttribute("negocio"))) {%>
                             <option value="<%=p.getCodigo()%>"><%=p.getNome()%></option>
                             <% }%>
                         </select>

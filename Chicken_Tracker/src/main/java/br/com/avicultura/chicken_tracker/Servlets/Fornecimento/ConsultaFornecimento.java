@@ -7,6 +7,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecimento;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -43,14 +44,15 @@ public class ConsultaFornecimento {
         return f;
     }
 
-    public static List<Fornecimento> returnList(String estabelecimento) {
+    public static List<Fornecimento> returnList(String estabelecimento, Negocio negocio) {
         List<Fornecimento> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
+            Query query = s.createQuery("from Fornecimento f where f.negocio =:negocio and f.estabelecimento.sufixoCNPJ =:estabelecimento"
                     + " and tipo = 'v'");
             query.setParameter("estabelecimento", estabelecimento);
+            query.setParameter("negocio", negocio.getEmpresaCNPJ());
             lista = query.getResultList();
             s.getTransaction().commit();
             return lista;

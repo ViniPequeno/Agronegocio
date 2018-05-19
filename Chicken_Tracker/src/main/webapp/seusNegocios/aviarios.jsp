@@ -19,7 +19,7 @@
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
         }
         List<LocalAves> locaisAves;
-        locaisAves = ConsultaLocalAves.returnList(request.getParameter("estabelecimento"));
+        locaisAves = ConsultaLocalAves.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
         if (locaisAves.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 

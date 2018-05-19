@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto" %>
@@ -9,7 +10,7 @@
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Lista de produtos</h2>
 
     <%  List<Produto> produtos;
-        produtos = ConsultaProduto.returnList(request.getParameter("estabelecimento"));
+        produtos = ConsultaProduto.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
         if (produtos.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 

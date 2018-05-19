@@ -28,7 +28,9 @@ public class LocalAves implements Serializable {
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
-
+    private String negocio;
+    
+    
     @ManyToOne
     @JoinColumn(name ="produto_id")
     private Produto produto;
@@ -128,6 +130,14 @@ public class LocalAves implements Serializable {
 
     public void setProducoes(List<Producao> producoes) {
         this.producoes = producoes;
+    }
+
+    public String getNegocio() {
+        return negocio;
+    }
+
+    public void setNegocio(String negocio) {
+        this.negocio = negocio;
     }
     
     

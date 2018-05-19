@@ -45,6 +45,7 @@ public class ProdutoServlet extends HttpServlet {
             p.setQuantidadeMinima(Integer.parseInt(request.getParameter("inputMinQtde")));
             p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxQtde")));
             p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputQtdeAtual")));
+            p.setNegocio(e.getNegocio().getEmpresaCNPJ());
             if (request.getParameter("inputTipo").equals("1")) {
                 p.setTipo('P');
             } else {
@@ -61,6 +62,7 @@ public class ProdutoServlet extends HttpServlet {
             p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxima")));
             p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputAtual")));
             p.setEstabelecimento(e);
+            p.setNegocio(e.getNegocio().getEmpresaCNPJ());
             hup.atualizar(p);
             response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else {
