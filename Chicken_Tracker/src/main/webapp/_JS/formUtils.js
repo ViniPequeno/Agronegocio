@@ -12,6 +12,8 @@ function initInputs() {
 
 $('.proprietario').each(function () {
     var nome = $(this).html().split(" ");
-    $(this).html(nome[0] + " " + nome[1]);
+    if (nome.length > 1) {
+        $(this).html(nome[0] + " " + nome[1]);
+    }
 });
 initInputs();

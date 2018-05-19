@@ -99,7 +99,7 @@
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-3">
 
-                <div class="avatar mx-auto my-3" style="max-width: 150px;">
+                <div class="avatar mx-auto">
                     <img src="../img/dev.jpeg" class="rounded img-fluid z-depth-1-half" alt="First sample avatar image" width="200" height="200">
                 </div>
                 <br>
@@ -127,7 +127,7 @@
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-3">
 
-                <div class="avatar mx-auto my-3" style="max-width: 150px;">
+                <div class="avatar mx-auto" >
                     <img src="../img/dev2.jpeg" class="rounded img-fluid z-depth-1-half" alt="Second sample avatar image" width="200" height="200">
                 </div>
                 <br>
@@ -155,7 +155,7 @@
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-3">
 
-                <div class="avatar mx-auto my-3" style="max-width: 150px;">
+                <div class="avatar mx-auto">
                     <img src="../img/dev3.jpeg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image" width="200" height="200">
                 </div>
                 <br>
@@ -183,7 +183,7 @@
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-3">
 
-                <div class="avatar mx-auto my-3" style="max-width: 150px;">
+                <div class="avatar mx-auto">
                     <img src="../img/dev4.jpeg" class="rounded img-fluid z-depth-1-half" alt="Third sample avatar image" width="200" height="200">
                 </div>
                 <br>

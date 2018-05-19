@@ -202,10 +202,10 @@
         var email = campo[3];
         var facebook = campo[4];
         var instagram = campo[5];
-        var fone1 = fones[6];
-        var fone2 = fones[7];
+        var fone1 = campo[6];
+        var fone2 = campo[7];
 
-        var estabelecimentos = campo[7];
+        var estabelecimentos = campo[8];
 
         $("#btnEstabelecimentos").attr('href', '../seusNegocios/estabelecimentos.jsp?negocio=' + cnpj);
 
