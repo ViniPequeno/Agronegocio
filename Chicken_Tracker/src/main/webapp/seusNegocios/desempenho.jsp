@@ -9,7 +9,7 @@
         Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         if (sessao.getAttribute("estabelecimento") == null) {
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
-        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio").toString())) {
+        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
         }
     %>

@@ -39,6 +39,9 @@ public class FornecedorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        
+        PrintWriter o = response.getWriter();
+
         Fornecimento f = Fornecimento.getInstance();
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         Negocio n = (Negocio) request.getSession().getAttribute("negocio");
@@ -52,7 +55,10 @@ public class FornecedorServlet extends HttpServlet {
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
-                chkBoxIds.add(parameterName);
+                o.println(parameterName);
+                if (parameterName.contains("checkbox")) {
+                    chkBoxIds.add(parameterName);
+                }
             }
             String[] cnpj = new String[chkBoxIds.size()];
             int index = 0;
@@ -122,7 +128,10 @@ public class FornecedorServlet extends HttpServlet {
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
-                chkBoxIds.add(parameterName);
+                o.println(parameterName);
+                if (parameterName.contains("checkbox")) {
+                    chkBoxIds.add(parameterName);
+                }
             }
             String[] id = new String[chkBoxIds.size()];
             int index = 0;

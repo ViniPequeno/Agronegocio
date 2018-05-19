@@ -58,7 +58,7 @@
                         <td class="CNAE"><%=e.getCNAE()%></td>
                         <td class="sufixoCNPJ"><%=e.getSufixoCNPJ()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
-                                <i class="fa fa-ellipsis-h mr-1" aria-hidden="true"></i></a></td>
+                                <i class="fa fa-ellipsis-h fa-lg mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>
                 </tbody>
@@ -211,9 +211,9 @@
 
         $("#CEP").text("CEP: " + CEP);
         
-        $("#endereco").text("Endereço: " + rua+", "+bairro+", ");
+        $("#endereco").text("Endereço: " + rua+", "+bairro);
         
-        $("#cidade-uf").text("Cidade: "+cidade+", "+estado);
+        $("#cidade-uf").text("Cidade: "+cidade+"/"+estado);
 
         $("#qtdeFuncionarios").text("Quantidade de funcionários: " + qtdeFuncionarios);
     });

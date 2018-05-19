@@ -58,8 +58,28 @@
                             <td class="sufixoCNPJ"> <%=e.getSufixoCNPJ()%> </td>
                         </tr>
                         <tr>
-                            <th> Endereço </th>
-                            <td> <%=e.getEndereco()%> </td>
+                            <th class="h6"> <strong>Endereço</strong> </th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th> CEP </th>
+                            <td class="CEP"> <%=e.getCEP()%> </td>
+                        </tr>
+                        <tr>
+                            <th> Rua </th>
+                            <td> <%=e.getRua()%> </td>
+                        </tr>
+                        <tr>
+                            <th> Bairro </th>
+                            <td> <%=e.getBairro()%> </td>
+                        </tr>
+                        <tr>
+                            <th> Cidade</th>
+                            <td> <%=e.getCidade()%> </td>
+                        </tr>
+                        <tr>
+                            <th> Estado </th>
+                            <td> <%=e.getEstado()%> </td>
                         </tr>
                         <tr>
                             <th> Número de funcionários: </th>

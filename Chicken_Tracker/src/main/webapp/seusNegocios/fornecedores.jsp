@@ -16,7 +16,7 @@
         Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         if (sessao.getAttribute("estabelecimento") == null) {
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
-        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio").toString())) {
+        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
         }
         List<Fornecimento> fornecedores;
@@ -62,7 +62,7 @@
                         <td>R$ <%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
                         <td><%=dateFormat.format(f.getVencimento())%></td>
-                        <td><a href="" class="btn btn-primary btn-rounded" role="button" data-toggle="modal" data-target="#pagarSelecionados">
+                        <td><a class="btn btn-primary btn-rounded" role="button" data-toggle="modal" data-target="#pagarSelecionados">
                                 <i class="fa fa-money-bill-alt fa-lg mr-1" aria-hidden="true"></i>Pagar</a>
                         </td>
                     </tr>
