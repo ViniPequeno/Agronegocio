@@ -40,13 +40,13 @@
                     </div>
                     <div class="col-md-5">
                         <div class="md-form">
-                            <input type="text" id="inputRua" name="inputRua" class="form-control" disabled required maxlength="80">
+                            <input type="text" id="inputRua" name="inputRua" class="form-control" readonly="true" required maxlength="80">
                             <label class="disabled" for="inputRua">Rua</label>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="md-form">
-                            <input type="text" id="inputBairro" name="inputBairro" class="form-control" disabled required maxlength="80">
+                            <input type="text" id="inputBairro" name="inputBairro" class="form-control" readonly="true" required maxlength="80">
                             <label class="disabled" for="inputBairro">Bairro</label>
                         </div>
                     </div>
@@ -54,13 +54,13 @@
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="md-form">
-                            <input type="text" id="inputCidade" name="inputCidade" class="form-control" disabled required maxlength="80">
+                            <input type="text" id="inputCidade" name="inputCidade" class="form-control" readonly="true" required maxlength="80">
                             <label class="disabled" for="inputCidade">Cidade</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="md-form">
-                            <input type="text" id="inputEstado" name="inputEstado" class="form-control" disabled required maxlength="80">
+                            <input type="text" id="inputEstado" name="inputEstado" class="form-control" readonly="true" required maxlength="80">
                             <label class="disabled" for="inputEstado">UF</label>
                         </div>
                     </div>

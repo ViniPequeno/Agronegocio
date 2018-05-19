@@ -55,7 +55,14 @@ public class EstabelecimentoServlet extends HttpServlet {
             e.setNegocio(n);
             string = hup.salvar(e);
             if (string.equals("")) {
-                response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio=" + n.getEmpresaCNPJ());
+                 out.println(request.getParameter("inputCEP"));
+                out.println(request.getParameter("inputRua"));
+                out.println(request.getParameter("inputBairro"));
+                out.println(request.getParameter("inputCidade"));
+                out.println(request.getParameter("inputEstado"));
+                out.println("oi");
+                out.println(string);
+                //response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio=" + n.getEmpresaCNPJ());
             } else {
                 out.println(request.getParameter("inputCEP"));
                 out.println(request.getParameter("inputRua"));
