@@ -25,7 +25,7 @@
         <div class="row pt-2">
 
             <!--Grid column-->
-            <div class="col-xl-5 mt-xl-4 text-center text-lg-left">
+            <div class="col-xl-5 mt-xl-2 text-center text-lg-left">
                 <canvas style="align-content: center;"id="lineChart"></canvas>
                 <br>
             </div>

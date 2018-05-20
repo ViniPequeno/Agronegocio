@@ -8,7 +8,7 @@
 <div class="container">
     <div class="card mx-auto my-5">
         <div class="card-body">
-            <form action="/Chicken_Tracker/LocalAvesServlet" method="post">
+            <form action="/Chicken_Tracker/LocalAvesServlet" method="post" name="formCadastro">
                 <p class="h1 text-center mb-4">Novo Aviário</p>
 
                 <!-- Material input text -->
@@ -21,29 +21,22 @@
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-arrows-alt-h prefix grey-text"></i>
-                    <input type="text" id="inputLargura" name="inputLargura" class="form-control" required maxlength="10">
+                    <input type="text" id="inputLargura" name="inputLargura" class="form-control" required>
                     <label for="inputLargura">Largura</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-arrows-alt-v prefix grey-text"></i>
-                    <input type="text" id="inputComprimento" name="inputComprimento" class="form-control" required maxlength="10">
+                    <input type="text" id="inputComprimento" name="inputComprimento" class="form-control" required>
                     <label for="inputComprimento">Comprimento</label>
                 </div>
 
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-arrows-alt prefix grey-text"></i>
-                    <input type="text" id="inputArea" name="inputArea" class="form-control" required maxlength="10">
+                    <input type="text" id="inputArea" name="inputArea" class="form-control" readonly="true" required>
                     <label for="inputArea">Área</label>
-                </div>
-
-                <!-- Material input text -->
-                <div class="md-form">
-                    <i class="fa fa-id-badge prefix grey-text"></i>
-                    <input type="text" id="inputFuncao" name="inputFuncao" class="form-control" required maxlength="20">
-                    <label for="inputFuncao">Função</label>
                 </div>
 
                 <!-- Material input text -->
@@ -100,11 +93,27 @@
 <%@include file="../rodape.jsp" %>
 <script src='../_JS/mascara.js'></script>
 <script src='../_JS/maskMoney.js'></script>
+<script src="../_JS/formUtils.js"></script>
 <script>
     $('#inputLargura').maskMoney({suffix: ' m', thousands: '.', decimal: ','});
     $('#inputComprimento').maskMoney({suffix: ' m', thousands: '.', decimal: ','});
     $('#inputArea').maskMoney({suffix: ' m²', thousands: '.', decimal: ','});
+    $('form[name="formCadastro"]').submit(function () {
+        var largura = $('#inputLargura').maskMoney('unmasked')[0];
+        var comprimento = $('#inputComprimento').maskMoney('unmasked')[0];
+        var area = $('#inputArea').maskMoney('unmasked')[0];
+        $('#inputLargura').val(largura);
+        $('#inputComprimento').val(comprimento);
+        $('#inputArea').val(area);
+    });
+    $('#inputLargura, #inputComprimento').change(function () {
+        if ($('#inputLargura').val() != "" && $('#inputComprimento').val() != "") {
+            var largura = $('#inputLargura').maskMoney('unmasked')[0];
+            var comprimento = $('#inputComprimento').maskMoney('unmasked')[0];
+            alert(comprimento * largura);
+            $('#inputArea').val((comprimento * largura).toString());
+        }
+    });
 </script>
-<script src="../_JS/formUtils.js"></script>
 </body>
 </html>

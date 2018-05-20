@@ -28,6 +28,15 @@
                             <label for="inputCNAE">CNAE</label>
                         </div>
                     </div>
+                    
+                    <div class="col-md-6">
+                        <!-- Material input text -->
+                        <div class="md-form">
+                            <i class="fa fa-money-bill-alt prefix grey-text"></i>
+                            <input type="text" id="inputSaldo" name="inputSaldo" class="form-control" required>
+                            <label for="inputSaldo">Saldo inicial</label>
+                        </div>
+                    </div>
                 </div>
                 <p class="h5 mt-5">
                     <i class="fa fa-warehouse grey-text fa-lg mr-2"></i>Endereço</p>

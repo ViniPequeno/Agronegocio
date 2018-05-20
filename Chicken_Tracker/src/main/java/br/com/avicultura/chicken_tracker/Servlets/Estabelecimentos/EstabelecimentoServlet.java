@@ -50,26 +50,14 @@ public class EstabelecimentoServlet extends HttpServlet {
             e.setBairro(request.getParameter("inputBairro"));
             e.setCidade(request.getParameter("inputCidade"));
             e.setEstado(request.getParameter("inputEstado"));
+            e.setSaldo(Double.parseDouble(request.getParameter("inputSaldo")));
             HttpSession sessao = request.getSession();
             e.setPerfil((Perfil) sessao.getAttribute("usuario"));
             e.setNegocio(n);
             string = hup.salvar(e);
             if (string.equals("")) {
-                 out.println(request.getParameter("inputCEP"));
-                out.println(request.getParameter("inputRua"));
-                out.println(request.getParameter("inputBairro"));
-                out.println(request.getParameter("inputCidade"));
-                out.println(request.getParameter("inputEstado"));
-                out.println("oi");
-                out.println(string);
                 response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio=" + n.getEmpresaCNPJ());
             } else {
-                out.println(request.getParameter("inputCEP"));
-                out.println(request.getParameter("inputRua"));
-                out.println(request.getParameter("inputBairro"));
-                out.println(request.getParameter("inputCidade"));
-                out.println(request.getParameter("inputEstado"));
-                out.println("oi");
                 out.println(string);
             }
             

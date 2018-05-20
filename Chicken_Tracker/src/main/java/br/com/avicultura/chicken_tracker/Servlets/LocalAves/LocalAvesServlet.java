@@ -80,7 +80,6 @@ public class LocalAvesServlet extends HttpServlet {
             l.setDataAbertura(request.getParameter("inputDataAbertura"));
             l.setEstabelecimento(e);
             l.setNegocio(n.getEmpresaCNPJ());
-            e.getLocais().add(l);
             hup.salvar(l);
             response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else if (butao.equals("alterar")) {
