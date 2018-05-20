@@ -4,7 +4,9 @@
     <div class="img"></div>
     <div class="container">
         <h1 class="display-4">Mude a visão do seu negócio</h1>
-        <p class="lead">O Chicken Tracker lhe dará pleno controle sobre o estoque, despesas e funcionários de sua granja, além de informar o seu desempenho com o tempo.</p>
+        <p class="lead">Conheça o Chicken Tracker, um site que facilita o controle do seu negócio. Com ele, torna-se mais fácil manter
+        o fornecimento e os consumos em dia. Ele lhe dá pleno controle sobre o estoque, despesas e funcionários da sua granja, 
+        além de informar o seu desempenho com o tempo. </p>
         <p class="lead">
             <a class="btn btn-cyan btn-lg" href="#" role="button">Saiba mais</a>
         </p>
@@ -16,8 +18,8 @@
         <!--Section heading-->
         <h2 class="py-5 font-weight-bold text-center">Por que é tão bom?</h2>
         <!--Section description-->
-        <p class="px-5 mb-5 pb-3 lead grey-text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam.</p>
+        <p class="px-5 mb-5 pb-3 lead grey-text text-center">O Chicken Tracker lhe proporciona uma abordagem rápida, interativa e em tempo real
+            do desempenho do seu negócio. Aí vão algumas vantagens de usá-lo:</p>
 
         <!--Grid row-->
         <div class="row pt-2">
@@ -39,8 +41,8 @@
                     </div>
                     <div class="col-10">
                         <h5 class="font-weight-bold text-left mb-3 dark-grey-text">Informativo</h5>
-                        <p class="grey-text text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda
-                            deleniti hic.</p>
+                        <p class="grey-text text-left">Lhe dá controle sobre o estoque, além de gerar relatórios sobre o seu
+                        desempenho.</p>
                     </div>
                 </div>
                 <!--Grid row-->
@@ -52,8 +54,7 @@
                     </div>
                     <div class="col-10">
                         <h5 class="font-weight-bold text-left mb-3 dark-grey-text">Rápido</h5>
-                        <p class="grey-text text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda
-                            deleniti hic.</p>
+                        <p class="grey-text text-left">Os gráficos são gerados automaticamente e em tempo real.</p>
                     </div>
                 </div>
                 <!--Grid row-->
@@ -64,9 +65,8 @@
                         <i class="fa fa-users fa-lg indigo-text"></i>
                     </div>
                     <div class="col-10">
-                        <h5 class="font-weight-bold text-left mb-3 dark-grey-text">Compartilhável</h5>
-                        <p class="grey-text text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda
-                            deleniti hic.</p>
+                        <h5 class="font-weight-bold text-left mb-3 dark-grey-text">Gratuito</h5>
+                        <p class="grey-text text-left">É totalmente gratuito se cadastrar no Chicken Tracker.</p>
                     </div>
                 </div>
                 <!--Grid row-->
@@ -91,8 +91,8 @@
         <!--Section heading-->
         <h2 class="py-5 font-weight-bold text-center">Nossa equipe</h2>
         <!--Section description-->
-        <p class="grey-text pb-5 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate
-            esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
+        <p class="grey-text pb-5 text-center">Nossa equipe é composta por profissionais altamente preparados e que
+         possuem um objetivo em comum, facilitar a vida do avicultor.</p>
 
         <div class="row text-center">
 
