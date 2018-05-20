@@ -2,7 +2,7 @@
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
-    <div class="card mx-auto mt-5">
+    <div class="card mx-auto my-5">
         <div class="card-body">
             <form action="/Chicken_Tracker/ProdutoServlet" method="post">
                 <p class="h1 text-center mb-4">Novo Produto</p>

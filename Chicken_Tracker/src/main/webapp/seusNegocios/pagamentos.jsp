@@ -97,7 +97,7 @@
         </div> 
     </div>
     <%} else {%>
-    <h2 class="py-5 text-center">Nenhum pagamento registrado ainda</h2>
+    <h2 class="my-5 py-5 text-center">Nenhum pagamento registrado ainda</h2>
     <%}%>
     <a href="../cadastro/pagamento.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Inserir pagamento" role="button">
         <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>

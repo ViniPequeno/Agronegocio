@@ -27,8 +27,8 @@ public class ConsultaFornecedores {
         try {
             s.beginTransaction();
             Query query = s.createQuery("from Fornecimento f where"
-                    + " f.CNPJ =:id and f.tipo ='c'");
-            query.setParameter("id", longID.toString());
+                    + " f.id =:id and f.tipo ='c'");
+            query.setParameter("id", longID);
             try{
             f = (Fornecimento) query.getSingleResult();
             }catch(NoResultException e){

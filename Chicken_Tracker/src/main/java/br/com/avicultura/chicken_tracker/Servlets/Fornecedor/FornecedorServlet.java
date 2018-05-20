@@ -7,7 +7,6 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecedor;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.*;
-import br.com.avicultura.chicken_tracker.Servlets.Fornecimento.ConsultaFornecimento;
 import br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,7 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,12 +48,12 @@ public class FornecedorServlet extends HttpServlet {
         HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
         HibernateUtil<Produto> hupro = new HibernateUtil<>();
         String butao = request.getParameter("fornecedor");
+        o.println(butao);
         if (butao.equals("pagar")) {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
-                o.println(parameterName);
                 if (parameterName.contains("checkbox")) {
                     chkBoxIds.add(parameterName);
                 }
@@ -64,10 +62,11 @@ public class FornecedorServlet extends HttpServlet {
             int index = 0;
             for (String s1 : chkBoxIds) {
                 cnpj[index] = s1.split("!")[1];
+                o.println(cnpj[index]);
                 index++;
             }
             for (index = 0; index < cnpj.length; index++) {
-                f = ConsultaFornecimento.findById(cnpj[index], e.getSufixoCNPJ());
+                f = ConsultaFornecedores.findById(cnpj[index]);
                 Pagamento p = Pagamento.getInstance();
                 GregorianCalendar gc = new GregorianCalendar();
                 int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
@@ -79,16 +78,19 @@ public class FornecedorServlet extends HttpServlet {
                 p.setEstabelecimento(e);
                 p.setTipo('D');
                 p.setValor(f.getPagamento());
+                p.setNegocio(n.getEmpresaCNPJ());
                 p.setDescricao("Pagamento do fornecedor " + f.getCNPJ() + " no valor: " + p.getValor()
                         + "referente ao produto " + f.getProdutos().getNome() + " quantidade igual a"
                         + f.getQuantidade() + "na data " + p.getDia()
                         + "/" + p.getMes() + "/" + p.getAno());
                 e.setSaldo(e.getSaldo() - p.getValor());
                 f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() + f.getQuantidade());
-                hup.salvar(p);
-                hue.atualizar(e);
-                hupro.atualizar(f.getProdutos());
-                response.sendRedirect("seusNegocios/fornecedor.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                o.print("oii");
+                o.println(hup.salvar(p));
+                o.println(hue.atualizar(e));
+                o.println(hupro.atualizar(f.getProdutos()));
+                o.print("oiei");
+                //response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
             }
 
         } else if (butao.equals("cadastrar")) {
@@ -129,7 +131,6 @@ public class FornecedorServlet extends HttpServlet {
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
-                o.println(parameterName);
                 if (parameterName.contains("checkbox")) {
                     chkBoxIds.add(parameterName);
                 }

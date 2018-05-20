@@ -8,6 +8,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecimento;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Pagamento;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import br.com.avicultura.chicken_tracker.Servlets.Fornecedor.ConsultaFornecedores;
@@ -41,97 +42,116 @@ public class FornecimentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        PrintWriter o = response.getWriter();
         Fornecimento f = Fornecimento.getInstance();
+        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         HibernateUtil<Pagamento> hup = new HibernateUtil<>();
         HibernateUtil<Produto> hupro = new HibernateUtil<>();
         HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
         HibernateUtil<Fornecimento> huf = new HibernateUtil<>();
         String butao = request.getParameter("fornecimento");
-        if (butao.equals("pagar")) {
-            ArrayList<String> chkBoxIds = new ArrayList<String>();
-            Enumeration enumeration = request.getParameterNames();
-            while (enumeration.hasMoreElements()) {
-                String parameterName = (String) enumeration.nextElement();
-                chkBoxIds.add(parameterName);
-            }
-            String[] cnpj = new String[chkBoxIds.size()];
-            int index = 0;
-            for (String s1 : chkBoxIds) {
-                cnpj[index] = s1.split("!")[1];
-                index++;
-            }
+        o.println(butao);
+        switch (butao) {
+            case "pagar": {
+                ArrayList<String> chkBoxIds = new ArrayList<String>();
+                Enumeration enumeration = request.getParameterNames();
+                while (enumeration.hasMoreElements()) {
+                    String parameterName = (String) enumeration.nextElement();
+                    if (parameterName.contains("checkbox")) {
+                        chkBoxIds.add(parameterName);
+                    }
+                }
+                String[] cnpj = new String[chkBoxIds.size()];
+                int index = 0;
+                for (String s1 : chkBoxIds) {
+                    cnpj[index] = s1.split("!")[1];
+                    index++;
+                }
+                for (index = 0; index < cnpj.length; index++) {
+                    o.println("oi");
+                    f = ConsultaFornecimento.findById(cnpj[index], e.getSufixoCNPJ());
 
-            for (index = 0; index < cnpj.length; index++) {
-                f = ConsultaFornecimento.findById(cnpj[index], e.getSufixoCNPJ());
-                Pagamento p = Pagamento.getInstance();
-                GregorianCalendar gc = new GregorianCalendar();
-                int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
-                int mes = gc.get(GregorianCalendar.MONTH + 1);
-                int ano = gc.get(GregorianCalendar.YEAR);
-                p.setDia(dia);
-                p.setMes(mes);
-                p.setAno(ano);
-                p.setEstabelecimento(e);
-                p.setTipo('G');
-                p.setValor(f.getPagamento());
-                p.setDescricao("Pagamento do fornecimento " + f.getCNPJ() + " no valor: " + p.getValor()
-                        + "referente ao produto " + f.getProdutos().getNome() + " quantidade igual a"
-                        + f.getQuantidade() + "na data " + p.getDia()
-                        + "/" + p.getMes() + "/" + p.getAno());
-                e.setSaldo(e.getSaldo() + p.getValor());
-                f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() - f.getQuantidade());
-                hup.salvar(p);
-                hue.atualizar(e);
-                hupro.atualizar(f.getProdutos());
-                response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                    Pagamento p = Pagamento.getInstance();
+                    GregorianCalendar gc = new GregorianCalendar();
+                    int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
+                    int mes = gc.get(GregorianCalendar.MONTH + 1);
+                    int ano = gc.get(GregorianCalendar.YEAR);
+                    p.setDia(dia);
+                    p.setMes(mes);
+                    p.setAno(ano);
+                    p.setEstabelecimento(e);
+                    p.setTipo('G');
+                    p.setValor(f.getPagamento());
+                    p.setNegocio(n.getEmpresaCNPJ());
+                    o.println("ola");
+                    p.setDescricao("Pagamento do fornecimento " + f.getCNPJ() + " no valor: " + p.getValor()
+                            + "referente ao produto " + f.getProdutos().getNome() + " quantidade igual a"
+                            + f.getQuantidade() + "na data " + p.getDia()
+                            + "/" + p.getMes() + "/" + p.getAno());
+                    e.setSaldo(e.getSaldo() + p.getValor());
+                    f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() - f.getQuantidade());
+                    hup.salvar(p);
+                    hue.atualizar(e);
+                    hupro.atualizar(f.getProdutos());
+                    //response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                }
+                break;
             }
-        } else if (butao.equals("cadastrar")) {
-            f.setCNPJ(request.getParameter("inputCNPJ"));
-            f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
-            f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
-
-            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            try {
-                f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
-            } catch (ParseException ex) {
+            case "cadastrar": {
+                f.setCNPJ(request.getParameter("inputCNPJ"));
+                f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
+                f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
+                } catch (ParseException ex) {
+                }
+                f.setTipo('V');
+                f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
+                f.setEstabelecimento(e);
+                f.setNegocio(e.getNegocio().getEmpresaCNPJ());
+                huf.salvar(f);
+                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                break;
             }
-
-            f.setTipo('V');
-            f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
-            f.setEstabelecimento(e);
-            f.setNegocio(e.getNegocio().getEmpresaCNPJ());
-            huf.salvar(f);
-            response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
-            f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
-            f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
-            try {
-                f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
-            } catch (ParseException ex) {
+            case "alterar": {
+                f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
+                f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
+                } catch (ParseException ex) {
+                }
+                f.setTipo('V');
+                f.setEstabelecimento(e);
+                huf.atualizar(f);
+                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                break;
             }
-            f.setTipo('V');
-            f.setEstabelecimento(e);
-            huf.atualizar(f);
-            response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
-        } else {
-            ArrayList<String> chkBoxIds = new ArrayList<String>();
-            Enumeration enumeration = request.getParameterNames();
-            while (enumeration.hasMoreElements()) {
-                String parameterName = (String) enumeration.nextElement();
-                chkBoxIds.add(parameterName);
+            default: {
+                ArrayList<String> chkBoxIds = new ArrayList<String>();
+                Enumeration enumeration = request.getParameterNames();
+                while (enumeration.hasMoreElements()) {
+                    String parameterName = (String) enumeration.nextElement();
+                    if (parameterName.contains("checkbox")) {
+                        chkBoxIds.add(parameterName);
+                    }
+                }
+                String[] id = new String[chkBoxIds.size()];
+                int index = 0;
+                for (String s : chkBoxIds) {
+                    id[index] = s.split("!")[1];
+                    index++;
+                }
+                for (index = 0; index < id.length; index++) {
+                    Long longID = Long.parseLong(id[index]);
+                    f.setId(longID);
+                    huf.deletar(f);
+                }
+                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                break;
             }
-            String[] id = new String[chkBoxIds.size()];
-            int index = 0;
-            for (String s : chkBoxIds) {
-                id[index] = s.split("!")[1];
-                index++;
-            }
-            for (index = 0; index < id.length; index++) {
-                Long longID = Long.parseLong(id[index]);
-                f.setId(longID);
-                huf.deletar(f);
-            }
-            response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
         }
     }
 }

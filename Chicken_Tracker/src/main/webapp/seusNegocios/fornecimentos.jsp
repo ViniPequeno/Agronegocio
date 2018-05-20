@@ -54,8 +54,8 @@
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");%>
                     <tr data-fornecimento="<%=dataFornecimento%>">
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input form="checks" type="checkbox" id="checkbox!<%=f.getCNPJ()%>" name="checkbox!<%=f.getCNPJ()%>">
-                            <label for="checkbox!<%=f.getCNPJ()%>" class="label-table"></label>
+                            <input form="checks" type="checkbox" id="checkbox!<%=f.getId()%>" name="checkbox!<%=f.getId()%>">
+                            <label for="checkbox!<%=f.getId()%>" class="label-table"></label>
                         </th>
                         <td class="CNPJ"><%=f.getCNPJ()%></td>
                         <td>R$ <%=f.getPagamento()%></td>
@@ -107,7 +107,7 @@
         </div> 
     </div>
     <%} else {%>
-    <h2 class="py-5 text-center">Nenhum fornecimento registrado ainda</h2>
+    <h2 class="my-5 py-5 text-center">Nenhum fornecimento registrado ainda</h2>
     <%}%>
     <a href="../cadastro/fornecimento.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo fornecimento" role="button">
         <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
@@ -119,6 +119,7 @@
         <a href="" class="btn btn-primary btn-rounded mt-4 disabled mb-0" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
             <i class="fa fa-money-bill-alt fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
+    <form id="checks"></form>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
@@ -132,9 +133,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FornecimentoServlet" method="post">
-                        <button name="fornecimento" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
-                    </form>
+                    <button form="checks" formaction="/Chicken_Tracker/FornecimentoServlet" formmethod="post" name="fornecimento" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -155,10 +154,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FornecimentoServlet" method="post">
-                        <input type="hidden" name="fornecimento" value="pagar" />
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
-                    </form>
+                    <button form="checks" formmethod="post" formaction="/Chicken_Tracker/FornecimentoServlet" name="fornecimento" value="pagar" type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>

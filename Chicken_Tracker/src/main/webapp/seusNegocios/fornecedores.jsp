@@ -111,7 +111,7 @@
         </div> 
     </div>
     <%} else {%>
-    <h2 class="py-5 text-center">Nenhum fornecedor registrado ainda</h2>
+    <h2 class="my-5 py-5 text-center">Nenhum fornecedor registrado ainda</h2>
     <%}%>
     <a href="../cadastro/fornecedor.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo fornecedor" role="button">
         <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
@@ -123,7 +123,7 @@
         <a href="" class="btn btn-primary btn-rounded mt-4 disabled" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
             <i class="fa fa-money-bill-alt fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
-
+    <form id="checks"></form>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
@@ -137,9 +137,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FornecedorServlet" method="post">
-                        <button name="fornecedor" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
-                    </form>
+                    <button form="checks" formaction="/Chicken_Tracker/FornecedorServlet" formmethod="post" name="fornecedor" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -160,10 +158,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FornecedorServlet" method="post">
-                        <input type="hidden" name="fornecedor" value="pagar"/>
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
-                    </form>
+                    <button form="checks" formmethod="post" formaction="/Chicken_Tracker/FornecedorServlet" name="fornecedor" value="pagar" type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>

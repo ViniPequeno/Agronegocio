@@ -62,7 +62,7 @@ public class EstabelecimentoServlet extends HttpServlet {
                 out.println(request.getParameter("inputEstado"));
                 out.println("oi");
                 out.println(string);
-                //response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio=" + n.getEmpresaCNPJ());
+                response.sendRedirect("seusNegocios/estabelecimentos.jsp?negocio=" + n.getEmpresaCNPJ());
             } else {
                 out.println(request.getParameter("inputCEP"));
                 out.println(request.getParameter("inputRua"));

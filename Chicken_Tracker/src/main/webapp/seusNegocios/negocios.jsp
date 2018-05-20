@@ -102,7 +102,7 @@
         </div> 
     </div>
     <%} else {%>
-    <h2 class="py-5 text-center">Nenhum negócio registrado ainda</h2>
+    <h2 class="my-5 py-5 text-center">Nenhum negócio registrado ainda</h2>
     <%}%>
 
     <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button">

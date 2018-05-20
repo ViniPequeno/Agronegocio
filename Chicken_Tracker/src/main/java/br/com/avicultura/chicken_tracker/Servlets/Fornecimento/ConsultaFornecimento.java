@@ -27,11 +27,11 @@ public class ConsultaFornecimento {
         try {
             s.beginTransaction();
             Query query = s.createQuery("from Fornecimento f where"
-                    + " f.CNPJ =:id and f.tipo = v");
-            query.setParameter("id", longID.toString());
-            try{
-            f = (Fornecimento) query.getSingleResult();
-            }catch(NoResultException e){
+                    + " f.id =:id and f.tipo = 'v'");
+            query.setParameter("id", longID);
+            try {
+                f = (Fornecimento) query.getSingleResult();
+            } catch (NoResultException e) {
                 f = null;
             }
             s.getTransaction().commit();
