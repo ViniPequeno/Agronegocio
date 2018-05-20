@@ -97,11 +97,13 @@
 <script>
     $('#inputLargura').maskMoney({suffix: ' m', thousands: '.', decimal: ','});
     $('#inputComprimento').maskMoney({suffix: ' m', thousands: '.', decimal: ','});
-    $('#inputArea').maskMoney({suffix: ' m²', thousands: '.', decimal: ','});
+    //$('#inputArea').maskMoney({suffix: ' m²', thousands: '.', decimal: ','});
     $('form[name="formCadastro"]').submit(function () {
         var largura = $('#inputLargura').maskMoney('unmasked')[0];
         var comprimento = $('#inputComprimento').maskMoney('unmasked')[0];
-        var area = $('#inputArea').maskMoney('unmasked')[0];
+        var area = $('#inputArea').val();
+        area = area.replace(".","").replace(",",".");
+        area = area.slice(0,area.length-3);
         $('#inputLargura').val(largura);
         $('#inputComprimento').val(comprimento);
         $('#inputArea').val(area);
@@ -110,8 +112,15 @@
         if ($('#inputLargura').val() != "" && $('#inputComprimento').val() != "") {
             var largura = $('#inputLargura').maskMoney('unmasked')[0];
             var comprimento = $('#inputComprimento').maskMoney('unmasked')[0];
-            alert(comprimento * largura);
-            $('#inputArea').val((comprimento * largura).toString());
+            var area = (comprimento * largura).toFixed(2);
+            area = area.replace(".", ",");
+            var cont = 0;
+            for (var i = area.length - 3; i > 0; i--, cont++) {
+                if ((cont % 3 == 0) && (cont!=0)) {
+                    area = [area.slice(0, i), ".", area.slice(i)].join('');
+                }
+            }
+            $('#inputArea').val(area + " m²");
         }
     });
 </script>

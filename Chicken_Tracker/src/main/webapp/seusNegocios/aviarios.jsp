@@ -9,8 +9,6 @@
     <h2 class="py-5 font-weight-bold text-left">
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Locais de aves</h2>
-
-
     <%
         Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         if (sessao.getAttribute("estabelecimento") == null) {
@@ -21,7 +19,7 @@
         List<LocalAves> locaisAves;
         locaisAves = ConsultaLocalAves.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
         if (locaisAves.size() > 0) {%>
-    <div class="card card-cascade narrower mt-5">
+    <div class="card card-cascade narrower">
 
         <!--Card image-->
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
