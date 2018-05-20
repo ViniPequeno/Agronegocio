@@ -10,6 +10,8 @@ import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.LocalAves;
 import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Producao;
+import br.com.avicultura.chicken_tracker.Models.Produto;
+import br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -80,6 +82,8 @@ public class LocalAvesServlet extends HttpServlet {
             l.setDataAbertura(request.getParameter("inputDataAbertura"));
             l.setEstabelecimento(e);
             l.setNegocio(n.getEmpresaCNPJ());
+            Produto p = ConsultaProduto.findById(request.getParameter("inputProduto"));
+            l.setProduto(p);
             hup.salvar(l);
             response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else if (butao.equals("alterar")) {
