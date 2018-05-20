@@ -38,9 +38,10 @@ public class LocalAvesServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         LocalAves l = LocalAves.getInstance();
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-        String butao = request.getParameter("aviario");
+        String butao = request.getParameter("localaves");
         HibernateUtil<LocalAves> hup = new HibernateUtil<>();
         Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+        PrintWriter out = response.getWriter();
         if (butao != null && butao.equals("atualizarEstoque")) {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
@@ -71,7 +72,7 @@ public class LocalAvesServlet extends HttpServlet {
             }
             response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
 
-        } else if (butao.equals("cadastar")) {
+        } else if (butao.equals("cadastrar")) {
             l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
             l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
             l.setLargura(Double.parseDouble(request.getParameter("inputLargura")));
