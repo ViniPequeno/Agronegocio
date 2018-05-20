@@ -10,7 +10,7 @@
 
     <%  if (sessao.getAttribute("negocio") == null) {
             sessao.setAttribute("negocio", ConsultaNegocio.findById(request.getParameter("negocio")));
-        }else if(!sessao.getAttribute("negocio").toString().equals(request.getParameter("negocio").toString())){
+        } else if (!sessao.getAttribute("negocio").toString().equals(request.getParameter("negocio").toString())) {
             sessao.setAttribute("negocio", ConsultaNegocio.findById(request.getParameter("negocio")));
         }
         List<Estabelecimento> estabelecimentos;
@@ -112,7 +112,7 @@
         <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
     <span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir estabelecimentos selecionados">
         <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
-        <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
+            <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
 
     <!-- Modal -->
@@ -165,6 +165,7 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/paginacaoTabelas.js"></script>
 <script src="../_JS/formUtils.js"></script>
+<script src="../_JS/consultaCEP.js"></script>
 <script src="../_JS/mascara.js"></script>
 <script>
     dataE = "";
@@ -208,12 +209,13 @@
 
         sufixoCNPJ = sufixoCNPJ.replace(/^(\d{4})(\d{2}).*/, '$1-$2');
         $("#sufixoCNPJ").text("Sufixo do CNPJ: " + sufixoCNPJ);
-
+        
+        CEP = CEP.replace(/^(\d{5})(\d{3}).*/, '$1-$2');
         $("#CEP").text("CEP: " + CEP);
-        
-        $("#endereco").text("Endereço: " + rua+", "+bairro);
-        
-        $("#cidade-uf").text("Cidade: "+cidade+"/"+estado);
+
+        $("#endereco").text("Endereço: " + rua + ", " + bairro);
+
+        $("#cidade-uf").text("Cidade: " + cidade + "/" + estado);
 
         $("#qtdeFuncionarios").text("Quantidade de funcionários: " + qtdeFuncionarios);
     });
@@ -227,19 +229,19 @@
             '<input type="text" id="inputCNAE" name="inputCNAE" class="form-control" required maxlength="7">' +
             '<label for="inputCNAE">CNAE</label></div>' +
             '<div class="md-form">' +
-            '<input type="text" id="inputCEP" name="inputCEP" class="form-control" required maxlength="80">' +
+            '<input type="text" id="inputCEP" name="inputCEP" class="form-control CEP" required maxlength="80">' +
             '<label for="inputCEP">CEP</label> </div>' +
             '<div class="md-form">' +
-            '<input type="text" id="inputRua" name="inputRua" class="form-control" required maxlength="80">' +
+            '<input type="text" id="inputRua" name="inputRua" class="form-control" readonly="true" required maxlength="80">' +
             '<label for="inputRua">Rua</label> </div>' +
             '<div class="md-form">' +
-            '<input type="text" id="inputBairro" name="inputBairro" class="form-control" required maxlength="80">' +
+            '<input type="text" id="inputBairro" name="inputBairro" class="form-control" readonly="true" required maxlength="80">' +
             '<label for="inputBairro">Bairro</label> </div>' +
             '<div class="md-form">' +
-            '<input type="text" id="inputCidade" name="inputCidade" class="form-control" required maxlength="80">' +
+            '<input type="text" id="inputCidade" name="inputCidade" class="form-control" readonly="true" required maxlength="80">' +
             '<label for="inputCidade">Cidade</label> </div>' +
             '<div class="md-form">' +
-            '<input type="text" id="inputEstado" name="inputEstado" class="form-control" required maxlength="80">' +
+            '<input type="text" id="inputEstado" name="inputEstado" class="form-control" readonly="true" required maxlength="80">' +
             '<label for="inputEstado">Estado</label> </div>' +
             '</form>';
     $("#btnEditarConfirmar").click(function () {
@@ -247,6 +249,7 @@
             $(this).text("Confirmar");
             $("#bodyDetalhes").html(modalEditarInnerHTML);
             initInputs();
+            initCEP();
             $('#inputSufixoCNPJ').val(dataE[2]).trigger("change");
             $('#inputCNAE').val(dataE[3]).trigger("change");
             $('#inputCEP').val(dataE[4]).trigger("change");
@@ -254,11 +257,13 @@
             $('#inputBairro').val(dataE[6]).trigger("change");
             $('#inputCidade').val(dataE[7]).trigger("change");
             $('#inputEstado').val(dataE[8]).trigger("change");
-            var field = $('#inputSufixoCNPJ');
-            field.mask('0000-00', {reverse: false});
-            field = $('#inputCNAE');
-            field.mask('00000-0/00', {reverse: false});
+            $('#inputSufixoCNPJ').mask('0000-00', {reverse: false});
+            $('#inputCNAE').mask('00000-0/00', {reverse: false});
+            $('.CEP').mask('00000-000', {reverse: false});
         } else {
+            $('#inputSufixoCNPJ').unmask('0000-00');
+            $('#inputCNAE').unmask('00000-0/00');
+            $('.CEP').unmask('00000-000');
             formEditar.submit();
         }
     });

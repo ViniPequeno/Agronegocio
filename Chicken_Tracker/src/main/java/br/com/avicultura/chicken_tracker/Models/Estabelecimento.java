@@ -217,8 +217,4 @@ public class Estabelecimento implements Serializable {
     public void setNegocio(Negocio negocio) {
         this.negocio = negocio;
     }
-
-   
-    
-    
 }
