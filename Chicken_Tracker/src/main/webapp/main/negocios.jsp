@@ -55,15 +55,6 @@
                         <td><%=n.getTelefone1()%></td>
                         <td><%=n.getTelefone2()%></td>
                     </tr>
-
-                    <tr data-negocio="<%=data%>">
-                        <td><%=n.getNome()%></td>
-                        <td><%=n.getPerfil().getNome()%></td>
-                        <td><%=n.getEmpresaCNPJ()%></td>
-                        <td><%=n.getLinkEmail()%></td>
-                        <td><%=n.getTelefone1()%></td>
-                        <td><%=n.getTelefone2()%></td>
-                    </tr>
                     <%}%>
 
                 </tbody>
