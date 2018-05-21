@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Produto"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
@@ -6,7 +7,7 @@
 
 <!-- Material form register -->
 <div class="container">
-    <div class="card mx-auto mt-5">
+    <div class="card mx-auto my-5">
         <div class="card-body">
             <form action="/Chicken_Tracker/FornecimentoServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Fornecimento</p>
@@ -41,7 +42,7 @@
                 <div class="md-form">
                     <select name="inputProduto" id="inputProduto">
                         <% Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-                            for (Produto p : ConsultaProduto.returnListProduto(e.getSufixoCNPJ())) { %>
+                            for (Produto p : ConsultaProduto.returnListProduto(e.getSufixoCNPJ(), (Negocio) request.getSession().getAttribute("negocio"))) { %>
                         <option value="<%=p.getCodigo()%>"><%=p.getNome()%></option>
                         <% }%>
                     </select>

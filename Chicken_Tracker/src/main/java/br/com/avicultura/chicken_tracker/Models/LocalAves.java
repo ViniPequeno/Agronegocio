@@ -20,15 +20,17 @@ public class LocalAves implements Serializable {
     private double largura;
     private double comprimento;
     private double area;
-    private String funcao;
     private String dataAbertura;
+    @Column(nullable = true)
     private String dataFechamento;
     private int quantidade;
     
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
-
+    private String negocio;
+    
+    
     @ManyToOne
     @JoinColumn(name ="produto_id")
     private Produto produto;
@@ -82,14 +84,6 @@ public class LocalAves implements Serializable {
         this.area = area;
     }
 
-    public String getFuncao() {
-        return funcao;
-    }
-
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
-    }
-
     public String getDataAbertura() {
         return dataAbertura;
     }
@@ -136,6 +130,14 @@ public class LocalAves implements Serializable {
 
     public void setProducoes(List<Producao> producoes) {
         this.producoes = producoes;
+    }
+
+    public String getNegocio() {
+        return negocio;
+    }
+
+    public void setNegocio(String negocio) {
+        this.negocio = negocio;
     }
     
     

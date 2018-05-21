@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Produto"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto"%>
@@ -6,7 +7,7 @@
 
 <!-- Material form register -->
 <div class="container">
-    <div class="card mx-auto mt-5">
+    <div class="card mx-auto my-5">
         <div class="card-body">
             <form action="/Chicken_Tracker/FornecedorServlet" method="post" name="formCadastro">
                 <p class="h1 text-center mb-4">Novo Fornecedor</p>
@@ -41,14 +42,15 @@
                 <div class="md-form">
                     <select name="inputProduto" id="inputProduto">
                         <% Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-                            for (Produto p : ConsultaProduto.returnListEstoque(e.getSufixoCNPJ())) {%>
+                            for (Produto p : ConsultaProduto.returnListEstoque(e.getSufixoCNPJ(),
+                                    (Negocio) request.getSession().getAttribute("negocio"))) {%>
                         <option value="<%=p.getCodigo()%>"><%=p.getNome()%></option>
                         <% }%>
                     </select>
                 </div>
 
                 <div class="text-center mt-4">
-                    <button class="btn btn-primary" name="fornecedor" value="cadastrar" type="submit">Confirmar</button>
+                    <button name="fornecedor" value="cadastrar" class="btn btn-primary" name="fornecedor" value="cadastrar" type="submit">Confirmar</button>
                     <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>

@@ -3,7 +3,7 @@
 
 <!-- Material form register -->
 <div class="container">
-    <div class="card mx-auto mt-5">
+    <div class="card mx-auto my-5">
         <div class="card-body">
             <form action="/Chicken_Tracker/FuncionarioServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Funcionário</p>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <button class="btn btn-primary" name="funcionario" value="cadastrar" type="submit">Confirmar</button>
+                    <button name="funcionario" value="cadastrar" class="btn btn-primary" name="funcionario" value="cadastrar" type="submit">Confirmar</button>
                     <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>

@@ -22,21 +22,19 @@ public class Negocio implements Serializable {
 
     @Id
     private String empresaCNPJ;
-    
+
     @Column(unique = true)
     private String nome;
     private String linkFacebook;
     private String linkInstagram;
     private String linkEmail;
     private double lucroTotal;
-    
-    private String fone1;
-    private String fone2;
-
+    private String telefone1;
+    private String telefone2;
     @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;
-    
+
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = ALL, mappedBy = "negocio")
     private List<Estabelecimento> estabelecimentos;
@@ -47,7 +45,6 @@ public class Negocio implements Serializable {
     @Transient
     private static Negocio getInstance;
 
-    
     public static Negocio getInstance() {
         if (getInstance == null) {
             getInstance = new Negocio();
@@ -110,6 +107,21 @@ public class Negocio implements Serializable {
     public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
         this.estabelecimentos = estabelecimentos;
     }
+    public String getTelefone1() {
+        return telefone1;
+    }
+
+    public void setTelefone1(String telefone1) {
+        this.telefone1 = telefone1;
+    }
+
+    public String getTelefone2() {
+        return telefone2;
+    }
+
+    public void setTelefone2(String telefone2) {
+        this.telefone2 = telefone2;
+    }
 
     public double getLucroTotal() {
         return lucroTotal;
@@ -117,22 +129,6 @@ public class Negocio implements Serializable {
 
     public void setLucroTotal(double lucroTotal) {
         this.lucroTotal = lucroTotal;
-    }
-
-    public String getFone1() {
-        return fone1;
-    }
-
-    public void setFone1(String fone1) {
-        this.fone1 = fone1;
-    }
-
-    public String getFone2() {
-        return fone2;
-    }
-
-    public void setFone2(String fone2) {
-        this.fone2 = fone2;
     }
 
 }

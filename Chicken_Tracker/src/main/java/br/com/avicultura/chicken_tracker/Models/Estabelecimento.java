@@ -14,18 +14,30 @@ import static javax.persistence.CascadeType.ALL;
 public class Estabelecimento implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(name="sufixoCNPJ_id")
     private String sufixoCNPJ;
+    
+    @ManyToOne
+    @JoinColumn(name = "negocio_id")
+    private Negocio negocio;
+    
     private String CNAE;
-    private String endereco;
+    
+    private String CEP;
+    private String rua;
+    private String bairro;
+    private String cidade;
+    private String estado;
+    
     private double saldo;
 
     @ManyToOne
     @JoinColumn(name = "perfil_id")
     private Perfil perfil;
-    
-    @ManyToOne
-    @JoinColumn(name = "negocio_id")
-    private Negocio negocio;
+ 
     
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Produto> produtos;
@@ -61,14 +73,6 @@ public class Estabelecimento implements Serializable {
         return getInstance;
     }
 
-    public String getSufixoCNPJ() {
-        return sufixoCNPJ;
-    }
-
-    public void setSufixoCNPJ(String sufixoCNPJ) {
-        this.sufixoCNPJ = sufixoCNPJ;
-    }
-
     public String getCNAE() {
         return CNAE;
     }
@@ -77,12 +81,44 @@ public class Estabelecimento implements Serializable {
         this.CNAE = CNAE;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getCEP() {
+        return CEP;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Perfil getPerfil() {
@@ -93,13 +129,6 @@ public class Estabelecimento implements Serializable {
         this.perfil = perfil;
     }
 
-    public Negocio getNegocio() {
-        return negocio;
-    }
-
-    public void setNegocio(Negocio negocio) {
-        this.negocio = negocio;
-    }
 
     public List<Produto> getProdutos() {
         return produtos;
@@ -164,5 +193,28 @@ public class Estabelecimento implements Serializable {
     public void setProducoes(List<Producao> producoes) {
         this.producoes = producoes;
     }
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSufixoCNPJ() {
+        return sufixoCNPJ;
+    }
+
+    public void setSufixoCNPJ(String sufixoCNPJ) {
+        this.sufixoCNPJ = sufixoCNPJ;
+    }
+
+    public Negocio getNegocio() {
+        return negocio;
+    }
+
+    public void setNegocio(Negocio negocio) {
+        this.negocio = negocio;
+    }
 }

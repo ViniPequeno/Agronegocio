@@ -28,13 +28,11 @@ public class Produto implements Serializable {
     @OneToMany(cascade = ALL, mappedBy = "produto")
     private List<Fornecimento> fornecimentos;
     
-    @OneToMany()
-    private List<Produto> produtos;
-    
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
-
+    private String negocio;
+    
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Producao> producoes;
     private Produto() {
@@ -123,13 +121,22 @@ public class Produto implements Serializable {
         this.tipo = tipo;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public String getNegocio() {
+        return negocio;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setNegocio(String negocio) {
+        this.negocio = negocio;
     }
+
+    public List<Producao> getProducoes() {
+        return producoes;
+    }
+
+    public void setProducoes(List<Producao> producoes) {
+        this.producoes = producoes;
+    }
+
 
     
 }

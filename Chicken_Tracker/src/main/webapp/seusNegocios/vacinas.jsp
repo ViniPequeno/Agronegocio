@@ -101,7 +101,7 @@
         </div> 
     </div>
     <%} else {%>
-    <h2 class="py-5 text-center">Nenhuma vacina registrada ainda</h2>
+    <h2 class="my-5 py-5 text-center">Nenhuma vacina registrada ainda</h2>
     <%}%>
 
     <a href="../cadastro/vacina.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Nova vacina" role="button">
@@ -125,8 +125,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/VacinaDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/VacinaServlet" method="post">
+                        <button name="vacina" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
+                    <button name="vacina" value="alterar" type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
         </div>
@@ -203,7 +203,7 @@
     });
 </script>
 <script>
-    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/VacinaAlterarServlet" name="formEditar">' +
+    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/VacinaServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
             '<input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="50">' +
             '<label for="inputNome">Nome</label></div>' +

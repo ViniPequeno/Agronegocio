@@ -6,33 +6,32 @@
 <div class="container">
     <div class="card card-cascade narrower mt-5">
         <!--Card image-->
-        <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
+        <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-2 d-flex justify-content-center align-items-center">
             <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
         </div>
-            <div class="md-form mb-5">
-                <form method="get" action="">
-                    <div class="row">
-                        <div class="col-4">
-                            <input style="margin-left: 25px" class="form-control" type="text" placeholder="Pesquisar negócios" name="search">
-                        </div>
-                        <div class="col-1"></div>
-                        <div class="col-2">
-                            <input class="form-control" type="submit" value="Pesquisar">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <%  
+        <div class="px-4">
+            <form class="md-form" action="" autocomplete="off" method="get" accept-charset="utf-8">
+                <div class="input-group">
+                    <input placeholder="Pesquisar negócios" name="search" class="form-control" type="text">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit" value="Pesquisar">
+                            <span class="icon-search"></span>
+                            Pesquisar
+                        </button>
+                    </span>
+                </div>
+            </form>
+            <%
                 List<Negocio> negocios;
-                if(request.getParameter("search") == null){
+                if (request.getParameter("search") == null) {
                     negocios = ConsultaNegocio.returnList();
-                }else{
+                } else {
                     String search = request.getParameter("search");
                     negocios = ConsultaNegocio.returnListBySearch(search);
                 }
                 if (negocios.size() > 0) {
             %>
-            <table class="table table-hover table-responsive-md btn-table table-bordered" id="tableDados" style="margin-bottom: 20px;">
+            <table class="table table-hover table-responsive-md btn-table table-bordered mt-5" id="tableDados">
                 <thead class="thead-dark">
                     <tr class="text-white">
                         <th>Nome</th>
@@ -44,23 +43,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% 
-                        for(Negocio n : negocios){
-                             String data = ConsultaNegocio.returnValues(n);
+                    <%
+                        for (Negocio n : negocios) {
+                            String data = ConsultaNegocio.returnValues(n);
                     %>   
-                        <tr data-negocio="<%=data%>">
-                            <td><%=n.getNome()%></td>
-                            <td><%=n.getPerfil().getNome()%></td>
-                            <td><%=n.getEmpresaCNPJ()%></td>
-                            <td><%=n.getLinkEmail()%></td>
-                            <td><%=n.getFone1()%></td>
-                            <td><%=n.getFone2()%></td>
-                        </tr>
+                    <tr data-negocio="<%=data%>">
+                        <td><%=n.getNome()%></td>
+                        <td><%=n.getPerfil().getNome()%></td>
+                        <td><%=n.getEmpresaCNPJ()%></td>
+                        <td><%=n.getLinkEmail()%></td>
+                        <td><%=n.getTelefone1()%></td>
+                        <td><%=n.getTelefone2()%></td>
+                    </tr>
+
+                    <tr data-negocio="<%=data%>">
+                        <td><%=n.getNome()%></td>
+                        <td><%=n.getPerfil().getNome()%></td>
+                        <td><%=n.getEmpresaCNPJ()%></td>
+                        <td><%=n.getLinkEmail()%></td>
+                        <td><%=n.getTelefone1()%></td>
+                        <td><%=n.getTelefone2()%></td>
+                    </tr>
                     <%}%>
+
                 </tbody>
             </table>
-            <!--Table-->
-            <hr class="my-0">
 
             <!--Bottom Table UI-->
             <div class="d-flex justify-content-center">
@@ -97,10 +104,15 @@
 
             </div>
             <!--Bottom Table UI-->
+            <%} else {%>
+            <h1 class="my-5 py-5 text-center">Nenhum negócio encontrado</h1>
+            <%}%>
+            <!--Table-->
+            <hr class="my-0">
+
+        </div>
     </div>
-    <%} else {%>
-    <h2 class="py-5 text-center">Nenhum negócio registrado.</h2>
-    <%}%>
+
     <!-- Modal -->
     <div class="modal fade" id="detalhesNegocio" tabindex="-1" role="dialog" aria-labelledby="detalhesNegocio" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -163,18 +175,17 @@
         var facebook = campo[4];
         var instagram = campo[5];
 
-        var fones = campo[6].split("&");
-        var fone1 = fones[0];
-        var fone2 = fones[1];
+        var fone1 = campo[6];
+        var fone2 = campo[7];
 
-        var estabelecimentos = campo[7];
+        var estabelecimentos = campo[8];
 
         $("#btnEstabelecimentos").attr('href', '../seusNegocios/estabelecimentos.jsp?negocio=' + cnpj);
 
         $("#nome").text("Nome: " + nome);
 
         $("#proprietario").text("Proprietário: " + proprietario);
-        
+
         cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
         $("#cnpj").text("CNPJ: " + cnpj);
 
@@ -185,55 +196,6 @@
         $("#linkInstagram").text("Link da página do Instagram: " + instagram);
 
         $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
-
-        $("#fone1").text("Fone 1: " + fone1);
-        $("#fone2").text("Fone 2: " + fone2);
-    }
-</script>
-<script type="text/javascript">
-    dataN = "";
-    var linha;
-    $("td").not(function () {
-        return $("a", this).length != 0;
-    }).click(function (event) {
-        $("#detalhesNegocio").modal();
-        linha = $(this).closest('tr');
-        resetModalData();
-    });
-
-    function resetModalData() {
-        var dados = linha.data('negocio').toString();
-        var campo = dados.split("#");
-        dataN = campo;
-        var nome = campo[0];
-        var proprietario = campo[1];
-        var cnpj = campo[2];
-        var email = campo[3];
-        var facebook = campo[4];
-        var instagram = campo[5];
-
-        var fones = campo[6].split("&");
-        var fone1 = fones[0];
-        var fone2 = fones[1];
-
-        var estabelecimentos = campo[7];
-
-        $("#btnEstabelecimentos").attr('href', '../seusNegocios/estabelecimentos.jsp?negocio=' + cnpj);
-
-        $("#nome").text("Nome: " + nome);
-
-        $("#proprietario").text("Proprietário: " + proprietario);
-        
-        cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
-        $("#cnpj").text("CNPJ: " + cnpj);
-
-        $("#email").text("Email: " + email);
-
-        $("#linkFB").text("Link da página do Facebook: " + facebook);
-
-        $("#linkInstagram").text("Link da página do Instagram: " + instagram);
-
-        $("#estabelecimentos").text("Estabelecimentos: " + dados);
 
         $("#fone1").text("Fone 1: " + fone1);
         $("#fone2").text("Fone 2: " + fone2);

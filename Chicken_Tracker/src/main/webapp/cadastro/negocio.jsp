@@ -3,7 +3,7 @@
 
 <!-- Material form register -->
 <div class="container">
-    <div class="card mx-auto mt-5">
+    <div class="card mx-auto my-5">
         <div class="card-body">
             <form action="/Chicken_Tracker/NegocioServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Negócio</p>
@@ -40,8 +40,8 @@
                         <!-- Material input phone -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text"></i>
-                            <input type="text" id="inputFone1" name="inputFone1" class="form-control" required maxlength="9">
-                            <label for="inputFone1">Telefone 1:</label>
+                            <input type="text" id="inputTelefone1" name="inputTelefone1" class="form-control" required maxlength="9">
+                            <label for="inputTelefone1">Telefone 1:</label>
                         </div>
                     </div>
 
@@ -49,8 +49,8 @@
                         <!-- Material input phone -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text"></i>
-                            <input type="text" id="inputFone2" name="inputFone2" class="form-control" required maxlength="9">
-                            <label for="inputFone2">Telefone 2:</label>
+                            <input type="text" id="inputTelefone2" name="inputTelefone2" class="form-control" required maxlength="9">
+                            <label for="inputTelefone2">Telefone 2:</label>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="mt-4 text-right">
-                    <button class="btn btn-primary" type="submit">Confirmar</button>
+                    <button name="negocio" value="cadastrar" class="btn btn-primary" type="submit">Confirmar</button>
                     <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>

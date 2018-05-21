@@ -3,10 +3,12 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@ include file="../cabecalho.jsp"%>
-<%  if (sessao.getAttribute("estabelecimento") == null) {
-        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
+<%  
+    Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+    if (sessao.getAttribute("estabelecimento") == null) {
+        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
     } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("estabelecimento").toString())) {
-        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
+        sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
     }
     Estabelecimento e = (Estabelecimento) sessao.getAttribute("estabelecimento");
 %>
@@ -56,8 +58,28 @@
                             <td class="sufixoCNPJ"> <%=e.getSufixoCNPJ()%> </td>
                         </tr>
                         <tr>
-                            <th> Endereço </th>
-                            <td> <%=e.getEndereco()%> </td>
+                            <th class="h6"> <strong>Endereço</strong> </th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th> CEP </th>
+                            <td class="CEP"> <%=e.getCEP()%> </td>
+                        </tr>
+                        <tr>
+                            <th> Rua </th>
+                            <td> <%=e.getRua()%> </td>
+                        </tr>
+                        <tr>
+                            <th> Bairro </th>
+                            <td> <%=e.getBairro()%> </td>
+                        </tr>
+                        <tr>
+                            <th> Cidade</th>
+                            <td> <%=e.getCidade()%> </td>
+                        </tr>
+                        <tr>
+                            <th> Estado </th>
+                            <td> <%=e.getEstado()%> </td>
                         </tr>
                         <tr>
                             <th> Número de funcionários: </th>

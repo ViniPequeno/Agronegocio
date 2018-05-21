@@ -7,7 +7,7 @@
     <%  //Gera tabela se houver algum registro
         List<Negocio> negocios = null;
         negocios = ConsultaNegocio.returnListOfPerfil(sessao.getAttribute("nome_usuario").toString());
-        if (negocios.size() > 0) {
+    if (negocios.size() > 0) {
     %>
     <div class="card card-cascade narrower mt-5">
 
@@ -102,7 +102,7 @@
         </div> 
     </div>
     <%} else {%>
-    <h2 class="py-5 text-center">Nenhum negócio registrado ainda</h2>
+    <h2 class="my-5 py-5 text-center">Nenhum negócio registrado ainda</h2>
     <%}%>
 
     <a href="../cadastro/negocio.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Novo negócio" role="button">
@@ -128,8 +128,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/NegocioDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/NegocioServlet" method="post">
+                        <button name="negocio" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -159,7 +159,7 @@
                 <div class="modal-footer">
                     <a id="btnEstabelecimentos" href="" type="button" class="btn btn-outline-primary">Estabelecimentos</a>
                     <button id="btnCancelarEdicao" type="button" class="btn btn-outline-primary d-none">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
+                    <button name="negocio" value="alterar" type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
         </div>
@@ -202,12 +202,10 @@
         var email = campo[3];
         var facebook = campo[4];
         var instagram = campo[5];
+        var fone1 = campo[6];
+        var fone2 = campo[7];
 
-        var fones = campo[6].split("&");
-        var fone1 = fones[0];
-        var fone2 = fones[1];
-
-        var estabelecimentos = campo[7];
+        var estabelecimentos = campo[8];
 
         $("#btnEstabelecimentos").attr('href', '../seusNegocios/estabelecimentos.jsp?negocio=' + cnpj);
 
@@ -231,7 +229,7 @@
     }
 </script>
 <script>
-    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioAlterarServlet" name="formEditar">' +
+    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
             '<input type="text" name="inputNome" id="inputNome" class="form-control" placeholder=" " autofocus required>' +
             '<label for="inputNome">Nome</label></div>' +
@@ -248,11 +246,11 @@
             '<input type="text" name="inputLinkInstagram" id="inputLinkInstagram" placeholder=" " class="form-control" required>' +
             '<label for="inputLinkInstagram">Instagram</label></div>' +
             '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>' +
-            '<input type="text" name="inputFone1" id="inputFone1" class="form-control" placeholder=" " required>' +
-            '<label for="inputFone1">Telefone 1</label></div>' +
+            '<input type="text" name="inputTelefone1" id="inputTelefone1" class="form-control" placeholder=" " required>' +
+            '<label for="inputTelefone1">Telefone 1</label></div>' +
             '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>' +
-            '<input type="text" name="inputFone2" id="inputFone2" class="form-control" placeholder=" " required>' +
-            '<label for="inputFone2">Telefone 2</label></div>' +
+            '<input type="text" name="inputTelefone2" id="inputTelefone2" class="form-control" placeholder=" " required>' +
+            '<label for="inputTelefone2">Telefone 2</label></div>' +
             '</form>';
     $('#btnCancelarEdicao').click(function () {
         $(this).addClass('d-none');
@@ -272,8 +270,8 @@
             $('#inputCNPJ').val(dataN[2]).trigger("change");
             $('#inputLinkFB').val(dataN[4]).trigger("change");
             $('#inputLinkInstagram').val(dataN[5]).trigger("change");
-            $('#inputFone1').val(dataN[6].split("&")[0]).trigger("change");
-            $('#inputFone2').val(dataN[6].split("&")[1]).trigger("change");
+            $('#inputTelefone1').val(dataN[6].split("&")[0]).trigger("change");
+            $('#inputTelefone2').val(dataN[6].split("&")[1]).trigger("change");
             var $seuCampo = $('#inputCNPJ');
             $seuCampo.mask('00.000.000', {reverse: false});
             initInputs();

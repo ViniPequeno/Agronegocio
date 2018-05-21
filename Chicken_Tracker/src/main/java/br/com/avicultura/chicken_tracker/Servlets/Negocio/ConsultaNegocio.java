@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.avicultura.chicken_tracker.Servlets.Negocio;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
@@ -95,10 +91,11 @@ public class ConsultaNegocio {
         a += negocio.getLinkEmail() + "#";
         a += negocio.getLinkFacebook() + "#";
         a += negocio.getLinkInstagram() + "#";
-        a += negocio.getFone1()+ "&";
-        a += negocio.getFone2()+ "#";
+        a += negocio.getTelefone1() + "#";
+        a += negocio.getTelefone2() + "#";
+        a += "#";
         for (int i = 0; i < negocio.getEstabelecimentos().size(); i++) {
-            a += negocio.getEstabelecimentos().get(i).getSufixoCNPJ() + "#";
+            a += negocio.getEstabelecimentos().get(i).getSufixoCNPJ()+ "#";
             a += negocio.getEstabelecimentos().get(i).getCNAE() + "#";
         }
         a += "*";

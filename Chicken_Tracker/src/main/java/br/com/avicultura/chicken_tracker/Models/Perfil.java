@@ -21,13 +21,11 @@ public class Perfil implements Serializable {
     @Column(unique = true)
     private String email;
     private String senha;
-    @Lob
-    private byte[] foto;
+    
+    private String foto;
 
     @OneToMany(cascade = ALL, mappedBy = "perfil")
     private List<Negocio> negocios;
-    @OneToMany(cascade = ALL, mappedBy = "perfil")
-    private List<Estabelecimento> estabelecimentos;
 
     @Transient
     private static Perfil getInstance;
@@ -75,11 +73,11 @@ public class Perfil implements Serializable {
         this.senha = senha;
     }
 
-    public byte[] getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
@@ -91,11 +89,4 @@ public class Perfil implements Serializable {
         this.negocios = negocios;
     }
 
-    public List<Estabelecimento> getEstabelecimentos() {
-        return estabelecimentos;
-    }
-
-    public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
-        this.estabelecimentos = estabelecimentos;
-    }
 }

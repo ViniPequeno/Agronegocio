@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto" %>
@@ -9,7 +10,7 @@
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Lista de produtos</h2>
 
     <%  List<Produto> produtos;
-        produtos = ConsultaProduto.returnList(request.getParameter("estabelecimento"));
+        produtos = ConsultaProduto.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
         if (produtos.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 
@@ -97,7 +98,7 @@
         </div> 
     </div>
     <%} else {%>
-    <h2 class="py-5 text-center">Nenhum produto registrado ainda</h2>
+    <h2 class="my-5 py-5 text-center">Nenhum produto registrado ainda</h2>
     <%}%>
 
     <a href="../cadastro/produto.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Novo produto" role="button">
@@ -122,8 +123,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/ProdutoDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <form id="checks" action="/Chicken_Tracker/ProdutoServlet" method="post">
+                        <button name="produto" value="alterar" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -150,7 +151,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
+                    <button name="produto" value="editar" type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
                 </div>
             </div>
         </div>
@@ -204,7 +205,7 @@
     });
 </script>
 <script>
-    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/ProdutoAlterarServlet" name="formEditar">' +
+    var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/ProdutoServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-hashtag prefix grey-text"></i>' +
             '<input type="text" id="inputCodigo" name="inputCodigo" class="form-control" required autofocus maxlength="20">' +
             '<label for="inputCodigo">Código</label> </div>' +

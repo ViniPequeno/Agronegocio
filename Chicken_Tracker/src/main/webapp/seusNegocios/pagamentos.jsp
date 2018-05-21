@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Pagamento.ConsultaPagamento" %>
@@ -9,7 +10,7 @@
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Pagamentos</h2>
 
     <%List<Pagamento> pagamentos;
-        pagamentos = ConsultaPagamento.returnList(request.getParameter("estabelecimento"));
+        pagamentos = ConsultaPagamento.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
         if (pagamentos.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 
@@ -96,7 +97,7 @@
         </div> 
     </div>
     <%} else {%>
-    <h2 class="py-5 text-center">Nenhum pagamento registrado ainda</h2>
+    <h2 class="my-5 py-5 text-center">Nenhum pagamento registrado ainda</h2>
     <%}%>
     <a href="../cadastro/pagamento.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Inserir pagamento" role="button">
         <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
@@ -120,7 +121,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/PagamentoDeleteServlet" method="post">
+                    <form id="checks" action="/Chicken_Tracker/PagamentoServlet" method="post">
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>

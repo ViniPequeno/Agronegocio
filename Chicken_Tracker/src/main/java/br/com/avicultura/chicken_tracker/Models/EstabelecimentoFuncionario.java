@@ -14,6 +14,7 @@ public class EstabelecimentoFuncionario implements Serializable {
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
+    private String negocio;
     
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
@@ -82,4 +83,13 @@ public class EstabelecimentoFuncionario implements Serializable {
         this.salario = salario;
     }
 
+    public String getNegocio() {
+        return negocio;
+    }
+
+    public void setNegocio(String negocio) {
+        this.negocio = negocio;
+    }
+
+    
 }

@@ -1,3 +1,5 @@
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -10,8 +12,15 @@
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Fornecedores</h2>
 
-    <%List<Fornecimento> fornecedores;
-        fornecedores = ConsultaFornecedores.returnList(request.getParameter("estabelecimento"));
+    <%
+        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+        if (sessao.getAttribute("estabelecimento") == null) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        }
+        List<Fornecimento> fornecedores;
+        fornecedores = ConsultaFornecedores.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
         if (fornecedores.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 
@@ -53,7 +62,7 @@
                         <td>R$ <%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
                         <td><%=dateFormat.format(f.getVencimento())%></td>
-                        <td><a href="" class="btn btn-primary btn-rounded" role="button" data-toggle="modal" data-target="#pagarSelecionados">
+                        <td><a class="btn btn-primary btn-rounded" role="button" data-toggle="modal" data-target="#pagarSelecionados">
                                 <i class="fa fa-money-bill-alt fa-lg mr-1" aria-hidden="true"></i>Pagar</a>
                         </td>
                     </tr>
@@ -102,7 +111,7 @@
         </div> 
     </div>
     <%} else {%>
-    <h2 class="py-5 text-center">Nenhum fornecedor registrado ainda</h2>
+    <h2 class="my-5 py-5 text-center">Nenhum fornecedor registrado ainda</h2>
     <%}%>
     <a href="../cadastro/fornecedor.jsp" class="btn btn-light-green btn-rounded mt-4" data-toggle="tooltip" data-placement="bottom" title="Novo fornecedor" role="button">
         <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
@@ -114,7 +123,7 @@
         <a href="" class="btn btn-primary btn-rounded mt-4 disabled" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
             <i class="fa fa-money-bill-alt fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
-
+    <form id="checks"></form>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
@@ -128,9 +137,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FornecedorDeleteServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
-                    </form>
+                    <button form="checks" formaction="/Chicken_Tracker/FornecedorServlet" formmethod="post" name="fornecedor" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -151,10 +158,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/FornecedorServlet" method="post">
-                        <input type="hidden" name="fornecedor" value="pagar"/>
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
-                    </form>
+                    <button form="checks" formmethod="post" formaction="/Chicken_Tracker/FornecedorServlet" name="fornecedor" value="pagar" type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>

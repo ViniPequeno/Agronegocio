@@ -30,7 +30,8 @@ public class Vacina implements Serializable {
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
-
+    private String negocio;
+    
     private Vacina() {
     }
 
@@ -93,4 +94,13 @@ public class Vacina implements Serializable {
         this.estabelecimento = estabelecimento;
     }
 
+    public String getNegocio() {
+        return negocio;
+    }
+
+    public void setNegocio(String negocio) {
+        this.negocio = negocio;
+    }
+
+    
 }

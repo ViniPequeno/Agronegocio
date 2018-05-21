@@ -6,6 +6,7 @@
 package br.com.avicultura.chicken_tracker.Servlets.Vacina;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Vacina;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -35,13 +36,14 @@ public class ConsultaVacina {
         return v;
     }
 
-    public static List<Vacina> returnList(String estabelecimento) {
+    public static List<Vacina> returnList(String estabelecimento, Negocio negocio) {
         List<Vacina> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Vacina v where v.estabelecimento.sufixoCNPJ =:estabelecimento");
+            Query query = s.createQuery("from Vacina v where v.negocio=:negocio and v.estabelecimento.sufixoCNPJ =:estabelecimento");
             query.setParameter("estabelecimento", estabelecimento);
+            query.setParameter("negocio", negocio.getEmpresaCNPJ());
             lista = query.getResultList();
             s.getTransaction().commit();
             return lista;
@@ -61,7 +63,7 @@ public class ConsultaVacina {
         a += v.getDescricao() + "#";
         a += dateFormat.format(v.getDataRealizada()) + "#";
         a += dateFormat.format(v.getDataProxima()) + "#";
-        a += v.getEstabelecimento().getSufixoCNPJ() + "#";
+        a += v.getEstabelecimento().getSufixoCNPJ()+ "#";
 
         return a;
     }

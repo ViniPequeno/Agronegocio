@@ -2,7 +2,7 @@
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
-    <div class="card mx-auto mt-5">
+    <div class="card mx-auto my-5">
         <div class="card-body">
             <form action="/Chicken_Tracker/ProdutoServlet" method="post">
                 <p class="h1 text-center mb-4">Novo Produto</p>
@@ -70,7 +70,7 @@
                     <label for="inputTipo">Tipo</label>
                 </div>
                 <div class="text-right mt-4">
-                    <button class="btn btn-primary" type="submit">Confirmar</button>
+                    <button name="produto" value="cadastrar" class="btn btn-primary" type="submit">Confirmar</button>
                     <button class="btn btn-primary" type="reset">Limpar</button>
                 </div>
             </form>
