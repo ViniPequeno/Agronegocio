@@ -7,7 +7,7 @@
     <%  //Gera tabela se houver algum registro
         List<Negocio> negocios = null;
         negocios = ConsultaNegocio.returnListOfPerfil(sessao.getAttribute("nome_usuario").toString());
-        if (negocios.size() > 0) {
+    if (negocios.size() > 0) {
     %>
     <div class="card card-cascade narrower mt-5">
 

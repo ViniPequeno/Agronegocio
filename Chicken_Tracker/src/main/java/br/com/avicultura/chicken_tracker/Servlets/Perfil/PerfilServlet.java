@@ -12,18 +12,18 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.hibernate.Session;
 
-/**
- *
- * @author User
- */
 @MultipartConfig
 public class PerfilServlet extends HttpServlet {
 
@@ -72,19 +72,34 @@ public class PerfilServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Perfil p = Perfil.getInstance();
-        p.setNome(request.getParameter("inputNome"));
-        p.setUsuario(request.getParameter("inputLogin"));
-        p.setEmail(request.getParameter("inputEmail"));
-        p.setSenha(request.getParameter("inputSenha"));
-        HibernateUtil<Perfil> hup = new HibernateUtil<>();
-        String s = hup.salvar(p);
-        HttpSession sessao = request.getSession();
-        sessao.setAttribute("usuario", p);
-        sessao.setAttribute("usuario_logado", "true");
-        sessao.setAttribute("nome_usuario", request.getParameter("inputLogin"));
-        response.sendRedirect(
-                "seusNegocios/negocios.jsp");
+        PrintWriter out = response.getWriter();
+        if (ServletFileUpload.isMultipartContent(request)) {
+            try {
+                out.print("Entrei</br>");
+                List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+                for (FileItem item : m) {
+                    if (!item.isFormField()) {
+                        String name = new File(item.getName()).getAbsolutePath();
+                        out.println("Teste 123" +name);
+                    }
+                }
+            } catch (Exception ex) {
+
+            }
+        }
+//        Perfil p = Perfil.getInstance();
+//        p.setNome(request.getParameter("inputNome"));
+//        p.setUsuario(request.getParameter("inputLogin"));
+//        p.setEmail(request.getParameter("inputEmail"));
+//        p.setSenha(request.getParameter("inputSenha"));
+//        HibernateUtil<Perfil> hup = new HibernateUtil<>();
+//        String s = hup.salvar(p);
+//        HttpSession sessao = request.getSession();
+//        sessao.setAttribute("usuario", p);
+//        sessao.setAttribute("usuario_logado", "true");
+//        sessao.setAttribute("nome_usuario", request.getParameter("inputLogin"));
+//        response.sendRedirect(
+//                "seusNegocios/negocios.jsp");
     }
 
 }
