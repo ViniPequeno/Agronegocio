@@ -7,20 +7,19 @@
         <div class="card-body">
             <form action="/Chicken_Tracker/PerfilServlet" method="post" autocomplete="off" 
                   enctype="multipart/form-data">
-                <p class="h1 text-center mb-4">Criar conta</p>
+                <p class="h1 text-center">Criar conta</p>
                 <!-- Material input text -->
 
                 <div class="row">
-                    <div class="md-form form-group mt-5">
-                        <i class="fa fa-user prefix grey-text"></i>
-                        <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="50">
-                        <label for="inputNome">Nome Completo</label>
+                    <div class="col-md-4 mt-5 pt-5">
+                        <input type="file" name="file" accept="image/*">
                     </div>
-
-
                     <div class="col-md-8">
-
-
+                        <div class="md-form form-group mt-5">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="50">
+                            <label for="inputNome">Nome Completo</label>
+                        </div>
                         <!-- Material input text -->
                         <div class="md-form form-group mt-5">
                             <i class="fa fa-id-card prefix grey-text"></i>
@@ -52,7 +51,6 @@
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
                     </div>
-                    <input type="file" name="file" accept="image/*">
                 </div>
                 <div class="text-center mt-4">
                     <button name="usuario" value="cadastrar" class="btn btn-cyan" type="submit">Confirmar</button>
