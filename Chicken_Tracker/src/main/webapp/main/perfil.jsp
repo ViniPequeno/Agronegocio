@@ -48,11 +48,11 @@
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
                         <input type="file" name="inputFoto" id="inputFoto" accept="image/*">
-                        <img src="../../../bin/Ayumi.png" name="foto"/>
+                        <img src="../imagensUsuario/<%=p.getUsuario()%>.png" name="foto"/>
                     </div>
                 </div>
                 <div class="text-center mt-4">
-                    <button class="btn btn-cyan" type="submit">Confirmar</button>
+                    <button name="usuario" value="alterar" class="btn btn-cyan" type="submit">Confirmar</button>
                 </div>
             </form>
             <!-- Material form register -->

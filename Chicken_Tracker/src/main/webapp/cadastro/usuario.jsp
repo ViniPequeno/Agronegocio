@@ -11,9 +11,7 @@
                 <!-- Material input text -->
 
                 <div class="row">
-                    <div class="col-md-4 mt-5 pt-5">
-                        <input type="file" name="file" accept="image/*">
-                    </div>
+
                     <div class="col-md-8">
                         <div class="md-form form-group mt-5">
                             <i class="fa fa-user prefix grey-text"></i>
@@ -50,6 +48,9 @@
                             <input type="password" id="inputConfirmarSenha" minlength="8" maxlength="20" class="form-control" required maxlength="255">
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
+                    </div>
+                    <div class="col-md-4 mt-5 pt-5">
+                        <input type="file" name="file" accept="image/*">
                     </div>
                 </div>
                 <div class="text-center mt-4">

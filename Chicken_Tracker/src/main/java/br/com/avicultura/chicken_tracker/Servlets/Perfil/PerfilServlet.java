@@ -83,63 +83,110 @@ public class PerfilServlet extends HttpServlet {
         Perfil p = Perfil.getInstance();
         HibernateUtil<Perfil> hup = new HibernateUtil<>();
         String s = "";
-        String butao = request.getParameter("usuario");
-        HttpSession sessao = request.getSession();
-        if (butao.equals("cadastrar")) {
-            if (ServletFileUpload.isMultipartContent(request)) {
-                try {
-                    out.print("Entrei</br>");
-                    List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-                    for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
-                        if (!item.isFormField()) {
-                            File file = new File(p.getUsuario() + ".png");
-                            String name = file.getAbsolutePath();
-                            p.setFoto(name);
-                            out.println(p.getFoto());
-                            InputStream in = new ByteArrayInputStream(item.get());
-                            BufferedImage bImageFromConvert = ImageIO.read(in);
+        String butao = "";
 
-                            ImageIO.write(bImageFromConvert, "png", file);
+        if (ServletFileUpload.isMultipartContent(request)) {
+            try {
+                out.print("Entrei</br>");
+                List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+                for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
+                    if (!item.isFormField()) {
+                        File file = new File("C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario/"+p.getUsuario() + ".png");;;
+                        String name = file.getAbsolutePath();
+                        p.setFoto(file.getAbsolutePath());
+                        out.println(p.getFoto());
+                        out.println(p.getFoto());
+                        InputStream in = new ByteArrayInputStream(item.get());
+                        BufferedImage bImageFromConvert = ImageIO.read(in);
 
-                        } else {
-                            switch (item.getFieldName()) {
-                                case "inputNome":
-                                    p.setNome(item.getString());
-                                    break;
-                                case "inputLogin":
-                                    p.setUsuario(item.getString());
-                                    break;
-                                case "inputEmail":
-                                    p.setEmail(item.getString());
-                                    break;
-                                case "inputSenha":
-                                    p.setSenha(item.getString());
-                                    break;
-                            }
+                        ImageIO.write(bImageFromConvert, "png", file);
+
+                    } else {
+                        out.println(item.getFieldName());
+                        switch (item.getFieldName()) {
+                            case "inputNome":
+                                p.setNome(item.getString());
+                                break;
+                            case "inputLogin":
+                                p.setUsuario(item.getString());
+                                break;
+                            case "inputEmail":
+                                p.setEmail(item.getString());
+                                break;
+                            case "inputSenha":
+                                p.setSenha(item.getString());
+                                break;
+                                case "usuario":
+                                butao = item.getString();
                         }
                     }
-                    s = hup.salvar(p);
-                    sessao.setAttribute("usuario", p);
-                    sessao.setAttribute("usuario_logado", "true");
-                    sessao.setAttribute("nome_usuario", p.getUsuario());
-                    response.sendRedirect(
-                            "seusNegocios/negocios.jsp");
-                } catch (Exception ex) {
                 }
+                out.println("Butao: "+butao);
+            } catch (Exception ex) {
             }
-        } else if (butao.equals("alterar")) {
-            p.setNome(request.getParameter("inputNome"));
-            p.setUsuario(request.getParameter("inputLogin"));
-            p.setEmail(request.getParameter("inputEmail"));
-            p.setSenha(request.getParameter("inputSenha"));
-            p.setUsuario(((Perfil) sessao.getAttribute("usuario")).getUsuario());
-            sessao.setAttribute("usuario_logado", "true");
-            sessao.setAttribute("nome_usuario", p.getUsuario());
-            sessao.setAttribute("usuario", p);
-            s = hup.atualizar(p);
-        } else {
-            p.setUsuario((String) sessao.getAttribute("nome_usuario"));
-            hup.deletar(p);
+
+            if (butao.equals("cadastrar")) {
+                out.println("Cadsatro");
+                HttpSession sessao = request.getSession();
+
+                out.println(p.getUsuario());
+                out.println(sessao);
+                s = hup.salvar(p);
+                sessao.setAttribute("usuario", p);
+                sessao.setAttribute("usuario_logado", "true");
+                sessao.setAttribute("nome_usuario", p.getUsuario());
+                response.sendRedirect(
+                        "seusNegocios/negocios.jsp");
+
+            } else if (butao.equals("alterar")) {
+                if (ServletFileUpload.isMultipartContent(request)) {
+                    try {
+                        out.print("Entrei</br>");
+                        List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+                        for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
+                            if (!item.isFormField()) {
+                                File file = new File(p.getUsuario() + ".png");
+                                String name = file.getAbsolutePath();
+                                p.setFoto(name);
+                                out.println(p.getFoto());
+                                InputStream in = new ByteArrayInputStream(item.get());
+                                BufferedImage bImageFromConvert = ImageIO.read(in);
+
+                                ImageIO.write(bImageFromConvert, "png", file);
+
+                            } else {
+                                switch (item.getFieldName()) {
+                                    case "inputNome":
+                                        p.setNome(item.getString());
+                                        break;
+                                    case "inputLogin":
+                                        p.setUsuario(item.getString());
+                                        break;
+                                    case "inputEmail":
+                                        p.setEmail(item.getString());
+                                        break;
+                                    case "inputSenha":
+                                        p.setSenha(item.getString());
+                                        break;
+                                }
+                            }
+                        }
+                        HttpSession sessao = request.getSession();
+                        s = hup.atualizar(p);
+                        sessao.setAttribute("usuario", p);
+                        sessao.setAttribute("usuario_logado", "true");
+                        sessao.setAttribute("nome_usuario", p.getUsuario());
+                        response.sendRedirect(
+                                "seusNegocios/negocios.jsp");
+                    } catch (Exception ex) {
+                    }
+                }
+            } else {
+                HttpSession sessao = request.getSession();
+                p.setUsuario((String) sessao.getAttribute("nome_usuario"));
+                hup.deletar(p);
+            }
+
         }
 
     }
