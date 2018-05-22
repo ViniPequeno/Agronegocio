@@ -14,7 +14,7 @@
                     <div class="col-md-4">
                         <!-- Material input text -->
                         <div class="md-form">
-                            <i class="fa fa-id-badge prefix grey-text"></i>
+                            <i class="fa fa-building prefix grey-text"></i>
                             <input type="text" id="inputNegocioCNPJ" name="inputNegocioCNPJ" class="form-control CNPJ disabled" maxlength="10" value="<%=negocioCNPJ%>">
                             <label for="inputNegocioCNPJ">CNPJ do negócio</label>
                         </div>
@@ -22,7 +22,7 @@
                     <div class="col-md-4">
                         <!-- Material input text -->
                         <div class="md-form">
-                            <i class="fa fa-id-badge prefix grey-text"></i>
+                            <i class="fa fa-id-card prefix grey-text"></i>
                             <input type="text" id="inputSufixoCNPJ" name="inputSufixoCNPJ" class="form-control" required autofocus maxlength="8">
                             <label for="inputSufixoCNPJ">Sufixo CNPJ</label>
                         </div>
@@ -31,7 +31,7 @@
                     <div class="col-md-4">
                         <!-- Material input text -->
                         <div class="md-form">
-                            <i class="fa fa-money-bill-alt prefix grey-text"></i>
+                            <i class="fa fa-id-badge prefix grey-text"></i>
                             <input type="text" id="inputCNAE" name="inputCNAE" class="form-control" required maxlength="7">
                             <label for="inputCNAE">CNAE</label>
                         </div>
