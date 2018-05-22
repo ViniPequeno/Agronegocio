@@ -49,8 +49,11 @@
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
                     </div>
-                    <div class="col-md-4 mt-5 pt-5">
-                        <input type="file" name="file" accept="image/*">
+                    <div class="col-md-4 mt-md-5 pt-md-5">
+                        <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="../img/farmer.jpg">
+                        <input type="file" name="file" id="inputFoto" accept="image/*">
+                        <button class="btn btn-outline-cyan mx-auto d-block" type="button" id="btnSelecionarImg">Escolher foto de perfil</button>
+                        <button class="btn btn-outline-red mx-auto d-block" type="button" id="btnRedefinirImg">Redefinir foto</button>
                     </div>
                 </div>
                 <div class="text-center mt-4">
@@ -64,5 +67,29 @@
 
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtils.js"></script>
+<script>
+    $('#btnSelecionarImg').click(function () {
+        $('#inputFoto').val(null);
+        $('#inputFoto').click();
+    });
+    $('#btnRedefinirImg').click(function () {
+        $('#imgPerfil').attr('src', "../img/farmer.jpg");
+    });
+    $('#inputFoto').change(function () {
+        var selectedFile = event.target.files[0];
+        var reader = new FileReader();
+
+        var imgtag = document.getElementById("imgPerfil");
+        if (selectedFile != null) {
+            imgtag.title = selectedFile.name;
+
+            reader.onload = function (event) {
+                imgtag.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+    });
+</script>
 </body>
 </html>

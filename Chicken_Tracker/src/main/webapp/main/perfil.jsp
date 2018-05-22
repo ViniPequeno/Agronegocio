@@ -10,7 +10,7 @@
             <p class="h1 text-center mb-4">Sua conta</p>
         </div>
         <div class="card-body">
-            <form action="/Chicken_Tracker/PerfilAlterarServlet" method="post" enctype="multipart/form-data">
+            <form action="/Chicken_Tracker/PerfilServlet" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-8">
                         <!-- Material input text -->
@@ -47,8 +47,12 @@
                             <input type="password" id="inputConfirmarSenha" class="form-control" required minlength="8" maxlength="20">
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
-                        <input type="file" name="inputFoto" id="inputFoto" accept="image/*">
-                        <img src="../imagensUsuario/<%=p.getUsuario()%>.png" name="foto"/>
+                    </div>
+                    <div class="col-md-4 mt-md-3 pt-md-3">
+                        <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="../imagensUsuario<%=p.getUsuario()%>.png">
+                        <input type="file" name="file" id="inputFoto" accept="image/*">
+                        <button class="btn btn-outline-cyan mx-auto d-block" type="button" id="btnSelecionarImg">Escolher foto de perfil</button>
+                        <button class="btn btn-outline-red mx-auto d-block" type="button" id="btnRedefinirImg">Redefinir foto</button>
                     </div>
                 </div>
                 <div class="text-center mt-4">
@@ -60,7 +64,30 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../fontawesome-free-5.0.8/_JS/profile-picture.js"></script>
 <script src="../_JS/formUtils.js"></script>
+<script>
+    $('#btnSelecionarImg').click(function () {
+        $('#inputFoto').val(null);
+        $('#inputFoto').click();
+    });
+    $('#btnRedefinirImg').click(function () {
+        $('#imgPerfil').attr('src', "../img/farmer.jpg");
+    });
+    $('#inputFoto').change(function () {
+        var selectedFile = event.target.files[0];
+        var reader = new FileReader();
+
+        var imgtag = document.getElementById("imgPerfil");
+        if (selectedFile != null) {
+            imgtag.title = selectedFile.name;
+
+            reader.onload = function (event) {
+                imgtag.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+    });
+</script>
 </body>
 </html>
