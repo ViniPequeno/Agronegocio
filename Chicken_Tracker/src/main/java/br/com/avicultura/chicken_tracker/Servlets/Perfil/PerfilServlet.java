@@ -91,11 +91,10 @@ public class PerfilServlet extends HttpServlet {
                 List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                 for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
                     if (!item.isFormField()) {
-                        File file = new File("C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario/"+p.getUsuario() + ".png");;;
+                        File file = new File("C:/Users/Yan e Pedro/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario"
+                                +p.getUsuario() + ".png");
                         String name = file.getAbsolutePath();
                         p.setFoto(file.getAbsolutePath());
-                        out.println(p.getFoto());
-                        out.println(p.getFoto());
                         InputStream in = new ByteArrayInputStream(item.get());
                         BufferedImage bImageFromConvert = ImageIO.read(in);
 
@@ -184,7 +183,7 @@ public class PerfilServlet extends HttpServlet {
             } else {
                 HttpSession sessao = request.getSession();
                 p.setUsuario((String) sessao.getAttribute("nome_usuario"));
-                hup.deletar(p);
+                s = hup.deletar(p);
             }
 
         }
