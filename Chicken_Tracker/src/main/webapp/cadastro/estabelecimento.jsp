@@ -3,7 +3,7 @@
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio"%>
 <% String css = "../_CSS/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
-
+<% String negocioCNPJ = ((Negocio)sessao.getAttribute("negocio")).getEmpresaCNPJ();%>
 <!-- Material form register -->
 <div class="container">
     <div class="card mx-auto my-5">
@@ -11,7 +11,15 @@
             <form action="/Chicken_Tracker/EstabelecimentoServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Estabeleciemnto</p>
                 <div class="form-row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <!-- Material input text -->
+                        <div class="md-form">
+                            <i class="fa fa-id-badge prefix grey-text"></i>
+                            <input type="text" id="inputNegocioCNPJ" name="inputNegocioCNPJ" class="form-control CNPJ disabled" maxlength="10" value="<%=negocioCNPJ%>">
+                            <label for="inputNegocioCNPJ">CNPJ do negócio</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-id-badge prefix grey-text"></i>
@@ -20,7 +28,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-money-bill-alt prefix grey-text"></i>
@@ -49,13 +57,13 @@
                     </div>
                     <div class="col-md-5">
                         <div class="md-form">
-                            <input type="text" id="inputRua" name="inputRua" class="form-control" readonly="true" required maxlength="80">
+                            <input type="text" id="inputRua" name="inputRua" class="form-control" readonly="true" maxlength="80">
                             <label class="disabled" for="inputRua">Rua</label>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="md-form">
-                            <input type="text" id="inputBairro" name="inputBairro" class="form-control" readonly="true" required maxlength="80">
+                            <input type="text" id="inputBairro" name="inputBairro" class="form-control" readonly="true" maxlength="80">
                             <label class="disabled" for="inputBairro">Bairro</label>
                         </div>
                     </div>
@@ -63,13 +71,13 @@
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="md-form">
-                            <input type="text" id="inputCidade" name="inputCidade" class="form-control" readonly="true" required maxlength="80">
+                            <input type="text" id="inputCidade" name="inputCidade" class="form-control" readonly="true" maxlength="80">
                             <label class="disabled" for="inputCidade">Cidade</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="md-form">
-                            <input type="text" id="inputEstado" name="inputEstado" class="form-control" readonly="true" required maxlength="80">
+                            <input type="text" id="inputEstado" name="inputEstado" class="form-control" readonly="true" maxlength="80">
                             <label class="disabled" for="inputEstado">UF</label>
                         </div>
                     </div>
