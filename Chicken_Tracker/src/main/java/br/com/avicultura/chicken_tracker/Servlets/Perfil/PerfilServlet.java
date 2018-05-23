@@ -138,11 +138,17 @@ public class PerfilServlet extends HttpServlet {
                 out.println(p.getUsuario());
                 out.println(sessao);
                 s = hup.salvar(p);
-                sessao.setAttribute("usuario", p);
-                sessao.setAttribute("usuario_logado", "true");
-                sessao.setAttribute("nome_usuario", p.getUsuario());
-                response.sendRedirect(
-                        "seusNegocios/negocios.jsp");
+                if (s.equals("")) {
+                    sessao.setAttribute("usuario", p);
+                    sessao.setAttribute("usuario_logado", "true");
+                    sessao.setAttribute("nome_usuario", p.getUsuario());
+                    response.sendRedirect(
+                            "seusNegocios/negocios.jsp");
+                } else {
+                    sessao.setAttribute("erro", s);
+                    response.sendRedirect(
+                            "excecoes/ErroBanco.jsp");
+                }
 
             } else if (butao.equals("alterar")) {
 
@@ -155,9 +161,32 @@ public class PerfilServlet extends HttpServlet {
                         "seusNegocios/negocio5s.jsp");
 
             } else {
+                File file = new File("C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario/" + p.getUsuario() + ".png";
+
                 HttpSession sessao = request.getSession();
                 p.setUsuario((String) sessao.getAttribute("nome_usuario"));
                 s = hup.deletar(p);
+                if (s.equals("")) {
+                    file.delete();
+                    response.sendRedirect(
+                            "main/index.jsp");
+                } else {
+                    sessao.setAttribute("erro", s);
+                    response.sendRedirect(
+                            "excecoes/ErroBanco.jsp");
+                }
+            }
+        }else{
+            String butao = request.getParameter("usuario");
+            if(butao.equals("senha")){
+                p.setSenha(request.getParameter("inputSenha"));
+                s = hup.atualizar(p);
+                HttpSession sessao = request.getSession();
+                sessao.setAttribute("usuario", p);
+                sessao.setAttribute("usuario_logado", "true");
+                sessao.setAttribute("nome_usuario", p.getUsuario());
+                response.sendRedirect(
+                        "seusNegocios/negocio5s.jsp");
             }
         }
     }

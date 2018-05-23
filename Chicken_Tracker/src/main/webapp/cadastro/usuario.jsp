@@ -45,8 +45,8 @@
                         <!-- Material input text -->
                         <div class="md-form form-group mt-5">
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputConfirmarSenha" minlength="8" maxlength="20" class="form-control" required maxlength="255">
-                            <label for="inputConfirmarSenha">Confirmar senha</label>
+                            <input type="password" id="inputConfirmarSenha" minlength="8" maxlength="20" class="form-control" required maxlength="255" onblur="btnConfirmarSenha()">
+                            <label for="inputConfirmarSenha">Confirmar senha</label> 
                         </div>
                     </div>
                     <div class="col-md-4 mt-md-5 pt-md-5">
@@ -68,6 +68,15 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtils.js"></script>
 <script>
+    function btnConfirmarSenha(){
+        var senha = $('#inputSenha').val();
+        var senha2 = $('#inputConfirmarSenha').val();
+        if(senha === senha2){
+            alert("Certo");
+        }else{
+            alert("Errado");
+        }
+    }
     $('#btnSelecionarImg').click(function () {
         $('#inputFoto').val(null);
         $('#inputFoto').click();

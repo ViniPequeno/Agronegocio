@@ -57,6 +57,7 @@
                 </div>
                 <div class="text-center mt-4">
                     <button name="usuario" value="alterar" class="btn btn-cyan" type="submit">Confirmar</button>
+                    <button name="usuario" value="excluir" class="btn btn-cyan" type="submit">Excluir</button>
                 </div>
             </form>
             <!-- Material form register -->

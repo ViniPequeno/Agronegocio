@@ -7,8 +7,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%if (request.getSession().getAttribute("error") != null) {%>
-        <h1><%=request.getSession().getAttribute("error")%></h1>
+        <%if (request.getSession().getAttribute("erro") != null) {%>
+        <h1><%=request.getSession().getAttribute("erro")%></h1>
         <%} else {%>
         <h1>Pagina errada</h1>
         <%}%>
