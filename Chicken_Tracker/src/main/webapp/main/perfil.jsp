@@ -37,19 +37,19 @@
                         <!-- Material input text -->
                         <div class="md-form"> 
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputSenha"  name="inputSenha" class="form-control" required minlength="8" maxlength="20">
+                            <input type="password" id="inputSenha"  name="inputSenha" class="form-control" >
                             <label for="inputSenha">Senha</label>
                         </div>
 
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputConfirmarSenha" class="form-control" required minlength="8" maxlength="20">
+                            <input type="password" id="inputConfirmarSenha" class="form-control" >
                             <label for="inputConfirmarSenha">Confirmar senha</label>
                         </div>
                     </div>
                     <div class="col-md-4 mt-md-3 pt-md-3">
-                        <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="../imagensUsuario/imagensUsuario<%=p.getUsuario()%>.png">
+                        <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="<%=p.getFoto()%>">
                         <input type="file" name="file" id="inputFoto" accept="image/*">
                         <button class="btn btn-outline-cyan mx-auto d-block" type="button" id="btnSelecionarImg">Escolher foto de perfil</button>
                         <button class="btn btn-outline-red mx-auto d-block" type="button" id="btnRedefinirImg">Redefinir foto</button>

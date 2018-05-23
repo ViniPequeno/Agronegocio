@@ -65,7 +65,7 @@
                             <%} else {%>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="dropdownUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img id="fotoCabecalho" class="mr-2" src="../imagensUsuario/imagensUsuario<%=((Perfil)sessao.getAttribute("usuario")).getUsuario()%>.png">
+                                    <img id="fotoCabecalho" class="mr-2" src="<%=((Perfil) sessao.getAttribute("usuario")).getFoto()%>">
                                     <% out.println(session.getAttribute("nome_usuario"));%>
                                 </a>
                                 <div class="dropdown-menu dropdown-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
