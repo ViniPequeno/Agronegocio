@@ -34,19 +34,6 @@
                             <label for="inputEmail">Email</label>
                         </div>
 
-                        <!-- Material input text -->
-                        <div class="md-form"> 
-                            <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputSenha"  name="inputSenha" class="form-control" >
-                            <label for="inputSenha">Senha</label>
-                        </div>
-
-                        <!-- Material input text -->
-                        <div class="md-form">
-                            <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputConfirmarSenha" class="form-control" >
-                            <label for="inputConfirmarSenha">Confirmar senha</label>
-                        </div>
                     </div>
                     <div class="col-md-4 mt-md-3 pt-md-3">
                         <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="<%=p.getFoto()%>">
@@ -55,12 +42,78 @@
                         <button class="btn btn-outline-red mx-auto d-block" type="button" id="btnRedefinirImg">Redefinir foto</button>
                     </div>
                 </div>
-                <div class="text-center mt-4">
-                    <button name="usuario" value="alterar" class="btn btn-cyan" type="submit">Confirmar</button>
-                    <button name="usuario" value="excluir" class="btn btn-cyan" type="submit">Excluir</button>
+                <div class="mt-4 row">
+                    <div class="col-md-6 text-md-left text-center">
+                        <button type="button" data-toogle="modal" data-target="#alterarSenha" class="btn btn-cyan">Alterar Senha</button></div>
+                    <div class="col-md-6 text-md-right text-center">
+                        <button name="usuario" value="alterar" class="btn btn-cyan" type="submit">Confirmar</button>
+                        <button type="button" data-toogle="modal" data-target="#confirmarExclusao" class="btn btn-red">Excluir</button>
+                    </div>
                 </div>
             </form>
             <!-- Material form register -->
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Esta conta será excluída e assim como seus negócios</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="/Chicken_Tracker/PerfilServlet" method="post">
+                        <button name="usuario" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="alterarSenha" tabindex="-1" role="dialog" aria-labelledby="alterarSenha" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Alterar senha</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Esta conta será excluída e assim como seus negócios</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="/Chicken_Tracker/PerfilServlet" method="post">
+                        <!-- Material input text -->
+                        <div class="md-form"> 
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" name="inputSenhaAtual" id="inputSenhaAtual" class="form-control">
+                            <label for="inputSenhaAtual">Senha atual</label>
+                        </div>
+                        <!-- Material input text -->
+                        <div class="md-form"> 
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" name="inputNovaSenha" id="inputNovaSenha" class="form-control">
+                            <label for="inputNovaSenha">Nova Senha</label>
+                        </div>
+                        <!-- Material input text -->
+                        <div class="md-form"> 
+                            <i class="fa fa-lock prefix grey-text"></i>
+                            <input type="password" id="inputConfirmarNovaSenha"  name="inputConfirmarNovaSenha" class="form-control" >
+                            <label for="inputConfirmarNovaSenha">Confirmar nova senha</label>
+                        </div>
+                        <button name="usuario" value="senha" type="submit" class="btn btn-primary">Confirmar</button>
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
