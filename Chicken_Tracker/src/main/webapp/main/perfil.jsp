@@ -35,7 +35,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-4 mt-md-3 pt-md-3">
+                    <div class="col-md-4 mt-md-0 pt-md-0 mt-3 pt-0">
                         <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="<%=p.getFoto()%>">
                         <input type="file" name="file" id="inputFoto" accept="image/*">
                         <button class="btn btn-outline-cyan mx-auto d-block" type="button" id="btnSelecionarImg">Escolher foto de perfil</button>
@@ -44,53 +44,29 @@
                 </div>
                 <div class="mt-4 row">
                     <div class="col-md-6 text-md-left text-center">
-                        <button type="button" data-toogle="modal" data-target="#alterarSenha" class="btn btn-cyan">Alterar Senha</button></div>
+                        <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#modalAlterarSenha">Alterar senha</button>
+                    </div>
                     <div class="col-md-6 text-md-right text-center">
                         <button name="usuario" value="alterar" class="btn btn-cyan" type="submit">Confirmar</button>
-                        <button type="button" data-toogle="modal" data-target="#confirmarExclusao" class="btn btn-red">Excluir</button>
+                        <button type="button" class="btn btn-red" data-toggle="modal" data-target="#confirmarExclusao">Excluir</button>
                     </div>
                 </div>
             </form>
-            <!-- Material form register -->
         </div>
     </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
+    <div class="modal fade" id="modalAlterarSenha" tabindex="-1" role="dialog" aria-labelledby="modalAlterarSenhaLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão?</h5>
+                    <h5 class="modal-title" id="modalAlterarSenhaLabel">Alterar senha</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Esta conta será excluída e assim como seus negócios</p>
-                </div>
-                <div class="modal-footer">
-                    <form action="/Chicken_Tracker/PerfilServlet" method="post">
-                        <button name="usuario" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
-                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="alterarSenha" tabindex="-1" role="dialog" aria-labelledby="alterarSenha" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Alterar senha</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Esta conta será excluída e assim como seus negócios</p>
-                </div>
-                <div class="modal-footer">
-                    <form action="/Chicken_Tracker/PerfilServlet" method="post">
+                    <form id="alterarSenha" method="post">
                         <!-- Material input text -->
                         <div class="md-form"> 
                             <i class="fa fa-lock prefix grey-text"></i>
@@ -109,8 +85,33 @@
                             <input type="password" id="inputConfirmarNovaSenha"  name="inputConfirmarNovaSenha" class="form-control" >
                             <label for="inputConfirmarNovaSenha">Confirmar nova senha</label>
                         </div>
-                        <button name="usuario" value="senha" type="submit" class="btn btn-primary">Confirmar</button>
-                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button form="alterarSenha" formaction="/Chicken_Tracker/PerfilServlet" name="usuario" value="senha" type="submit" class="btn btn-primary">Confirmar</button>
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusaoLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarExclusaoLabel">Confirmar exclusão?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Todos os negócios associados a esta conta também serão apagados</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <form action="/Chicken_Tracker/PerfilServlet" method="post">
+                        <button name="usuario" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>

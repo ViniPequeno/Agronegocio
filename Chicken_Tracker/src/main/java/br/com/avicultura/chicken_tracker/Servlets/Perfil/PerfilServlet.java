@@ -82,11 +82,12 @@ public class PerfilServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        out.println("Enviando");
-        String s = new Email().enviar();
-        out.println(s);
+        String s ="";
+        //out.println("Enviando");
+        //String s = new Email().enviar();
+        //out.println(s);
         
-        out.println("Seila");
+        //out.println("Seila");
         Perfil p = Perfil.getInstance();
         HibernateUtil<Perfil> hup = new HibernateUtil<>();
         String butao = "";
