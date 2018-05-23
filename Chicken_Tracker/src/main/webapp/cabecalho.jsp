@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Perfil"%>
 <%@ page pageEncoding="ISO-8859-1"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"%>
 <%@page import="javax.servlet.http.*"%>
@@ -64,6 +65,7 @@
                             <%} else {%>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="dropdownUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img id="fotoCabecalho" class="mr-2" src="../imagensUsuario/imagensUsuario<%=((Perfil)sessao.getAttribute("usuario")).getUsuario()%>.png">
                                     <% out.println(session.getAttribute("nome_usuario"));%>
                                 </a>
                                 <div class="dropdown-menu dropdown-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">

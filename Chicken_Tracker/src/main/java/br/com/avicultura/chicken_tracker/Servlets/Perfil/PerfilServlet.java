@@ -5,15 +5,11 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets.Perfil;
 
-import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -25,11 +21,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.ImageIcon;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.hibernate.Session;
 
 @MultipartConfig
 public class PerfilServlet extends HttpServlet {
@@ -91,7 +85,7 @@ public class PerfilServlet extends HttpServlet {
                 List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                 for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
                     if (!item.isFormField()) {
-                        File file = new File("C:/Users/Yan e Pedro/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario"
+                        File file = new File("/Users/user/Documents/GitHub/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario/imagensUsuario"
                                 +p.getUsuario() + ".png");
                         String name = file.getAbsolutePath();
                         p.setFoto(file.getAbsolutePath());
@@ -144,8 +138,9 @@ public class PerfilServlet extends HttpServlet {
                         List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                         for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
                             if (!item.isFormField()) {
-                                File file = new File(p.getUsuario() + ".png");
+                                File file = new File("imagensUsuario/imagensUsuario"+p.getUsuario() + ".png");
                                 String name = file.getAbsolutePath();
+                                System.out.println(name);
                                 p.setFoto(name);
                                 out.println(p.getFoto());
                                 InputStream in = new ByteArrayInputStream(item.get());

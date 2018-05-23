@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 mt-md-3 pt-md-3">
-                        <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="../imagensUsuario<%=p.getUsuario()%>.png">
+                        <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="../imagensUsuario/imagensUsuario<%=p.getUsuario()%>.png">
                         <input type="file" name="file" id="inputFoto" accept="image/*">
                         <button class="btn btn-outline-cyan mx-auto d-block" type="button" id="btnSelecionarImg">Escolher foto de perfil</button>
                         <button class="btn btn-outline-red mx-auto d-block" type="button" id="btnRedefinirImg">Redefinir foto</button>
