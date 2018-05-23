@@ -7,6 +7,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Perfil;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
+import br.com.avicultura.chicken_tracker.Utils.Email;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -78,117 +79,122 @@ public class PerfilServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        Perfil p = Perfil.getInstance();
-        HibernateUtil<Perfil> hup = new HibernateUtil<>();
-        String s = "";
-        String butao = "";
-
-        if (ServletFileUpload.isMultipartContent(request)) {
-            try {
-                out.println("Entrei</br>");
-                List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-                for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
-                    if (!item.isFormField()) {
-                        File file = new File("C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario/"
-                                + p.getUsuario() + ".png");
-                        InputStream in = new ByteArrayInputStream(item.get());
-                        BufferedImage bImageFromConvert = ImageIO.read(in);
-                        if (bImageFromConvert == null
-                                || Arrays.equals(item.get(),
-                                        FileToByte(new File("C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/img/farmer.jpg")))) {
-                            //apagar arquivo
-                            out.println("Foto padrao");
-                            p.setFoto("../img/farmer.jpg");
-                            file.delete();
-                        } else {
-                            out.println("Foto qualuqer");
-                            p.setFoto("../imagensUsuario/" + p.getUsuario() + ".png");
-                            ImageIO.write(bImageFromConvert, "png", file);
-                        }
-                    } else {
-                        out.println(item.getFieldName());
-                        switch (item.getFieldName()) {
-                            case "inputNome":
-                                p.setNome(item.getString());
-                                break;
-                            case "inputLogin":
-                                p.setUsuario(item.getString());
-                                break;
-                            case "inputEmail":
-                                p.setEmail(item.getString());
-                                break;
-                            case "inputSenha":
-                                p.setSenha(item.getString());
-                                break;
-                            case "usuario":
-                                butao = item.getString();
-                                break;
-                        }
-                    }
-                }
-            } catch (Exception ex) {
-                out.println(ex.hashCode());
-                out.println(ex.getMessage());
-            }
-
-            if (butao.equals("cadastrar")) {
-                out.println("Cadsatro");
-                HttpSession sessao = request.getSession();
-
-                out.println(p.getUsuario());
-                out.println(sessao);
-                s = hup.salvar(p);
-                if (s.equals("")) {
-                    sessao.setAttribute("usuario", p);
-                    sessao.setAttribute("usuario_logado", "true");
-                    sessao.setAttribute("nome_usuario", p.getUsuario());
-                    response.sendRedirect(
-                            "seusNegocios/negocios.jsp");
-                } else {
-                    sessao.setAttribute("erro", s);
-                    response.sendRedirect(
-                            "excecoes/ErroBanco.jsp");
-                }
-
-            } else if (butao.equals("alterar")) {
-
-                HttpSession sessao = request.getSession();
-                s = hup.atualizar(p);
-                sessao.setAttribute("usuario", p);
-                sessao.setAttribute("usuario_logado", "true");
-                sessao.setAttribute("nome_usuario", p.getUsuario());
-                response.sendRedirect(
-                        "seusNegocios/negocio5s.jsp");
-
-            } else {
-                File file = new File("C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario/" + p.getUsuario() + ".png";
-
-                HttpSession sessao = request.getSession();
-                p.setUsuario((String) sessao.getAttribute("nome_usuario"));
-                s = hup.deletar(p);
-                if (s.equals("")) {
-                    file.delete();
-                    response.sendRedirect(
-                            "main/index.jsp");
-                } else {
-                    sessao.setAttribute("erro", s);
-                    response.sendRedirect(
-                            "excecoes/ErroBanco.jsp");
-                }
-            }
-        }else{
-            String butao = request.getParameter("usuario");
-            if(butao.equals("senha")){
-                p.setSenha(request.getParameter("inputSenha"));
-                s = hup.atualizar(p);
-                HttpSession sessao = request.getSession();
-                sessao.setAttribute("usuario", p);
-                sessao.setAttribute("usuario_logado", "true");
-                sessao.setAttribute("nome_usuario", p.getUsuario());
-                response.sendRedirect(
-                        "seusNegocios/negocio5s.jsp");
-            }
-        }
+        out.println("Enviando");
+        String s = new Email().enviar();
+        out.println(s);
+        
+        out.println("Seila");
+//        Perfil p = Perfil.getInstance();
+//        HibernateUtil<Perfil> hup = new HibernateUtil<>();
+//        String s = "";
+//        String butao = "";
+//
+//        if (ServletFileUpload.isMultipartContent(request)) {
+//            try {
+//                out.println("Entrei</br>");
+//                List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+//                for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
+//                    if (!item.isFormField()) {
+//                        File file = new File("C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario/"
+//                                + p.getUsuario() + ".png");
+//                        InputStream in = new ByteArrayInputStream(item.get());
+//                        BufferedImage bImageFromConvert = ImageIO.read(in);
+//                        if (bImageFromConvert == null
+//                                || Arrays.equals(item.get(),
+//                                        FileToByte(new File("C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/img/farmer.jpg")))) {
+//                            //apagar arquivo
+//                            out.println("Foto padrao");
+//                            p.setFoto("../img/farmer.jpg");
+//                            file.delete();
+//                        } else {
+//                            out.println("Foto qualuqer");
+//                            p.setFoto("../imagensUsuario/" + p.getUsuario() + ".png");
+//                            ImageIO.write(bImageFromConvert, "png", file);
+//                        }
+//                    } else {
+//                        out.println(item.getFieldName());
+//                        switch (item.getFieldName()) {
+//                            case "inputNome":
+//                                p.setNome(item.getString());
+//                                break;
+//                            case "inputLogin":
+//                                p.setUsuario(item.getString());
+//                                break;
+//                            case "inputEmail":
+//                                p.setEmail(item.getString());
+//                                break;
+//                            case "inputSenha":
+//                                p.setSenha(item.getString());
+//                                break;
+//                            case "usuario":
+//                                butao = item.getString();
+//                                break;
+//                        }
+//                    }
+//                }
+//            } catch (Exception ex) {
+//                out.println(ex.hashCode());
+//                out.println(ex.getMessage());
+//            }
+//
+//            if (butao.equals("cadastrar")) {
+//                out.println("Cadsatro");
+//                HttpSession sessao = request.getSession();
+//
+//                out.println(p.getUsuario());
+//                out.println(sessao);
+//                s = hup.salvar(p);
+//                if (s.equals("")) {
+//                    sessao.setAttribute("usuario", p);
+//                    sessao.setAttribute("usuario_logado", "true");
+//                    sessao.setAttribute("nome_usuario", p.getUsuario());
+//                    response.sendRedirect(
+//                            "seusNegocios/negocios.jsp");
+//                } else {
+//                    sessao.setAttribute("erro", s);
+//                    response.sendRedirect(
+//                            "excecoes/ErroBanco.jsp");
+//                }
+//
+//            } else if (butao.equals("alterar")) {
+//
+//                HttpSession sessao = request.getSession();
+//                s = hup.atualizar(p);
+//                sessao.setAttribute("usuario", p);
+//                sessao.setAttribute("usuario_logado", "true");
+//                sessao.setAttribute("nome_usuario", p.getUsuario());
+//                response.sendRedirect(
+//                        "seusNegocios/negocio5s.jsp");
+//
+//            } else {
+//                File file = new File("C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp/imagensUsuario/" + p.getUsuario() + ".png");
+//
+//                HttpSession sessao = request.getSession();
+//                p.setUsuario((String) sessao.getAttribute("nome_usuario"));
+//                s = hup.deletar(p);
+//                if (s.equals("")) {
+//                    file.delete();
+//                    response.sendRedirect(
+//                            "main/index.jsp");
+//                } else {
+//                    sessao.setAttribute("erro", s);
+//                    response.sendRedirect(
+//                            "excecoes/ErroBanco.jsp");
+//                }
+//            }
+//        }else{
+//            butao = request.getParameter("usuario");
+//            if(butao.equals("senha")){
+//                p.setSenha(request.getParameter("inputSenha"));
+//                s = hup.atualizar(p);
+//                HttpSession sessao = request.getSession();
+//                sessao.setAttribute("usuario", p);
+//                sessao.setAttribute("usuario_logado", "true");
+//                sessao.setAttribute("nome_usuario", p.getUsuario());
+//                response.sendRedirect(
+//                        "seusNegocios/negocio5s.jsp");
+//            }
+//        }
     }
 
     private byte[] FileToByte(File file) throws IOException, IOException {
