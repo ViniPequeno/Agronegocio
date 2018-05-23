@@ -73,6 +73,7 @@
         $('#inputFoto').click();
     });
     $('#btnRedefinirImg').click(function () {
+        $('#inputFoto').val(null);
         $('#imgPerfil').attr('src', "../img/farmer.jpg");
     });
     $('#inputFoto').change(function () {
