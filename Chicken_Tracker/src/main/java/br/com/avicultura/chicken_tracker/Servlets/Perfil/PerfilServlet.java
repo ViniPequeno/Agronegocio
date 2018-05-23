@@ -188,14 +188,14 @@ public class PerfilServlet extends HttpServlet {
         }else{
             butao = request.getParameter("usuario");
             if(butao.equals("senha")){
-                p.setSenha(request.getParameter("inputSenha"));
+                p.setSenha(request.getParameter("inputNovaSenha"));
                 s = hup.atualizar(p);
                 HttpSession sessao = request.getSession();
                 sessao.setAttribute("usuario", p);
                 sessao.setAttribute("usuario_logado", "true");
                 sessao.setAttribute("nome_usuario", p.getUsuario());
                 response.sendRedirect(
-                        "seusNegocios/negocio5s.jsp");
+                        "seusNegocios/negocios.jsp");
             }
         }
     }

@@ -95,8 +95,15 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/mascara.js"></script>
 <script src="../_JS/formUtils.js"></script>
+<script src="../_JS/validador-de-cnpj.js"></script>
 <script src="../_JS/consultaCEP.js"></script>
 <script>
+    $('#inputSufixoCNPJ').change(function (){
+        var CNPJ = $('#inputNegocioCNPJ').val()+$('#inputSufixoCNPJ').val();
+        if(validarCNPJ(CNPJ)==false){
+            $(this).addClass('invalid');
+        }
+    });
     $('form[name="formCadastro"').submit(function () {
         $('#inputSufixoCNPJ').unmask('0000-00');
         $('#inputCNAE').unmask('00000-0/00');

@@ -35,7 +35,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-4 mt-md-0 pt-md-0 mt-3 pt-0">
+                    <div class="col-md-4 mt-md-0 pt-md-0 mt-3 pt-3">
                         <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="<%=p.getFoto()%>">
                         <input type="file" name="file" id="inputFoto" accept="image/*">
                         <button class="btn btn-outline-cyan mx-auto d-block" type="button" id="btnSelecionarImg">Escolher foto de perfil</button>
@@ -70,19 +70,19 @@
                         <!-- Material input text -->
                         <div class="md-form"> 
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" name="inputSenhaAtual" id="inputSenhaAtual" class="form-control">
+                            <input type="password" name="inputSenhaAtual" id="inputSenhaAtual" class="form-control validate" minlength="8" maxlength="20">
                             <label for="inputSenhaAtual">Senha atual</label>
                         </div>
                         <!-- Material input text -->
                         <div class="md-form"> 
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" name="inputNovaSenha" id="inputNovaSenha" class="form-control">
+                            <input type="password" name="inputNovaSenha" id="inputNovaSenha" class="form-control validate" minlength="8" maxlength="20">
                             <label for="inputNovaSenha">Nova Senha</label>
                         </div>
                         <!-- Material input text -->
                         <div class="md-form"> 
                             <i class="fa fa-lock prefix grey-text"></i>
-                            <input type="password" id="inputConfirmarNovaSenha"  name="inputConfirmarNovaSenha" class="form-control" >
+                            <input type="password" id="inputConfirmarNovaSenha" name="inputConfirmarNovaSenha" class="form-control validate" minlength="8" maxlength="20">
                             <label for="inputConfirmarNovaSenha">Confirmar nova senha</label>
                         </div>
                     </form>
