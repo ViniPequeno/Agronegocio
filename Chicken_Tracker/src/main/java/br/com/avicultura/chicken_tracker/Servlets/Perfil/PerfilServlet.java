@@ -32,10 +32,10 @@ import org.apache.commons.io.FileUtils;
 
 @MultipartConfig
 public class PerfilServlet extends HttpServlet {
-    
-    final String CAMINHO_LAB_X  = "C:/Users/Yan e Pedro/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
-    final String CAMINHO_PEDRO  = "C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
-    
+
+    final String CAMINHO_LAB_X = "C:/Users/Yan e Pedro/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
+    final String CAMINHO_PEDRO = "C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -82,12 +82,7 @@ public class PerfilServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        String s ="";
-        //out.println("Enviando");
-        //String s = new Email().enviar();
-        //out.println(s);
-        
-        //out.println("Seila");
+        String s = "";
         Perfil p = Perfil.getInstance();
         HibernateUtil<Perfil> hup = new HibernateUtil<>();
         String butao = "";
@@ -98,17 +93,19 @@ public class PerfilServlet extends HttpServlet {
                 List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                 for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
                     if (!item.isFormField()) {
-                        File file = new File(CAMINHO_LAB_X+"/imagensUsuario/"
+                        File file = new File(CAMINHO_PEDRO + "/imagensUsuario/"
                                 + p.getUsuario() + ".png");
                         InputStream in = new ByteArrayInputStream(item.get());
                         BufferedImage bImageFromConvert = ImageIO.read(in);
                         if (bImageFromConvert == null
                                 || Arrays.equals(item.get(),
-                                        FileToByte(new File(CAMINHO_LAB_X+"/img/farmer.jpg")))) {
+                                        FileToByte(new File(CAMINHO_PEDRO + "/img/farmer.jpg")))) {
                             //apagar arquivo
-                            out.println("Foto padrao");
-                            p.setFoto("../img/farmer.jpg");
-                            file.delete();
+                            if (butao.equals("cadastrar")) {
+                                out.println("Foto padrao");
+                                p.setFoto("../img/farmer.jpg");
+                                file.delete();
+                            }
                         } else {
                             out.println("Foto qualuqer");
                             p.setFoto("../imagensUsuario/" + p.getUsuario() + ".png");
@@ -126,14 +123,21 @@ public class PerfilServlet extends HttpServlet {
                             case "inputEmail":
                                 p.setEmail(item.getString());
                                 break;
-                            case "inputSenha":
-                                p.setSenha(item.getString());
-                                break;
                             case "usuario":
                                 butao = item.getString();
                                 break;
                         }
                     }
+                }
+                if (!butao.equals("cadastrar")) {
+                    String login = p.getUsuario();
+                    String nome = p.getNome();
+                    String email = p.getEmail();
+                    String foto = p.getFoto();
+                    p = ConsultaPerfil.findById(p.getUsuario());
+                    p.setNome(nome);
+                    p.setEmail(email);
+                    p.setFoto(foto);
                 }
             } catch (Exception ex) {
                 out.println(ex.hashCode());
@@ -160,23 +164,61 @@ public class PerfilServlet extends HttpServlet {
                 }
 
             } else if (butao.equals("alterar")) {
-
                 HttpSession sessao = request.getSession();
+
                 s = hup.atualizar(p);
-                sessao.setAttribute("usuario", p);
-                sessao.setAttribute("usuario_logado", "true");
-                sessao.setAttribute("nome_usuario", p.getUsuario());
-                response.sendRedirect(
-                        "seusNegocios/negocio5s.jsp");
+                if (s.equals("")) {
+                    sessao.setAttribute("usuario", p);
+                    sessao.setAttribute("usuario_logado", "true");
+                    sessao.setAttribute("nome_usuario", p.getUsuario());
+                    response.sendRedirect(
+                            "seusNegocios/negocios.jsp");
+                } else {
+                    sessao.setAttribute("erro", s);
+                    response.sendRedirect(
+                            "excecoes/ErroBanco.jsp");
+                }
 
+            }
+
+        } else {
+            butao = request.getParameter("usuario");
+            HttpSession sessao = request.getSession();
+            if (butao.equals("senha")) {
+                p = ConsultaPerfil.findById((String) sessao.getAttribute("nome_usuario"));
+                String senhaAtual = request.getParameter("inputSenhaAtual");
+                String senhaNova = request.getParameter("inputNovaSenha");
+                out.println("senha atual: " + p.getSenha());
+                out.println("senha digitada atual: " + senhaAtual);
+                if (senhaAtual.equals(p.getSenha()) && !senhaAtual.equals(senhaNova)) {
+                    p.setSenha(request.getParameter("inputNovaSenha"));
+                    s = hup.atualizar(p);
+                    if (s.equals("")) {
+                        sessao.setAttribute("usuario", p);
+                        sessao.setAttribute("usuario_logado", "true");
+                        sessao.setAttribute("nome_usuario", p.getUsuario());
+                        response.sendRedirect(
+                                "seusNegocios/negocios.jsp");
+                    } else {
+                        sessao.setAttribute("erro", s);
+                        response.sendRedirect(
+                                "excecoes/ErroBanco.jsp");
+                    }
+                } else if (senhaAtual.equals(senhaNova)) {//senha iguais
+                    out.println("Senha iguais");
+                } else {//senha atual errado
+                    out.println("Erro senha atual");
+                }
             } else {
-                File file = new File(CAMINHO_LAB_X+"/imagensUsuario/" + p.getUsuario() + ".png");
+                File file = new File(CAMINHO_PEDRO + "/imagensUsuario/" + p.getUsuario() + ".png");
 
-                HttpSession sessao = request.getSession();
                 p.setUsuario((String) sessao.getAttribute("nome_usuario"));
                 s = hup.deletar(p);
                 if (s.equals("")) {
                     file.delete();
+                    sessao.setAttribute("usuario", null);
+                    sessao.setAttribute("usuario_logado", "false");
+                    sessao.setAttribute("nome_usuario", null);
                     response.sendRedirect(
                             "main/index.jsp");
                 } else {
@@ -184,18 +226,6 @@ public class PerfilServlet extends HttpServlet {
                     response.sendRedirect(
                             "excecoes/ErroBanco.jsp");
                 }
-            }
-        }else{
-            butao = request.getParameter("usuario");
-            if(butao.equals("senha")){
-                p.setSenha(request.getParameter("inputNovaSenha"));
-                s = hup.atualizar(p);
-                HttpSession sessao = request.getSession();
-                sessao.setAttribute("usuario", p);
-                sessao.setAttribute("usuario_logado", "true");
-                sessao.setAttribute("nome_usuario", p.getUsuario());
-                response.sendRedirect(
-                        "seusNegocios/negocios.jsp");
             }
         }
     }
