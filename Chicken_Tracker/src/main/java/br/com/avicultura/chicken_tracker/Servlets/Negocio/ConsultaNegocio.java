@@ -90,7 +90,7 @@ public class ConsultaNegocio {
         a += negocio.getEmpresaCNPJ() + "#";
         a += negocio.getLinkEmail() + "#";
         a += negocio.getLinkFacebook() + "#";
-        a += negocio.getLinkInstagram() + "#";
+        a += negocio.getUserInstagram() + "#";
         a += negocio.getTelefone1() + "#";
         a += negocio.getTelefone2() + "#";
         a += "#";

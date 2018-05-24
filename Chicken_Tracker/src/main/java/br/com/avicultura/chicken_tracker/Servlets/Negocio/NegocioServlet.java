@@ -37,7 +37,7 @@ public class NegocioServlet extends HttpServlet {
             n.setNome(request.getParameter("inputNome"));
             n.setEmpresaCNPJ(request.getParameter("inputCNPJ"));
             n.setLinkEmail(request.getParameter("inputEmail"));
-            n.setLinkInstagram(request.getParameter("inputLinkInstagram"));
+            n.setLinkInstagram(request.getParameter("inputUserInstagram"));
             n.setLinkFacebook(request.getParameter("inputLinkFB"));
 
             HttpSession sessao = request.getSession();
@@ -51,7 +51,7 @@ public class NegocioServlet extends HttpServlet {
             n.setNome(request.getParameter("inputNome"));
             n.setEmpresaCNPJ(request.getParameter("inputCNPJ"));
             n.setLinkEmail(request.getParameter("inputEmail"));
-            n.setLinkInstagram(request.getParameter("inputLinkInstagram"));
+            n.setLinkInstagram(request.getParameter("inputUserInstagram"));
             n.setLinkFacebook(request.getParameter("inputLinkFB"));
 
             HttpSession sessao = request.getSession();

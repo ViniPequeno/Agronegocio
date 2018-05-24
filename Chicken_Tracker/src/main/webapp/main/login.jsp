@@ -21,11 +21,12 @@
                         <input minlength="8" maxlength="20" type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="off">
                         <label for="inputSenha" data-error="">Senha</label>
                     </div>
-                    <a class="small ml-4" href="">Esqueceu sua senha?</a>
 
-                    <div class="text-center mt-4">
-                        <button class="btn btn-default" type="submit">Entrar</button>
+                    <div class="text-center mt-5 mb-3">
+                        <button class="btn btn-green btn-block font-weight-bold" type="submit">Entrar</button>
                     </div>
+                    
+                    <a class="small ml-4" href="esqueceuSenha.jsp">Esqueceu sua senha?</a>
                 </form>
             </div>
         </div>

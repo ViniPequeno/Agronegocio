@@ -3,7 +3,7 @@
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio"%>
 <% String css = "../_CSS/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
-<% String negocioCNPJ = ((Negocio)sessao.getAttribute("negocio")).getEmpresaCNPJ();%>
+<% String negocioCNPJ = ((Negocio) sessao.getAttribute("negocio")).getEmpresaCNPJ();%>
 <!-- Material form register -->
 <div class="container">
     <div class="card mx-auto my-5">
@@ -36,7 +36,7 @@
                             <label for="inputCNAE">CNAE</label>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-6">
                         <!-- Material input text -->
                         <div class="md-form">
@@ -94,19 +94,23 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/mascara.js"></script>
+<script src="../_JS/maskMoney.js"></script>
 <script src="../_JS/formUtils.js"></script>
 <script src="../_JS/validador-de-cnpj.js"></script>
 <script src="../_JS/consultaCEP.js"></script>
 <script>
-    $('#inputSufixoCNPJ').change(function (){
-        var CNPJ = $('#inputNegocioCNPJ').val()+$('#inputSufixoCNPJ').val();
-        if(validarCNPJ(CNPJ)==false){
-            $(this).addClass('invalid');
-        }
+    $('#inputSaldo').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
+    $('#inputSufixoCNPJ').change(function () {
+        var CNPJ = $('#inputNegocioCNPJ').val() + $('#inputSufixoCNPJ').val();
+        //if (validarCNPJ(CNPJ) == false) {
+        //    $(this).addClass('invalid');
+        //}
     });
     $('form[name="formCadastro"').submit(function () {
         $('#inputSufixoCNPJ').unmask('0000-00');
         $('#inputCNAE').unmask('00000-0/00');
+        var value = $('#inputSaldo').maskMoney('unmasked')[0];
+        $('#inputSaldo').val(value);
         $('.CEP').unmask('00000-000');
     });
     initInputs();

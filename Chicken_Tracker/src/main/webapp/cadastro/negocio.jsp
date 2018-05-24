@@ -20,8 +20,8 @@
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-envelope prefix grey-text"></i>
-                            <input type="text" id="inputEmail" name="inputEmail" class="form-control" required maxlength="80">
-                            <label for="inputEmail">Email</label>
+                            <input type="email" id="inputEmail" name="inputEmail" class="form-control validate" required maxlength="80">
+                            <label for="inputEmail" data-error="Email inválido">Email para contato</label>
                         </div>
                     </div>
                 </div>
@@ -60,16 +60,16 @@
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fab fa-facebook prefix grey-text"></i>
-                            <input type="text" id="inputLinkFB" name="inputLinkFB" class="form-control" maxlength="80">
-                            <label for="inputLinkFB">Facebook</label>
+                            <input type="url" id="inputLinkFB" name="inputLinkFB" class="form-control" maxlength="80">
+                            <label for="inputLinkFB">Link do perfil do Facebook</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fab fa-instagram prefix grey-text"></i>
-                            <input type="text" id="inputLinkInstagram" name="inputLinkInstagram" class="form-control" maxlength="80" >
-                            <label for="inputLinkInstagram">Instagram</label>
+                            <input type="text" id="inputLinkInstagram" name="inputUserInstagram" class="form-control" maxlength="80" >
+                            <label for="inputUserInstagram">Nome de usuário Instagram</label>
                         </div>
                     </div>
                 </div>

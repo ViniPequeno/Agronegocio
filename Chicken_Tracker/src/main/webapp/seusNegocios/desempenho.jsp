@@ -1,5 +1,8 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Pagamento"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Pagamento.ConsultaPagamento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
-<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <% String css = "";%>
 <%@ include file="../cabecalho.jsp"%>
@@ -12,6 +15,8 @@
         } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
         }
+        List<Pagamento> lista = ConsultaPagamento.returnList(((Estabelecimento)sessao.getAttribute("estabelecimento")).getSufixoCNPJ(), n);
+        String despesaSetedias = ConsultaPagamento.seteDiasDespesas(((Estabelecimento)sessao.getAttribute("estabelecimento")).getSufixoCNPJ(), n);
     %>
     <h2 class="py-5 font-weight-bold text-left">
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
@@ -27,10 +32,11 @@
     </div>
     <div class="card border-light">
         <div class="card-header">
-            Lucro diário
+            Despesas dos últimos 7 dias
         </div>
         <div class="card-body">
-            <canvas style="align-content: center;" id="graficoLucro"></canvas>
+            <%=despesaSetedias%>
+            <canvas style="align-content: center;" id="graficoSeteDiasDespesas" data-info="<%=despesaSetedias%>"></canvas>
         </div>
     </div>
     <div class="card border-light">
@@ -77,5 +83,6 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/paginacaoTabelas.js"></script>
 <script src="../_JS/graficoLucro.js"></script>
+<script src="../_JS/graficos/graficoSeteDiasDespesas.js"></script>
 </body>
 </html>

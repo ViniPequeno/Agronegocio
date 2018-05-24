@@ -85,7 +85,7 @@
                             <input type="password" id="inputConfirmarNovaSenha" name="inputConfirmarNovaSenha" class="form-control validate" minlength="8" maxlength="20">
                             <label for="inputConfirmarNovaSenha" data-error="Mínimo de 8 caracteres">Confirmar nova senha</label>
                         </div>
-                        <p id="labelSenhaValida" class="mt-4 ml-4 hide">Senha inválida</p>
+                        <p id="labelSenhaValida" class="mt-5 ml-4 invisible">Senha inválida</p>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -150,8 +150,8 @@
         var senhaNova = $('#inputNovaSenha');
         var confirmarNovaSenha = $('#inputConfirmarNovaSenha');
         if (senhaNova.val() != "" && confirmarNovaSenha.val() != "" 
-                && !senhaNova.hasClass('invalid') && !confirmarNovaSenha.hasClass('invalid')) {
-            $('#labelSenhaValida').removeClass('hide');
+                && (senhaNova.val().length>=8) && (confirmarNovaSenha.val().length>=8)) {
+            $('#labelSenhaValida').removeClass('invisible');
             if (senhaNova.val() == confirmarNovaSenha.val()) {
                 $('#labelSenhaValida').html('<i class="fa fa-check prefix mr-1"></i>As senhas são iguais');
                 $('#labelSenhaValida').removeClass('red-text').addClass('green-text');

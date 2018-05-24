@@ -26,7 +26,7 @@ public class Negocio implements Serializable {
     @Column(unique = true)
     private String nome;
     private String linkFacebook;
-    private String linkInstagram;
+    private String userInstagram;
     private String linkEmail;
     private double lucroTotal;
     private String telefone1;
@@ -76,12 +76,12 @@ public class Negocio implements Serializable {
         this.linkFacebook = linkFacebook;
     }
 
-    public String getLinkInstagram() {
-        return linkInstagram;
+    public String getUserInstagram() {
+        return userInstagram;
     }
 
     public void setLinkInstagram(String linkInstagram) {
-        this.linkInstagram = linkInstagram;
+        this.userInstagram = linkInstagram;
     }
 
     public String getLinkEmail() {

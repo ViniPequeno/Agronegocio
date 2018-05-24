@@ -26,3 +26,7 @@ body{
 .md-form label {
     text-align: left !important;
 }
+
+.hide {
+    display: none !important;
+}

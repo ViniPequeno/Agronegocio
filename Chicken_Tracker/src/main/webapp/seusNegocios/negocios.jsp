@@ -30,8 +30,8 @@
                         <th>Proprietário</th>
                         <th>CNPJ</th>
                         <th>Email</th>
-                        <th>Link Facebook</th>
-                        <th>Link Instagram</th>
+                        <th>Facebook</th>
+                        <th>Instagram</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -52,8 +52,8 @@
                         <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="maskCNPJ"><%=n.getEmpresaCNPJ()%></td>
                         <td><%=n.getLinkEmail()%></td>
-                        <td><%=n.getLinkFacebook()%></td>
-                        <td><%=n.getLinkInstagram()%></td>
+                        <td><a href="<%=n.getLinkFacebook()%>"><%=n.getLinkFacebook()%></a></td>
+                        <td><a href="http://instagram.com/<%=n.getUserInstagram()%>"><%=n.getUserInstagram()%></a></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimentos.jsp?negocio=<%=n.getEmpresaCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mostrar Estabelecimentos" role="button">
                                 <i data-fa-transform="grow-8" class="fa fa-clipboard-list mr-1" aria-hidden="true"></i></a></td>
                     </tr>
@@ -231,25 +231,25 @@
 <script>
     var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
-            '<input type="text" name="inputNome" id="inputNome" class="form-control" placeholder=" " autofocus required>' +
+            '<input type="text" name="inputNome" id="inputNome" class="form-control" autofocus required>' +
             '<label for="inputNome">Nome</label></div>' +
             '<div class="md-form"><i class="fa fa-envelope prefix grey-text"></i>' +
-            '<input type="text" name="inputEmail" id="inputEmail" class="form-control" placeholder=" " required>' +
-            '<label for="inputEmail">Email</label></div>' +
+            '<input type="email" name="inputEmail" id="inputEmail" class="form-control validate" required>' +
+            '<label for="inputEmail" data-error="Email inválido">Email para contato</label></div>' +
             '<div class="md-form"><i class="far fa-id-card prefix grey-text"></i>' +
-            '<input type="text" name="inputCNPJ" id="inputCNPJ" class="form-control" placeholder=" " required>' +
+            '<input type="text" name="inputCNPJ" id="inputCNPJ" class="form-control" required>' +
             '<label for="inputCNPJ">CNPJ</label></div>' +
             '<div class="md-form"><i class="fab fa-facebook prefix grey-text"></i>' +
-            '<input type="text" name="inputLinkFB" id="inputLinkFB" class="form-control" placeholder=" " required>' +
-            '<label for="inputLinkFB">Facebook</label></div>' +
+            '<input type="url" id="inputLinkFB" name="inputLinkFB" class="form-control" maxlength="80">' +
+            '<label for="inputLinkFB">Link do perfil do Facebook</label></div>' +
             '<div class="md-form"><i class="fab fa-instagram prefix grey-text"></i>' +
-            '<input type="text" name="inputLinkInstagram" id="inputLinkInstagram" placeholder=" " class="form-control" required>' +
-            '<label for="inputLinkInstagram">Instagram</label></div>' +
+            '<input type="text" name="inputUserInstagram" id="inputLinkInstagram" class="form-control" required>' +
+            '<label for="inputUserInstagram">Nome de usuário Instagram</label></div>' +
             '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>' +
-            '<input type="text" name="inputTelefone1" id="inputTelefone1" class="form-control" placeholder=" " required>' +
+            '<input type="text" name="inputTelefone1" id="inputTelefone1" class="form-control" required>' +
             '<label for="inputTelefone1">Telefone 1</label></div>' +
             '<div class="md-form"><i class="fa fa-phone prefix grey-text"></i>' +
-            '<input type="text" name="inputTelefone2" id="inputTelefone2" class="form-control" placeholder=" " required>' +
+            '<input type="text" name="inputTelefone2" id="inputTelefone2" class="form-control" required>' +
             '<label for="inputTelefone2">Telefone 2</label></div>' +
             '</form>';
     $('#btnCancelarEdicao').click(function () {
