@@ -37,8 +37,6 @@
     <!--/.Footer Links-->
 
     <hr>
-
-    <% if (sessao.isNew() || sessao.getAttribute("usuario_logado").equals("false")) {%>
     <!--Call to action-->
     <div class="text-center py-3">
         <ul class="list-unstyled list-inline mb-0">
@@ -46,15 +44,11 @@
                 <h5 class="mb-1">Precisa de alguma ajuda?</h5>
             </li>
             <li class="list-inline-item">
-                <a href="#" class="btn btn-danger btn-rounded">Fale Conosco</a>
+                <a href="../main/fale.jsp" class="btn btn-danger btn-rounded">Fale Conosco</a>
             </li>
         </ul>
     </div>
     <!--/.Call to action-->
-
-    <hr>
-    <% }%>
-
     <!--Social buttons-->
     <div class="text-center">
         <ul class="list-unstyled list-inline">
