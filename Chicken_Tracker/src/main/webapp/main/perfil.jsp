@@ -68,23 +68,24 @@
                 <div class="modal-body">
                     <form id="alterarSenha" method="post">
                         <!-- Material input text -->
-                        <div class="md-form"> 
+                        <div class="md-form form-group"> 
                             <i class="fa fa-lock prefix grey-text"></i>
                             <input type="password" name="inputSenhaAtual" id="inputSenhaAtual" class="form-control validate" minlength="8" maxlength="20">
-                            <label for="inputSenhaAtual">Senha atual</label>
+                            <label for="inputSenhaAtual" data-error="Mínimo de 8 caracteres">Senha atual</label>
                         </div>
                         <!-- Material input text -->
-                        <div class="md-form"> 
+                        <div class="md-form form-group mt-5"> 
                             <i class="fa fa-lock prefix grey-text"></i>
                             <input type="password" name="inputNovaSenha" id="inputNovaSenha" class="form-control validate" minlength="8" maxlength="20">
-                            <label for="inputNovaSenha">Nova Senha</label>
+                            <label for="inputNovaSenha" data-error="Mínimo de 8 caracteres">Nova Senha</label>
                         </div>
                         <!-- Material input text -->
-                        <div class="md-form"> 
+                        <div class="md-form form-group mt-5"> 
                             <i class="fa fa-lock prefix grey-text"></i>
                             <input type="password" id="inputConfirmarNovaSenha" name="inputConfirmarNovaSenha" class="form-control validate" minlength="8" maxlength="20">
-                            <label for="inputConfirmarNovaSenha">Confirmar nova senha</label>
+                            <label for="inputConfirmarNovaSenha" data-error="Mínimo de 8 caracteres">Confirmar nova senha</label>
                         </div>
+                        <p id="labelSenhaValida" class="mt-4 ml-4 hide">Senha inválida</p>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -94,7 +95,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusaoLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -121,6 +122,8 @@
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/formUtils.js"></script>
 <script>
+    var novaSenhaValida = false;
+    
     $('#btnSelecionarImg').click(function () {
         $('#inputFoto').val(null);
         $('#inputFoto').click();
@@ -143,6 +146,34 @@
             reader.readAsDataURL(selectedFile);
         }
     });
+    $('#inputConfirmarNovaSenha').change(function () {
+        var senhaNova = $('#inputNovaSenha');
+        var confirmarNovaSenha = $('#inputConfirmarNovaSenha');
+        if (senhaNova.val() != "" && confirmarNovaSenha.val() != "" 
+                && !senhaNova.hasClass('invalid') && !confirmarNovaSenha.hasClass('invalid')) {
+            $('#labelSenhaValida').removeClass('hide');
+            if (senhaNova.val() == confirmarNovaSenha.val()) {
+                $('#labelSenhaValida').html('<i class="fa fa-check prefix mr-1"></i>As senhas são iguais');
+                $('#labelSenhaValida').removeClass('red-text').addClass('green-text');
+                novaSenhaValida = true;
+            } else {
+                $('#labelSenhaValida').html('<i class="fa fa-times prefix mr-1"></i>As senhas são diferentes');
+                $('#labelSenhaValida').removeClass('green-text').addClass('red-text');
+                novaSenhaValida = false;
+            }
+        }
+    });
+    
+    $('#alterarSenha').submit(function (e){
+        var formValido = true;
+        if(novaSenhaValida == false){
+            formValido = false;
+        }
+        if(formValido==false){
+            e.preventDefault();
+        }
+    });
+
 </script>
 </body>
 </html>
