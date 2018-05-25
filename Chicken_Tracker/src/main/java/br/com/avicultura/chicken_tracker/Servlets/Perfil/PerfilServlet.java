@@ -12,17 +12,12 @@ import br.com.avicultura.chicken_tracker.Utils.Google;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -40,6 +35,7 @@ public class PerfilServlet extends HttpServlet {
 
     final String CAMINHO_LAB_X = "C:/Users/Yan e Pedro/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_PEDRO = "C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
+    final String CAMINHO_YAN = "/Users/user/Documents/GitHub/Avicultura/Chicken_Tracker/src/main/webapp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -71,19 +67,20 @@ public class PerfilServlet extends HttpServlet {
                 List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                 for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
                     if (!item.isFormField()) {
-                        File file = new File(CAMINHO_PEDRO + "/imagensUsuario/"
+                        File file = new File(CAMINHO_YAN + "/imagensUsuario/"
                                 + p.getUsuario() + ".png");
                         InputStream in = new ByteArrayInputStream(item.get());
                         BufferedImage bImageFromConvert = ImageIO.read(in);
                         if (bImageFromConvert == null
                                 || Arrays.equals(item.get(),
-                                        FileToByte(new File(CAMINHO_PEDRO + "/img/farmer.jpg")))) {
+                                        FileToByte(new File(CAMINHO_YAN + "/img/farmer.jpg")))) {
                             //apagar arquivo
                             if (butao.equals("cadastrar")) {
                                 out.println("Foto padrao");
                                 p.setFoto("../img/farmer.jpg");
                                 file.delete();
                             }
+                            p.setFoto("../img/farmer.jpg");
                         } else {
                             out.println("Foto qualuqer");
                             p.setFoto("../imagensUsuario/" + p.getUsuario() + ".png");
@@ -188,7 +185,7 @@ public class PerfilServlet extends HttpServlet {
                     out.println("Erro senha atual");
                 }
             } else {
-                File file = new File(CAMINHO_PEDRO + "/imagensUsuario/" + p.getUsuario() + ".png");
+                File file = new File(CAMINHO_YAN + "/imagensUsuario/" + p.getUsuario() + ".png");
 
                 p.setUsuario((String) sessao.getAttribute("nome_usuario"));
                 s = hup.deletar(p);

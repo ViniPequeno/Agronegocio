@@ -50,22 +50,24 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 6; i >= 0; i--) {
-                gc.set(Calendar.DATE, gc.get(Calendar.DATE) - i);
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento and tipo = D"
-                        + " and dia =: dia and mes =: mes and ano =:ano");
+                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                        + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
-                query.setParameter("mes", gc.get(Calendar.MONTH + 1));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
 
+                System.out.println(gc.get(Calendar.DAY_OF_MONTH)+" "+(gc.get(Calendar.MONTH)+1)+" "+gc.get(Calendar.YEAR));
                 lista = query.getResultList();
+                System.out.println(lista.size());
                 somario = 0.0;
                 for (Pagamento p : lista) {
                     somario += p.getValor();
                 }
-                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + gc.get(Calendar.MONTH + 1) + "/"
+                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
+                gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
             }
         } catch (HibernateException e) {
             s.getTransaction().rollback();
@@ -89,12 +91,12 @@ public class ConsultaPagamento {
         try {
             for (int i = 29; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento and tipo = D"
-                        + " and dia =: dia and mes =: mes and ano =:ano");
+                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                        + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
-                query.setParameter("mes", gc.get(Calendar.MONTH + 1));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
 
                 lista = query.getResultList();
@@ -102,7 +104,7 @@ public class ConsultaPagamento {
                 for (Pagamento p : lista) {
                     somario += p.getValor();
                 }
-                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + gc.get(Calendar.MONTH + 1) + "/"
+                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
             }
         } catch (HibernateException e) {
@@ -126,11 +128,11 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento and tipo = D"
-                        + " mes =: mes and ano =:ano");
+                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                        + " p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
-                query.setParameter("mes", gc.get(Calendar.MONTH + 1));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
                 gc.add(Calendar.MONTH, -1);
                 lista = query.getResultList();
@@ -138,7 +140,7 @@ public class ConsultaPagamento {
                 for (Pagamento p : lista) {
                     somario += p.getValor();
                 }
-                st += gc.get(Calendar.MONTH + 1) + "/"
+                st += (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
             }
         } catch (HibernateException e) {
@@ -163,12 +165,12 @@ public class ConsultaPagamento {
         try {
             for (int i = 6; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - i);
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento and tipo = G"
-                        + " and dia =: dia and mes =: mes and ano =:ano");
+                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'G'"
+                        + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
-                query.setParameter("mes", gc.get(Calendar.MONTH + 1));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
 
                 lista = query.getResultList();
@@ -176,7 +178,7 @@ public class ConsultaPagamento {
                 for (Pagamento p : lista) {
                     somario += p.getValor();
                 }
-                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + gc.get(Calendar.MONTH + 1) + "/"
+                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
             }
         } catch (HibernateException e) {
@@ -201,12 +203,12 @@ public class ConsultaPagamento {
         try {
             for (int i = 29; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento and tipo = G"
-                        + " and dia =: dia and mes =: mes and ano =:ano");
+                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'G'"
+                        + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
-                query.setParameter("mes", gc.get(Calendar.MONTH + 1));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
 
                 lista = query.getResultList();
@@ -214,7 +216,7 @@ public class ConsultaPagamento {
                 for (Pagamento p : lista) {
                     somario += p.getValor();
                 }
-                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + gc.get(Calendar.MONTH + 1) + "/"
+                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
             }
         } catch (HibernateException e) {
@@ -238,11 +240,11 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento and tipo = D"
-                        + " mes =: mes and ano =:ano");
+                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                        + " p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
-                query.setParameter("mes", gc.get(Calendar.MONTH + 1));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
                 gc.add(Calendar.MONTH, -1);
                 lista = query.getResultList();
@@ -250,7 +252,7 @@ public class ConsultaPagamento {
                 for (Pagamento p : lista) {
                     somario += p.getValor();
                 }
-                st += gc.get(Calendar.MONTH + 1) + "/"
+                st += (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
             }
         } catch (HibernateException e) {
@@ -275,12 +277,12 @@ public class ConsultaPagamento {
         try {
             for (int i = 6; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - i);
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento"
-                        + " and dia =: dia and mes =: mes and ano =:ano");
+                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
+                        + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
-                query.setParameter("mes", gc.get(Calendar.MONTH + 1));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
 
                 lista = query.getResultList();
@@ -292,7 +294,7 @@ public class ConsultaPagamento {
                         somario += p.getValor();
                     }
                 }
-                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + gc.get(Calendar.MONTH + 1) + "/"
+                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
             }
         } catch (HibernateException e) {
@@ -317,12 +319,12 @@ public class ConsultaPagamento {
         try {
             for (int i = 29; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento"
-                        + " and dia =: dia and mes =: mes and ano =:ano");
+                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
+                        + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
-                query.setParameter("mes", gc.get(Calendar.MONTH + 1));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
 
                 lista = query.getResultList();
@@ -334,7 +336,7 @@ public class ConsultaPagamento {
                         somario += p.getValor();
                     }
                 }
-                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + gc.get(Calendar.MONTH + 1) + "/"
+                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
             }
         } catch (HibernateException e) {
@@ -358,11 +360,11 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento"
-                        + " and mes =: mes and ano =:ano");
+                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
+                        + " and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
-                query.setParameter("mes", gc.get(Calendar.MONTH + 1));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
                 gc.add(Calendar.MONTH, -1);
                 lista = query.getResultList();
@@ -374,7 +376,7 @@ public class ConsultaPagamento {
                         somario += p.getValor();
                     }
                 }
-                st += gc.get(Calendar.MONTH + 1) + "/"
+                st += (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
             }
         } catch (HibernateException e) {

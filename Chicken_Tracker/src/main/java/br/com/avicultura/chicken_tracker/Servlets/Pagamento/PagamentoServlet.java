@@ -41,7 +41,7 @@ public class PagamentoServlet extends HttpServlet {
         Pagamento p = Pagamento.getInstance();
         GregorianCalendar gc = new GregorianCalendar();
         int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
-        int mes = gc.get(GregorianCalendar.MONTH + 1);
+        int mes = gc.get(GregorianCalendar.MONTH)+1;
         int ano = gc.get(GregorianCalendar.YEAR);
         p.setDia(dia);
         p.setMes(mes);

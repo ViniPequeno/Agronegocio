@@ -21,7 +21,6 @@
     <h2 class="py-5 font-weight-bold text-left">
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Desempenho</h2>
-
     <div class="card border-light">
         <div class="card-header">
             Lucro diário
