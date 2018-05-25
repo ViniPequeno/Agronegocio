@@ -22,7 +22,6 @@ public class Producao {
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
-    private String negocio;
     
     @ManyToOne
     @JoinColumn(name = "localaves_id")
@@ -115,13 +114,5 @@ public class Producao {
         this.produto = produto;
     }
 
-    public String getNegocio() {
-        return negocio;
-    }
 
-    public void setNegocio(String negocio) {
-        this.negocio = negocio;
-    }
-    
-    
 }

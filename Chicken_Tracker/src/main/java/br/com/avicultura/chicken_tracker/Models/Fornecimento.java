@@ -30,7 +30,6 @@ public class Fornecimento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
-    private String negocio;
 
     private Fornecimento() {
     }
@@ -117,13 +116,4 @@ public class Fornecimento implements Serializable {
         this.produto = produto;
     }
 
-    public String getNegocio() {
-        return negocio;
-    }
-
-    public void setNegocio(String negocio) {
-        this.negocio = negocio;
-    }
-
-    
 }

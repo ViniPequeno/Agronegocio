@@ -48,7 +48,7 @@ public class PerfilServlet extends HttpServlet {
                     "victoryan345@gmail.com", "teste123", "esre123");
             Email.sendMessage(Google.gmail(), "victoryan345@gmail.com", ms);
         } catch (Exception ex) {
-            System.out.println("Erro::: "+ex.getMessage());
+            System.out.println("Erro::: " + ex.getMessage());
         }
     }
 
@@ -60,32 +60,26 @@ public class PerfilServlet extends HttpServlet {
         Perfil p = Perfil.getInstance();
         HibernateUtil<Perfil> hup = new HibernateUtil<>();
         String butao = "";
-
+        String escolha = "";
         if (ServletFileUpload.isMultipartContent(request)) {
             try {
-                out.println("Entrei</br>");
                 List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                 for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
                     if (!item.isFormField()) {
-                        File file = new File(CAMINHO_YAN + "/imagensUsuario/"
+                        File file = new File(CAMINHO_PEDRO + "/imagensUsuario/"
                                 + p.getUsuario() + ".png");
                         InputStream in = new ByteArrayInputStream(item.get());
                         BufferedImage bImageFromConvert = ImageIO.read(in);
-                        if (bImageFromConvert == null
-                                || Arrays.equals(item.get(),
-                                        FileToByte(new File(CAMINHO_YAN + "/img/farmer.jpg")))) {
-                            //apagar arquivo
-                            if (butao.equals("cadastrar")) {
-                                out.println("Foto padrao");
-                                p.setFoto("../img/farmer.jpg");
-                                file.delete();
-                            }
-                            p.setFoto("../img/farmer.jpg");
-                        } else {
-                            out.println("Foto qualuqer");
+                        out.println("Esocolha; " + escolha);
+                        out.println("BUTAO:::   " + butao);
+                        if (escolha.equals("1")) {
                             p.setFoto("../imagensUsuario/" + p.getUsuario() + ".png");
                             ImageIO.write(bImageFromConvert, "png", file);
+                        } else {
+                            p.setFoto("../img/farmer.jpg");
+                            file.delete();
                         }
+
                     } else {
                         out.println(item.getFieldName());
                         switch (item.getFieldName()) {
@@ -97,6 +91,9 @@ public class PerfilServlet extends HttpServlet {
                                 break;
                             case "inputEmail":
                                 p.setEmail(item.getString());
+                                break;
+                            case "foto1":
+                                escolha = item.getString();
                                 break;
                             case "usuario":
                                 butao = item.getString();
@@ -112,7 +109,9 @@ public class PerfilServlet extends HttpServlet {
                     p = ConsultaPerfil.findById(p.getUsuario());
                     p.setNome(nome);
                     p.setEmail(email);
-                    p.setFoto(foto);
+                    if (!escolha.equals("0")) {
+                        p.setFoto(foto);
+                    } 
                 }
             } catch (Exception ex) {
                 out.println(ex.hashCode());
@@ -140,14 +139,14 @@ public class PerfilServlet extends HttpServlet {
 
             } else if (butao.equals("alterar")) {
                 HttpSession sessao = request.getSession();
-
                 s = hup.atualizar(p);
                 if (s.equals("")) {
+                    out.println("FOTO::::::::::" + p.getFoto());
                     sessao.setAttribute("usuario", p);
                     sessao.setAttribute("usuario_logado", "true");
                     sessao.setAttribute("nome_usuario", p.getUsuario());
                     response.sendRedirect(
-                            "seusNegocios/negocios.jsp");
+                        "seusNegocios/negocios.jsp");
                 } else {
                     sessao.setAttribute("erro", s);
                     response.sendRedirect(
@@ -181,11 +180,15 @@ public class PerfilServlet extends HttpServlet {
                     }
                 } else if (senhaAtual.equals(senhaNova)) {//senha iguais
                     out.println("Senha iguais");
+                    response.sendRedirect(
+                        "main/perfil.jsp?erro=1");
                 } else {//senha atual errado
                     out.println("Erro senha atual");
+                    response.sendRedirect(
+                        "main/perfil.jsp?erro=2");
                 }
             } else {
-                File file = new File(CAMINHO_YAN + "/imagensUsuario/" + p.getUsuario() + ".png");
+                File file = new File(CAMINHO_PEDRO + "/imagensUsuario/" + p.getUsuario() + ".png");
 
                 p.setUsuario((String) sessao.getAttribute("nome_usuario"));
                 s = hup.deletar(p);

@@ -41,9 +41,9 @@ public class ConsultaVacina {
         Session s = HibernateFactory.getSessionFactory().openSession();
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Vacina v where v.negocio=:negocio and v.estabelecimento.sufixoCNPJ =:estabelecimento");
+            Query query = s.createQuery("from Vacina v where v.estabelecimento.sufixoCNPJ =:estabelecimento");
             query.setParameter("estabelecimento", estabelecimento);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
+             
             lista = query.getResultList();
             s.getTransaction().commit();
             return lista;

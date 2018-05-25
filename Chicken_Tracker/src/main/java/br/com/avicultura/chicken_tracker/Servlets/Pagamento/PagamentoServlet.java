@@ -51,7 +51,6 @@ public class PagamentoServlet extends HttpServlet {
         p.setDescricao(request.getParameter("inputDescricao"));
         p.setValor(Double.parseDouble(request.getParameter("inputValor")));
         p.setTipo(request.getParameter("inputTipo").charAt(0));
-        p.setNegocio(e.getNegocio().getEmpresaCNPJ());
         if (p.getTipo() == 'G') {
             e.setSaldo(e.getSaldo() + p.getValor());
         } else {

@@ -51,7 +51,7 @@
                         <td><%=n.getNome()%></td>
                         <td><%=n.getPerfil().getNome()%></td>
                         <td><%=n.getEmpresaCNPJ()%></td>
-                        <td><%=n.getLinkEmail()%></td>
+                        <td><%=n.getEmail()%></td>
                         <td><%=n.getTelefone1()%></td>
                         <td><%=n.getTelefone2()%></td>
                     </tr>
@@ -109,8 +109,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="labelDetalhes">Detalhes do Negócio</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title white-text" id="labelDetalhes">Detalhes do Negócio</h5>
+                    <button type="button" class="close white-ic" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -118,12 +118,16 @@
                     <p id="nome"> Nome: </p>
                     <p id="proprietario"> Proprietário: </p>
                     <p id="cnpj"> CNPJ: </p>
-                    <p id="email"> Email: </p>
-                    <p id="linkFB"> Link da página do Facebook: </p>
-                    <p id="linkInstagram"> Link da página do Instagram: </p>
                     <p id="fone1"> Fone 1: </p>
                     <p id="fone2"> Fone 2: </p>
-                    <p id="estabelecimentos"> Estabelecimentos: </p>
+                    <p id="email"> Email: </p>
+                    Redes Sociais: 
+                    <a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank">
+                        <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
+                    </a>
+                    <a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" href="" target="_blank">
+                        <i data-fa-transform="grow-8" class="fa fa-instagram"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -135,15 +139,15 @@
 <script type="text/javascript">
     dataN = "";
     var linha;
+    var btnFace = '<a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank"><i data-fa-transform="grow-8" class="fab fa-facebook-f"></i></a>';
+    var btnInsta = '<a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" href="" target="_blank"><i data-fa-transform="grow-8" class="fa fa-instagram"></i></a>';
     var modalDetalhesInnerHTML = '<p id="nome"> Nome: </p>' +
             '<p id="proprietario"> Proprietário: </p>' +
             '<p id="cnpj"> CNPJ: </p>' +
-            '<p id="email"> Email: </p>' +
-            '<p id="linkFB"> Link da página do Facebook: </p>' +
-            '<p id="linkInstagram"> Link da página do Instagram: </p>' +
             '<p id="fone1"> Fone 1: </p>' +
             '<p id="fone2"> Fone 2: </p>' +
-            '<p id="estabelecimentos"> Estabelecimentos: </p>';
+            '<p id="email"> Email: </p>' +
+            ('Redes Sociais: ' + btnFace + btnInsta);
     $("td").not(function () {
         return $("a", this).length != 0;
     }).click(function (event) {
@@ -180,16 +184,13 @@
         cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
         $("#cnpj").text("CNPJ: " + cnpj);
 
-        $("#email").text("Email: " + email);
-
-        $("#linkFB").text("Link da página do Facebook: " + facebook);
-
-        $("#linkInstagram").text("Link da página do Instagram: " + instagram);
-
-        $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
-
         $("#fone1").text("Fone 1: " + fone1);
         $("#fone2").text("Fone 2: " + fone2);
+
+        $("#email").text("Email: " + email);
+
+        $("#btnFace").attr("href", facebook);
+        $("#btnInsta").attr("href", "www.instagram.com/" + instagram);
     }
 </script>
 </body>

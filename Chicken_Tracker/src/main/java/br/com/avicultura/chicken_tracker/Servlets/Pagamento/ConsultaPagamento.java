@@ -26,10 +26,10 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Pagamento p where p.negocio=:negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento"
+            Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:estabelecimento"
                     + " ORDER BY ano DESC, mes DESC, dia DESC, valor DESC");
             query.setParameter("estabelecimento", estabelecimento);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
+             
             lista = query.getResultList();
             s.getTransaction().commit();
             return lista;
@@ -50,10 +50,10 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 6; i >= 0; i--) {
-                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                Query query = s.createQuery("from Pagamento p where  p.estabelecimento.id =:id and tipo = 'D'"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                query.setParameter("negocio", negocio.getEmpresaCNPJ());
+                 
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
@@ -91,10 +91,10 @@ public class ConsultaPagamento {
         try {
             for (int i = 29; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                query.setParameter("negocio", negocio.getEmpresaCNPJ());
+                 
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
@@ -128,10 +128,10 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                Query query = s.createQuery("from Pagamento p where p.negocio =: negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
                         + " p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                query.setParameter("negocio", negocio.getEmpresaCNPJ());
+                 
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
                 gc.add(Calendar.MONTH, -1);
@@ -165,10 +165,10 @@ public class ConsultaPagamento {
         try {
             for (int i = 6; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - i);
-                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'G'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'G'"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                query.setParameter("negocio", negocio.getEmpresaCNPJ());
+                 
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
@@ -203,10 +203,10 @@ public class ConsultaPagamento {
         try {
             for (int i = 29; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
-                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'G'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'G'"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                query.setParameter("negocio", negocio.getEmpresaCNPJ());
+                 
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
@@ -240,10 +240,10 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
                         + " p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                query.setParameter("negocio", negocio.getEmpresaCNPJ());
+                 
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
                 gc.add(Calendar.MONTH, -1);
@@ -277,10 +277,10 @@ public class ConsultaPagamento {
         try {
             for (int i = 6; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - i);
-                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                query.setParameter("negocio", negocio.getEmpresaCNPJ());
+                 
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
@@ -319,10 +319,10 @@ public class ConsultaPagamento {
         try {
             for (int i = 29; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
-                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                query.setParameter("negocio", negocio.getEmpresaCNPJ());
+                 
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
@@ -360,10 +360,10 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
                         + " and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                query.setParameter("negocio", negocio.getEmpresaCNPJ());
+                 
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
                 gc.add(Calendar.MONTH, -1);

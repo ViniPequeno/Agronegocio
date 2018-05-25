@@ -31,7 +31,6 @@ public class Produto implements Serializable {
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
-    private String negocio;
     
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Producao> producoes;
@@ -119,14 +118,6 @@ public class Produto implements Serializable {
 
     public void setTipo(char tipo) {
         this.tipo = tipo;
-    }
-
-    public String getNegocio() {
-        return negocio;
-    }
-
-    public void setNegocio(String negocio) {
-        this.negocio = negocio;
     }
 
     public List<Producao> getProducoes() {

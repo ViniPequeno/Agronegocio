@@ -78,7 +78,6 @@ public class FornecedorServlet extends HttpServlet {
                 p.setEstabelecimento(e);
                 p.setTipo('D');
                 p.setValor(f.getPagamento());
-                p.setNegocio(n.getEmpresaCNPJ());
                 p.setDescricao("Pagamento do fornecedor " + f.getCNPJ() + " no valor: " + p.getValor()
                         + "referente ao produto " + f.getProdutos().getNome() + " quantidade igual a"
                         + f.getQuantidade() + "na data " + p.getDia()
@@ -106,7 +105,6 @@ public class FornecedorServlet extends HttpServlet {
                 f.setTipo('C');
                 f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
                 f.setEstabelecimento(e);
-                f.setNegocio(n.getEmpresaCNPJ());
                 huf.salvar(f);
                 response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
 
@@ -115,7 +113,6 @@ public class FornecedorServlet extends HttpServlet {
             f.setCNPJ(request.getParameter("inputCNPJ"));
             f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
             f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
-            f.setNegocio(n.getEmpresaCNPJ());
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             try {
                 f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));

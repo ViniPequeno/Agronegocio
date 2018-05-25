@@ -21,12 +21,11 @@ public class Pagamento implements Serializable {
     private double valor;
     private String descricao;
     private char tipo;
-    
+
     @ManyToOne
-    @JoinColumn(name="estabelecimento_id", nullable = false)
+    @JoinColumn(name = "estabelecimento_id", nullable = false)
     private Estabelecimento estabelecimento;
-    private String negocio;
-    
+
     private Pagamento() {
     }
     @Transient
@@ -103,14 +102,4 @@ public class Pagamento implements Serializable {
         this.valor = valor;
     }
 
-    public String getNegocio() {
-        return negocio;
-    }
-
-    public void setNegocio(String negocio) {
-        this.negocio = negocio;
-    }
-
-    
-    
 }
