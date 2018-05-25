@@ -10,13 +10,16 @@
 
     <h2 class="py-5 font-weight-bold text-left">
         <a href="" onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Estabelecimentos</h2>
-    <%  if (sessao.getAttribute("negocio") == null) {
-            sessao.setAttribute("negocio", ConsultaNegocio.findById(request.getParameter("negocio")));
-        } else if (!sessao.getAttribute("negocio").toString().equals(request.getParameter("negocio").toString())) {
-            sessao.setAttribute("negocio", ConsultaNegocio.findById(request.getParameter("negocio")));
+        <%Negocio n = (Negocio)sessao.getAttribute("negocio");
+        if (n == null) {
+            n=ConsultaNegocio.findById(request.getParameter("negocio"));
+            sessao.setAttribute("negocio", n);
+        } else if (!n.getEmpresaCNPJ().equals(request.getParameter("negocio").toString())) {
+            n=ConsultaNegocio.findById(request.getParameter("negocio"));
+            sessao.setAttribute("negocio", n);
         }
         List<Estabelecimento> estabelecimentos;
-        estabelecimentos = ConsultaEstabelecimento.returnListOfNegocio(((Negocio) sessao.getAttribute("negocio")).getEmpresaCNPJ());
+        estabelecimentos = ConsultaEstabelecimento.returnListOfNegocio(n.getEmpresaCNPJ());
         if (estabelecimentos.size() > 0) {%>
 
     <div class="card card-cascade narrower">
@@ -56,7 +59,7 @@
                             <label for="checkbox!<%=e.getSufixoCNPJ()%>" class="label-table"></label>
                         </th>
                         <td><%=e.getNegocio().getNome()%></td>
-                        <td class="proprietario"><%=e.getPerfil().getNome()%></td>
+                        <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="CNAE"><%=e.getCNAE()%></td>
                         <td class="sufixoCNPJ"><%=e.getSufixoCNPJ()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">

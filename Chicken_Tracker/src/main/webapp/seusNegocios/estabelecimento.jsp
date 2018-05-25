@@ -47,7 +47,7 @@
                         </tr>
                         <tr>
                             <th> Proprietário </th>
-                            <td> <%=e.getPerfil().getNome()%> </td>
+                            <td> <%=n.getPerfil().getNome()%> </td>
                         </tr>
                         <tr>
                             <th> CNAE </th>
