@@ -4,12 +4,14 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
+    <h2 class="py-5 font-weight-bold text-left">
+        <a href="" onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Negócios</h2>
     <%  //Gera tabela se houver algum registro
         List<Negocio> negocios = null;
         negocios = ConsultaNegocio.returnListOfPerfil(sessao.getAttribute("nome_usuario").toString());
     if (negocios.size() > 0) {
     %>
-    <div class="card card-cascade narrower mt-5">
+    <div class="card card-cascade narrower">
 
         <!--Card image-->
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">

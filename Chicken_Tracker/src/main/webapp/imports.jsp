@@ -12,4 +12,7 @@
     $(function () {
         $('[data-tooltip="true"]').tooltip();
     });
+    function goBack() {
+        window.history.back();
+    }
 </script>

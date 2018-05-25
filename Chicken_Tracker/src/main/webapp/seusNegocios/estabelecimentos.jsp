@@ -8,6 +8,8 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <div class="container">
 
+    <h2 class="py-5 font-weight-bold text-left">
+        <a href="" onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Estabelecimentos</h2>
     <%  if (sessao.getAttribute("negocio") == null) {
             sessao.setAttribute("negocio", ConsultaNegocio.findById(request.getParameter("negocio")));
         } else if (!sessao.getAttribute("negocio").toString().equals(request.getParameter("negocio").toString())) {
@@ -17,7 +19,7 @@
         estabelecimentos = ConsultaEstabelecimento.returnListOfNegocio(((Negocio) sessao.getAttribute("negocio")).getEmpresaCNPJ());
         if (estabelecimentos.size() > 0) {%>
 
-    <div class="card card-cascade narrower mt-5">
+    <div class="card card-cascade narrower">
 
         <!--Card image-->
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
