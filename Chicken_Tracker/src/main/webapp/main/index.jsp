@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-10">
                         <h5 class="font-weight-bold text-left mb-3 dark-grey-text">Informativo</h5>
-                        <p class="grey-text text-left">Lhe dá controle sobre o estoque, além de gerar relatórios sobre o seu
+                        <p class="grey-text text-left">Ele dá controle sobre o estoque, além de gerar relatórios sobre o seu
                         desempenho.</p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-10">
                         <h5 class="font-weight-bold text-left mb-3 dark-grey-text">Rápido</h5>
-                        <p class="grey-text text-left">Os gráficos são gerados automaticamente e em tempo real.</p>
+                        <p class="grey-text text-left">Ele é capaz de gerar gráficos automaticamente e em tempo real.</p>
                     </div>
                 </div>
                 <!--Grid row-->

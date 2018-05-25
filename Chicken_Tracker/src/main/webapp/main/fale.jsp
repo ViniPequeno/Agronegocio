@@ -1,3 +1,4 @@
+<% String css = "../_CSS/login.css";%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Perfil.ConsultaPerfil"%>
 <!DOCTYPE html>
 <%@include file="../cabecalho.jsp"%>
@@ -7,24 +8,24 @@
             <div class="container">
                 <h3 class="text-center">Fale Conosco</h3>
                 <form method="post" action="">
-                    <%if (!(sessao.isNew() || sessao.getAttribute("usuario_logado").equals("false"))) {
-                            String login = (String) sessao.getAttribute("nome_usuario");
-                            Perfil p = ConsultaPerfil.findById(login);
+                    <%//if (!(sessao.isNew() || sessao.getAttribute("usuario_logado").equals("false"))) {
+                            //String login = (String) sessao.getAttribute("nome_usuario");
+                            //Perfil p = ConsultaPerfil.findById(login);
                     %>
 
                     <div class="md-form form-group">
-                        <input type="text" id="inputEmail" name="inputEmail" class="form-control validate" value="<%=p.getEmail()%>" disabled="true" required>
+                        <!--<input type="text" id="inputEmail" name="inputEmail" class="form-control validate" value="<%//=p.getEmail()%>" disabled="true" required>-->
                         <label for="inputEmail" data-error="">E-mail</label>
                     </div>
 
-                    <% } else { %>
+                    <%// } else { %>
                     
                     <div class="md-form form-group">
                         <input type="text" id="inputEmail" name="inputEmail" class="form-control validate" autofocus required>
                         <label for="inputEmail" data-error="">E-mail</label>
                     </div>
                         
-                    <%}%>
+                    <%//}%>
                     
                     <div class="md-form form-group">
                         <input type="text" id="inputAssunto" name="inputAssunto" class="form-control validate" required>
