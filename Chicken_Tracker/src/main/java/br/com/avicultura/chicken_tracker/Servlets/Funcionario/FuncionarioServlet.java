@@ -46,6 +46,7 @@ public class FuncionarioServlet extends HttpServlet {
         Funcionario f = Funcionario.getInstance();
         String butao = request.getParameter("funcionario");
         HibernateUtil<Funcionario> hupf = new HibernateUtil<>();
+        PrintWriter out = response.getWriter();
         HibernateUtil<EstabelecimentoFuncionario> hupef = new HibernateUtil<>();
         HibernateUtil<Pagamento> hup = new HibernateUtil<>();
         HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();
@@ -57,10 +58,16 @@ public class FuncionarioServlet extends HttpServlet {
                 String parameterName = (String) enumeration.nextElement();
                 chkBoxIds.add(parameterName);
             }
+            out.println("Seila");
+            out.println("");
             String[] cpf = new String[chkBoxIds.size()];
+            out.println(cpf.length);
+            out.println(chkBoxIds.size());
             double total = 0;
             int index = 0;
             for (String s1 : chkBoxIds) {
+                out.println("for");
+                System.out.println(s1);
                 cpf[index] = s1.split("!")[1];
                 index++;
             }
@@ -92,7 +99,7 @@ public class FuncionarioServlet extends HttpServlet {
                 }
                 response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
             } else {
-                //erro SALDO INSUFICIENTE
+                //Erro
             }
 
         } else if (butao.equals("cadastrar")) {

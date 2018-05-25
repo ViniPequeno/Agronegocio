@@ -12,6 +12,7 @@
         <div class="card-body">
             <form action="/Chicken_Tracker/PerfilServlet" method="post" enctype="multipart/form-data">
                 <div class="row">
+                    <input type="hidden" name="foto1" id="foto1" value="0"/>
                     <div class="col-md-8">
                         <!-- Material input text -->
                         <div class="md-form">
@@ -38,6 +39,7 @@
                     <div class="col-md-4 mt-md-0 pt-md-0 mt-3 pt-3">
                         <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="<%=p.getFoto()%>">
                         <input type="file" name="file" id="inputFoto" accept="image/*">
+                        
                         <button class="btn btn-outline-cyan mx-auto d-block" type="button" id="btnSelecionarImg">Escolher foto de perfil</button>
                         <button class="btn btn-outline-red mx-auto d-block" type="button" id="btnRedefinirImg">Redefinir foto</button>
                     </div>
@@ -123,12 +125,14 @@
 <script src="../_JS/formUtils.js"></script>
 <script>
     var novaSenhaValida = false;
-    
+    $('#foto1').val("0");
     $('#btnSelecionarImg').click(function () {
         $('#inputFoto').val(null);
         $('#inputFoto').click();
+        $('#foto1').val("1");
     });
     $('#btnRedefinirImg').click(function () {
+        $('#foto1').val("2");
         $('#imgPerfil').attr('src', "../img/farmer.jpg");
     });
     $('#inputFoto').change(function () {

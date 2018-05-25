@@ -50,7 +50,7 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 6; i >= 0; i--) {
-                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                Query query = s.createQuery("from Pagamento p where p.negocio =:negocio and p.estabelecimento.id =:id and tipo = 'D'"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("sufixoCNPJ", sufixoCNPJ);
                 query.setParameter("negocio", negocio.getEmpresaCNPJ());
