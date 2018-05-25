@@ -51,7 +51,7 @@
                         <td><%=n.getNome()%></td>
                         <td><%=n.getPerfil().getNome()%></td>
                         <td><%=n.getEmpresaCNPJ()%></td>
-                        <td><%=n.getLinkEmail()%></td>
+                        <td><%=n.getEmail()%></td>
                         <td><%=n.getTelefone1()%></td>
                         <td><%=n.getTelefone2()%></td>
                     </tr>

@@ -88,7 +88,7 @@ public class ConsultaNegocio {
         a += negocio.getNome() + "#";
         a += negocio.getPerfil().getNome() + "#";
         a += negocio.getEmpresaCNPJ() + "#";
-        a += negocio.getLinkEmail() + "#";
+        a += negocio.getEmail() + "#";
         a += negocio.getLinkFacebook() + "#";
         a += negocio.getUserInstagram() + "#";
         a += negocio.getTelefone1() + "#";

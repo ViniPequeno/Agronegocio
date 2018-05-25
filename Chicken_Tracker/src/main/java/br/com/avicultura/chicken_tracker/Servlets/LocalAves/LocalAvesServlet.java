@@ -81,7 +81,6 @@ public class LocalAvesServlet extends HttpServlet {
             l.setArea(Double.parseDouble(request.getParameter("inputArea")));
             l.setDataAbertura(request.getParameter("inputDataAbertura"));
             l.setEstabelecimento(e);
-            l.setNegocio(n.getEmpresaCNPJ());
             Produto p = ConsultaProduto.findById(request.getParameter("inputProduto"));
             l.setProduto(p);
             hup.salvar(l);
@@ -93,7 +92,6 @@ public class LocalAvesServlet extends HttpServlet {
             l.setArea(Double.parseDouble(request.getParameter("inputArea")));
             l.setDataAbertura(request.getParameter("inputDataAbertura"));
             l.setEstabelecimento(e);
-            l.setNegocio(n.getEmpresaCNPJ());
             hup.atualizar(l);
             response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else {

@@ -36,14 +36,13 @@ public class ConsultaProduto {
         return p;
     }
 
-    public static List<Produto> returnList(String estabelecimento, Negocio negocio) {
+    public static List<Produto> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSessionFactory().openSession();
         List<Produto> lista = null;
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Produto p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento");
+            Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento");
             query.setParameter("estabelecimento", estabelecimento);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
             lista = query.getResultList();
             s.getTransaction().commit();
             return lista;
@@ -55,14 +54,14 @@ public class ConsultaProduto {
         return lista;
     }
 
-    public static List<Produto> returnListEstoque(String estabelecimento, Negocio negocio) {//select do fornecedor
+    public static List<Produto> returnListEstoque(String estabelecimento) {//select do fornecedor
         Session s = HibernateFactory.getSessionFactory().openSession();
         List<Produto> lista = null;
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Produto p where p.negocio =:negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'E'");
+            Query query = s.createQuery("from Produto p where  p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'E'");
             query.setParameter("estabelecimento", estabelecimento);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
+             
             lista = query.getResultList();
             s.getTransaction().commit();
             return lista;
@@ -81,7 +80,7 @@ public class ConsultaProduto {
             s.beginTransaction();
             Query query = s.createQuery("from Produto p where p.negocio=:negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'P'");
             query.setParameter("estabelecimento", estabelecimento);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
+             
             lista = query.getResultList();
             s.getTransaction().commit();
             return lista;

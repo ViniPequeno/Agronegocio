@@ -36,7 +36,7 @@ public class NegocioServlet extends HttpServlet {
         if (butao!=null && butao.equals("cadastrar")) {
             n.setNome(request.getParameter("inputNome"));
             n.setEmpresaCNPJ(request.getParameter("inputCNPJ"));
-            n.setLinkEmail(request.getParameter("inputEmail"));
+            n.setEmail(request.getParameter("inputEmail"));
             n.setLinkInstagram(request.getParameter("inputUserInstagram"));
             n.setLinkFacebook(request.getParameter("inputLinkFB"));
 
@@ -50,7 +50,7 @@ public class NegocioServlet extends HttpServlet {
         } else if (butao.equals("alterar")) {
             n.setNome(request.getParameter("inputNome"));
             n.setEmpresaCNPJ(request.getParameter("inputCNPJ"));
-            n.setLinkEmail(request.getParameter("inputEmail"));
+            n.setEmail(request.getParameter("inputEmail"));
             n.setLinkInstagram(request.getParameter("inputUserInstagram"));
             n.setLinkFacebook(request.getParameter("inputLinkFB"));
 

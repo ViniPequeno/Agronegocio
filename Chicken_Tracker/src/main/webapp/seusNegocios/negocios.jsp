@@ -51,7 +51,7 @@
                         <td><%=n.getNome()%></td>
                         <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="maskCNPJ"><%=n.getEmpresaCNPJ()%></td>
-                        <td><%=n.getLinkEmail()%></td>
+                        <td><%=n.getEmail()%></td>
                         <td><a href="<%=n.getLinkFacebook()%>"><%=n.getLinkFacebook()%></a></td>
                         <td><a href="http://instagram.com/<%=n.getUserInstagram()%>"><%=n.getUserInstagram()%></a></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimentos.jsp?negocio=<%=n.getEmpresaCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mostrar Estabelecimentos" role="button">

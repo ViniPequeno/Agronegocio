@@ -50,7 +50,6 @@ public class VacinaServlet extends HttpServlet {
                 v.setDataProxima(formatter.parse(request.getParameter("inputDataProximaVacina")));
             } catch (ParseException ex) {
             }
-            v.setNegocio(e.getNegocio().getEmpresaCNPJ());
             v.setEstabelecimento(e);
             v.setDescricao(request.getParameter("inputDescricao"));
             hup.salvar(v);
@@ -64,7 +63,6 @@ public class VacinaServlet extends HttpServlet {
                 v.setDataProxima(formatter.parse(request.getParameter("inputDataProximaVacina")));
             } catch (ParseException ex) {
             }
-            v.setNegocio(e.getNegocio().getEmpresaCNPJ());
             v.setDescricao(request.getParameter("inputDescricao"));
             hup.atualizar(v);
             response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getSufixoCNPJ());

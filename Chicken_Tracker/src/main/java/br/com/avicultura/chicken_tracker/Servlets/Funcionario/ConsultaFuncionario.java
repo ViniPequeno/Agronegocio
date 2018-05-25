@@ -45,9 +45,9 @@ public class ConsultaFuncionario {
         try {
             s.beginTransaction();
             Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
-                    + "ef.negocio =:negocio and ef.estabelecimento.sufixoCNPJ =:estabelecimento");
+                    + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
             query.setParameter("estabelecimento", estabelecimento);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
+             
             List<EstabelecimentoFuncionario> listaEF = query.getResultList();
             s.getTransaction().commit();
 
@@ -70,9 +70,9 @@ public class ConsultaFuncionario {
         try {
             s.beginTransaction();
             Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
-                    + "ef.negocio =:negocio and ef.estabelecimento.sufixoCNPJ =:estabelecimento");
+                    + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
             query.setParameter("estabelecimento", estabelecimento);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
+             
             listaEF = query.getResultList();
             s.getTransaction().commit();
             return listaEF;
@@ -90,10 +90,10 @@ public class ConsultaFuncionario {
         try {
             s.beginTransaction();
             Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
-                    + "ef.negocio =:negocio and ef.estabelecimento.sufixoCNPJ =:e and ef.funcionario.CPF=:f");
+                    + "ef.estabelecimento.sufixoCNPJ =:e and ef.funcionario.CPF=:f");
             query.setParameter("e", e);
             query.setParameter("f", f);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
+             
             ef = (EstabelecimentoFuncionario) query.getResultList().get(0);
             s.getTransaction().commit();
             return ef;

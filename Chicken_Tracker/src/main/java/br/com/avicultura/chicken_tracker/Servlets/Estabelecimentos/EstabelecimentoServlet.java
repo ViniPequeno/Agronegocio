@@ -52,7 +52,6 @@ public class EstabelecimentoServlet extends HttpServlet {
             e.setEstado(request.getParameter("inputEstado"));
             e.setSaldo(Double.parseDouble(request.getParameter("inputSaldo")));
             HttpSession sessao = request.getSession();
-            e.setPerfil((Perfil) sessao.getAttribute("usuario"));
             e.setNegocio(n);
             string = hup.salvar(e);
             if (string.equals("")) {

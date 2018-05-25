@@ -27,7 +27,7 @@ public class Negocio implements Serializable {
     private String nome;
     private String linkFacebook;
     private String userInstagram;
-    private String linkEmail;
+    private String email;
     private double lucroTotal;
     private String telefone1;
     private String telefone2;
@@ -84,12 +84,12 @@ public class Negocio implements Serializable {
         this.userInstagram = linkInstagram;
     }
 
-    public String getLinkEmail() {
-        return linkEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLinkEmail(String linkEmail) {
-        this.linkEmail = linkEmail;
+    public void setEmail(String linkEmail) {
+        this.email = linkEmail;
     }
 
     public Perfil getPerfil() {

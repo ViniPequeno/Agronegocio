@@ -200,7 +200,6 @@ public class ConsultaEstabelecimento {
     public static String returnValues(Estabelecimento e) {
         String a = "";
         a += e.getNegocio().getNome() + "#";
-        a += e.getPerfil().getNome() + "#";
         a += e.getSufixoCNPJ() + "#";
         a += e.getCNAE() + "#";
         a += e.getCEP()+ "#";

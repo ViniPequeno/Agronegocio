@@ -49,10 +49,10 @@ public class ConsultaFornecedores {
         Session s = HibernateFactory.getSessionFactory().openSession();
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Fornecimento f where f.negocio =:negocio and f.estabelecimento.sufixoCNPJ =:estabelecimento"
+            Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
                     + " and tipo = 'c'");
             query.setParameter("estabelecimento", estabelecimento);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
+             
             lista = query.getResultList();
             s.getTransaction().commit();
             return lista;

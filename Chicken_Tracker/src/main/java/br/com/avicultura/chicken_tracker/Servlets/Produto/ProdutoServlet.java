@@ -5,12 +5,10 @@
  */
 package br.com.avicultura.chicken_tracker.Servlets.Produto;
 
-import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.servlet.ServletException;
@@ -45,7 +43,6 @@ public class ProdutoServlet extends HttpServlet {
             p.setQuantidadeMinima(Integer.parseInt(request.getParameter("inputMinQtde")));
             p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxQtde")));
             p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputQtdeAtual")));
-            p.setNegocio(e.getNegocio().getEmpresaCNPJ());
             if (request.getParameter("inputTipo").equals("1")) {
                 p.setTipo('P');
             } else {
@@ -62,7 +59,6 @@ public class ProdutoServlet extends HttpServlet {
             p.setQuantidadeMaxima(Integer.parseInt(request.getParameter("inputMaxima")));
             p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputAtual")));
             p.setEstabelecimento(e);
-            p.setNegocio(e.getNegocio().getEmpresaCNPJ());
             hup.atualizar(p);
             response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getSufixoCNPJ());
         } else {

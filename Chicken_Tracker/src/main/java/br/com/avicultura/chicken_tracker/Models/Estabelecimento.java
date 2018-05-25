@@ -16,38 +16,33 @@ public class Estabelecimento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Column(name="sufixoCNPJ_id")
+
+    @Column(name = "sufixoCNPJ_id")
     private String sufixoCNPJ;
-    
+
     @ManyToOne
     @JoinColumn(name = "negocio_id")
     private Negocio negocio;
-    
+
     private String CNAE;
-    
+
     private String CEP;
     private String rua;
     private String bairro;
     private String cidade;
     private String estado;
-    
+
     private double saldo;
 
-    @ManyToOne
-    @JoinColumn(name = "perfil_id")
-    private Perfil perfil;
- 
-    
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Produto> produtos;
-    
+
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Pagamento> pagamentos;
-    
+
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Fornecimento> fornecimentos;
-    
+
     @OneToMany(fetch = FetchType.EAGER, cascade = ALL, mappedBy = "estabelecimento")
     private List<EstabelecimentoFuncionario> funcionarios;
 
@@ -58,8 +53,7 @@ public class Estabelecimento implements Serializable {
 
     @OneToMany(cascade = ALL, mappedBy = "estabelecimento")
     private List<Producao> producoes;
-    
-    
+
     private Estabelecimento() {
     }
 
@@ -120,15 +114,6 @@ public class Estabelecimento implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
-    public Perfil getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
-    }
-
 
     public List<Produto> getProdutos() {
         return produtos;
