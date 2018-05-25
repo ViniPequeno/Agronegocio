@@ -18,18 +18,19 @@
             e = ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"),n);
             sessao.setAttribute("estabelecimento", e);
         }
-        List<Pagamento> lista = ConsultaPagamento.returnList(((Estabelecimento)sessao.getAttribute("estabelecimento")).getSufixoCNPJ(), n);
-        String despesaSetedias = ConsultaPagamento.seteDiasDespesas(((Estabelecimento)sessao.getAttribute("estabelecimento")).getId(), n);
+        String despesasSeteDias = ConsultaPagamento.seteDiasDespesas(((Estabelecimento)sessao.getAttribute("estabelecimento")).getId(), n);
+        String lucrosSeteDias = ConsultaPagamento.seteDiasLucros(((Estabelecimento)sessao.getAttribute("estabelecimento")).getId(), n);
+        String ganhosSeteDias = ConsultaPagamento.seteDiasGanhos(((Estabelecimento)sessao.getAttribute("estabelecimento")).getId(), n);
     %>
     <h2 class="py-5 font-weight-bold text-left">
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Desempenho</h2>
     <div class="card border-light">
         <div class="card-header">
-            Lucro diário
+            Lucro dos últimos sete dias
         </div>
         <div class="card-body">
-            <canvas style="align-content: center;" id="graficoLucro"></canvas>
+            <canvas style="align-content: center;" id="graficoSeteDiasLucros" data-info="<%=lucrosSeteDias%>"></canvas>
         </div>
     </div>
     <div class="card border-light">
@@ -37,16 +38,15 @@
             Despesas dos últimos 7 dias
         </div>
         <div class="card-body">
-            <%=despesaSetedias%>
-            <canvas style="align-content: center;" id="graficoSeteDiasDespesas" data-info="<%=despesaSetedias%>"></canvas>
+            <canvas style="align-content: center;" id="graficoSeteDiasDespesas" data-info="<%=despesasSeteDias%>"></canvas>
         </div>
     </div>
     <div class="card border-light">
         <div class="card-header">
-            Lucro diário
+            Ganhos dos últimos sete dias
         </div>
         <div class="card-body">
-            <canvas style="align-content: center;" id="graficoLucro"></canvas>
+            <canvas style="align-content: center;" id="graficoSeteDiasGanhos" data-info="<%=ganhosSeteDias%>"></canvas>
         </div>
     </div>
     <div class="card border-light">
@@ -60,7 +60,8 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/paginacaoTabelas.js"></script>
-<script src="../_JS/graficoLucro.js"></script>
+<script src="../_JS/graficos/graficoSeteDiasLucros.js"></script>
 <script src="../_JS/graficos/graficoSeteDiasDespesas.js"></script>
+<script src="../_JS/graficos/graficoSeteDiasGanhos.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 //line
-var ctxL = document.getElementById("graficoSeteDiasDespesas").getContext('2d');
-var dadosCadaDia = $('#graficoSeteDiasDespesas').data('info').split('!');
+var ctxL = document.getElementById("graficoSeteDiasGanhos").getContext('2d');
+var dadosCadaDia = $('#graficoSeteDiasGanhos').data('info').split('!');
 var datas = new Array();
 var valores = new Array();
 dadosCadaDia.forEach(function (item, indice, array) {
@@ -15,7 +15,7 @@ var myLineChart = new Chart(ctxL, {
         color: "rgba(0,0,0,1.0)",
         datasets: [
             {
-                label: "Despesas",
+                label: "Ganhos",
                 backgroundColor: "rgba(220,220,220,0.2)",
                 borderWidth: 2,
                 borderColor: "rgba(250,100,0,1)",
