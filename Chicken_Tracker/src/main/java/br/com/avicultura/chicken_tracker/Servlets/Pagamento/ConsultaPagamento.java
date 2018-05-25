@@ -50,7 +50,7 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 6; i >= 0; i--) {
-                Query query = s.createQuery("from Pagamento p where  p.estabelecimento.id =:id and tipo = 'D'"
+                Query query = s.createQuery("from Pagamento p where  p.estabelecimento.id =:id and p.tipo = 'D'"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
                 query.setParameter("id", estabelecimentoID);
                  
@@ -81,7 +81,7 @@ public class ConsultaPagamento {
         return st;
     }
 
-    public static String trintaDiasDespesas(String sufixoCNPJ, Negocio negocio) {
+    public static String trintaDiasDespesas(Long estabelecimentoID, Negocio negocio) {
         String st = "";
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
@@ -91,9 +91,9 @@ public class ConsultaPagamento {
         try {
             for (int i = 29; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
-                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id and p.tipo = 'D'"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
-                query.setParameter("sufixoCNPJ", sufixoCNPJ);
+                query.setParameter("id", estabelecimentoID);
                  
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
@@ -119,7 +119,7 @@ public class ConsultaPagamento {
         return st;
     }
 
-    public static String dozeMesesDespesas(String sufixoCNPJ, Negocio negocio) {
+    public static String dozeMesesDespesas(Long estabelecimentoID, Negocio negocio) {
         String st = "";
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
@@ -128,9 +128,9 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id and p.tipo = 'D'"
                         + " p.mes =:mes and p.ano =:ano");
-                query.setParameter("sufixoCNPJ", sufixoCNPJ);
+                query.setParameter("id", estabelecimentoID);
                  
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
@@ -155,7 +155,7 @@ public class ConsultaPagamento {
         return st;
     }
 
-    public static String seteDiasGanhos(String sufixoCNPJ, Negocio negocio) {
+    public static String seteDiasGanhos(Long estabelecimentoID, Negocio negocio) {
         String st = "";
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
@@ -164,10 +164,9 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 6; i >= 0; i--) {
-                gc.set(Calendar.DATE, gc.get(Calendar.DATE) - i);
-                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'G'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id and p.tipo = 'G'"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
-                query.setParameter("sufixoCNPJ", sufixoCNPJ);
+                query.setParameter("id", estabelecimentoID);
                  
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
@@ -180,6 +179,7 @@ public class ConsultaPagamento {
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH)+1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario + "!";
+                gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
             }
         } catch (HibernateException e) {
             s.getTransaction().rollback();
@@ -193,7 +193,7 @@ public class ConsultaPagamento {
         return st;
     }
 
-    public static String trintaDiasGanhos(String sufixoCNPJ, Negocio negocio) {
+    public static String trintaDiasGanhos(Long estabelecimentoID, Negocio negocio) {
         String st = "";
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
@@ -203,9 +203,9 @@ public class ConsultaPagamento {
         try {
             for (int i = 29; i >= 0; i--) {
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
-                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'G'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id and tipo = 'G'"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
-                query.setParameter("sufixoCNPJ", sufixoCNPJ);
+                query.setParameter("id", estabelecimentoID);
                  
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
@@ -231,7 +231,7 @@ public class ConsultaPagamento {
         return st;
     }
 
-    public static String dozeMesesGanhos(String sufixoCNPJ, Negocio negocio) {
+    public static String dozeMesesGanhos(Long estabelecimentoID, Negocio negocio) {
         String st = "";
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
@@ -240,9 +240,9 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ and tipo = 'D'"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id and tipo = 'D'"
                         + " p.mes =:mes and p.ano =:ano");
-                query.setParameter("sufixoCNPJ", sufixoCNPJ);
+                query.setParameter("id", estabelecimentoID);
                  
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
@@ -267,7 +267,7 @@ public class ConsultaPagamento {
         return st;
     }
 
-    public static String seteDiasLucros(String sufixoCNPJ, Negocio negocio) {
+    public static String seteDiasLucros(Long estabelecimentoID, Negocio negocio) {
         String st = "";
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
@@ -276,10 +276,52 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 6; i >= 0; i--) {
-                gc.set(Calendar.DATE, gc.get(Calendar.DATE) - i);
-                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id"
                         + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
-                query.setParameter("sufixoCNPJ", sufixoCNPJ);
+                query.setParameter("id", estabelecimentoID);
+                 
+                query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
+                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
+                query.setParameter("ano", gc.get(Calendar.YEAR));
+
+                lista = query.getResultList();
+                somario = 0.0;
+                for (Pagamento p : lista) {
+                    if (p.getTipo() == 'D') {
+                        somario -= p.getValor();
+                    } else {
+                        somario += p.getValor();
+                    }
+                }
+                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH)+1) + "/"
+                        + gc.get(Calendar.YEAR) + "/" + somario + "!";
+                gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
+            }
+        } catch (HibernateException e) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
+        /* 
+        Formato:
+        dia/mes/ano/somatoria!dia/mes/ano/somatoria...
+         */
+        return st;
+    }
+
+    public static String trintaDiasLucros(Long estabelecimentoID, Negocio negocio) {
+        String st = "";
+        double somario = 0.0;
+        Session s = HibernateFactory.getSessionFactory().openSession();
+        int dia, mes, ano;
+        GregorianCalendar gc = (GregorianCalendar) GregorianCalendar.getInstance();
+        List<Pagamento> lista = null;
+        try {
+            for (int i = 29; i >= 0; i--) {
+                gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id"
+                        + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
+                query.setParameter("id", estabelecimentoID);
                  
                 query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
@@ -309,49 +351,7 @@ public class ConsultaPagamento {
         return st;
     }
 
-    public static String trintaDiasLucros(String sufixoCNPJ, Negocio negocio) {
-        String st = "";
-        double somario = 0.0;
-        Session s = HibernateFactory.getSessionFactory().openSession();
-        int dia, mes, ano;
-        GregorianCalendar gc = (GregorianCalendar) GregorianCalendar.getInstance();
-        List<Pagamento> lista = null;
-        try {
-            for (int i = 29; i >= 0; i--) {
-                gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 30);
-                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
-                        + " and p.dia =:dia and p.mes =:mes and p.ano =:ano");
-                query.setParameter("sufixoCNPJ", sufixoCNPJ);
-                 
-                query.setParameter("dia", gc.get(Calendar.DAY_OF_MONTH));
-                query.setParameter("mes", gc.get(Calendar.MONTH)+1);
-                query.setParameter("ano", gc.get(Calendar.YEAR));
-
-                lista = query.getResultList();
-                somario = 0.0;
-                for (Pagamento p : lista) {
-                    if (p.getTipo() == 'D') {
-                        somario -= p.getValor();
-                    } else {
-                        somario += p.getValor();
-                    }
-                }
-                st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH)+1) + "/"
-                        + gc.get(Calendar.YEAR) + "/" + somario + "!";
-            }
-        } catch (HibernateException e) {
-            s.getTransaction().rollback();
-        } finally {
-            s.close();
-        }
-        /* 
-        Formato:
-        dia/mes/ano/somatoria!dia/mes/ano/somatoria...
-         */
-        return st;
-    }
-
-    public static String dozeMesesLucros(String sufixoCNPJ, Negocio negocio) {
+    public static String dozeMesesLucros(Long estabelecimentoID, Negocio negocio) {
         String st = "";
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
@@ -360,9 +360,9 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:sufixoCNPJ"
+                Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id"
                         + " and p.mes =:mes and p.ano =:ano");
-                query.setParameter("sufixoCNPJ", sufixoCNPJ);
+                query.setParameter("id", estabelecimentoID);
                  
                 query.setParameter("mes", gc.get(Calendar.MONTH)+1);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
