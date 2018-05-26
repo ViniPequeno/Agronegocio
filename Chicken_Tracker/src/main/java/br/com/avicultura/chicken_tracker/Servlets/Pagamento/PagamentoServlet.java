@@ -25,6 +25,11 @@ public class PagamentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String id = request.getParameter("id");
+        PrintWriter out = response.getWriter();
+        out.println("Consulta 1- "  +ConsultaPagamento.AnosDespesas(Long.parseLong(id), 10));
+        out.println("Consulta 2- " + ConsultaPagamento.AnosGanhos(Long.parseLong(id), 10));
+        out.println("Consulta 3- " + ConsultaPagamento.AnosLucros(Long.parseLong(id), 10));
     }
 
     /**
@@ -41,7 +46,7 @@ public class PagamentoServlet extends HttpServlet {
         Pagamento p = Pagamento.getInstance();
         GregorianCalendar gc = new GregorianCalendar();
         int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
-        int mes = gc.get(GregorianCalendar.MONTH)+1;
+        int mes = gc.get(GregorianCalendar.MONTH) + 1;
         int ano = gc.get(GregorianCalendar.YEAR);
         p.setDia(dia);
         p.setMes(mes);
