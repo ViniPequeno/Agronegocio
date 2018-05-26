@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Pagamento.ConsultaPagamento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
@@ -11,6 +12,7 @@
         sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
     }
     Estabelecimento e = (Estabelecimento) sessao.getAttribute("estabelecimento");
+    String lucroSemana = ConsultaPagamento.seteDiasLucros(e.getId());
 %>
 <div class="container mt-lg-4">
     <h2 class="py-5 font-weight-bold text-left">
@@ -92,10 +94,10 @@
         <div class="col-lg-7">
             <div class="card border-light">
                 <div class="card-header">
-                    Lucro diário
+                    Lucros dessa semana
                 </div>
                 <div class="card-body">
-                    <canvas style="align-content: center;" id="graficoLucro"></canvas>
+                    <canvas style="align-content: center;" id="graficoSeteDiasLucros" data-info="<%=lucroSemana%>"></canvas>
                 </div>
             </div>
         </div>
@@ -108,6 +110,6 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/mascara.js"></script>
-<script src="../_JS/graficoLucro.js"></script>
+<script src="../_JS/graficos/graficoSeteDiasLucros.js"></script>
 </body>
 </html>
