@@ -25,7 +25,7 @@
         String lucrosTrintaDias = ConsultaPagamento.trintaDiasLucros(((Estabelecimento) sessao.getAttribute("estabelecimento")).getId());
         String ganhosTrintaDias = ConsultaPagamento.trintaDiasGanhos(((Estabelecimento) sessao.getAttribute("estabelecimento")).getId());
         String despesasDozeMeses = ConsultaPagamento.dozeMesesDespesas(((Estabelecimento) sessao.getAttribute("estabelecimento")).getId());
-        String lucrosDozeMeses = ConsultaPagamento.trintaDiasLucros(((Estabelecimento) sessao.getAttribute("estabelecimento")).getId());
+        String lucrosDozeMeses = ConsultaPagamento.dozeMesesLucros(((Estabelecimento) sessao.getAttribute("estabelecimento")).getId());
         String ganhosDozeMeses = ConsultaPagamento.dozeMesesGanhos(((Estabelecimento) sessao.getAttribute("estabelecimento")).getId());
     %>
     <h2 class="mt-5 font-weight-bold text-left">
@@ -161,5 +161,11 @@
 <script src="../_JS/graficos/graficoSeteDiasLucros.js"></script>
 <script src="../_JS/graficos/graficoSeteDiasDespesas.js"></script>
 <script src="../_JS/graficos/graficoSeteDiasGanhos.js"></script>
+<script src="../_JS/graficos/graficoDozeMesesLucros.js"></script>
+<script src="../_JS/graficos/graficoDozeMesesDespesas.js"></script>
+<script src="../_JS/graficos/graficoDozeMesesGanhos.js"></script>
+<script src="../_JS/graficos/graficoTrintaDiasLucros.js"></script>
+<script src="../_JS/graficos/graficoTrintaDiasDespesas.js"></script>
+<script src="../_JS/graficos/graficoTrintaDiasGanhos.js"></script>
 </body>
 </html>
