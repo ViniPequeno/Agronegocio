@@ -8,8 +8,9 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <div class="container">
 
-    <h2 class="py-5 font-weight-bold text-left">
-        <a href="" onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Estabelecimentos</h2>
+    <h2 class="py-5 font-weight-bold text-left blue-text">
+        <a onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Voltar</a></h2>
+        
         <%Negocio n = (Negocio)sessao.getAttribute("negocio");
         if (n == null) {
             n=ConsultaNegocio.findById(request.getParameter("negocio"));

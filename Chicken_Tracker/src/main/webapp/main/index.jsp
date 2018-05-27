@@ -78,13 +78,15 @@
         <!--Grid row-->
 
     </section>
+    
     <!--Section: Features v.3-->
-
-    <hr class="my-4">
+    <!--<hr class="my-4">
     <section>
         <h2 class="py-5 font-weight-bold text-center">Colaboradores</h2>
-    </section>
+    </section>-->
+    
     <hr class="my-4">
+    
     <!--Section: Team v.2-->
     <section class="team-section pb-5">
 

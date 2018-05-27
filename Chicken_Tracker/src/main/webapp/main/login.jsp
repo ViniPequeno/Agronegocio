@@ -2,7 +2,7 @@
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
-    <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-lg-5">
+    <div class="col-xl-6 col-lg-6 col-md-10 col-sm-12 mx-auto">
         <div class="card narrower my-5">
             <div class="card-body">
                 <!-- Material form login -->
@@ -21,12 +21,15 @@
                         <input minlength="8" maxlength="20" type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="off">
                         <label for="inputSenha" data-error="">Senha</label>
                     </div>
+                    <p class="text-center"><a class="small ml-4" href="esqueceuSenha.jsp">Esqueci minha senha. Quero recuperá-la.</a></p>
 
-                    <div class="text-center mt-5 mb-3">
+                    <div class="text-center mt-5 mb-1">
                         <button class="btn btn-green btn-block font-weight-bold" type="submit">Entrar</button>
                     </div>
-                    
-                    <a class="small ml-4" href="esqueceuSenha.jsp">Esqueceu sua senha?</a>
+                    <hr/>
+                    <div class="text-center mt-1 mb-3">
+                        <button class="btn btn-blue btn-block font-weight-bold" onclick="window.location.href = '../cadastro/usuario.jsp';">Ainda não é cadastrado? Cadastre-se agora!</button>
+                    </div>
                 </form>
             </div>
         </div>
