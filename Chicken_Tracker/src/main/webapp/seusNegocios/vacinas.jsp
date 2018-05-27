@@ -1,4 +1,6 @@
 <% String css = "../_CSS/seu_negocio.css";%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Vacina.ConsultaVacina" %>
@@ -9,8 +11,15 @@
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Lista de vacinas</h2>
 
-    <%  List<Vacina> vacinas;
-        vacinas = ConsultaVacina.returnList(request.getParameter("estabelecimento"));
+    <%  
+        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+        if (sessao.getAttribute("estabelecimento") == null) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+        }
+        List<Vacina> vacinas;
+        vacinas = ConsultaVacina.returnList(request.getParameter("estabelecimento"),n);
         if (vacinas.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 

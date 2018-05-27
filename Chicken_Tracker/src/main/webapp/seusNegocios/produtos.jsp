@@ -10,7 +10,7 @@
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Lista de produtos</h2>
 
     <%  List<Produto> produtos;
-        produtos = ConsultaProduto.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
+        produtos = ConsultaProduto.returnList(request.getParameter("estabelecimento"));
         if (produtos.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 

@@ -1,8 +1,8 @@
+<% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Pagamento.ConsultaPagamento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
-<% String css = "../_CSS/seu_negocio.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <%  
     Negocio n = (Negocio) request.getSession().getAttribute("negocio");

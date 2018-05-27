@@ -1,8 +1,8 @@
-<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
-<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
-<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
-<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <% String css = "../_CSS/seu_negocio.css";%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
+<%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
+<%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Funcionario.ConsultaFuncionario" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Funcionario" %>
@@ -22,7 +22,7 @@
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
         }
         List<Funcionario> funcionarios;
-        funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
+        funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"), n);
         if (funcionarios.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 
@@ -128,6 +128,7 @@
         <a href="" class="btn btn-primary btn-rounded mt-4 disabled mb-0" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
             <i class="fa fa-money-bill-alt fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
+    <form id="checks"></form>
 
     <!-- Modal -->
     <div class="modal fade" id="pagarSelecionados" tabindex="-1" role="dialog" aria-labelledby="pagarSelecionados" aria-hidden="true">
@@ -146,7 +147,7 @@
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                     <form id="checksPagar" action="/Chicken_Tracker/FuncionarioServlet" method="post">
                         <input type="hidden" name="funcionario" value="pagar" />
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                        <button form="checks" formaction="/Chicken_Tracker/FuncionarioServlet" formmethod="post" name="funcionario" value="pagar" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -168,9 +169,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checksExcluir" action="/Chicken_Tracker/FuncionarioServlet" method="post">
-                        <button name="funcionario" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
-                    </form>
+                    <button form="checks" formaction="/Chicken_Tracker/FuncionarioServlet" formmethod="post" name="funcionario" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
+<% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
-<% String css = "../_CSS/seu_negocio.css";%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Fornecedor.ConsultaFornecedores" %>
@@ -20,7 +20,7 @@
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
         }
         List<Fornecimento> fornecedores;
-        fornecedores = ConsultaFornecedores.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
+        fornecedores = ConsultaFornecedores.returnList(request.getParameter("estabelecimento"), n);
         if (fornecedores.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 

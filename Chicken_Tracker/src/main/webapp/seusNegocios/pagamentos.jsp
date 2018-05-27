@@ -10,7 +10,7 @@
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Pagamentos</h2>
 
     <%List<Pagamento> pagamentos;
-        pagamentos = ConsultaPagamento.returnList(request.getParameter("estabelecimento"), (Negocio) request.getSession().getAttribute("negocio"));
+        pagamentos = ConsultaPagamento.returnList(request.getParameter("estabelecimento"));
         if (pagamentos.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 
