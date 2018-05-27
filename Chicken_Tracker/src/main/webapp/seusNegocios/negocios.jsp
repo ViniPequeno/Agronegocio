@@ -5,11 +5,12 @@
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
     <h2 class="py-5 font-weight-bold text-left">
-        <a href="" onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Negócios</h2>
+        <a onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Voltar</a></h2>
+    
     <%  //Gera tabela se houver algum registro
         List<Negocio> negocios = null;
         negocios = ConsultaNegocio.returnListOfPerfil(sessao.getAttribute("nome_usuario").toString());
-    if (negocios.size() > 0) {
+        if (negocios.size() > 0) {
     %>
     <div class="card card-cascade narrower">
 
@@ -172,63 +173,63 @@
 <script src="../_JS/formUtils.js"></script>
 <script src="../_JS/mascara.js"></script>
 <script type="text/javascript">
-    dataN = "";
-    var linha;
-    var modalDetalhesInnerHTML = '<p id="nome"> Nome: </p>' +
-            '<p id="proprietario"> Proprietário: </p>' +
-            '<p id="cnpj"> CNPJ: </p>' +
-            '<p id="email"> Email: </p>' +
-            '<p id="linkFB"> Link da página do Facebook: </p>' +
-            '<p id="linkInstagram"> Link da página do Instagram: </p>' +
-            '<p id="fone1"> Fone 1: </p>' +
-            '<p id="fone2"> Fone 2: </p>' +
-            '<p id="estabelecimentos"> Estabelecimentos: </p>';
-    $("td").not(function () {
-        return $("a", this).length != 0;
-    }).click(function (event) {
-        $("#detalhesNegocio").modal();
-        linha = $(this).closest('tr');
-        resetModalData();
-    });
+            dataN = "";
+            var linha;
+            var modalDetalhesInnerHTML = '<p id="nome"> Nome: </p>' +
+                    '<p id="proprietario"> Proprietário: </p>' +
+                    '<p id="cnpj"> CNPJ: </p>' +
+                    '<p id="email"> Email: </p>' +
+                    '<p id="linkFB"> Link da página do Facebook: </p>' +
+                    '<p id="linkInstagram"> Link da página do Instagram: </p>' +
+                    '<p id="fone1"> Fone 1: </p>' +
+                    '<p id="fone2"> Fone 2: </p>' +
+                    '<p id="estabelecimentos"> Estabelecimentos: </p>';
+            $("td").not(function () {
+                return $("a", this).length != 0;
+            }).click(function (event) {
+                $("#detalhesNegocio").modal();
+                linha = $(this).closest('tr');
+                resetModalData();
+            });
 
-    function resetModalData() {
-        $("#bodyDetalhes").html(modalDetalhesInnerHTML);
-        $("#btnEditarConfirmar").text("Editar");
+            function resetModalData() {
+                $("#bodyDetalhes").html(modalDetalhesInnerHTML);
+                $("#btnEditarConfirmar").text("Editar");
 
-        var dados = linha.data('negocio').toString();
-        var campo = dados.split("#");
-        dataN = campo;
-        var nome = campo[0];
-        var proprietario = campo[1];
-        var cnpj = campo[2];
-        var email = campo[3];
-        var facebook = campo[4];
-        var instagram = campo[5];
-        var fone1 = campo[6];
-        var fone2 = campo[7];
+                var dados = linha.data('negocio').toString();
+                var campo = dados.split("#");
+                dataN = campo;
+                var nome = campo[0];
+                var proprietario = campo[1];
+                var cnpj = campo[2];
+                var email = campo[3];
+                var facebook = campo[4];
+                var instagram = campo[5];
+                var fone1 = campo[6];
+                var fone2 = campo[7];
 
-        var estabelecimentos = campo[8];
+                var estabelecimentos = campo[8];
 
-        $("#btnEstabelecimentos").attr('href', '../seusNegocios/estabelecimentos.jsp?negocio=' + cnpj);
+                $("#btnEstabelecimentos").attr('href', '../seusNegocios/estabelecimentos.jsp?negocio=' + cnpj);
 
-        $("#nome").text("Nome: " + nome);
+                $("#nome").text("Nome: " + nome);
 
-        $("#proprietario").text("Proprietário: " + proprietario);
+                $("#proprietario").text("Proprietário: " + proprietario);
 
-        cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
-        $("#cnpj").text("CNPJ: " + cnpj);
+                cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
+                $("#cnpj").text("CNPJ: " + cnpj);
 
-        $("#email").text("Email: " + email);
+                $("#email").text("Email: " + email);
 
-        $("#linkFB").text("Link da página do Facebook: " + facebook);
+                $("#linkFB").text("Link da página do Facebook: " + facebook);
 
-        $("#linkInstagram").text("Link da página do Instagram: " + instagram);
+                $("#linkInstagram").text("Link da página do Instagram: " + instagram);
 
-        $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
+                $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
 
-        $("#fone1").text("Fone 1: " + fone1);
-        $("#fone2").text("Fone 2: " + fone2);
-    }
+                $("#fone1").text("Fone 1: " + fone1);
+                $("#fone2").text("Fone 2: " + fone2);
+            }
 </script>
 <script>
     var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioServlet" name="formEditar">' +

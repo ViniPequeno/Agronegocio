@@ -8,7 +8,7 @@
             <form action="/Chicken_Tracker/NegocioServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Negócio</p>
                 <div class="form-row">
-                    <div class="col-md-6">
+                    <div class="col-sm-6 offset-sm-2">
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-user prefix grey-text"></i>
@@ -16,7 +16,18 @@
                             <label for="inputNome">Nome</label>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-2">
+                        <!-- Material input text -->
+                        <div class="md-form">
+                            <i class="far fa-id-card prefix grey-text"></i>
+                            <input type="text" id="inputCNPJ" name="inputCNPJ" class="form-control" required maxlength="8">
+                            <label for="inputCNPJ">CNPJ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-sm-8 offset-sm-2">
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-envelope prefix grey-text"></i>
@@ -27,16 +38,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col-md-4">
-                        <!-- Material input text -->
-                        <div class="md-form">
-                            <i class="far fa-id-card prefix grey-text"></i>
-                            <input type="text" id="inputCNPJ" name="inputCNPJ" class="form-control" required maxlength="8">
-                            <label for="inputCNPJ">CNPJ</label>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
+                    <div class="col-sm-4 offset-sm-2">
                         <!-- Material input phone -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text"></i>
@@ -45,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                         <!-- Material input phone -->
                         <div class="md-form">
                             <i class="fa fa-phone prefix grey-text"></i>
@@ -56,7 +58,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col-md-6">
+                    <div class="col-sm-8 offset-sm-2">
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fab fa-facebook prefix grey-text"></i>
@@ -64,7 +66,10 @@
                             <label for="inputLinkFB">Link do perfil do Facebook</label>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                </div>
+
+                <div class="form-row">
+                    <div class="col-sm-8 offset-sm-2">
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fab fa-instagram prefix grey-text"></i>
@@ -74,9 +79,13 @@
                     </div>
                 </div>
 
-                <div class="mt-4 text-right">
-                    <button name="negocio" value="cadastrar" class="btn btn-primary" type="submit">Confirmar</button>
-                    <button class="btn btn-primary" type="reset">Limpar</button>
+                <div class="form-row">
+                    <div class="col-sm-4 offset-sm-6">
+                        <div class="mt-4 text-right">
+                            <button class="btn btn-primary" type="reset">Limpar</button>
+                            <button name="negocio" value="cadastrar" class="btn btn-primary" type="submit">Confirmar</button>
+                        </div>
+                    </div>
                 </div>
             </form>
             <!-- Material form register -->
