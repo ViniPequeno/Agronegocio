@@ -15,7 +15,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.mail.internet.MimeMessage;
@@ -36,6 +35,7 @@ public class PerfilServlet extends HttpServlet {
     final String CAMINHO_LAB_X = "C:/Users/Yan e Pedro/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_PEDRO = "C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_YAN = "/Users/user/Documents/GitHub/Avicultura/Chicken_Tracker/src/main/webapp";
+    final String CAMINHO_GABRIEL = "C:/Users/Usuario/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
