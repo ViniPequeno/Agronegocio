@@ -17,3 +17,7 @@ table.btn-table th label{
 #tableEstabelecimento tr:first-child td {
     border: none;
 }
+
+td a:hover{
+    text-decoration: underline;
+}

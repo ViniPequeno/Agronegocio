@@ -24,7 +24,7 @@
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive-md btn-table" id="tableDados">
+            <table class="table table-hover table-responsive-lg btn-table" id="tableDados">
                 <!--Table head-->  
                 <thead>
                     <tr>
@@ -33,8 +33,8 @@
                         <th>Proprietário</th>
                         <th>CNPJ</th>
                         <th>Email</th>
-                        <th>Facebook</th>
-                        <th>Instagram</th>
+                        <th>Facebook<i class="fa fab fa-facebook-f ml-1"></i></th>
+                        <th>Instagram<i class="fa fab fa-instagram ml-1"></i></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -55,8 +55,8 @@
                         <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="maskCNPJ"><%=n.getEmpresaCNPJ()%></td>
                         <td><%=n.getEmail()%></td>
-                        <td><a href="<%=n.getLinkFacebook()%>"><%=n.getLinkFacebook()%></a></td>
-                        <td><a href="http://instagram.com/<%=n.getUserInstagram()%>"><%=n.getUserInstagram()%></a></td>
+                        <td><a href="<%=n.getLinkFacebook()%>"><%=n.getLinkFacebook()%><i class="fas fa-external-link-alt ml-1"></i></a></td>
+                        <td><a href="http://instagram.com/<%=n.getUserInstagram()%>"><%=n.getUserInstagram()%><i class="fas fa-external-link-alt ml-1"></i></a></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimentos.jsp?negocio=<%=n.getEmpresaCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mostrar Estabelecimentos" role="button">
                                 <i data-fa-transform="grow-8" class="fa fa-clipboard-list mr-1" aria-hidden="true"></i></a></td>
                     </tr>

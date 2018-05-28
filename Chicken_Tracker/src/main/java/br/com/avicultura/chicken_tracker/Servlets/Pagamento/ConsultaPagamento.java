@@ -63,7 +63,10 @@ public class ConsultaPagamento {
                     somario += p.getValor();
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
-                        + gc.get(Calendar.YEAR) + "/" + somario + "!";
+                        + gc.get(Calendar.YEAR) + "/" + somario;
+                if(i>0){
+                    st += "!";
+                }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
             }
         } catch (HibernateException e) {
@@ -101,7 +104,10 @@ public class ConsultaPagamento {
                     somario += p.getValor();
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
-                        + gc.get(Calendar.YEAR) + "/" + somario + "!";
+                        + gc.get(Calendar.YEAR) + "/" + somario;
+                if(i>0){
+                    st += "!";
+                }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
             }
         } catch (HibernateException e) {
@@ -179,7 +185,10 @@ public class ConsultaPagamento {
                     somario += p.getValor();
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
-                        + gc.get(Calendar.YEAR) + "/" + somario + "!";
+                        + gc.get(Calendar.YEAR) + "/" + somario;
+                if(i>0){
+                    st += "!";
+                }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
             }
         } catch (HibernateException e) {
@@ -217,7 +226,10 @@ public class ConsultaPagamento {
                     somario += p.getValor();
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
-                        + gc.get(Calendar.YEAR) + "/" + somario + "!";
+                        + gc.get(Calendar.YEAR) + "/" + somario;
+                if(i>0){
+                    st += "!";
+                }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
             }
         } catch (HibernateException e) {
@@ -298,7 +310,10 @@ public class ConsultaPagamento {
                     }
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
-                        + gc.get(Calendar.YEAR) + "/" + somario + "!";
+                        + gc.get(Calendar.YEAR) + "/" + somario;
+                if(i>0){
+                    st += "!";
+                }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
             }
         } catch (HibernateException e) {
@@ -340,7 +355,10 @@ public class ConsultaPagamento {
                     }
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
-                        + gc.get(Calendar.YEAR) + "/" + somario + "!";
+                        + gc.get(Calendar.YEAR) + "/" + somario;
+                if(i>0){
+                    st += "!";
+                }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
             }
         } catch (HibernateException e) {

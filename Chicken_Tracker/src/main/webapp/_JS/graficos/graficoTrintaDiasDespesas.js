@@ -1,6 +1,6 @@
 //line
 var ctxL = document.getElementById("graficoTrintaDiasDespesas").getContext('2d');
-var dadosCadaDia = $('#graficoTrintaDiasDespesas').data('info').split('!');
+var dadosCadaDia = $('#graficoTrintaDiasDespesas').data('info').split('!').reverse();
 var datas = new Array();
 var valores = new Array();
 dadosCadaDia.forEach(function (item, indice, array) {
@@ -11,7 +11,7 @@ dadosCadaDia.forEach(function (item, indice, array) {
 var myLineChart = new Chart(ctxL, {
     type: 'line',
     data: {
-        labels: [datas[6], datas[5], datas[4], datas[3], datas[2], datas[1], datas[0]],
+        labels: datas,
         color: "rgba(0,0,0,1.0)",
         datasets: [
             {
@@ -25,7 +25,7 @@ var myLineChart = new Chart(ctxL, {
                 pointRadius: 4,
                 pointHoverBackgroundColor: "#fff",
                 pointHoverBorderColor: "rgba(220,0,220,1)",
-                data: [valores[6], valores[5], valores[4], valores[3], valores[2], valores[1], valores[0]]
+                data: valores
             }
         ]
     },
@@ -35,6 +35,16 @@ var myLineChart = new Chart(ctxL, {
             position: 'top',
             text: ['Período: '+datas[0]+' até '+datas[6]],
             fontSize: 14
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, values) {
+                        return 'R$ ' + value;
+                    }
+                }
+            }]
         },
         responsive: true
     }

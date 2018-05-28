@@ -124,6 +124,7 @@
             </div>
         </div>
     </div>
+    <!--
     <h1 class="mt-5 mb-4">Últimos anos</h1>
     <div class="card border-light">
         <div class="card-header">
@@ -140,7 +141,7 @@
                     Despesas dos últimos anos
                 </div>
                 <div class="card-body">
-                    <canvas style="align-content: center;" id="graficoAnosDespesas" data-info="<%=despesasSeteDias%>"></canvas>
+                    <canvas style="align-content: center;" id="graficoAnosDespesas" data-info="< %=despesasSeteDias%>"></canvas>
                 </div>
             </div>
         </div>
@@ -150,11 +151,12 @@
                     Ganhos dos últimos anos
                 </div>
                 <div class="card-body">
-                    <canvas style="align-content: center;" id="graficoAnosGanhos" data-info="<%=ganhosSeteDias%>"></canvas>
+                    <canvas style="align-content: center;" id="graficoAnosGanhos" data-info="< %=ganhosSeteDias%>"></canvas>
                 </div>
             </div>
         </div>
     </div>
+    -->
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../_JS/paginacaoTabelas.js"></script>

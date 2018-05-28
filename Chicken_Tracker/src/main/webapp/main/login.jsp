@@ -26,11 +26,11 @@
                     <div class="text-center mt-5 mb-1">
                         <button class="btn btn-green btn-block font-weight-bold" type="submit">Entrar</button>
                     </div>
-                    <hr/>
-                    <div class="text-center mt-1 mb-3">
-                        <button class="btn btn-blue btn-block font-weight-bold" onclick="window.location.href = '../cadastro/usuario.jsp';">Ainda não é cadastrado? Cadastre-se agora!</button>
-                    </div>
                 </form>
+                <hr/>
+                <div class="text-center mt-1 mb-3">
+                    <a class="btn btn-outline-green btn-block font-weight-bold" href = '../cadastro/usuario.jsp'>Ainda não é cadastrado? Cadastre-se agora!</a>
+                </div>
             </div>
         </div>
     </div>

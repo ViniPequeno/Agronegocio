@@ -35,8 +35,18 @@ var myLineChart = new Chart(ctxL, {
         title: {
             display: true,
             position: 'top',
-            text: ['Período: '+datas[0]+' até '+datas[6]],
+            text: ['Período: '+datas[0]+' até '+datas[datas.length-1]],
             fontSize: 14
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, values) {
+                        return 'R$ ' + value;
+                    }
+                }
+            }]
         },
         responsive: true
     }
