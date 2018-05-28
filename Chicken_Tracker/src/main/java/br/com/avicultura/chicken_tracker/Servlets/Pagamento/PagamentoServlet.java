@@ -25,11 +25,16 @@ public class PagamentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
+        String id = request.getParameter("inputEstabelecimentoID");
+        int ano = Integer.parseInt(request.getParameter("inputDataInicio"));
         PrintWriter out = response.getWriter();
-        out.println("Consulta 1- "  +ConsultaPagamento.AnosDespesas(Long.parseLong(id), 10));
-        out.println("Consulta 2- " + ConsultaPagamento.AnosGanhos(Long.parseLong(id), 10));
-        out.println("Consulta 3- " + ConsultaPagamento.AnosLucros(Long.parseLong(id), 10));
+        String anosDespesas = ConsultaPagamento.AnosDespesas(Long.parseLong(id), ano);
+        String anosGanhos = ConsultaPagamento.AnosGanhos(Long.parseLong(id), ano);
+        String anosLucros = ConsultaPagamento.AnosLucros(Long.parseLong(id), ano);
+        request.getSession().setAttribute("anosDespesas", anosDespesas);
+        request.getSession().setAttribute("anosGanhos", anosGanhos);
+        request.getSession().setAttribute("anosLucros", anosLucros);
+        response.sendRedirect("seusNegocios/desempenho.jsp?estabelecimento="+((Estabelecimento)request.getSession().getAttribute("estabelecimento")).getSufixoCNPJ()+"#graficosAnos");
     }
 
     /**

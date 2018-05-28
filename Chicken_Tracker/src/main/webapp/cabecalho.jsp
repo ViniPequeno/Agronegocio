@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="../_CSS/cabecalho.css">
         <link rel="stylesheet" type="text/css" href="../_CSS/bootstrapValidator.css">
         <link rel="stylesheet" type="text/css" href="<%=css%>">
-        <link rel="icon" href="../img/f.jpg">
+        <link rel="icon" href="../img/icon.png">
 
         <title>Chicken Tracker</title>
     </head>

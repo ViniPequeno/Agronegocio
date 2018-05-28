@@ -37,6 +37,7 @@
     <!--/.Footer Links-->
 
     <hr>
+    
     <!--Call to action-->
     <div class="text-center py-3">
         <ul class="list-unstyled list-inline mb-0">
@@ -49,6 +50,9 @@
         </ul>
     </div>
     <!--/.Call to action-->
+    
+    <hr>
+    
     <!--Social buttons-->
     <div class="text-center">
         <ul class="list-unstyled list-inline">

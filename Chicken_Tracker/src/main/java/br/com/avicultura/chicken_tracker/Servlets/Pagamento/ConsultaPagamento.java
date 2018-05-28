@@ -64,7 +64,7 @@ public class ConsultaPagamento {
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario;
-                if(i>0){
+                if (i > 0) {
                     st += "!";
                 }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
@@ -105,7 +105,7 @@ public class ConsultaPagamento {
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario;
-                if(i>0){
+                if (i > 0) {
                     st += "!";
                 }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
@@ -144,7 +144,7 @@ public class ConsultaPagamento {
                 }
                 st += (gc.get(Calendar.MONTH) + 1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario;
-                if(i<11){
+                if (i < 11) {
                     st += "!";
                 }
                 gc.add(Calendar.MONTH, -1);
@@ -186,7 +186,7 @@ public class ConsultaPagamento {
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario;
-                if(i>0){
+                if (i > 0) {
                     st += "!";
                 }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
@@ -227,7 +227,7 @@ public class ConsultaPagamento {
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario;
-                if(i>0){
+                if (i > 0) {
                     st += "!";
                 }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
@@ -266,7 +266,7 @@ public class ConsultaPagamento {
                 }
                 st += (gc.get(Calendar.MONTH) + 1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario;
-                if(i<11){
+                if (i < 11) {
                     st += "!";
                 }
                 gc.add(Calendar.MONTH, -1);
@@ -311,7 +311,7 @@ public class ConsultaPagamento {
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario;
-                if(i>0){
+                if (i > 0) {
                     st += "!";
                 }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
@@ -356,7 +356,7 @@ public class ConsultaPagamento {
                 }
                 st += gc.get(Calendar.DAY_OF_MONTH) + "/" + (gc.get(Calendar.MONTH) + 1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario;
-                if(i>0){
+                if (i > 0) {
                     st += "!";
                 }
                 gc.set(Calendar.DATE, gc.get(Calendar.DATE) - 1);
@@ -382,7 +382,6 @@ public class ConsultaPagamento {
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i < 12; i++) {
-                System.out.println("oi "+ (gc.get(Calendar.MONTH)+1));
                 Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id"
                         + " and p.mes =:mes and p.ano =:ano");
                 query.setParameter("id", estabelecimentoID);
@@ -400,7 +399,7 @@ public class ConsultaPagamento {
                 }
                 st += (gc.get(Calendar.MONTH) + 1) + "/"
                         + gc.get(Calendar.YEAR) + "/" + somario;
-                if(i<11){
+                if (i < 11) {
                     st += "!";
                 }
                 gc.add(Calendar.MONTH, -1);
@@ -422,6 +421,8 @@ public class ConsultaPagamento {
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
         GregorianCalendar gc = (GregorianCalendar) GregorianCalendar.getInstance();
+
+        tempo = gc.get(Calendar.YEAR) - tempo;
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i <= tempo; i++) {
@@ -429,13 +430,16 @@ public class ConsultaPagamento {
                         + " and p.ano =:ano");
                 query.setParameter("id", estabelecimentoID);
                 query.setParameter("ano", gc.get(Calendar.YEAR));
-                gc.add(Calendar.YEAR, -1);
                 lista = query.getResultList();
                 somario = 0.0;
                 for (Pagamento p : lista) {
                     somario += p.getValor();
                 }
-                st += gc.get(Calendar.YEAR) + "/" + somario + "!";
+                st += gc.get(Calendar.YEAR) + "/" + somario;
+                if (i < tempo) {
+                    st += "!";
+                }
+                gc.add(Calendar.YEAR, -1);
             }
         } catch (HibernateException e) {
             s.getTransaction().rollback();
@@ -454,6 +458,9 @@ public class ConsultaPagamento {
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
         GregorianCalendar gc = (GregorianCalendar) GregorianCalendar.getInstance();
+
+        tempo = gc.get(Calendar.YEAR) - tempo;
+
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i <= tempo; i++) {
@@ -462,13 +469,16 @@ public class ConsultaPagamento {
                 query.setParameter("id", estabelecimentoID);
 
                 query.setParameter("ano", gc.get(Calendar.YEAR));
-                gc.add(Calendar.YEAR, -1);
                 lista = query.getResultList();
                 somario = 0.0;
                 for (Pagamento p : lista) {
                     somario += p.getValor();
                 }
-                st += gc.get(Calendar.YEAR) + "/" + somario + "!";
+                st += gc.get(Calendar.YEAR) + "/" + somario;
+                if (i < tempo) {
+                    st += "!";
+                }
+                gc.add(Calendar.YEAR, -1);
             }
         } catch (HibernateException e) {
             s.getTransaction().rollback();
@@ -486,8 +496,10 @@ public class ConsultaPagamento {
         String st = "";
         double somario = 0.0;
         Session s = HibernateFactory.getSessionFactory().openSession();
-        int dia, mes, ano;
         GregorianCalendar gc = (GregorianCalendar) GregorianCalendar.getInstance();
+
+        tempo = gc.get(Calendar.YEAR) - tempo;
+
         List<Pagamento> lista = null;
         try {
             for (int i = 0; i <= tempo; i++) {
@@ -496,7 +508,6 @@ public class ConsultaPagamento {
                 query.setParameter("id", estabelecimentoID);
 
                 query.setParameter("ano", gc.get(Calendar.YEAR));
-                gc.add(Calendar.YEAR, -1);
                 lista = query.getResultList();
                 somario = 0.0;
                 for (Pagamento p : lista) {
@@ -506,7 +517,11 @@ public class ConsultaPagamento {
                         somario += p.getValor();
                     }
                 }
-                st += gc.get(Calendar.YEAR) + "/" + somario + "!";
+                st += gc.get(Calendar.YEAR) + "/" + somario;
+                if (i < tempo) {
+                    st += "!";
+                }
+                gc.add(Calendar.YEAR, -1);
             }
         } catch (HibernateException e) {
             s.getTransaction().rollback();
