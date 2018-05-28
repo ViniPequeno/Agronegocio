@@ -34,7 +34,7 @@
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                 <div class="container">
                     <a class="navbar-brand" href="../main/index.jsp" target="_self">
-                        <img src="../img/icon.svg" height="30" width="30" alt="">Chicken Tracker</a>
+                    <img src="../img/icon.png" height="30" width="30" alt=""> Chicken Tracker</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".trer" aria-controls="collapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
