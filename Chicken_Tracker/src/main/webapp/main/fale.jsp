@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h2 class="text-center">Fale Conosco</h2>
                 <div class="container">
-                    <form method="post" action="">
+                    <form method="post" action="/Chicken_Tracker/EmailServlet">
                         <%if (!(sessao.isNew() || sessao.getAttribute("usuario_logado").equals("false"))) {
                                 String login = (String) sessao.getAttribute("nome_usuario");
                                 Perfil p = ConsultaPerfil.findById(login);
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="text-center mt-4">
-                            <button class="btn btn-default" type="submit">Enviar</button>
+                            <button class="btn btn-default" name="opcao" value="faleconosco" type="submit">Enviar</button>
                         </div>
                     </form>
                 </div>

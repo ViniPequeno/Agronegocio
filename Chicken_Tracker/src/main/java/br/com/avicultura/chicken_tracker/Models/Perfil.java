@@ -1,6 +1,5 @@
 package br.com.avicultura.chicken_tracker.Models;
 
-
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
@@ -21,9 +20,9 @@ public class Perfil implements Serializable {
     @Column(unique = true)
     private String email;
     private String senha;
-    
-    private String foto;
 
+    private String foto;
+    private char confirmacaoEmail; //S ou N
     @OneToMany(cascade = ALL, mappedBy = "perfil")
     private List<Negocio> negocios;
 
@@ -33,7 +32,6 @@ public class Perfil implements Serializable {
     private Perfil() {
     }
 
-    
     public static Perfil getInstance() {
         if (getInstance == null) {
             getInstance = new Perfil();
@@ -87,6 +85,14 @@ public class Perfil implements Serializable {
 
     public void setNegocios(List<Negocio> negocios) {
         this.negocios = negocios;
+    }
+
+    public char getConfirmacaoEmail() {
+        return confirmacaoEmail;
+    }
+
+    public void setConfirmacaoEmail(char confirmacaoEmail) {
+        this.confirmacaoEmail = confirmacaoEmail;
     }
 
 }

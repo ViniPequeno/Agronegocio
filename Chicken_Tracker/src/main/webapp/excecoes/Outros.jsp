@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%if (request.getSession().getAttribute("erroOutro") != null) {%>
+        <h1><%=request.getSession().getAttribute("erroOutro")%></h1>
+        <%} else {%>
+        <h1>Pagina errada</h1>
+        <%}%>
     </body>
 </html>

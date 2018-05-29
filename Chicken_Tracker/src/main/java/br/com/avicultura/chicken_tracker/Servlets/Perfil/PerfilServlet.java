@@ -8,7 +8,6 @@ package br.com.avicultura.chicken_tracker.Servlets.Perfil;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Perfil;
 import br.com.avicultura.chicken_tracker.Utils.Email;
-import br.com.avicultura.chicken_tracker.Utils.Google;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -17,7 +16,6 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.imageio.ImageIO;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -28,35 +26,28 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
+import org.hibernate.Hibernate;
 
 @MultipartConfig
 public class PerfilServlet extends HttpServlet {
-
+    
     final String CAMINHO_LAB_X = "C:/Users/Yan e Pedro/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_PEDRO = "C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_YAN = "/Users/user/Documents/GitHub/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_GABRIEL = "C:/Users/Usuario/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("Entrou");
-        try {
-            MimeMessage ms = Email.enviar("viniciuspedro350@gmail.com",
-                    "victoryan345@gmail.com", "teste123", "esre123");
-            Email.sendMessage(Google.gmail(), "victoryan345@gmail.com", ms);
-        } catch (Exception ex) {
-            System.out.println("Erro::: " + ex.getMessage());
-        }
+        
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         String s = "";
+        String senha = "";
         Perfil p = Perfil.getInstance();
         HibernateUtil<Perfil> hup = new HibernateUtil<>();
         String butao = "";
@@ -70,8 +61,6 @@ public class PerfilServlet extends HttpServlet {
                                 + p.getUsuario() + ".png");
                         InputStream in = new ByteArrayInputStream(item.get());
                         BufferedImage bImageFromConvert = ImageIO.read(in);
-                        out.println("Esocolha; " + escolha);
-                        out.println("BUTAO:::   " + butao);
                         if (escolha.equals("1")) {
                             p.setFoto("../imagensUsuario/" + p.getUsuario() + ".png");
                             ImageIO.write(bImageFromConvert, "png", file);
@@ -79,12 +68,15 @@ public class PerfilServlet extends HttpServlet {
                             p.setFoto("../img/farmer.jpg");
                             file.delete();
                         }
-
+                        
                     } else {
                         out.println(item.getFieldName());
                         switch (item.getFieldName()) {
                             case "inputNome":
                                 p.setNome(item.getString());
+                                break;
+                            case "inputSenha":
+                                senha = item.getString();
                                 break;
                             case "inputLogin":
                                 p.setUsuario(item.getString());
@@ -111,21 +103,46 @@ public class PerfilServlet extends HttpServlet {
                     p.setEmail(email);
                     if (!escolha.equals("0")) {
                         p.setFoto(foto);
-                    } 
+                    }
                 }
             } catch (Exception ex) {
                 out.println(ex.hashCode());
                 out.println(ex.getMessage());
             }
-
+            
             if (butao.equals("cadastrar")) {
-                out.println("Cadsatro");
                 HttpSession sessao = request.getSession();
-
-                out.println(p.getUsuario());
-                out.println(sessao);
+                p.setSenha(senha);
+                p.setConfirmacaoEmail('N');
                 s = hup.salvar(p);
                 if (s.equals("")) {
+                    Email email = new Email();
+                    email.setAssunto("Confirmação de email - ChickenTracker");
+                    email.setEmailDestinario(p.getEmail());
+                    email.setMsg("Obrigado pelo cadastro!\n\nConfirma seu e-mail: \n\n"
+                            + "Link: "
+                            + "http://localhost:8084/Chicken_Tracker/EmailServlet?seila=YDLinstaPECrebanho&usuario=" + p.getUsuario());
+                    if (email.enviarGmail()) {
+                        sessao.setAttribute("usuario", p);
+                        sessao.setAttribute("usuario_logado", "true");
+                        sessao.setAttribute("nome_usuario", p.getUsuario());
+                        response.sendRedirect(
+                                "seusNegocios/negocios.jsp");
+                    } else {
+                        sessao.setAttribute("erroOutro", "Erro inesperado ao enviar e-mail");
+                        response.sendRedirect("excecoes/Outros.jsp");
+                    }
+                } else {
+                    sessao.setAttribute("erro", s);
+                    response.sendRedirect(
+                            "excecoes/ErroBanco.jsp");
+                }
+                
+            } else if (butao.equals("alterar")) {
+                HttpSession sessao = request.getSession();
+                s = hup.atualizar(p);
+                if (s.equals("")) {
+                    out.println("FOTO::::::::::" + p.getFoto());
                     sessao.setAttribute("usuario", p);
                     sessao.setAttribute("usuario_logado", "true");
                     sessao.setAttribute("nome_usuario", p.getUsuario());
@@ -136,25 +153,9 @@ public class PerfilServlet extends HttpServlet {
                     response.sendRedirect(
                             "excecoes/ErroBanco.jsp");
                 }
-
-            } else if (butao.equals("alterar")) {
-                HttpSession sessao = request.getSession();
-                s = hup.atualizar(p);
-                if (s.equals("")) {
-                    out.println("FOTO::::::::::" + p.getFoto());
-                    sessao.setAttribute("usuario", p);
-                    sessao.setAttribute("usuario_logado", "true");
-                    sessao.setAttribute("nome_usuario", p.getUsuario());
-                    response.sendRedirect(
-                        "seusNegocios/negocios.jsp");
-                } else {
-                    sessao.setAttribute("erro", s);
-                    response.sendRedirect(
-                            "excecoes/ErroBanco.jsp");
-                }
-
+                
             }
-
+            
         } else {
             butao = request.getParameter("usuario");
             HttpSession sessao = request.getSession();
@@ -181,15 +182,15 @@ public class PerfilServlet extends HttpServlet {
                 } else if (senhaAtual.equals(senhaNova)) {//senha iguais
                     out.println("Senha iguais");
                     response.sendRedirect(
-                        "main/perfil.jsp?erro=1");
+                            "main/perfil.jsp?erro=1");
                 } else {//senha atual errado
                     out.println("Erro senha atual");
                     response.sendRedirect(
-                        "main/perfil.jsp?erro=2");
+                            "main/perfil.jsp?erro=2");
                 }
             } else {
                 File file = new File(CAMINHO_PEDRO + "/imagensUsuario/" + p.getUsuario() + ".png");
-
+                
                 p.setUsuario((String) sessao.getAttribute("nome_usuario"));
                 s = hup.deletar(p);
                 if (s.equals("")) {
@@ -207,7 +208,7 @@ public class PerfilServlet extends HttpServlet {
             }
         }
     }
-
+    
     private byte[] FileToByte(File file) throws IOException, IOException {
         //init array with file length
         byte[] byteArray = FileUtils.readFileToByteArray(file);
