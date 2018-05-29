@@ -5,8 +5,8 @@
     <div class="container">
         <h1 class="display-4">Mude a visão do seu negócio</h1>
         <p class="lead">Conheça o Chicken Tracker, um site que facilita o controle do seu negócio. Com ele, torna-se mais fácil manter
-        o fornecimento e os consumos em dia. Ele lhe dá pleno controle sobre o estoque, despesas e funcionários da sua granja, 
-        além de informar o seu desempenho com o tempo. </p>
+            o fornecimento e os consumos em dia. Ele lhe dá pleno controle sobre o estoque, despesas e funcionários da sua granja, 
+            além de informar o seu desempenho com o tempo. </p>
         <p class="lead">
             <a class="btn btn-cyan btn-lg" href="#" role="button">Saiba mais</a>
         </p>
@@ -42,7 +42,7 @@
                     <div class="col-10">
                         <h5 class="font-weight-bold text-left mb-3 dark-grey-text">Informativo</h5>
                         <p class="grey-text text-left">Ele dá controle sobre o estoque, além de gerar relatórios sobre o seu
-                        desempenho.</p>
+                            desempenho.</p>
                     </div>
                 </div>
                 <!--Grid row-->
@@ -78,15 +78,15 @@
         <!--Grid row-->
 
     </section>
-    
+
     <!--Section: Features v.3-->
     <!--<hr class="my-4">
     <section>
         <h2 class="py-5 font-weight-bold text-center">Colaboradores</h2>
     </section>-->
-    
+
     <hr class="my-4">
-    
+
     <!--Section: Team v.2-->
     <section class="team-section pb-5">
 
@@ -94,7 +94,7 @@
         <h2 class="py-5 font-weight-bold text-center">Nossa equipe</h2>
         <!--Section description-->
         <p class="grey-text pb-5 text-center">Nossa equipe é composta por profissionais altamente preparados e que
-         possuem um objetivo em comum, facilitar a vida do avicultor.</p>
+            possuem um objetivo em comum, facilitar a vida do avicultor.</p>
 
         <div class="row text-center">
 

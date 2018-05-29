@@ -112,6 +112,9 @@ public class PerfilServlet extends HttpServlet {
             
             if (butao.equals("cadastrar")) {
                 HttpSession sessao = request.getSession();
+                out.println(p.getUsuario());
+                out.println(senha);
+                out.println(p.getEmail());
                 p.setSenha(senha);
                 p.setConfirmacaoEmail('N');
                 s = hup.salvar(p);
@@ -126,8 +129,8 @@ public class PerfilServlet extends HttpServlet {
                         sessao.setAttribute("usuario", p);
                         sessao.setAttribute("usuario_logado", "true");
                         sessao.setAttribute("nome_usuario", p.getUsuario());
-                        response.sendRedirect(
-                                "seusNegocios/negocios.jsp");
+                        //response.sendRedirect(
+                                //"seusNegocios/negocios.jsp");
                     } else {
                         sessao.setAttribute("erroOutro", "Erro inesperado ao enviar e-mail");
                         response.sendRedirect("excecoes/Outros.jsp");

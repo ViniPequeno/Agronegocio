@@ -10,7 +10,6 @@ import br.com.avicultura.chicken_tracker.Models.Perfil;
 import br.com.avicultura.chicken_tracker.Servlets.Perfil.ConsultaPerfil;
 import br.com.avicultura.chicken_tracker.Utils.Email;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +46,7 @@ public class EmailServlet extends HttpServlet {
 
         String butao = request.getParameter("opcao");
         HttpSession session = request.getSession();
-        if (butao.equals("esqueceusenha")) {
+        if (butao.equals("esqueceuSenha")) {
             String usuario = request.getParameter("usuario");
             Perfil p = ConsultaPerfil.findById(usuario);
             Email email = new Email();
@@ -63,7 +62,7 @@ public class EmailServlet extends HttpServlet {
                 session.setAttribute("erroOutro", "Erro inesperado ao enviar e-mail");
                 response.sendRedirect("excecoes/Outros.jsp");
             }
-        } else if (butao.equals("trocarsenha")) {
+        } else if (butao.equals("trocarSenha")) {
             String senha = request.getParameter("senha");
             String usuario = request.getParameter("usuario");
             Perfil perfil = ConsultaPerfil.findById(usuario);
@@ -75,7 +74,7 @@ public class EmailServlet extends HttpServlet {
             } else {
                 response.getWriter().println("Seila");
             }
-        } else if (butao.equals("faleconosco")) {
+        } else if (butao.equals("faleConosco")) {
             String emailDestinario = request.getParameter("email");
             String assunto = request.getParameter("assunto");
             String mensagem = request.getParameter("mensagem");

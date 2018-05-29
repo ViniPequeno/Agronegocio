@@ -23,7 +23,8 @@ public class ConsultaPerfil {
         Perfil p = null;
         try {
             s.beginTransaction();
-            p = s.get(Perfil.class, id);
+            System.out.println(id);
+            p = s.get(Perfil.class, "pedro");
             s.getTransaction().commit();
             return p;
         } catch (HibernateException e) {

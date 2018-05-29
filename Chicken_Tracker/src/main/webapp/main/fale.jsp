@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="text-center mt-4">
-                            <button class="btn btn-default" name="opcao" value="faleconosco" type="submit">Enviar</button>
+                            <button class="btn btn-default" name="opcao" value="faleConosco" type="submit">Enviar</button>
                         </div>
                     </form>
                 </div>
