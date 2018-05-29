@@ -8,7 +8,7 @@ dadosCadaDia.forEach(function (item, indice, array) {
     datas.push(data[0]+'/'+data[1]+'/'+data[2]);
     valores.push(parseFloat(data[3]));
 });
-var myLineChart = new Chart(ctxL, {
+chartConf={
     type: 'line',
     data: {
         labels: datas,
@@ -48,4 +48,7 @@ var myLineChart = new Chart(ctxL, {
         },
         responsive: true
     }
-});
+};
+var myLineChart = new Chart(ctxL, chartConf);
+var ctxL2 = document.getElementById("graficoSeteDiasGanhosHD").getContext('2d');
+var myLineChart2 = new Chart(ctxL2, chartConf);

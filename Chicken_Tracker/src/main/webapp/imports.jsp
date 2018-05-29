@@ -3,6 +3,7 @@
 <script src="../Bootstrap/_JS/bootstrap.js"></script>
 <script src="../Bootstrap/_JS/mdb.js"></script>
 <script src="../_JS/jquery.mask.js"></script>
+<script src="../_JS/jspdf.min.js"></script>
 <script>
 // Tooltips Initialization
     $(function () {
