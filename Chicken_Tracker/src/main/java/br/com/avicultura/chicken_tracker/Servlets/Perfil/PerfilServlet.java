@@ -34,6 +34,8 @@ public class PerfilServlet extends HttpServlet {
     final String CAMINHO_PEDRO = "C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_YAN = "/Users/user/Documents/GitHub/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_GABRIEL = "C:/Users/Usuario/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
+    final String CAMINHO_10 = "C:/Users/Aluno/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
+    final String CAMINHO = CAMINHO_10;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -56,7 +58,7 @@ public class PerfilServlet extends HttpServlet {
                 List<FileItem> m = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                 for (FileItem item : m) {//Mudar a ordem dos inputs, colocar o usuario em cima da imagem
                     if (!item.isFormField()) {
-                        File file = new File(CAMINHO_PEDRO + "/imagensUsuario/"
+                        File file = new File(CAMINHO + "/imagensUsuario/"
                                 + p.getUsuario() + ".png");
                         InputStream in = new ByteArrayInputStream(item.get());
                         BufferedImage bImageFromConvert = ImageIO.read(in);
@@ -71,7 +73,6 @@ public class PerfilServlet extends HttpServlet {
                         }
 
                     } else {
-                        out.println(item.getFieldName());
                         switch (item.getFieldName()) {
                             case "inputNome":
                                 p.setNome(item.getString());
@@ -192,7 +193,7 @@ public class PerfilServlet extends HttpServlet {
                             "main/perfil.jsp?erro=2");
                 }
             } else {
-                File file = new File(CAMINHO_PEDRO + "/imagensUsuario/" + p.getUsuario() + ".png");
+                File file = new File(CAMINHO + "/imagensUsuario/" + p.getUsuario() + ".png");
 
                 p.setUsuario((String) sessao.getAttribute("nome_usuario"));
                 s = hup.deletar(p);

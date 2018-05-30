@@ -70,8 +70,10 @@ public class Email {
 
             retorno = true;
         } catch (AddressException ex) {
+            System.out.println("ERRO: "+ex.getMessage());
             retorno = false;
         } catch (MessagingException ex) {
+            System.out.println("ERRO: "+ex.getMessage());
             retorno = false;
          }
         return retorno;
