@@ -24,7 +24,7 @@
                         <!-- Material input text -->
                         <div class="md-form">
                             <i class="fa fa-id-card prefix grey-text"></i>
-                            <input type="text" id="inputLogin"  name="inputLogin" value="<%=p.getUsuario()%>" class="form-control" required maxlength="20">
+                            <input type="text" id="inputLogin"  name="inputLogin" value="<%=p.getUsuario()%>" class="form-control" required maxlength="20" readonly="true">
                             <label for="inputLogin">Login</label>
                         </div>
 

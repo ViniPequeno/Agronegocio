@@ -41,16 +41,16 @@ public class executarLogin extends HttpServlet {
         String login = request.getParameter("inputLogin");
         response.getWriter().println();
         Perfil p = ConsultaPerfil.findById(login);
-//        if (p == null) {
-//            response.sendRedirect("main/login.jsp?login=false");
-//        } else if (request.getParameter("inputSenha").equals(p.getSenha())) {
-//            sessao.setAttribute("usuario_logado", "true");
-//            sessao.setAttribute("nome_usuario", request.getParameter("inputLogin"));
-//            sessao.setAttribute("usuario", p);
-//            response.sendRedirect("seusNegocios/negocios.jsp");
-//        } else {
-//            response.sendRedirect("main/login.jsp?password=false");
-//        }
+        if (p == null) {
+            response.sendRedirect("main/login.jsp?login=false");
+        } else if (request.getParameter("inputSenha").equals(p.getSenha())) {
+            sessao.setAttribute("usuario_logado", "true");
+            sessao.setAttribute("nome_usuario", request.getParameter("inputLogin"));
+            sessao.setAttribute("usuario", p);
+            response.sendRedirect("seusNegocios/negocios.jsp");
+        } else {
+            response.sendRedirect("main/login.jsp?password=false");
+        }
 
     }
 

@@ -26,22 +26,21 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
-import org.hibernate.Hibernate;
 
 @MultipartConfig
 public class PerfilServlet extends HttpServlet {
-    
+
     final String CAMINHO_LAB_X = "C:/Users/Yan e Pedro/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_PEDRO = "C:/Users/vinic/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_YAN = "/Users/user/Documents/GitHub/Avicultura/Chicken_Tracker/src/main/webapp";
     final String CAMINHO_GABRIEL = "C:/Users/Usuario/Documents/NetBeansProjects/Avicultura/Chicken_Tracker/src/main/webapp";
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -68,7 +67,7 @@ public class PerfilServlet extends HttpServlet {
                             p.setFoto("../img/farmer.jpg");
                             file.delete();
                         }
-                        
+
                     } else {
                         out.println(item.getFieldName());
                         switch (item.getFieldName()) {
@@ -109,12 +108,9 @@ public class PerfilServlet extends HttpServlet {
                 out.println(ex.hashCode());
                 out.println(ex.getMessage());
             }
-            
+
             if (butao.equals("cadastrar")) {
                 HttpSession sessao = request.getSession();
-                out.println(p.getUsuario());
-                out.println(senha);
-                out.println(p.getEmail());
                 p.setSenha(senha);
                 p.setConfirmacaoEmail('N');
                 s = hup.salvar(p);
@@ -124,13 +120,13 @@ public class PerfilServlet extends HttpServlet {
                     email.setEmailDestinario(p.getEmail());
                     email.setMsg("Obrigado pelo cadastro!\n\nConfirma seu e-mail: \n\n"
                             + "Link: "
-                            + "http://localhost:8084/Chicken_Tracker/EmailServlet?seila=YDLinstaPECrebanho&usuario=" + p.getUsuario());
+                            + "http://localhost:8080/Chicken_Tracker/EmailServlet?seila=YDLinstaPECrebanho&usuario=" + p.getUsuario());
                     if (email.enviarGmail()) {
                         sessao.setAttribute("usuario", p);
                         sessao.setAttribute("usuario_logado", "true");
                         sessao.setAttribute("nome_usuario", p.getUsuario());
-                        //response.sendRedirect(
-                                //"seusNegocios/negocios.jsp");
+                        response.sendRedirect(
+                                "seusNegocios/negocios.jsp");
                     } else {
                         sessao.setAttribute("erroOutro", "Erro inesperado ao enviar e-mail");
                         response.sendRedirect("excecoes/Outros.jsp");
@@ -140,7 +136,7 @@ public class PerfilServlet extends HttpServlet {
                     response.sendRedirect(
                             "excecoes/ErroBanco.jsp");
                 }
-                
+
             } else if (butao.equals("alterar")) {
                 HttpSession sessao = request.getSession();
                 s = hup.atualizar(p);
@@ -156,9 +152,9 @@ public class PerfilServlet extends HttpServlet {
                     response.sendRedirect(
                             "excecoes/ErroBanco.jsp");
                 }
-                
+
             }
-            
+
         } else {
             butao = request.getParameter("usuario");
             HttpSession sessao = request.getSession();
@@ -193,7 +189,7 @@ public class PerfilServlet extends HttpServlet {
                 }
             } else {
                 File file = new File(CAMINHO_PEDRO + "/imagensUsuario/" + p.getUsuario() + ".png");
-                
+
                 p.setUsuario((String) sessao.getAttribute("nome_usuario"));
                 s = hup.deletar(p);
                 if (s.equals("")) {
@@ -211,7 +207,7 @@ public class PerfilServlet extends HttpServlet {
             }
         }
     }
-    
+
     private byte[] FileToByte(File file) throws IOException, IOException {
         //init array with file length
         byte[] byteArray = FileUtils.readFileToByteArray(file);
