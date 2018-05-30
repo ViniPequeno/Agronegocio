@@ -12,6 +12,7 @@
 
                 <div class="row">
 
+                    <input type="hidden" name="foto1" id="foto1" value="0"/>
                     <div class="col-md-8">
                         <div class="md-form form-group mt-5">
                             <i class="fa fa-user prefix grey-text"></i>
@@ -78,14 +79,14 @@
 <script src="../_JS/formUtils.js"></script>
 <script>
     var senhasCorretas = false;
+    $('#foto1').val('0');
     $('#inputConfirmarSenha').blur(function () {
         $('#inputConfirmarSenha').removeClass('valid');
         var senha = $('#inputSenha').val();
         var senha2 = $('#inputConfirmarSenha').val();
         if ($(this).val() == "") {
             $('#inputConfirmarSenha').removeClass('invalid');
-        }
-        else{
+        } else {
             if (senha === senha2) {
                 senhasCorretas = true;
                 $('#inputConfirmarSenha').removeClass('invalid');
@@ -99,10 +100,12 @@
     });
 
     $('#btnSelecionarImg').click(function () {
+        $('#foto1').val('1');
         $('#inputFoto').val(null);
         $('#inputFoto').click();
     });
     $('#btnRedefinirImg').click(function () {
+        $('#foto1').val('2');
         $('#inputFoto').val(null);
         $('#imgPerfil').attr('src', "../img/farmer.jpg");
     });
@@ -121,13 +124,13 @@
             reader.readAsDataURL(selectedFile);
         }
     });
-    
-    $('#formCadastro').submit(function (){
+
+    $('#formCadastro').submit(function () {
         var formValido = true;
-        if(senhasCorretas == false){
+        if (senhasCorretas == false) {
             formValido = false;
         }
-        if(formValido == false){
+        if (formValido == false) {
             e.preventDefault();
         }
     });

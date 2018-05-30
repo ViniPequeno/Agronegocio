@@ -61,9 +61,11 @@ public class PerfilServlet extends HttpServlet {
                         InputStream in = new ByteArrayInputStream(item.get());
                         BufferedImage bImageFromConvert = ImageIO.read(in);
                         if (escolha.equals("1")) {
+                            out.println("Entrei1");
                             p.setFoto("../imagensUsuario/" + p.getUsuario() + ".png");
                             ImageIO.write(bImageFromConvert, "png", file);
                         } else {
+                            out.println("Escoha: "+escolha);
                             p.setFoto("../img/farmer.jpg");
                             file.delete();
                         }
@@ -84,6 +86,7 @@ public class PerfilServlet extends HttpServlet {
                                 p.setEmail(item.getString());
                                 break;
                             case "foto1":
+                                out.println("Foto: "+item.getString());
                                 escolha = item.getString();
                                 break;
                             case "usuario":
@@ -110,6 +113,7 @@ public class PerfilServlet extends HttpServlet {
             }
 
             if (butao.equals("cadastrar")) {
+                out.println(p.getFoto());
                 HttpSession sessao = request.getSession();
                 p.setSenha(senha);
                 p.setConfirmacaoEmail('N');
@@ -118,9 +122,9 @@ public class PerfilServlet extends HttpServlet {
                     Email email = new Email();
                     email.setAssunto("Confirmação de email - ChickenTracker");
                     email.setEmailDestinario(p.getEmail());
-                    email.setMsg("Obrigado pelo cadastro!\n\nConfirma seu e-mail: \n\n"
-                            + "Link: "
-                            + "http://localhost:8080/Chicken_Tracker/EmailServlet?seila=YDLinstaPECrebanho&usuario=" + p.getUsuario());
+                    email.setMsg("<h3>Obrigado pelo cadastro!</h3> <br>Confirma seu e-mail: <br>"
+                            + "Link: <br>"
+                            + "http://localhost:8084/Chicken_Tracker/EmailServlet?seila=YDLinstaPECrebanho&usuario=" + p.getUsuario());
                     if (email.enviarGmail()) {
                         sessao.setAttribute("usuario", p);
                         sessao.setAttribute("usuario_logado", "true");

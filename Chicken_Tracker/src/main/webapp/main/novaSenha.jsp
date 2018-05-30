@@ -7,7 +7,7 @@
             <div class="card-body">
                 <!-- Material form login -->
                 <form action="/Chicken_Tracker/EmailServlet" method="post" id="novaSenha">
-                    <p class="h4 text-center mb-4">Esqueceu seu senha?</p>
+                    <p class="h4 text-center mb-4">Esqueceu seu senha <%=request.getParameter("usuario")%>?</p>
                     <!-- Material input text -->
                     <div class="md-form form-group mt-5"> 
                         <i class="fa fa-lock prefix grey-text"></i>
@@ -21,7 +21,7 @@
                         <label for="inputConfirmarNovaSenha" data-error="Mínimo de 8 caracteres">Confirmar nova senha</label>
                     </div>
                     <p id="labelSenhaValida" class="ml-4 my-4 invisible">Senha inválida</p>
-
+                    <input type="hidden" name="usuario" value="<%=request.getParameter("usuario")%>"/>
                     <div class="text-center">
                         <button name="opcao" value="trocarSenha" class="btn btn-default" type="submit">Confirmar</button>
                     </div>

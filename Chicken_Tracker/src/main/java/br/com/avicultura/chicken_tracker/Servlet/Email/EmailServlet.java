@@ -47,28 +47,31 @@ public class EmailServlet extends HttpServlet {
         String butao = request.getParameter("opcao");
         HttpSession session = request.getSession();
         if (butao.equals("esqueceuSenha")) {
-            String usuario = request.getParameter("usuario");
+            String usuario = request.getParameter("inputLogin");
             Perfil p = ConsultaPerfil.findById(usuario);
             Email email = new Email();
             email.setAssunto("Recuperação de senha - Chicken Tracker");
             email.setEmailDestinario(p.getEmail());
-            email.setMsg("Você esqueceu sua senha? Além de idiota é burro. Se for de quimica, tudo bem"
-                    + "\nClique nesse link e troque sua senha linda <3\n\n"
-                    + "Link: localhost:8080/Chicken_Tracker/main/esqueceuSenha.jsp?usuario=" + usuario);
+            email.setMsg("Você esqueceu sua senha? Além de idiota é burro. <br> <strong>Se for de quimica, tudo bem.</strong>"
+                    + "<br>Clique nesse link e troque sua senha linda </br>"
+                    + "Link: http://localhost:8084/Chicken_Tracker/main/novaSenha.jsp?usuario=" + usuario);
 
             if (email.enviarGmail()) {
-                response.sendRedirect("");//Enviou
+                response.getWriter().println("Enviamos um email");//Enviou
             } else {
                 session.setAttribute("erroOutro", "Erro inesperado ao enviar e-mail");
                 response.sendRedirect("excecoes/Outros.jsp");
             }
         } else if (butao.equals("trocarSenha")) {
-            String senha = request.getParameter("senha");
+            String senha = request.getParameter("inputNovaSenha");
             String usuario = request.getParameter("usuario");
             Perfil perfil = ConsultaPerfil.findById(usuario);
             perfil.setSenha(senha);
             HibernateUtil<Perfil> hup = new HibernateUtil<>();
             if (hup.atualizar(perfil).equals("")) {
+                session.setAttribute("usuario", perfil);
+                session.setAttribute("usuario_logado", "true");
+                session.setAttribute("nome_usuario", perfil.getUsuario());
                 response.sendRedirect(
                         "seusNegocios/negocios.jsp");
             } else {
@@ -81,7 +84,7 @@ public class EmailServlet extends HttpServlet {
             Email email = new Email();
             email.setAssunto(assunto);
             email.setEmailDestinario("ChickentrackerChickentracker@gmail.com");
-            email.setMsg("Email: " + emailDestinario + "\n\nMensagem:" + mensagem);
+            email.setMsg("Email: " + emailDestinario + "<br>Mensagem:" + mensagem);
             if (email.enviarGmail()) {
                 response.getWriter().println("Certo");
             } else {

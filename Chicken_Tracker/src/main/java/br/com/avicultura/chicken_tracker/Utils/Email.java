@@ -62,7 +62,7 @@ public class Email {
             MimeMessage message = new MimeMessage(s);
             message.setFrom(new InternetAddress("ChickentrackerChickentracker@gmail.com"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.emailDestinario));
-
+            message.setHeader("content-type", "text/html");
             message.setSubject((this.assunto));
             message.setContent(this.msg, "text/html; charset=utf-8");
 
