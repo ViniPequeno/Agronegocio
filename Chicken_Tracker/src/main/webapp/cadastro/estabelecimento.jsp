@@ -99,6 +99,22 @@
 <script src="../js/validador-de-cnpj.js"></script>
 <script src="../js/consultaCEP.js"></script>
 <script>
+     $('#inputSufixoCNPJ').blur(function () {
+        $.ajax({
+            url: "http://localhost:8080/public/index.php/api/estabelecimento/"+ $('#inputNegocioCNPJ').val() + "/"+$('#inputSufixoCNPJ').val()+"/",
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data.existe === "false") {
+                    $('#inputSufixoCNPJ').removeClass('invalid');
+                    $('#inputSufixoCNPJ').addClass('valid');
+                } else {
+                    $('#inputSufixoCNPJ').removeClass('valid');
+                    $('#inputSufixoCNPJ').addClass('invalid');
+                }
+            }
+        });
+    });
     $('#inputSaldo').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
     $('#inputSufixoCNPJ').change(function () {
         var CNPJ = $('#inputNegocioCNPJ').val() + $('#inputSufixoCNPJ').val();

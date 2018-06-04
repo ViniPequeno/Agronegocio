@@ -97,6 +97,22 @@
 <script src="../js/mascara.js"></script>
 <script src="../js/formUtils.js"></script>
 <script>
+     $('#inputCNPJ').blur(function () {
+        $.ajax({
+            url: "http://localhost:8080/public/index.php/api/negocio/" + $('#inputCNPJ').val() + "/",
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data.existe === "false") {
+                    $('#inputCNPJ').removeClass('invalid');
+                    $('#inputCNPJ').addClass('valid');
+                } else {
+                    $('#inputCNPJ').removeClass('valid');
+                    $('#inputCNPJ').addClass('invalid');
+                }
+            }
+        });
+    });
     $('form[name="formCadastro"').submit(function () {
         $('#inputCNPJ').unmask('00.000.000');
     });

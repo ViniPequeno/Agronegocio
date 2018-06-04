@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
 <% String css = "../css/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 
@@ -7,7 +8,7 @@
         <div class="card-body">
             <form action="/Chicken_Tracker/FuncionarioServlet" name="formCadastro" method="post">
                 <p class="h1 text-center mb-4">Novo Funcionário</p>
-
+                <input type="hidden" id="estabelecimento" value="<%=((Estabelecimento)request.getSession().getAttribute("estabelecimento")).getId()%>">
                 <div class="form-row">
                     <!-- Material input text -->
                     <div class="col-md-6">
@@ -78,6 +79,24 @@
 <script src="../js/mascara.js"></script>
 <script src="../js/maskMoney.js"></script>
 <script>
+    $('#inputCPF').blur(function () {
+        if ($('#inputCNPJ').val() !== "" && $('#inputProduto').val() !== "") {
+            $.ajax({
+                url: "http://localhost:8080/public/index.php/api/funcionario/" + $('#inputCPF').val() + "/" + $('#estabelecimento').val(),
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.existe === "false") {
+                        $('#inputCPF').removeClass('invalid');
+                        $('#inputCPF').addClass('valid');
+                    } else {
+                        $('#inputCPF').removeClass('valid');
+                        $('#inputCNPJ').addClass('invalid');
+                    }
+                }
+            });
+        }
+    });
     $('#inputSalario').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
     $('form[name="formCadastro"').submit(function () {
         if (!CPFvalido) {

@@ -60,6 +60,24 @@
 <script src="../js/mascara.js"></script>
 <script src="../js/maskMoney.js"></script>
 <script>
+    $('#inputCNPJ, #inputProduto').blur(function () {
+        if ($('#inputCNPJ').val() !== "" && $('#inputProduto').val() !== "") {
+            $.ajax({
+                url: "http://localhost:8080/public/index.php/api/fornecimento/" + $('#inputCNPJ').val() + "/" + $('#inputProduto').val() + "/V",
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.existe === "false") {
+                        $('#inputCNPJ, #inputProduto').removeClass('invalid');
+                        $('#inputCNPJ, #inputProduto').addClass('valid');
+                    } else {
+                        $('#inputCNPJ, #inputProduto').removeClass('valid');
+                        $('#inputCNPJ, #inputProduto').addClass('invalid');
+                    }
+                }
+            });
+        }
+    });
     $('#inputValorPagamento').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
     $('form[name="formCadastro"').submit(function () {
         var value = $('#inputValorPagamento').maskMoney('unmasked')[0];
