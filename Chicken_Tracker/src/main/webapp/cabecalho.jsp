@@ -1,5 +1,5 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Perfil"%>
-<%@ page pageEncoding="ISO-8859-1"%>
+<%@page pageEncoding="ISO-8859-1"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"%>
 <%@page import="javax.servlet.http.*"%>
 <!DOCTYPE html>
@@ -8,9 +8,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script defer src="../fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.js"></script>
-        <link rel="stylesheet" type="text/css" href="../Bootstrap/_CSS/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="../Bootstrap/_CSS/mdb.css">
-        <link rel="stylesheet" type="text/css" href="../_CSS/cabecalho.css">
+        <link rel="stylesheet" type="text/css" href="../Bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../Bootstrap/css/mdb.css">
+        <link rel="stylesheet" type="text/css" href="../css/cabecalho.css">
         <link rel="stylesheet" type="text/css" href="<%=css%>">
         <link rel="icon" href="../img/icon.png">
 
@@ -33,7 +33,7 @@
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                 <div class="container">
                     <a class="navbar-brand" href="../main/index.jsp" target="_self">
-                    <img src="../img/icon.png" height="30" width="30" alt=""> Chicken Tracker</a>
+                        <img src="../img/icon.png" height="30" width="30" alt=""> Chicken Tracker</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".trer" aria-controls="collapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

@@ -1,4 +1,4 @@
-<% String css = "../_CSS/login.css";%>
+<% String css = "../css/login.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
@@ -32,7 +32,7 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/formUtils.js"></script>
+<script src="../js/formUtils.js"></script>
 <script>
     $('#inputConfirmarNovaSenha').change(function () {
         var senhaNova = $('#inputNovaSenha');

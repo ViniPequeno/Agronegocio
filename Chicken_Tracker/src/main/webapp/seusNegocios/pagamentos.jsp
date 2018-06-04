@@ -1,5 +1,5 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
-<% String css = "../_CSS/seu_negocio.css";%>
+<% String css = "../css/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Pagamento.ConsultaPagamento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Pagamento" %>
@@ -130,10 +130,10 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/paginacaoTabelas.js"></script>
-<script src="../_JS/mascara.js"></script>
-<script src="../_JS/formUtils.js"></script>
-<script src="../_JS/maskMoney.js"></script>
+<script src="../js/paginacaoTabelas.js"></script>
+<script src="../js/mascara.js"></script>
+<script src="../js/formUtils.js"></script>
+<script src="../js/maskMoney.js"></script>
 <script>
     $('.tipoPagamento').each(function () {
         if ($(this).text() == 'G') {

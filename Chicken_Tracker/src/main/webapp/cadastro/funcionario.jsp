@@ -1,4 +1,4 @@
-<% String css = "../_CSS/cadastro.css";%>
+<% String css = "../css/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 
 <!-- Material form register -->
@@ -74,9 +74,9 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/validador-de-cpf.js"></script>
-<script src="../_JS/mascara.js"></script>
-<script src="../_JS/maskMoney.js"></script>
+<script src="../js/validador-de-cpf.js"></script>
+<script src="../js/mascara.js"></script>
+<script src="../js/maskMoney.js"></script>
 <script>
     $('#inputSalario').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','});
     $('form[name="formCadastro"').submit(function () {
@@ -90,6 +90,6 @@
         }
     });
 </script>
-<script src="../_JS/formUtils.js"></script>
+<script src="../js/formUtils.js"></script>
 </body>
 </html>

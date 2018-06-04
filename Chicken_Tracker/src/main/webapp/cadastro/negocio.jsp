@@ -1,4 +1,4 @@
-<% String css = "../_CSS/cadastro.css";%>
+<% String css = "../css/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 
 <!-- Material form register -->
@@ -94,8 +94,8 @@
 </div>
 
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/mascara.js"></script>
-<script src="../_JS/formUtils.js"></script>
+<script src="../js/mascara.js"></script>
+<script src="../js/formUtils.js"></script>
 <script>
     $('form[name="formCadastro"').submit(function () {
         $('#inputCNPJ').unmask('00.000.000');

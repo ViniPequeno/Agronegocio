@@ -1,4 +1,4 @@
-<% String css = "../_CSS/login.css";%>
+<% String css = "../css/login.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
@@ -11,25 +11,25 @@
                     <!-- Material input email -->
                     <div class="md-form form-group">
                         <i class="fa fa-id-card prefix grey-text"></i>
-                        <input type="text" id="inputLogin" name="inputLogin" class="form-control validate" autofocus required>
+                        <input type="text" id="inputLogin" name="inputLogin" class="form-control validate" autofocus required tabindex="1">
                         <label for="inputLogin" data-error="">Login</label>
                     </div>
 
                     <!-- Material input password -->
                     <div class="md-form form-group mt-5">
                         <i class="fa fa-lock prefix grey-text"></i>
-                        <input minlength="8" maxlength="20" type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="off">
+                        <input minlength="8" maxlength="20" type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="on" tabindex="2">
                         <label for="inputSenha" data-error="">Senha</label>
                     </div>
                     <p class="text-center"><a class="small ml-4" href="esqueceuSenha.jsp">Esqueci minha senha. Quero recuperá-la.</a></p>
 
                     <div class="text-center mt-5 mb-1">
-                        <button class="btn btn-green btn-block font-weight-bold" type="submit">Entrar</button>
+                        <button class="btn btn-green btn-block font-weight-bold" type="submit" tabindex="3">Entrar</button>
                     </div>
                 </form>
                 <hr/>
                 <div class="text-center mt-1 mb-3">
-                    <a class="btn btn-outline-green btn-block font-weight-bold" href = '../cadastro/usuario.jsp'>Ainda não é cadastrado? Cadastre-se agora!</a>
+                    <a class="btn btn-outline-green btn-block font-weight-bold" href = '../cadastro/usuario.jsp' tabindex="4">Ainda não é cadastrado? Cadastre-se agora!</a>
                 </div>
             </div>
         </div>
@@ -83,6 +83,6 @@
         $("#inputLogin").removeClass('valid');
     });
 </script>
-<script src="../_JS/formUtils.js"></script>
+<script src="../js/formUtils.js"></script>
 </body>
 </html>

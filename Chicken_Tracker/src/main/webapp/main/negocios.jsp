@@ -1,4 +1,4 @@
-<% String css = "../_CSS/negocios.css";%>
+<% String css = "../css/negocios.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
@@ -134,8 +134,8 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/paginacaoTabelas.js"></script>
-<script src="../_JS/formUtils.js"></script>
+<script src="../js/paginacaoTabelas.js"></script>
+<script src="../js/formUtils.js"></script>
 <script type="text/javascript">
     dataN = "";
     var linha;

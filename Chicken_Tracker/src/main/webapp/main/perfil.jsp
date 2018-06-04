@@ -1,6 +1,6 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Perfil"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Perfil.ConsultaPerfil"%>
-<% String css = "../_CSS/cadastro.css";%>
+<% String css = "../css/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <%String login = (String) sessao.getAttribute("nome_usuario");
     Perfil p = ConsultaPerfil.findById(login);%>
@@ -122,7 +122,7 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/formUtils.js"></script>
+<script src="../js/formUtils.js"></script>
 <script>
     var novaSenhaValida = false;
     $('#foto1').val("0");

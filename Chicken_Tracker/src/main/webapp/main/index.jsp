@@ -1,4 +1,4 @@
-<% String css = "../_CSS/index.css";%>
+<% String css = "../css/index.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <div class="jumbotron vertical-center">
     <div class="img"></div>
@@ -220,6 +220,6 @@
     </a>
 </div>
 <%@include file="../rodape.jsp" %>
-<script type="text/javascript" src="../_JS/index.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
 </body>
 </html>

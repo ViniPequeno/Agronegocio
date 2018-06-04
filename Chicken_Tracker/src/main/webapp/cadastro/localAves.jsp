@@ -2,7 +2,7 @@
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Produto"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
-<% String css = "../_CSS/cadastro.css";%>
+<% String css = "../css/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
@@ -91,9 +91,9 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src='../_JS/mascara.js'></script>
-<script src='../_JS/maskMoney.js'></script>
-<script src="../_JS/formUtils.js"></script>
+<script src='../js/mascara.js'></script>
+<script src='../js/maskMoney.js'></script>
+<script src="../js/formUtils.js"></script>
 <script>
     $('#inputLargura').maskMoney({suffix: ' m', thousands: '.', decimal: ','});
     $('#inputComprimento').maskMoney({suffix: ' m', thousands: '.', decimal: ','});

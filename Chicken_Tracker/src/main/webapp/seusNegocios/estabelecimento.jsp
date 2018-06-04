@@ -1,4 +1,4 @@
-<% String css = "../_CSS/seu_negocio.css";%>
+<% String css = "../css/seu_negocio.css";%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Pagamento.ConsultaPagamento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
@@ -109,7 +109,7 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/mascara.js"></script>
-<script src="../_JS/graficos/graficoSeteDiasLucros.js"></script>
+<script src="../js/mascara.js"></script>
+<script src="../js/graficos/graficoSeteDiasLucros.js"></script>
 </body>
 </html>

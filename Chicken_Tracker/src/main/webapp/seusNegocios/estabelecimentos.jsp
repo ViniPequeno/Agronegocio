@@ -1,4 +1,4 @@
-<% String css = "../_CSS/seu_negocio.css";%>
+<% String css = "../css/seu_negocio.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento" %>
@@ -169,10 +169,10 @@
     </div>
 </div>
 <%@include file="../rodape.jsp" %>
-<script src="../_JS/paginacaoTabelas.js"></script>
-<script src="../_JS/formUtils.js"></script>
-<script src="../_JS/consultaCEP.js"></script>
-<script src="../_JS/mascara.js"></script>
+<script src="../js/paginacaoTabelas.js"></script>
+<script src="../js/formUtils.js"></script>
+<script src="../js/consultaCEP.js"></script>
+<script src="../js/mascara.js"></script>
 <script>
     dataE = "";
     var modalDetalhesInnerHTML = '<p id="negocio">Negócio: </p>' +
