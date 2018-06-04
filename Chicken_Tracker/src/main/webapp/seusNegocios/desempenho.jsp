@@ -387,37 +387,39 @@
     }
 
     //adiciona evento ao botão
-    document.getElementById('downloadAnosPDF').addEventListener("click", downloadAnosPDF);
-    //donwload pdf a partir do gráfico em alta resolução
-    function downloadAnosPDF() {
-        //creates PDF from img
-        var doc = new jsPDF('portrait');
-        doc.setFontSize(20);
-        doc.text(15, 15, "Gráficos - "+anos[0]+"/"+anos[anos.length-1]);
+    if (document.getElementById('downloadAnosPDF') !== null) {
+        document.getElementById('downloadAnosPDF').addEventListener("click", downloadAnosPDF);
+        //donwload pdf a partir do gráfico em alta resolução
+        function downloadAnosPDF() {
+            //creates PDF from img
+            var doc = new jsPDF('portrait');
+            doc.setFontSize(20);
+            doc.text(15, 15, "Gráficos - " + anos[0] + "/" + anos[anos.length - 1]);
 
-        var width = doc.internal.pageSize.width;
-        var height = doc.internal.pageSize.height;
+            var width = doc.internal.pageSize.width;
+            var height = doc.internal.pageSize.height;
 
-        var canvas;
+            var canvas;
 
-        canvas = document.querySelector('#graficoAnosLucrosHD');
-        //creates image
-        var canvasImg = canvas.toDataURL("image/jpeg", 1.0);
-        doc.addImage(canvasImg, 'JPEG', 10, 20, 182, 97.5);
+            canvas = document.querySelector('#graficoAnosLucrosHD');
+            //creates image
+            var canvasImg = canvas.toDataURL("image/jpeg", 1.0);
+            doc.addImage(canvasImg, 'JPEG', 10, 20, 182, 97.5);
 
-        canvas = document.querySelector('#graficoAnosDespesasHD');
-        //creates image
-        canvasImg = canvas.toDataURL("image/jpeg", 1.0);
-        doc.addImage(canvasImg, 'JPEG', 10, 127.5, 182, 97.5);
+            canvas = document.querySelector('#graficoAnosDespesasHD');
+            //creates image
+            canvasImg = canvas.toDataURL("image/jpeg", 1.0);
+            doc.addImage(canvasImg, 'JPEG', 10, 127.5, 182, 97.5);
 
-        doc.addPage();
-        
-        canvas = document.querySelector('#graficoAnosGanhosHD');
-        //creates image
-        canvasImg = canvas.toDataURL("image/jpeg", 1.0);
-        doc.addImage(canvasImg, 'JPEG', 10, 20, 182, 97.5);
+            doc.addPage();
 
-        doc.save('relatórioAnualVariado.pdf');
+            canvas = document.querySelector('#graficoAnosGanhosHD');
+            //creates image
+            canvasImg = canvas.toDataURL("image/jpeg", 1.0);
+            doc.addImage(canvasImg, 'JPEG', 10, 20, 182, 97.5);
+
+            doc.save('relatórioAnualVariado.pdf');
+        }
     }
 </script>
 </body>
