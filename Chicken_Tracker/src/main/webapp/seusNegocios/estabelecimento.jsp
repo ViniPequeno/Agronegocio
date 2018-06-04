@@ -19,22 +19,18 @@
     <h2 class="py-5 font-weight-bold text-left">
         <a href="estabelecimentos.jsp?negocio=<%=((Negocio) session.getAttribute("negocio")).getEmpresaCNPJ()%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Estabelecimento: <%=e.getSufixoCNPJ()%></h2>
-    <div class="text-center">
-        <a class="btn blue-grey darken-4 white-text" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Funcionários</a>
-
-        <a class="btn blue-grey darken-3 white-text" href="../seusNegocios/fornecedores.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Fornecedores</a>
-
-        <a class="btn blue-grey darken-2 white-text" href="../seusNegocios/fornecimentos.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Fornecimentos</a>
-
-        <a class="btn blue-grey darken-1 white-text" href="../seusNegocios/produtos.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Produtos</a>
-
-        <a class="btn blue-grey white-text" href="../seusNegocios/vacinas.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Vacinas</a>
-
-        <a class="btn blue-grey lighten-1 white-text" href="../seusNegocios/aviarios.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Aviários</a>
-
-        <a class="btn blue-grey lighten-1 white-text" href="../seusNegocios/pagamentos.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Pagamentos</a>
-
-        <a class="btn blue-grey lighten-1 white-text" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Desempenho</a>
+            
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <a class="btn blue-grey darken-4 white-text mx-3" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Funcionários</a>
+            <a class="btn blue-grey darken-3 white-text mx-3" href="../seusNegocios/fornecedores.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Fornecedores</a>
+            <a class="btn blue-grey darken-2 white-text mx-3" href="../seusNegocios/fornecimentos.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Fornecimentos</a>
+            <a class="btn blue-grey darken-1 white-text mx-3" href="../seusNegocios/produtos.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Produtos</a>
+            <a class="btn blue-grey white-text mx-4" href="../seusNegocios/vacinas.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Vacinas</a>
+            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/aviarios.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Aviários</a>
+            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/pagamentos.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Pagamentos</a>
+            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>">Desempenho</a>
+        </div>
     </div>
     <div class="row mt-lg-5">
         <div class="col-lg-5">
