@@ -1,8 +1,6 @@
 package br.com.avicultura.chicken_tracker.Utils;
 
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -49,7 +47,7 @@ public class Email {
         props.put("mail.smtp.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.port", "587");
 
         Session s = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             @Override

@@ -5,10 +5,20 @@
  */
 package br.com.avicultura.chicken_tracker.Utils;
 
+import br.com.avicultura.chicken_tracker.Models.*;
+
 /**
  *
  * @author vinic
  */
 public class EncherBancoAux {
-    
+
+    public EncherBancoAux() {
+        Perfil p = Perfil.getInstance();
+        Negocio n = Negocio.getInstance();
+        Estabelecimento e = Estabelecimento.getInstance();
+        EstabelecimentoFuncionario ef = EstabelecimentoFuncionario.getInstance();
+        Funcionario f = Funcionario.getInstance();
+    }
+
 }
