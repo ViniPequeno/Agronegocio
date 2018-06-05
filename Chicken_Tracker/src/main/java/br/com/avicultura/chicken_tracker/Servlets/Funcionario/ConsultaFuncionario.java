@@ -39,14 +39,15 @@ public class ConsultaFuncionario {
         return f;
     }
 
-    public static List<Funcionario> returnList(String estabelecimento, Negocio negocio) {
+    public static List<Funcionario> returnList(String estabelecimentoID) {
         List<Funcionario> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
+        Long longID = Long.parseLong(estabelecimentoID);
         try {
             s.beginTransaction();
             Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
-                    + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
-            query.setParameter("estabelecimento", estabelecimento);
+                    + "ef.estabelecimento.id =:id");
+            query.setParameter("id", longID);
              
             List<EstabelecimentoFuncionario> listaEF = query.getResultList();
             s.getTransaction().commit();
@@ -64,14 +65,15 @@ public class ConsultaFuncionario {
         return lista;
     }
 
-    public static List<EstabelecimentoFuncionario> returnListFuncionario(String estabelecimento, Negocio negocio) {
+    public static List<EstabelecimentoFuncionario> returnListFuncionario(String estabelecimentoID) {
         Session s = HibernateFactory.getSessionFactory().openSession();
         List<EstabelecimentoFuncionario> listaEF = null;
+        Long longID = Long.parseLong(estabelecimentoID);
         try {
             s.beginTransaction();
             Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
-                    + "ef.estabelecimento.sufixoCNPJ =:estabelecimento");
-            query.setParameter("estabelecimento", estabelecimento);
+                    + "ef.estabelecimento.id =:id");
+            query.setParameter("id", longID);
              
             listaEF = query.getResultList();
             s.getTransaction().commit();
@@ -84,14 +86,15 @@ public class ConsultaFuncionario {
         return listaEF;
     }
 
-    public static EstabelecimentoFuncionario returnFuncionario(String e, String f, Negocio negocio) {
+    public static EstabelecimentoFuncionario returnFuncionario(String estabelecimentoID, String f) {
         Session s = HibernateFactory.getSessionFactory().openSession();
         EstabelecimentoFuncionario ef = null;
+        Long longID = Long.parseLong(estabelecimentoID);
         try {
             s.beginTransaction();
             Query query = s.createQuery("from EstabelecimentoFuncionario ef where "
-                    + "ef.estabelecimento.sufixoCNPJ =:e and ef.funcionario.CPF=:f");
-            query.setParameter("e", e);
+                    + "ef.estabelecimento.id =:id and ef.funcionario.CPF=:f");
+            query.setParameter("id", longID);
             query.setParameter("f", f);
              
             ef = (EstabelecimentoFuncionario) query.getResultList().get(0);
@@ -122,13 +125,12 @@ public class ConsultaFuncionario {
         return lista;
     }
 
-    public static String returnValues(Funcionario f, String estabelecimento, Negocio n) {
+    public static String returnValues(Funcionario f, String estabelecimento) {
         String a = "";
         a += f.getCPF() + "#";
-        //a += f.getCargo() + "#";
         a += f.getNome() + "#";
         a += f.getRG() + "#";
-        Estabelecimento e = ConsultaEstabelecimento.findById(estabelecimento, n);
+        Estabelecimento e = ConsultaEstabelecimento.findById(estabelecimento);
         for (EstabelecimentoFuncionario ef : e.getFuncionarios()) {
             if (f.getCPF().equals(ef.getFuncionario().getCPF())) {
                 a += ef.getCargo() + "#";
@@ -136,8 +138,6 @@ public class ConsultaFuncionario {
                 a += ef.getSalario() + "#";
             }
         }
-        //a += f.getSalario() + "#";
-        //a += f.getSituacao() + "#";
 
         return a;
     }

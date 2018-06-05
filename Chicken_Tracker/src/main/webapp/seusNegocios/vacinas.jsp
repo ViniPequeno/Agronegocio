@@ -14,12 +14,12 @@
     <%  
         Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         if (sessao.getAttribute("estabelecimento") == null) {
-            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
         } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
-            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
         }
         List<Vacina> vacinas;
-        vacinas = ConsultaVacina.returnList(request.getParameter("estabelecimento"),n);
+        vacinas = ConsultaVacina.returnList(request.getParameter("estabelecimento"));
         if (vacinas.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 

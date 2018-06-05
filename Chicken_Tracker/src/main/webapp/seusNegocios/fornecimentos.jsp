@@ -15,9 +15,9 @@
     <%
         Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         if (sessao.getAttribute("estabelecimento") == null) {
-            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
         } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
-            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
         }
         List<Fornecimento> fornecimentos;
         fornecimentos = ConsultaFornecimento.returnList(request.getParameter("estabelecimento"), n);

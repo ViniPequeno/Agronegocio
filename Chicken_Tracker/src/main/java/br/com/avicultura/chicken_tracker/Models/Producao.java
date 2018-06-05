@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name="producao")
 public class Producao {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int quantidade;
     private int dia;
@@ -28,7 +28,7 @@ public class Producao {
     private LocalAves localave;
     
     @ManyToOne
-    @JoinColumn(name = "´produto_id")
+    @JoinColumn(name = "produto_id")
     private Produto produto;
     
     private Producao(){}

@@ -36,13 +36,14 @@ public class ConsultaVacina {
         return v;
     }
 
-    public static List<Vacina> returnList(String estabelecimento, Negocio negocio) {
+    public static List<Vacina> returnList(String estabelecimentoID) {
         List<Vacina> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
+        Long longID = Long.parseLong(estabelecimentoID);
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Vacina v where v.estabelecimento.sufixoCNPJ =:estabelecimento");
-            query.setParameter("estabelecimento", estabelecimento);
+            Query query = s.createQuery("from Vacina v where v.estabelecimento.id =:id");
+            query.setParameter("id", longID);
              
             lista = query.getResultList();
             s.getTransaction().commit();

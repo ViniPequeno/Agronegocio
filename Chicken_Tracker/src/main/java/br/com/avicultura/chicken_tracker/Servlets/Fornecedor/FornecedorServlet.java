@@ -78,10 +78,9 @@ public class FornecedorServlet extends HttpServlet {
                 p.setEstabelecimento(e);
                 p.setTipo('D');
                 p.setValor(f.getPagamento());
-                p.setDescricao("Pagamento do fornecedor " + f.getCNPJ() + " no valor: " + p.getValor()
-                        + "referente ao produto " + f.getProdutos().getNome() + " quantidade igual a"
-                        + f.getQuantidade() + "na data " + p.getDia()
-                        + "/" + p.getMes() + "/" + p.getAno());
+                p.setDescricao("Pagamento do fornecedor " + f.getCNPJ() + 
+                        "referente ao produto " + f.getProdutos().getNome() + " de quantidade igual a"
+                        + f.getQuantidade() );
                 e.setSaldo(e.getSaldo() - p.getValor());
                 f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() + f.getQuantidade());
                 o.print("oii");
@@ -89,7 +88,7 @@ public class FornecedorServlet extends HttpServlet {
                 o.println(hue.atualizar(e));
                 o.println(hupro.atualizar(f.getProdutos()));
                 o.print("oiei");
-                //response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
             }
 
         } else if (butao.equals("cadastrar")) {
@@ -106,7 +105,7 @@ public class FornecedorServlet extends HttpServlet {
                 f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
                 f.setEstabelecimento(e);
                 huf.salvar(f);
-                response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
 
             }
         } else if (butao.equals("alterar")) {
@@ -122,7 +121,7 @@ public class FornecedorServlet extends HttpServlet {
             f.setTipo('C');
             f.setEstabelecimento(e);
             huf.atualizar(f);
-            response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
@@ -143,7 +142,7 @@ public class FornecedorServlet extends HttpServlet {
                 f.setId(longID);
                 huf.deletar(f);
             }
-            response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
         }
     }
 }

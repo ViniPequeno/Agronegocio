@@ -50,7 +50,7 @@ public class ProdutoServlet extends HttpServlet {
             }
             p.setEstabelecimento(e);
             hup.salvar(p);
-            response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getId());
         } else if (butao.equals("alterar")) {
             p.setNome(request.getParameter("inputNome"));
             p.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
@@ -60,7 +60,7 @@ public class ProdutoServlet extends HttpServlet {
             p.setQuantidadeAtual(Integer.parseInt(request.getParameter("inputAtual")));
             p.setEstabelecimento(e);
             hup.atualizar(p);
-            response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getId());
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
@@ -78,7 +78,7 @@ public class ProdutoServlet extends HttpServlet {
                 p.setCodigo(Integer.parseInt(codigo[index]));
                 hup.deletar(p);
             }
-            response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/produtos.jsp?estabelecimento=" + e.getId());
         }
     }
 

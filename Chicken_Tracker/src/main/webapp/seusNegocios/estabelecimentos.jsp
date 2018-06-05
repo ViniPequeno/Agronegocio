@@ -63,7 +63,7 @@
                         <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="CNAE"><%=e.getCNAE()%></td>
                         <td class="sufixoCNPJ"><%=e.getSufixoCNPJ()%></td>
-                        <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getSufixoCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
+                        <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getId()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
                                 <i class="fa fa-ellipsis-h fa-lg mr-1" aria-hidden="true"></i></a></td>
                     </tr>
                     <%}%>

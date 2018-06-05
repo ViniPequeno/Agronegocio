@@ -42,8 +42,7 @@
                 <div class="md-form">
                     <select name="inputProduto" id="inputProduto">
                         <% Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-                            for (Produto p : ConsultaProduto.returnListEstoque(e.getSufixoCNPJ(),
-                                    (Negocio) request.getSession().getAttribute("negocio"))) {%>
+                            for (Produto p : ConsultaProduto.returnListEstoque(e.getId())) {%>
                         <option value="<%=p.getCodigo()%>"><%=p.getNome()%></option>
                         <% }%>
                     </select>

@@ -53,7 +53,7 @@ public class VacinaServlet extends HttpServlet {
             v.setEstabelecimento(e);
             v.setDescricao(request.getParameter("inputDescricao"));
             hup.salvar(v);
-            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getId());
         } else if (butao.equals("alterar")) {
             v.setNome(request.getParameter("inputNome"));
             v.setCodigo(Integer.parseInt(request.getParameter("inputUsuario")));
@@ -65,7 +65,7 @@ public class VacinaServlet extends HttpServlet {
             }
             v.setDescricao(request.getParameter("inputDescricao"));
             hup.atualizar(v);
-            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getId());
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
@@ -83,7 +83,7 @@ public class VacinaServlet extends HttpServlet {
                 v.setCodigo(Integer.parseInt(codigo[index]));
                 String s = hup.deletar(v);
             }
-            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/vacinas.jsp?estabelecimento=" + e.getId());
         }
     }
 

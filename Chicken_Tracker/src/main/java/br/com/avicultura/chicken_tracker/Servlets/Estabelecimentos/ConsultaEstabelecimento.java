@@ -7,7 +7,6 @@ package br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
-import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Pagamento;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +20,14 @@ import org.hibernate.Session;
  */
 public class ConsultaEstabelecimento {
 
-    public static Estabelecimento findById(String sufixoCNPJ, Negocio negocio) {
+    public static Estabelecimento findById(String id) {
         Session s = HibernateFactory.getSessionFactory().openSession();
         Estabelecimento e = null;
+        Long longID = Long.parseLong(id);
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Estabelecimento e where e.sufixoCNPJ =:estabelecimento and e.negocio.empresaCNPJ=:negocio");
-            query.setParameter("estabelecimento", sufixoCNPJ);
-            query.setParameter("negocio", negocio.getEmpresaCNPJ());
+            Query query = s.createQuery("from Estabelecimento e where e.id =:id");
+            query.setParameter("id", longID);
             e = (Estabelecimento) query.getSingleResult();
             s.getTransaction().commit();
             return e;
@@ -200,6 +199,7 @@ public class ConsultaEstabelecimento {
     public static String returnValues(Estabelecimento e) {
         String a = "";
         a += e.getNegocio().getNome() + "#";
+        a += e.getNegocio().getPerfil().getNome()+ "#";
         a += e.getSufixoCNPJ() + "#";
         a += e.getCNAE() + "#";
         a += e.getCEP()+ "#";

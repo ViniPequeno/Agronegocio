@@ -20,14 +20,15 @@ import org.hibernate.Session;
  */
 public class ConsultaPagamento {
 
-    public static List<Pagamento> returnList(String estabelecimento) {
+    public static List<Pagamento> returnList(String estabelecimentoID) {
         Session s = HibernateFactory.getSessionFactory().openSession();
+        Long longID = Long.parseLong(estabelecimentoID);
         List<Pagamento> lista = null;
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Pagamento p where p.estabelecimento.sufixoCNPJ =:estabelecimento"
+            Query query = s.createQuery("from Pagamento p where p.estabelecimento.id =:id"
                     + " ORDER BY ano DESC, mes DESC, dia DESC, valor DESC");
-            query.setParameter("estabelecimento", estabelecimento);
+            query.setParameter("id", longID);
 
             lista = query.getResultList();
             s.getTransaction().commit();

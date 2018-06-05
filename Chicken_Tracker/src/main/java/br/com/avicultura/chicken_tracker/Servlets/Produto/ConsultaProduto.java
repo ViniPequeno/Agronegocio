@@ -6,7 +6,6 @@
 package br.com.avicultura.chicken_tracker.Servlets.Produto;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
-import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import java.util.List;
 import javax.persistence.Query;
@@ -36,13 +35,14 @@ public class ConsultaProduto {
         return p;
     }
 
-    public static List<Produto> returnList(String estabelecimento) {
+    public static List<Produto> returnList(String estabelecimentoID) {
         Session s = HibernateFactory.getSessionFactory().openSession();
         List<Produto> lista = null;
+        Long longID = Long.parseLong(estabelecimentoID);
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Produto p where p.estabelecimento.sufixoCNPJ =:estabelecimento");
-            query.setParameter("estabelecimento", estabelecimento);
+            Query query = s.createQuery("from Produto p where p.estabelecimento.id =:id");
+            query.setParameter("id", longID);
             lista = query.getResultList();
             s.getTransaction().commit();
             return lista;
@@ -54,13 +54,13 @@ public class ConsultaProduto {
         return lista;
     }
 
-    public static List<Produto> returnListEstoque(String estabelecimento) {//select do fornecedor
+    public static List<Produto> returnListEstoque(Long estabelecimentoID) {//select do fornecedor
         Session s = HibernateFactory.getSessionFactory().openSession();
         List<Produto> lista = null;
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Produto p where  p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'E'");
-            query.setParameter("estabelecimento", estabelecimento);
+            Query query = s.createQuery("from Produto p where  p.estabelecimento.id =:id and p.tipo = 'E'");
+            query.setParameter("id", estabelecimentoID);
              
             lista = query.getResultList();
             s.getTransaction().commit();
@@ -73,13 +73,14 @@ public class ConsultaProduto {
         return lista;
     }
 
-    public static List<Produto> returnListProduto(String estabelecimento, Negocio negocio) {//select do fornecedor
+    public static List<Produto> returnListProduto(String estabelecimentoID) {//select do fornecedor
         Session s = HibernateFactory.getSessionFactory().openSession();
         List<Produto> lista = null;
+        Long longID = Long.parseLong(estabelecimentoID);
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Produto p where p.negocio=:negocio and p.estabelecimento.sufixoCNPJ =:estabelecimento and p.tipo = 'P'");
-            query.setParameter("estabelecimento", estabelecimento);
+            Query query = s.createQuery("from Produto p where p.estabelecimento.id =:id and p.tipo = 'P'");
+            query.setParameter("id", longID);
              
             lista = query.getResultList();
             s.getTransaction().commit();

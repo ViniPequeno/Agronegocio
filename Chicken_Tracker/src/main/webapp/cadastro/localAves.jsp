@@ -59,7 +59,7 @@
                         <label class="grey-text" for='inputProduto'>Produto</label>
                         <select name="inputProduto" id="inputProduto">
                             <% Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-                                for (Produto p : ConsultaProduto.returnListProduto(e.getSufixoCNPJ(), (Negocio) request.getSession().getAttribute("negocio"))) {%>
+                                for (Produto p : ConsultaProduto.returnListProduto(e.getId().toString())) {%>
                             <option value="<%=p.getCodigo()%>"><%=p.getNome()%></option>
                             <% }%>
                         </select>

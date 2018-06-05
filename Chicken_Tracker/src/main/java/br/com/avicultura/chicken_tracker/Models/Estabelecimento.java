@@ -17,7 +17,7 @@ public class Estabelecimento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "sufixoCNPJ_id")
+    @Column(name = "sufixoCNPJ")
     private String sufixoCNPJ;
 
     @ManyToOne

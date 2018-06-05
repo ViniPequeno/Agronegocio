@@ -11,7 +11,6 @@ import br.com.avicultura.chicken_tracker.Models.Fornecimento;
 import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Pagamento;
 import br.com.avicultura.chicken_tracker.Models.Produto;
-import br.com.avicultura.chicken_tracker.Servlets.Fornecedor.ConsultaFornecedores;
 import br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -70,7 +69,7 @@ public class FornecimentoServlet extends HttpServlet {
                 }
                 for (index = 0; index < cnpj.length; index++) {
                     o.println("oi");
-                    f = ConsultaFornecimento.findById(cnpj[index], e.getSufixoCNPJ());
+                    f = ConsultaFornecimento.findById(cnpj[index], e.getId().toString());
 
                     Pagamento p = Pagamento.getInstance();
                     GregorianCalendar gc = new GregorianCalendar();
@@ -93,8 +92,8 @@ public class FornecimentoServlet extends HttpServlet {
                     hup.salvar(p);
                     hue.atualizar(e);
                     hupro.atualizar(f.getProdutos());
-                    //response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getSufixoCNPJ());
                 }
+                response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getId());
                 break;
             }
             case "cadastrar": {
@@ -110,7 +109,7 @@ public class FornecimentoServlet extends HttpServlet {
                 f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
                 f.setEstabelecimento(e);
                 huf.salvar(f);
-                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getId());
                 break;
             }
             case "alterar": {
@@ -124,7 +123,7 @@ public class FornecimentoServlet extends HttpServlet {
                 f.setTipo('V');
                 f.setEstabelecimento(e);
                 huf.atualizar(f);
-                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getId());
                 break;
             }
             default: {
@@ -147,7 +146,7 @@ public class FornecimentoServlet extends HttpServlet {
                     f.setId(longID);
                     huf.deletar(f);
                 }
-                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getId());
                 break;
             }
         }

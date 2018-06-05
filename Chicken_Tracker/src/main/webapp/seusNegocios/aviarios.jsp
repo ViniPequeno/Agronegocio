@@ -9,16 +9,16 @@
     <h2 class="py-5 font-weight-bold text-left">
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Locais de aves</h2>
-    <%
-        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
-        if (sessao.getAttribute("estabelecimento") == null) {
-            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
-        } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
-            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
-        }
-        List<LocalAves> locaisAves;
-        locaisAves = ConsultaLocalAves.returnList(request.getParameter("estabelecimento"), n);
-        if (locaisAves.size() > 0) {%>
+            <%
+                Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+                if (sessao.getAttribute("estabelecimento") == null) {
+                    sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
+                } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
+                    sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
+                }
+                List<LocalAves> locaisAves;
+                locaisAves = ConsultaLocalAves.returnList(request.getParameter("estabelecimento"));
+                if (locaisAves.size() > 0) {%>
     <div class="card card-cascade narrower">
 
         <!--Card image-->
@@ -48,8 +48,8 @@
                     <%  for (LocalAves l : locaisAves) {%>
                     <tr>
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input type="checkbox" id="checkbox<%=l.getCodigo()%>" name="checkbox<%=l.getCodigo()%>">
-                            <label for="checkbox<%=l.getCodigo()%>" class="label-table"></label>
+                            <input form="checks" type="checkbox" id="checkbox!<%=l.getCodigo()%>" name="checkbox!<%=l.getCodigo()%>">
+                            <label for="checkbox!<%=l.getCodigo()%>" class="label-table"></label>
                         </th>
                         <td><%=l.getCodigo()%></td>
                         <td><%=l.getArea()%></td>
@@ -112,7 +112,7 @@
         <a href="" class="btn btn-primary btn-rounded mt-4 disabled mb-0" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
             <i class="fa fa-boxes fa-lg mr-1" aria-hidden="true"></i></a>
     </span>        
-
+    <form id="checks"></form>
     <!-- Modal -->
     <div class="modal fade" id="pagarSelecionados" tabindex="-1" role="dialog" aria-labelledby="pagarSelecionados" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -128,10 +128,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <form id="checks" action="/Chicken_Tracker/LocalAvesServlet" method="post">
-                        <input type="hidden" name="aviario" value="atualizarEstoque" />
-                        <button name="aviario" value="pagar" type="submit" class="btn btn-primary">Confirmar</button>
-                    </form>
+                    <button form="checks" formaction="/Chicken_Tracker/LocalAvesServlet" formmethod="post" name="aviario" value="atualizarEstoque" type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -148,11 +145,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Todos os estabelecimentos associados a este negócio também serão apagados</p>
+                    <p>Esta ação não pode ser desfeita</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <button name="aviario" value="excluir" type="button" class="btn btn-primary">Confirmar</button>
+                    <button form="checks" formaction="/Chicken_Tracker/LocalAvesServlet" formmethod="post" name="aviario" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
                 </div>
             </div>
         </div>

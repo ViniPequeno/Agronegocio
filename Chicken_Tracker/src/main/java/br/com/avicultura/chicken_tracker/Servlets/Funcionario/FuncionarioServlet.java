@@ -56,23 +56,20 @@ public class FuncionarioServlet extends HttpServlet {
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
-                chkBoxIds.add(parameterName);
+                if (parameterName.contains("checkbox")) {
+                    chkBoxIds.add(parameterName);
+                }
             }
-            out.println("Seila");
-            out.println("");
             String[] cpf = new String[chkBoxIds.size()];
-            out.println(cpf.length);
-            out.println(chkBoxIds.size());
             double total = 0;
             int index = 0;
             for (String s1 : chkBoxIds) {
-                out.println("for");
                 System.out.println(s1);
                 cpf[index] = s1.split("!")[1];
                 index++;
             }
             for (index = 0; index < cpf.length; index++) {
-                ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), cpf[index], n);
+                ef = ConsultaFuncionario.returnFuncionario(e.getId().toString(), cpf[index]);
                 total += ef.getSalario();
             }
             if (e.getSaldo() >= total) {
@@ -85,19 +82,20 @@ public class FuncionarioServlet extends HttpServlet {
                 p.setMes(mes);
                 p.setAno(ano);
                 p.setEstabelecimento(e);
-                List<EstabelecimentoFuncionario> list = ConsultaFuncionario.returnListFuncionario(e.getSufixoCNPJ(), n);
+                List<EstabelecimentoFuncionario> list = ConsultaFuncionario.returnListFuncionario(e.getId().toString());
 
                 for (index = 0; index < cpf.length; index++) {
-                    ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), cpf[index], n);
+                    ef = ConsultaFuncionario.returnFuncionario(e.getId().toString(), cpf[index]);
                     p.setValor(ef.getSalario());
-                    p.setDescricao("Pagamento do funcionário " + ef.getFuncionario().getNome() + " no valor: " + p.getValor()
-                            + " na data " + p.getDia() + "/" + p.getMes() + "/" + p.getAno());
+                    p.setDescricao("Pagamento do funcionário " + ef.getFuncionario().getNome()
+                            + " que trabalha no estabelecimento " + ef.getEstabelecimento().getSufixoCNPJ()
+                            + " do negócio " + ef.getEstabelecimento().getNegocio().getNome() + " (" + ef.getEstabelecimento().getNegocio().getEmpresaCNPJ() + ")");
                     p.setTipo('G');
                     e.setSaldo(e.getSaldo() - p.getValor());
                     hup.salvar(p);
                     hue.atualizar(e);
                 }
-                response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+                response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getId());
             } else {
                 //Erro
             }
@@ -120,7 +118,7 @@ public class FuncionarioServlet extends HttpServlet {
                 ef.setNegocio(n.getEmpresaCNPJ());
                 hupef.salvar(ef);
             }
-            response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getId());
 
         } else if (butao.equals("alterar")) {
             ef.setSalario(Double.parseDouble(request.getParameter("inputSalario")));
@@ -128,13 +126,15 @@ public class FuncionarioServlet extends HttpServlet {
             ef.setSituacao(request.getParameter("inputSituacao").charAt(0));
             ef.setNegocio(n.getEmpresaCNPJ());
             hupef.atualizar(ef);
-            response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getId());
         } else {
-            ArrayList<String> chkBoxIds = new ArrayList<String>();
+            ArrayList<String> chkBoxIds = new ArrayList<>();
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
-                chkBoxIds.add(parameterName);
+                if (parameterName.contains("checkbox")) {
+                    chkBoxIds.add(parameterName);
+                }
             }
             String[] cpf = new String[chkBoxIds.size()];
             int index = 0;
@@ -143,12 +143,12 @@ public class FuncionarioServlet extends HttpServlet {
                 index++;
             }
             for (index = 0; index < cpf.length; index++) {
-                f = ConsultaFuncionario.findById(cpf[index]);
-                ef = ConsultaFuncionario.returnFuncionario(e.getSufixoCNPJ(), f.getCPF(), n);
+                f = ConsultaFuncionario.findById(cpf[index]);;
+                ef = ConsultaFuncionario.returnFuncionario(e.getId().toString(), f.getCPF());
                 hupef.deletar(ef);
             }
-            response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
-    }
+            response.sendRedirect("seusNegocios/funcionarios.jsp?estabelecimento=" + e.getId());
+        }
 
     }
 }

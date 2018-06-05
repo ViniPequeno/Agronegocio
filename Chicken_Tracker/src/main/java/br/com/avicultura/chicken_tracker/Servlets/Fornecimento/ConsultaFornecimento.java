@@ -44,14 +44,15 @@ public class ConsultaFornecimento {
         return f;
     }
 
-    public static List<Fornecimento> returnList(String estabelecimento, Negocio negocio) {
+    public static List<Fornecimento> returnList(String estabelecimentoID, Negocio negocio) {
         List<Fornecimento> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
+        Long longID = Long.parseLong(estabelecimentoID);
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Fornecimento f where f.estabelecimento.sufixoCNPJ =:estabelecimento"
-                    + " and tipo = 'v'");
-            query.setParameter("estabelecimento", estabelecimento);
+            Query query = s.createQuery("from Fornecimento f where f.estabelecimento.id =:id"
+                    + " and f.tipo = 'v'");
+            query.setParameter("id", longID);
              
             lista = query.getResultList();
             s.getTransaction().commit();

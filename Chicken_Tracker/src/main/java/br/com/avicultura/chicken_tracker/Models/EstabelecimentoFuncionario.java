@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class EstabelecimentoFuncionario implements Serializable {
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     
     @ManyToOne

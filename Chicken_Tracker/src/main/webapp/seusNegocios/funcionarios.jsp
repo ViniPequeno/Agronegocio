@@ -15,14 +15,13 @@
         Gerenciar Funcionários</h2>
 
     <%  
-        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         if (sessao.getAttribute("estabelecimento") == null) {
-            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
         } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
-            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n));
+            sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
         }
         List<Funcionario> funcionarios;
-        funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"), n);
+        funcionarios = ConsultaFuncionario.returnList(request.getParameter("estabelecimento"));
         if (funcionarios.size() > 0) {%>
     <div class="card card-cascade narrower mt-5">
 
@@ -54,13 +53,13 @@
                 <!--Table body-->
                 <tbody>
                     <%  for (Funcionario f : funcionarios) {
-                            String dataFuncionario = ConsultaFuncionario.returnValues(f, request.getParameter("estabelecimento"), n);
+                            String dataFuncionario = ConsultaFuncionario.returnValues(f, request.getParameter("estabelecimento"));
                             String cargo = dataFuncionario.split("#")[3];
                             String situacao = dataFuncionario.split("#")[4];
                             double salario = Double.parseDouble(dataFuncionario.split("#")[5]);%>
                     <tr data-funcionario="<%=dataFuncionario%>">
                         <th scope="row" class="pr-md-3 pr-5">
-                            <input form="checksExcluir" type="checkbox" id="checkbox!<%=f.getCPF()%>" name="checkbox!<%=f.getCPF()%>">
+                            <input form="checks" type="checkbox" id="checkbox!<%=f.getCPF()%>" name="checkbox!<%=f.getCPF()%>">
                             <label for="checkbox!<%=f.getCPF()%>" class="label-table"></label>
                         </th>
                         <td><%=f.getNome()%></td>
@@ -146,7 +145,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                     <form id="checksPagar" action="/Chicken_Tracker/FuncionarioServlet" method="post">
-                        <input type="hidden" name="funcionario" value="pagar" />
                         <button form="checks" formaction="/Chicken_Tracker/FuncionarioServlet" formmethod="post" name="funcionario" value="pagar" type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>

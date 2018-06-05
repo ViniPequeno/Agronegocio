@@ -8,7 +8,6 @@ package br.com.avicultura.chicken_tracker.Servlets.LocalAves;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.LocalAves;
-import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Producao;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto;
@@ -40,16 +39,18 @@ public class LocalAvesServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         LocalAves l = LocalAves.getInstance();
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-        String butao = request.getParameter("localaves");
+        String butao = request.getParameter("aviario");
         HibernateUtil<LocalAves> hup = new HibernateUtil<>();
-        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
+        HibernateUtil<Producao> hupro = new HibernateUtil<>();
         PrintWriter out = response.getWriter();
         if (butao != null && butao.equals("atualizarEstoque")) {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
-                chkBoxIds.add(parameterName);
+                if (parameterName.contains("checkbox")) {
+                    chkBoxIds.add(parameterName);
+                }
             }
             String[] codigo = new String[chkBoxIds.size()];
             int index = 0;
@@ -67,12 +68,14 @@ public class LocalAvesServlet extends HttpServlet {
             p.setAno(ano);
             p.setEstabelecimento(e);
             for (index = 0; index < codigo.length; index++) {
-                l = ConsultaLocalAves.findById(codigo[index], e.getSufixoCNPJ(), n);
+                out.println("io");
+                l = ConsultaLocalAves.findById(codigo[index], e.getId().toString());
                 p.setProduto(l.getProduto());
                 p.setLocalave(l);
                 p.setQuantidade(l.getQuantidade());
+                out.println(hupro.salvar(p));
             }
-            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            //response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getId());
 
         } else if (butao.equals("cadastrar")) {
             l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
@@ -84,7 +87,7 @@ public class LocalAvesServlet extends HttpServlet {
             Produto p = ConsultaProduto.findById(request.getParameter("inputProduto"));
             l.setProduto(p);
             hup.salvar(l);
-            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getId());
         } else if (butao.equals("alterar")) {
             l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));
             l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
@@ -93,13 +96,15 @@ public class LocalAvesServlet extends HttpServlet {
             l.setDataAbertura(request.getParameter("inputDataAbertura"));
             l.setEstabelecimento(e);
             hup.atualizar(l);
-            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getId());
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
-                chkBoxIds.add(parameterName);
+                if (parameterName.contains("checkbox")) {
+                    chkBoxIds.add(parameterName);
+                }
             }
             String[] codigo = new String[chkBoxIds.size()];
             int index = 0;
@@ -111,7 +116,7 @@ public class LocalAvesServlet extends HttpServlet {
                 l.setCodigo(Integer.parseInt(codigo[index]));
                 hup.deletar(l);
             }
-            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getSufixoCNPJ());
+            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getId());
         }
     }
 

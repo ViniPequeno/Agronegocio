@@ -34,7 +34,8 @@ public class PagamentoServlet extends HttpServlet {
         request.getSession().setAttribute("anosDespesas", anosDespesas);
         request.getSession().setAttribute("anosGanhos", anosGanhos);
         request.getSession().setAttribute("anosLucros", anosLucros);
-        response.sendRedirect("seusNegocios/desempenho.jsp?estabelecimento="+((Estabelecimento)request.getSession().getAttribute("estabelecimento")).getSufixoCNPJ()+"#graficosAnos");
+        response.sendRedirect("seusNegocios/desempenho.jsp?estabelecimento="
+                +((Estabelecimento)request.getSession().getAttribute("estabelecimento")).getId()+"#graficosAnos");
     }
 
     /**
@@ -75,7 +76,7 @@ public class PagamentoServlet extends HttpServlet {
         s = hue.atualizar(e);
         out.println(s);
 
-        response.sendRedirect("seusNegocios/pagamentos.jsp?estabelecimento=" + e.getSufixoCNPJ());
+        response.sendRedirect("seusNegocios/pagamentos.jsp?estabelecimento=" + e.getId());
     }
 
 }
