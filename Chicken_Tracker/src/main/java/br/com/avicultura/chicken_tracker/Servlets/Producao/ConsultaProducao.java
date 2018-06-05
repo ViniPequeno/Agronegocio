@@ -21,11 +21,11 @@ public class ConsultaProducao {
     public static List<Producao> returnList(String estabelecimento) {
         Session s = HibernateFactory.getSessionFactory().openSession();
         List<Producao> lista = null;
+        Long longID = Long.parseLong(estabelecimento);
         try {
             s.beginTransaction();
-            Query query = s.createQuery("from Producao p where p.estabelecimento.sufixoCNPJ =:estabelecimento"
-                    + " ORDER BY ano DESC, mes DESC, dia DESC, valor DESC");
-            query.setParameter("estabelecimento", estabelecimento);
+            Query query = s.createQuery("from Producao p where p.estabelecimento.id =:estabelecimento");
+            query.setParameter("estabelecimento", longID);
 
             lista = query.getResultList();
             s.getTransaction().commit();
