@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25/03/2018, 15:35:22
+    Author     : user
+*/
+
+.container form{
+    margin-top: 40px;
+}
+
+body + .container:first-of-type{
+    margin-top: 20px;
+}
+
+body{
+    background-color: #eeeeee;
+}
+
+.md-form label[data-error] {
+    width: 100% !important;
+}
+.md-form label {
+    text-align: left !important;
+}
+
+.hide {
+    display: none !important;
+}
