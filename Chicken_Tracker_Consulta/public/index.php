@@ -12,7 +12,7 @@ $app->options('/{routes:.+}', function ($request, $response, $args) {
 $app->add(function ($req, $res, $next) {
     $response = $next($req, $res);
     return $response
-        ->withHeader('Access-Control-Allow-Origin', 'http://localhost:8084')
+        ->withHeader('Access-Control-Allow-Origin', 'http://localhost:8080')
         ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
         ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 });
@@ -21,6 +21,9 @@ $app->get('/api/perfil/usuario/{name}/', function (Request $request, Response $r
     $sql = "Select * from perfil where usuario='$name'";
     $response->withAddedHeader('Access-Control-Allow-Origin', '*');
     try{
+
+        echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+        echo "javascript:window.location='index.php';</script>";
         $db = new db();
         $db = $db->connect();
         $stmt = $db->query($sql);
