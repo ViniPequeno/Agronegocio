@@ -79,12 +79,44 @@
 <script src="../js/formUtils.js"></script>
 <script>
     var senhasCorretas = false;
+    $('#inputLogin').blur(function () {
+        $.ajax({
+            url: "http://localhost:8080/public/index.php/api/perfil/usuario/" + $('#inputLogin').val() + "/",
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data.existe === "false") {
+                    $('#inputLogin').removeClass('invalid');
+                    $('#inputLogin').addClass('valid');
+                } else {
+                    $('#inputLogin').removeClass('valid');
+                    $('#inputLogin').addClass('invalid');
+                }
+            }
+        });
+    });
+    $('#inputEmail').blur(function () {
+        $.ajax({
+            url: "http://localhost:8080/public/index.php/api/perfil/email/" + $('#inputEmail').val() + "/",
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data.existe === "false") {
+                    $('#inputEmail').removeClass('invalid');
+                    $('#inputEmail').addClass('valid');
+                } else {
+                    $('#inputEmail').removeClass('valid');
+                    $('#inputEmail').addClass('invalid');
+                }
+            }
+        });
+    });
     $('#foto1').val('0');
     $('#inputConfirmarSenha').blur(function () {
         $('#inputConfirmarSenha').removeClass('valid');
         var senha = $('#inputSenha').val();
         var senha2 = $('#inputConfirmarSenha').val();
-        if ($(this).val() == "") {
+        if ($(this).val() === "") {
             $('#inputConfirmarSenha').removeClass('invalid');
         } else {
             if (senha === senha2) {

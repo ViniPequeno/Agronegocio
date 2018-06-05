@@ -63,6 +63,7 @@
                             <option value="<%=p.getCodigo()%>"><%=p.getNome()%></option>
                             <% }%>
                         </select>
+                        <input type="hidden" id="estabelecimento" value="<%=e.getId()%>"
                     </div>
                     <!--
                 <div class="col">
@@ -95,6 +96,24 @@
 <script src='../js/maskMoney.js'></script>
 <script src="../js/formUtils.js"></script>
 <script>
+    $('#inputCodigo').blur(function () {
+        if ($('#inputCodigo').val() !== "" && $('#inputProduto').val() !== "") {
+            $.ajax({
+                url: "http://localhost:8080/public/index.php/api/localaves/" + $('#estabelecimento').val() + "/" + $('#inputCodigo').val(),
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.existe === "false") {
+                        $('#inputCodigo').removeClass('invalid');
+                        $('#inputCodigo').addClass('valid');
+                    } else {
+                        $('#inputCodigo').removeClass('valid');
+                        $('#inputCodigo').addClass('invalid');
+                    }
+                }
+            });
+        }
+    });
     $('#inputLargura').maskMoney({suffix: ' m', thousands: '.', decimal: ','});
     $('#inputComprimento').maskMoney({suffix: ' m', thousands: '.', decimal: ','});
     //$('#inputArea').maskMoney({suffix: ' m²', thousands: '.', decimal: ','});

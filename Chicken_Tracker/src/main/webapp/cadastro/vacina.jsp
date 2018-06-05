@@ -1,3 +1,4 @@
+<%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
 <% String css = "../css/cadastro.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
@@ -6,6 +7,7 @@
         <div class="card-body">
             <form action="/Chicken_Tracker/VacinaServlet" method="post">
                 <p class="h1 text-center mb-4">Nova Vacina</p>
+                <input type="hidden" id="estabelecimento" value="<%=((Estabelecimento)request.getSession().getAttribute("estabelecimento")).getId()%>">
                 <div class="form-row">
                     <div class="col-md-6">
                         <!-- Material input text -->
@@ -63,5 +65,25 @@
 <%@include file="../rodape.jsp" %>
 <script src="../js/mascara.js"></script>
 <script src="../js/formUtils.js"></script>
+<script>
+    $('#inputCodigo').blur(function () {
+        if ($('#inputCodigo').val() !== "" && $('#inputProduto').val() !== "") {
+            $.ajax({
+                url: "http://localhost:8080/public/index.php/api/localaves/" + $('#estabelecimento').val() + "/" + $('#inputCodigo').val(),
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.existe === "false") {
+                        $('#inputCodigo').removeClass('invalid');
+                        $('#inputCodigo').addClass('valid');
+                    } else {
+                        $('#inputCodigo').removeClass('valid');
+                        $('#inputCodigo').addClass('invalid');
+                    }
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
