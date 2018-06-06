@@ -25,7 +25,7 @@
         String lucrosDozeMeses = ConsultaPagamento.dozeMesesLucros(((Estabelecimento) sessao.getAttribute("estabelecimento")).getId());
         String ganhosDozeMeses = ConsultaPagamento.dozeMesesGanhos(((Estabelecimento) sessao.getAttribute("estabelecimento")).getId());
         String despesasAnos = (String) sessao.getAttribute("anosDespesas");
-        String ganhosAnos = (String) sessao.getAttribute("anosGanhos");
+        String ganhosAnos = (String) sessao.getAttribute("anosGanhos"); 
         String lucrosAnos = (String) sessao.getAttribute("anosLucros");
     %>
     <h2 class="mt-5 font-weight-bold text-left">
@@ -36,7 +36,7 @@
         <p>
             Aqui serão mostrados gráficos que permitem que você acompanhe o desempenho econômico de seu estabelecimento.
             Você pode ver gráficos de desemepenho em relação aos últimos 7 dias, 30 dias, 12 meses e intervalos de tempo maiores(anos).
-            Também possibilitamos salvar os gráficos em documentos pdf, assim como pode baixar apenas os gráficos desejados com o botão abaixo.
+            Também possibilitamos salvar os gráficos em documentos pdf, assim como pode baixar apenas os gráficos desejados com o botão abaixo. 
         </p>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#baixarSelecionados">Baixar selecionados</button>
     </section>
@@ -510,7 +510,7 @@
                 doc.addImage(canvasImg, 'JPEG', 10, y, 182, 97.5);
                 y += 117.5;
                 i++;
-                if (i > 0 && i % 2 == 0) {
+                if (i > 0 && i % 2 === 0) {
                     doc.addPage();
                     y = 20;
                 }
