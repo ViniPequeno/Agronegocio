@@ -205,8 +205,8 @@
         var email = campo[3];
         var facebook = campo[4];
         var instagram = campo[5];
-        var fone1 = campo[6];
-        var fone2 = campo[7];
+        var fone1 = campo[6]!=="null"?campo[6]:"------";
+        var fone2 = campo[7]!=="null"?campo[7]:"------";
 
         var estabelecimentos = campo[8];
 
@@ -273,8 +273,8 @@
             $('#inputCNPJ').val(dataN[2]).trigger("change");
             $('#inputLinkFB').val(dataN[4]).trigger("change");
             $('#inputLinkInstagram').val(dataN[5]).trigger("change");
-            $('#inputTelefone1').val(dataN[6].split("&")[0]).trigger("change");
-            $('#inputTelefone2').val(dataN[6].split("&")[1]).trigger("change");
+            $('#inputTelefone1').val(dataN[6]).trigger("change");
+            $('#inputTelefone2').val(dataN[7]).trigger("change");
             var $seuCampo = $('#inputCNPJ');
             $seuCampo.mask('00.000.000', {reverse: false});
             initInputs();

@@ -123,10 +123,10 @@
                     <p id="email"> Email: </p>
                     Redes Sociais: 
                     <a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank">
-                        <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
+                        <i data-fa-transform="grow-8" class="fa fab fa-facebook-f"></i>
                     </a>
-                    <a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" href="" target="_blank">
-                        <i data-fa-transform="grow-8" class="fa fa-instagram"></i>
+                    <a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" target="_blank">
+                        <i data-fa-transform="grow-8" class="fa fab fa-instagram"></i>
                     </a>
                 </div>
             </div>
@@ -139,15 +139,6 @@
 <script type="text/javascript">
     dataN = "";
     var linha;
-    var btnFace = '<a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank"><i data-fa-transform="grow-8" class="fab fa-facebook-f"></i></a>';
-    var btnInsta = '<a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" href="" target="_blank"><i data-fa-transform="grow-8" class="fa fa-instagram"></i></a>';
-    var modalDetalhesInnerHTML = '<p id="nome"> Nome: </p>' +
-            '<p id="proprietario"> Proprietário: </p>' +
-            '<p id="cnpj"> CNPJ: </p>' +
-            '<p id="fone1"> Fone 1: </p>' +
-            '<p id="fone2"> Fone 2: </p>' +
-            '<p id="email"> Email: </p>' +
-            ('Redes Sociais: ' + btnFace + btnInsta);
     $("td").not(function () {
         return $("a", this).length != 0;
     }).click(function (event) {
@@ -157,7 +148,6 @@
     });
 
     function resetModalData() {
-        $("#bodyDetalhes").html(modalDetalhesInnerHTML);
         $("#btnEditarConfirmar").text("Editar");
 
         var dados = linha.data('negocio').toString();
@@ -189,8 +179,8 @@
 
         $("#email").text("Email: " + email);
 
-        $("#btnFace").attr("href", facebook);
-        $("#btnInsta").attr("href", "www.instagram.com/" + instagram);
+        $("#btnFace").attr("href", "http://"+facebook);
+        $("#btnInsta").attr("href", "http://www.instagram.com/" + instagram);
     }
 </script>
 </body>

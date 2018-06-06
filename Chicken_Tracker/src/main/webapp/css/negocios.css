@@ -11,3 +11,8 @@ and open the template in the editor.
 .modal-header{
     background-color: 	#0080ff;
 }
+
+#btnFace .svg-inline--fa, #btnInsta .svg-inline--fa{
+    margin-top: 16px;
+    margin-left: 18px;
+}

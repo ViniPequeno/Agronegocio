@@ -20,6 +20,7 @@ public class Fornecimento implements Serializable {
     private String CNPJ;
     private int quantidade;
     private double pagamento;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date vencimento;
     private char tipo;
 

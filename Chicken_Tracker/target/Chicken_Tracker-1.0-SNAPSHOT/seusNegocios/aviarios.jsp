@@ -39,6 +39,7 @@
                         <th>Código</th>
                         <th>Área</th>
                         <th>Produto</th>
+                        <th>Quantidade</th>
                     </tr>
                 </thead>
                 <!--Table head-->
@@ -54,6 +55,7 @@
                         <td><%=l.getCodigo()%></td>
                         <td><%=l.getArea()%></td>
                         <td><%=l.getProduto().getNome()%></td>
+                        <td><%=l.getQuantidade()%></td>
                     </tr>
                     <%}%>
                 </tbody>

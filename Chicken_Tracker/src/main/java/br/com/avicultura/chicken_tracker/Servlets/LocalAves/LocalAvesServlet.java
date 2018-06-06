@@ -13,6 +13,9 @@ import br.com.avicultura.chicken_tracker.Models.Produto;
 import br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
@@ -44,7 +47,7 @@ public class LocalAvesServlet extends HttpServlet {
         HibernateUtil<Producao> hupro = new HibernateUtil<>();
         PrintWriter out = response.getWriter();
         if (butao != null && butao.equals("atualizarEstoque")) {
-            ArrayList<String> chkBoxIds = new ArrayList<String>();
+            ArrayList<String> chkBoxIds = new ArrayList<>();
             Enumeration enumeration = request.getParameterNames();
             while (enumeration.hasMoreElements()) {
                 String parameterName = (String) enumeration.nextElement();
@@ -82,7 +85,16 @@ public class LocalAvesServlet extends HttpServlet {
             l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
             l.setLargura(Double.parseDouble(request.getParameter("inputLargura")));
             l.setArea(Double.parseDouble(request.getParameter("inputArea")));
-            l.setDataAbertura(request.getParameter("inputDataAbertura"));
+            
+            DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+            try {
+                l.setDataAbertura(formatter.parse(request.getParameter("inputDataAbertura")));
+                if(request.getParameter("inputDataFechamento")!=null){
+                    l.setDataFechamento(formatter.parse(request.getParameter("inputDataFechamento")));
+                }
+            } catch (ParseException ex) {
+            }
+            
             l.setEstabelecimento(e);
             Produto p = ConsultaProduto.findById(request.getParameter("inputProduto"));
             l.setProduto(p);
@@ -93,7 +105,16 @@ public class LocalAvesServlet extends HttpServlet {
             l.setComprimento(Double.parseDouble(request.getParameter("inputComprimento")));
             l.setLargura(Double.parseDouble(request.getParameter("inputLargura")));
             l.setArea(Double.parseDouble(request.getParameter("inputArea")));
-            l.setDataAbertura(request.getParameter("inputDataAbertura"));
+            
+            DateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+            try {
+                l.setDataAbertura(formatter.parse(request.getParameter("inputDataAbertura")));
+                if(request.getParameter("inputDataFechamento")!=null){
+                    l.setDataFechamento(formatter.parse(request.getParameter("inputDataFechamento")));
+                }
+            } catch (ParseException ex) {
+            }
+            
             l.setEstabelecimento(e);
             hup.atualizar(l);
             response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getId());

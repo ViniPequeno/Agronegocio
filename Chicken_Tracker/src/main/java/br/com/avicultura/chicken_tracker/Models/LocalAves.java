@@ -19,9 +19,11 @@ public class LocalAves implements Serializable {
     private double largura;
     private double comprimento;
     private double area;
-    private String dataAbertura;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataAbertura;
     @Column(nullable = true)
-    private String dataFechamento;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataFechamento;
     private int quantidade;
 
     @ManyToOne
@@ -80,19 +82,19 @@ public class LocalAves implements Serializable {
         this.area = area;
     }
 
-    public String getDataAbertura() {
+    public Date getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(String dataAbertura) {
+    public void setDataAbertura(Date dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public String getDataFechamento() {
+    public Date getDataFechamento() {
         return dataFechamento;
     }
 
-    public void setDataFechamento(String dataFechamento) {
+    public void setDataFechamento(Date dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 
