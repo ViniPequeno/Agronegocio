@@ -18,7 +18,7 @@
                     <!-- Material input password -->
                     <div class="md-form form-group mt-5">
                         <i class="fa fa-lock prefix grey-text"></i>
-                        <input minlength="8" maxlength="20" type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="on" tabindex="2">
+                        <input minlength="8" maxlength="20" type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="off" tabindex="2">
                         <label for="inputSenha" data-error="">Senha</label>
                     </div>
                     <p class="text-center"><a class="small ml-4" href="esqueceuSenha.jsp">Esqueci minha senha. Quero recuperá-la.</a></p>

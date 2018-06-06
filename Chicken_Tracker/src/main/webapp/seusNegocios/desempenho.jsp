@@ -7,15 +7,12 @@
 <% String css = "../css/desempenho.css";%>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
-
-    <%
-        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
-        Estabelecimento e = (Estabelecimento) sessao.getAttribute("estabelecimento");
+    <% Estabelecimento e = (Estabelecimento) sessao.getAttribute("estabelecimento");
         if (e == null) {
-            e = ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n);
+            e = ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"));
             sessao.setAttribute("estabelecimento", e);
         } else if (!e.toString().equals(request.getParameter("estabelecimento"))) {
-            e = ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"), n);
+            e = ConsultaEstabelecimento.findById(request.getParameter("estabelecimento"));
             sessao.setAttribute("estabelecimento", e);
         }
         String despesasSeteDias = ConsultaPagamento.seteDiasDespesas(((Estabelecimento) sessao.getAttribute("estabelecimento")).getId());
@@ -33,8 +30,85 @@
     %>
     <h2 class="mt-5 font-weight-bold text-left">
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
-            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Desempenho</h2>
-
+            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Desempenho 
+    </h2>
+    <section class="mt-4">
+        <p>
+            Aqui serão mostrados gráficos que permitem que você acompanhe o desempenho econômico de seu estabelecimento.
+            Você pode ver gráficos de desemepenho em relação aos últimos 7 dias, 30 dias, 12 meses e intervalos de tempo maiores(anos).
+            Também possibilitamos salvar os gráficos em documentos pdf, assim como pode baixar apenas os gráficos desejados com o botão abaixo.
+        </p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#baixarSelecionados">Baixar selecionados</button>
+    </section>
+    <!-- Modal -->
+    <div class="modal fade" id="baixarSelecionados" tabindex="-1" role="dialog" aria-labelledby="labelBaixar" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelBaixar">Baixar gráficos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Escolha os gráficos desejados para baixar em um único documento pdf:</p>
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <h5>Lucro</h5>
+                            <div class="form-check">
+                                <input type="checkbox" id="chkBoxL7dias" name="chkBoxL7dias" value="#graficoSeteDiasLucrosHD">
+                                <label for="chkBoxL7dias" class="label-table">Últimos 7 dias</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="chkBoxL30dias" name="chkBoxL30dias" value="#graficoTrintaDiasLucrosHD">
+                                <label for="chkBoxL30dias" class="label-table">Últimos 30 dias</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="chkBoxL12meses" name="chkBoxL12meses" value="#graficoDozeMesesLucrosHD">
+                                <label for="chkBoxL12meses" class="label-table">Últimos 12 meses</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mt-lg-0 mt-4">
+                            <h5>Despesas</h5>
+                            <div class="form-check">
+                                <input type="checkbox" id="chkBoxD7dias" name="chkBoxD7dias" value="#graficoSeteDiasDespesasHD">
+                                <label for="chkBoxD7dias" class="label-table">Últimos 7 dias</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="chkBoxD30dias" name="chkBoxD30dias" value="#graficoTrintaDiasDespesasHD">
+                                <label for="chkBoxD30dias" class="label-table">Últimos 30 dias</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="chkBoxD12meses" name="chkBoxD12meses" value="#graficoDozeMesesDespesasHD">
+                                <label for="chkBoxD12meses" class="label-table">Últimos 12 meses</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mt-lg-0 mt-4">
+                            <h5>Ganhos</h5>
+                            <div class="form-check">
+                                <input type="checkbox" id="chkBoxG7dias" name="chkBoxG7dias" value="#graficoSeteDiasGanhosHD">
+                                <label for="chkBoxG7dias" class="label-table">Últimos 7 dias</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="chkBoxG30dias" name="chkBoxG30dias" value="#graficoTrintaDiasGanhosHD">
+                                <label for="chkBoxG30dias" class="label-table">Últimos 30 dias</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="chkBoxG12meses" name="chkBoxG12meses" value="#graficoDozeMesesGanhosHD">
+                                <label for="chkBoxG12meses" class="label-table">Últimos 12 meses</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button id="btnBaixar" type="button" class="btn btn-primary">
+                        <i class="fa fa-download mr-1"></i>Baixar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <section>
         <h1 class="mt-5 mb-4">
             Últimos 7 dias 
@@ -421,6 +495,29 @@
             doc.save('relatórioAnualVariado.pdf');
         }
     }
+    $('#btnBaixar').click(function () {
+        if ($('input[type="checkbox"]:checked').length > 0) {
+            var doc = new jsPDF('portrait');
+            doc.setFontSize(20);
+            doc.text(15, 15, "Gráficos - Selecionados");
+            var canvas;
+            var canvasImg;
+            var y = 20, i = 0;
+            $('input[type="checkbox"]:checked').each(function () {
+                canvas = document.querySelector($(this).val());
+                //creates image
+                canvasImg = canvas.toDataURL("image/jpeg", 1.0);
+                doc.addImage(canvasImg, 'JPEG', 10, y, 182, 97.5);
+                y += 117.5;
+                i++;
+                if (i > 0 && i % 2 == 0) {
+                    doc.addPage();
+                    y = 20;
+                }
+            });
+            doc.save('RelatórioPersonalizado.pdf');
+        }
+    });
 </script>
 </body>
 </html>
