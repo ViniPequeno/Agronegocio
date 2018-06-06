@@ -29,6 +29,7 @@
             <a class="btn blue-grey white-text mx-4" href="../seusNegocios/vacinas.jsp?estabelecimento=<%=e.getId()%>">Vacinas</a>
             <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/aviarios.jsp?estabelecimento=<%=e.getId()%>">Aviários</a>
             <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/pagamentos.jsp?estabelecimento=<%=e.getId()%>">Pagamentos</a>
+            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/producoes.jsp?estabelecimento=<%=e.getId()%>">Produção</a>
             <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getId()%>">Desempenho</a>
         </div>
     </div>
