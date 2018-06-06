@@ -52,8 +52,8 @@
                         <td><%=n.getPerfil().getNome()%></td>
                         <td><%=n.getEmpresaCNPJ()%></td>
                         <td><%=n.getEmail()%></td>
-                        <td><%=n.getTelefone1()%></td>
-                        <td><%=n.getTelefone2()%></td>
+                        <td><%=n.getTelefone1()!=null?n.getTelefone1():"---"%></td>
+                        <td><%=n.getTelefone2()!=null?n.getTelefone2():"---"%></td>
                     </tr>
                     <%}%>
 

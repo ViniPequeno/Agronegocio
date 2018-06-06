@@ -7,7 +7,7 @@
 <div class="container">
     <h2 class="py-5 font-weight-bold text-left">
         <a href="estabelecimento.jsp?estabelecimento=<%=request.getParameter("estabelecimento")%>">
-            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Producaos</h2>
+            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Produções</h2>
 
     <%List<Producao> producoes;
         producoes = ConsultaProducao.returnList(request.getParameter("estabelecimento"));
@@ -46,7 +46,7 @@
                             <label for="checkbox<%=p.getId()%>" class="label-table"></label>
                         </th>
                         <td><%=p.getLocalaves().getCodigo()%></td>
-                        <td>R$ <%=p.getProduto().getNome()%></td>
+                        <td><%=p.getProduto().getNome()%></td>
                         <td ><%=p.getQuantidade()%></td>
                         <td><%=p.getDia()%>/<%=p.getMes()%>/<%=p.getAno()%></td>
                     </tr>

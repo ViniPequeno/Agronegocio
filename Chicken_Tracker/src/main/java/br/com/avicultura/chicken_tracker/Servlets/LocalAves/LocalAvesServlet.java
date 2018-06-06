@@ -75,7 +75,7 @@ public class LocalAvesServlet extends HttpServlet {
                 p.setQuantidade(l.getQuantidade());
                 out.println(hupro.salvar(p));
             }
-            //response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getId());
+            response.sendRedirect("seusNegocios/aviarios.jsp?estabelecimento=" + e.getId());
 
         } else if (butao.equals("cadastrar")) {
             l.setCodigo(Integer.parseInt(request.getParameter("inputCodigo")));

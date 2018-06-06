@@ -240,7 +240,7 @@
             '<input type="email" name="inputEmail" id="inputEmail" class="form-control validate" required>' +
             '<label for="inputEmail" data-error="Email inválido">Email para contato</label></div>' +
             '<div class="md-form"><i class="far fa-id-card prefix grey-text"></i>' +
-            '<input type="text" name="inputCNPJ" id="inputCNPJ" class="form-control" required>' +
+            '<input type="text" name="inputCNPJ" id="inputCNPJ" class="form-control" readonly="true" required>' +
             '<label for="inputCNPJ">CNPJ</label></div>' +
             '<div class="md-form"><i class="fab fa-facebook prefix grey-text"></i>' +
             '<input type="url" id="inputLinkFB" name="inputLinkFB" class="form-control" maxlength="80">' +

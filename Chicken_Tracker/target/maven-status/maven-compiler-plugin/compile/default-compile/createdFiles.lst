@@ -27,6 +27,7 @@ br\com\avicultura\chicken_tracker\Servlets\Perfil\ConsultaPerfil.class
 br\com\avicultura\chicken_tracker\Models\Vacina.class
 br\com\avicultura\chicken_tracker\Servlets\Estabelecimentos\EstabelecimentoServlet.class
 br\com\avicultura\chicken_tracker\Servlets\Fornecedor\ConsultaFornecedores.class
+br\com\avicultura\chicken_tracker\Servlets\Producao\ConsultaProducao.class
 br\com\avicultura\chicken_tracker\Models\Fornecimento.class
 br\com\avicultura\chicken_tracker\Servlets\Perfil\PerfilServlet.class
 br\com\avicultura\chicken_tracker\Utils\Email$1.class
