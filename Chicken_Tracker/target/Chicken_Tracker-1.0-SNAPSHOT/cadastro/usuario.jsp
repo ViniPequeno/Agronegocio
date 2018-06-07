@@ -79,26 +79,25 @@
 <script src="../js/formUtils.js"></script>
 <script>
     var senhasCorretas = false;
-    $('#inputLogin').blur(function () {
-        alert('oi2');
+    $('#inputLogin').change(function () {
         $.ajax({
-            url: "http://localhost:8084/Chicken_Tracker_Consulta/public/index.php/api/perfil/usuario/" + $('#inputLogin').val() + "/",
+            url: "http://localhost/Chicken_Tracker_Consulta/public/index.php/api/perfil/usuario/" + $('#inputLogin').val() + "/",
             async: false,
             dataType: 'json',
             success: function (data) {
                 if (data.existe === "false") {
-                    alert('oi3');
                     $('#inputLogin').removeClass('invalid');
                     $('#inputLogin').addClass('valid');
                 } else {
-                    alert('oi');
                     $('#inputLogin').removeClass('valid');
                     $('#inputLogin').addClass('invalid');
                 }
+            }, error: function (XMLHttpRequest, textStatus, errorThrown, data) {
+                console.log(XMLHttpRequest + "   " + errorThrown);
             }
         });
     });
-    $('#inputEmail').blur(function () {
+    $('#inputEmail').change(function () {
         $.ajax({
             url: "http://localhost:8080/public/index.php/api/perfil/email/" + $('#inputEmail').val() + "/",
             async: false,
