@@ -8,7 +8,6 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecimento;
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateUtil;
 import br.com.avicultura.chicken_tracker.Models.Estabelecimento;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
-import br.com.avicultura.chicken_tracker.Models.Negocio;
 import br.com.avicultura.chicken_tracker.Models.Pagamento;
 import br.com.avicultura.chicken_tracker.Models.Produto;
 import br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto;
@@ -43,7 +42,6 @@ public class FornecimentoServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         PrintWriter o = response.getWriter();
         Fornecimento f = Fornecimento.getInstance();
-        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
         HibernateUtil<Pagamento> hup = new HibernateUtil<>();
         HibernateUtil<Produto> hupro = new HibernateUtil<>();

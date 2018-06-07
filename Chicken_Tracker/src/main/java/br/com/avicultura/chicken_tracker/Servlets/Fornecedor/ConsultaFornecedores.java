@@ -7,7 +7,6 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecedor;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
-import br.com.avicultura.chicken_tracker.Models.Negocio;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;

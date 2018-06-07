@@ -42,7 +42,6 @@ public class FornecedorServlet extends HttpServlet {
 
         Fornecimento f = Fornecimento.getInstance();
         Estabelecimento e = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
-        Negocio n = (Negocio) request.getSession().getAttribute("negocio");
         HibernateUtil<Pagamento> hup = new HibernateUtil<>();
         HibernateUtil<Fornecimento> huf = new HibernateUtil<>();
         HibernateUtil<Estabelecimento> hue = new HibernateUtil<>();

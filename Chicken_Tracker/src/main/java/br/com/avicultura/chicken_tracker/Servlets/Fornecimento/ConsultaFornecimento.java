@@ -7,7 +7,6 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecimento;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
-import br.com.avicultura.chicken_tracker.Models.Negocio;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -44,7 +43,7 @@ public class ConsultaFornecimento {
         return f;
     }
 
-    public static List<Fornecimento> returnList(String estabelecimentoID, Negocio negocio) {
+    public static List<Fornecimento> returnList(String estabelecimentoID) {
         List<Fornecimento> lista = null;
         Session s = HibernateFactory.getSessionFactory().openSession();
         Long longID = Long.parseLong(estabelecimentoID);
