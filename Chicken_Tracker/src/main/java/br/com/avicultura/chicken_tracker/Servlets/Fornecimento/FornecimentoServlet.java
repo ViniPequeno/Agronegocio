@@ -89,11 +89,16 @@ public class FornecimentoServlet extends HttpServlet {
                             + "/" + p.getMes() + "/" + p.getAno());
                     e.setSaldo(e.getSaldo() + p.getValor());
                     f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() - f.getQuantidade());
-                    hup.salvar(p);
-                    hue.atualizar(e);
-                    hupro.atualizar(f.getProdutos());
+                    if(f.getProdutos().getQuantidadeAtual()>=0){ // FOI POSSIVEL
+                        hup.salvar(p);
+                        hue.atualizar(e);
+                        hupro.atualizar(f.getProdutos());
+                        response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getId());
+                    }else{///NÃO FOI POSSIVEL E CANCENLA ESSA E OUTRAS OPERAÇÕES
+                        response.getWriter().println("ERRADO");
+                    }
                 }
-                response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getId());
+                
                 break;
             }
             case "cadastrar": {

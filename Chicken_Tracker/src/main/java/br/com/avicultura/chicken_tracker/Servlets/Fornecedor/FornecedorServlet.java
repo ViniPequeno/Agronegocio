@@ -37,7 +37,7 @@ public class FornecedorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        
+
         PrintWriter o = response.getWriter();
 
         Fornecimento f = Fornecimento.getInstance();
@@ -78,17 +78,20 @@ public class FornecedorServlet extends HttpServlet {
                 p.setEstabelecimento(e);
                 p.setTipo('D');
                 p.setValor(f.getPagamento());
-                p.setDescricao("Pagamento do fornecedor " + f.getCNPJ() + 
-                        "referente ao produto " + f.getProdutos().getNome() + " de quantidade igual a"
-                        + f.getQuantidade() );
+                p.setDescricao("Pagamento do fornecedor " + f.getCNPJ()
+                        + "referente ao produto " + f.getProdutos().getNome() + " de quantidade igual a"
+                        + f.getQuantidade());
                 e.setSaldo(e.getSaldo() - p.getValor());
-                f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() + f.getQuantidade());
-                o.print("oii");
-                o.println(hup.salvar(p));
-                o.println(hue.atualizar(e));
-                o.println(hupro.atualizar(f.getProdutos()));
-                o.print("oiei");
-                response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
+                if (e.getSaldo() >= 0) {
+                    f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() + f.getQuantidade());
+                    hup.salvar(p);
+                    hue.atualizar(e);
+                    hupro.atualizar(f.getProdutos());
+                    response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
+                }else{
+                    response.getWriter().println("ERRO!");
+                }//SALDO INSUFICINTE
+
             }
 
         } else if (butao.equals("cadastrar")) {
