@@ -58,6 +58,7 @@
                             <input type="password" id="inputConfirmarSenha" minlength="8" maxlength="20" class="form-control validate" required>
                             <label for="inputConfirmarSenha">Confirmar senha</label> 
                         </div>
+                        <p id="senhaOK" class="mt-5 ml-4 invisible">Senha inválida</p>
                     </div>
                     <div class="col-md-4 mt-md-5 mt-3 pt-md-5 pt-3">
                         <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="../img/farmer.jpg">
@@ -114,21 +115,21 @@
         });
     });
     $('#foto1').val('0');
-    $('#inputConfirmarSenha').blur(function () {
-        $('#inputConfirmarSenha').removeClass('valid');
+
+    $('#inputConfirmarSenha, #inputSenha').change(function () {
         var senha = $('#inputSenha').val();
-        var senha2 = $('#inputConfirmarSenha').val();
-        if ($(this).val() === "") {
-            $('#inputConfirmarSenha').removeClass('invalid');
-        } else {
-            if (senha === senha2) {
+        var confirmarSenha = $('#inputConfirmarSenha').val();
+        if (senha !== "" && confirmarSenha !== ""
+                && senha.length >= 8 && confirmarSenha.length >= 8) {
+            $('#senhaOK').removeClass('invisible');
+            if (senha == confirmarSenha) {
+                $('#senhaOK').html('<i class="fa fa-check prefix mr-1"></i>As senhas são iguais');
+                $('#senhaOK').removeClass('red-text').addClass('green-text');
                 senhasCorretas = true;
-                $('#inputConfirmarSenha').removeClass('invalid');
-                $('#inputConfirmarSenha').addClass('valid');
             } else {
+                $('#senhaOK').html('<i class="fa fa-times prefix mr-1"></i>As senhas devem ser iguais');
+                $('#senhaOK').removeClass('green-text').addClass('red-text');
                 senhasCorretas = false;
-                $('#inputConfirmarSenha').removeClass('valid');
-                $('#inputConfirmarSenha').addClass('invalid');
             }
         }
     });

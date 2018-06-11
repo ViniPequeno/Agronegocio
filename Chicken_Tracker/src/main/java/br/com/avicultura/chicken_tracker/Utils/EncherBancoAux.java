@@ -57,7 +57,8 @@ public class EncherBancoAux {
         hun.salvar(n);
         ////////////////////////////////////////////////////
         e.setCEP("67253-234");
-        e.setCNAE("12345");
+        e.setSufixoCNPJ("132456");
+        e.setCNAE("1234567");
         e.setBairro("Distrito");
         e.setCidade("Manaus");
         e.setEstado("Amazonas");

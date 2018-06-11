@@ -22,7 +22,7 @@
                         <label for="inputSenha" data-error="">Senha</label>
                     </div>
                     <p class="text-center"><a class="small ml-4" href="esqueceuSenha.jsp">Esqueci minha senha. Quero recuperá-la.</a></p>
-
+                    <p id="loginOK" class="mt-5 ml-4 invisible">Senha inválida</p>
                     <div class="text-center mt-5 mb-1">
                         <button class="btn btn-green btn-block font-weight-bold" type="submit" tabindex="3">Entrar</button>
                     </div>
@@ -43,44 +43,15 @@
     $(document).ready(function () {
         var url = new URL(urlString);
         if (url.searchParams.get("login") == "false") {
-            $("#inputLogin").addClass('invalid');
-            $("label[for='inputLogin']").addClass('active');
-            $("#inputLogin").attr("placeholder", "Login não encontrado");
+            $('#loginOK').removeClass('invisible');
+            $('#loginOK').html('<i class="fa fa-times prefix mr-1"></i>Login não encontrado!');
+            $('#loginOK').addClass('red-text');
         }
         if (url.searchParams.get("password") == "false") {
-            $("#inputSenha").addClass('invalid');
-            $("label[for='inputSenha']").addClass('active');
-            $("#inputSenha").attr("placeholder", "Senha inválida");
+            $('#loginOK').removeClass('invisible');
+            $('#loginOK').html('<i class="fa fa-times prefix mr-1"></i>Senha inválida!');
+            $('#loginOK').addClass('red-text');
         }
-    });
-    $("#inputSenha").change(function () {
-        $("#inputSenha").removeClass('valid');
-        var url = new URL(urlString);
-        if (url.searchParams.get("password") == "false") {
-            $("#inputSenha").addClass('invalid');
-            if ($("#inputSenha").val().length == 0) {
-                $("label[for='inputSenha']").addClass('active');
-            } else {
-                $("#inputSenha").removeClass('invalid');
-            }
-        }
-    });
-    $("#inputSenha").blur(function () {
-        $("#inputSenha").removeClass('valid');
-    });
-    $("#inputLogin").change(function () {
-        var url = new URL(urlString);
-        if (url.searchParams.get("login") == "false") {
-            $("#inputLogin").addClass('invalid');
-            if ($("#inputLogin").val().length == 0) {
-                $("label[for='inputLogin']").addClass('active');
-            } else {
-                $("#inputLogin").removeClass('invalid');
-            }
-        }
-    });
-    $("#inputLogin").blur(function () {
-        $("#inputLogin").removeClass('valid');
     });
 </script>
 <script src="../js/formUtils.js"></script>

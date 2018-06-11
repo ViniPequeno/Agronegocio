@@ -39,7 +39,7 @@
                     <div class="col-md-4 mt-md-0 pt-md-0 mt-3 pt-3">
                         <img class="mx-auto d-block" id="imgPerfil" width="200px" height="200px" src="<%=p.getFoto()%>">
                         <input type="file" name="file" id="inputFoto" accept="image/*">
-                        
+
                         <button class="btn btn-outline-cyan mx-auto d-block" type="button" id="btnSelecionarImg">Escolher foto de perfil</button>
                         <button class="btn btn-outline-red mx-auto d-block" type="button" id="btnRedefinirImg">Redefinir foto</button>
                     </div>
@@ -87,6 +87,7 @@
                             <input type="password" id="inputConfirmarNovaSenha" name="inputConfirmarNovaSenha" class="form-control validate" minlength="8" maxlength="20">
                             <label for="inputConfirmarNovaSenha" data-error="Mínimo de 8 caracteres">Confirmar nova senha</label>
                         </div>
+                        <p id="labelSenhaAtual" class="mt-5 ml-4 invisible">Senha inválida</p>
                         <p id="labelSenhaValida" class="mt-5 ml-4 invisible">Senha inválida</p>
                     </form>
                 </div>
@@ -124,6 +125,7 @@
 <%@include file="../rodape.jsp" %>
 <script src="../js/formUtils.js"></script>
 <script>
+    var confirmarNovaSenhaValida = false;
     var novaSenhaValida = false;
     $('#foto1').val("0");
     $('#btnSelecionarImg').click(function () {
@@ -150,30 +152,48 @@
             reader.readAsDataURL(selectedFile);
         }
     });
-    $('#inputConfirmarNovaSenha').change(function () {
+
+    $('#inputNovaSenha').change(function () {
+        var senhaNova = $('#inputNovaSenha');
+        var senhaAtual = $('#inputSenhaAtual');
+        if (senhaNova.val() != "" && senhaAtual.val() != ""
+                && (senhaNova.val().length >= 8) && (senhaAtual.val().length >= 8)) {
+            if (senhaNova.val() == senhaAtual.val()) {
+                $('#labelSenhaAtual').html('<i class="fa fa-times prefix mr-1"></i>A nova senha não pode ser igual a senha atual');
+                $('#labelSenhaAtual').removeClass('green-text').addClass('red-text');
+                $('#labelSenhaAtual').removeClass('invisible');
+                novaSenhaValida = false;
+            } else {
+                $('#labelSenhaAtual').addClass('invisible');
+                novaSenhaValida = true;
+            }
+        }
+    });
+
+    $('#inputConfirmarNovaSenha, #inputNovaSenha').change(function () {
         var senhaNova = $('#inputNovaSenha');
         var confirmarNovaSenha = $('#inputConfirmarNovaSenha');
-        if (senhaNova.val() != "" && confirmarNovaSenha.val() != "" 
-                && (senhaNova.val().length>=8) && (confirmarNovaSenha.val().length>=8)) {
+        if (senhaNova.val() != "" && confirmarNovaSenha.val() != ""
+                && (senhaNova.val().length >= 8) && (confirmarNovaSenha.val().length >= 8)) {
             $('#labelSenhaValida').removeClass('invisible');
             if (senhaNova.val() == confirmarNovaSenha.val()) {
                 $('#labelSenhaValida').html('<i class="fa fa-check prefix mr-1"></i>As senhas são iguais');
                 $('#labelSenhaValida').removeClass('red-text').addClass('green-text');
-                novaSenhaValida = true;
+                confirmarNovaSenhaValida = true;
             } else {
                 $('#labelSenhaValida').html('<i class="fa fa-times prefix mr-1"></i>As senhas são diferentes');
                 $('#labelSenhaValida').removeClass('green-text').addClass('red-text');
-                novaSenhaValida = false;
+                confirmarNovaSenhaValida = false;
             }
         }
     });
-    
-    $('#alterarSenha').submit(function (e){
+
+    $('#alterarSenha').submit(function (e) {
         var formValido = true;
-        if(novaSenhaValida == false){
+        if (novaSenhaValida == false || confirmarNovaSenhaValida == false) {
             formValido = false;
         }
-        if(formValido==false){
+        if (formValido == false) {
             e.preventDefault();
         }
     });
