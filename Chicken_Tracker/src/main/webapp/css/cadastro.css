@@ -32,9 +32,6 @@ body + .container:first-of-type{
 }
 
 /* IMMUTABLE */
-.hide {
-    display: none !important;
-}
 * {
     box-sizing: border-box;
 }

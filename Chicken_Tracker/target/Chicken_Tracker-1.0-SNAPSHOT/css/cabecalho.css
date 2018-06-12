@@ -124,3 +124,6 @@ section a .svg-inline--fa{
     border-radius: 50%;
 }
 
+.hide {
+    display: none !important;
+}

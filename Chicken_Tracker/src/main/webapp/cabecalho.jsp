@@ -41,7 +41,7 @@
                     <div class="collapse navbar-collapse trer" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="../main/negocios.jsp"><i class="fa fa-suitcase mr-1" aria-hidden="true"></i>Negócios</a>
+                                <a class="nav-link" href="../main/negocios.jsp"><i class="fa fa-search mr-1" aria-hidden="true"></i>Pesquisar Negócios</a>
                             </li>
                             <%
                                 if (!(sessao.isNew() || sessao.getAttribute("usuario_logado").equals("false"))) {
@@ -68,8 +68,8 @@
                                     <% out.println(session.getAttribute("nome_usuario"));%>
                                 </a>
                                 <div class="dropdown-menu dropdown-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="../main/perfil.jsp">Perfil</a>
-                                    <a class="dropdown-item" href="/Chicken_Tracker/executarLogin">Sair</a>
+                                    <a class="dropdown-item" href="../main/perfil.jsp"><i class="fa fa-user mr-1"></i>Perfil</a>
+                                    <a class="dropdown-item" href="/Chicken_Tracker/executarLogin"><i class="fa fa-sign-out-alt mr-1"></i>Sair</a>
                                 </div>
                             </li>
                             <% }%>

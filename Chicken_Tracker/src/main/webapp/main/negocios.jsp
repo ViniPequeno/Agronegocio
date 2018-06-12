@@ -15,7 +15,7 @@
                     <input placeholder="Pesquisar negócios" name="search" class="form-control" type="text">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit" value="Pesquisar">
-                            <span class="icon-search"></span>
+                            <i class="fa fa-search"></i>
                             Pesquisar
                         </button>
                     </span>
@@ -50,7 +50,7 @@
                     <tr data-negocio="<%=data%>">
                         <td><%=n.getNome()%></td>
                         <td><%=n.getPerfil().getNome()%></td>
-                        <td><%=n.getEmpresaCNPJ()%></td>
+                        <td class="CNPJ"><%=n.getEmpresaCNPJ()%></td>
                         <td><%=n.getEmail()%></td>
                         <td><%=n.getTelefone1()!=null?n.getTelefone1():"---"%></td>
                         <td><%=n.getTelefone2()!=null?n.getTelefone2():"---"%></td>
@@ -136,6 +136,7 @@
 <%@include file="../rodape.jsp" %>
 <script src="../js/paginacaoTabelas.js"></script>
 <script src="../js/formUtils.js"></script>
+<script src="../js/mascara.js"></script>
 <script type="text/javascript">
     dataN = "";
     var linha;

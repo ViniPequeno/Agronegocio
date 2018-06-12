@@ -17,13 +17,16 @@ $(document).ready(function () {
         if ($('#btnPagar').hasClass('disabled'))
             $('#btnPagar').removeClass('disabled');
     }
-    
+
     var rowsShown = 5;
     var rowsTotal = $('#tableDados tbody tr').length;
     var numPages = rowsTotal / rowsShown;
     for (i = 0; i < numPages; i++) {
         var pageNum = i + 1;
-        $('#next').before('<li class="page-item number"><a class="page-link" rel="' + i + '">' + pageNum + '</a></li> ');
+        var elemIndex = $('#next').before('<li class="page-item number"><a class="page-link" rel="' + i + '">' + pageNum + '</a></li> ');
+        if (i > 2) {
+            $('#next').prev().hide();
+        }
     }
     $('#tableDados tbody tr').hide();
     $('#tableDados tbody tr').slice(0, rowsShown).show();
@@ -35,6 +38,7 @@ $(document).ready(function () {
     //Quando clicar em algum índice de página da tabela
     $('#pg-link li.number').bind('click', function () {
         navigationButtons($(this), numPages);
+        updateIndexesOnScreen($(this));
         $('#pg-link li').removeClass('active');
         $(this).addClass('active');
         var currPage = $(this).children('a').attr('rel');
@@ -52,6 +56,7 @@ $(document).ready(function () {
         $('#next').addClass('disabled');
         $('#pg-link li').removeClass('active');
         $('#pg-link li.number:last').addClass('active');
+        updateIndexesOnScreen($('#pg-link li.number.active'));
         var currPage = $('#pg-link li.number:last').children('a').attr('rel');
         var startItem = currPage * rowsShown;
         var endItem = startItem + rowsShown;
@@ -67,6 +72,7 @@ $(document).ready(function () {
         $('#previous').addClass('disabled');
         $('#pg-link li').removeClass('active');
         $('#pg-link li.number:first').addClass('active');
+        updateIndexesOnScreen($('#pg-link li.number.active'));
         var currPage = $('#pg-link li.number:first').children('a').attr('rel');
         var startItem = currPage * rowsShown;
         var endItem = startItem + rowsShown;
@@ -79,6 +85,7 @@ $(document).ready(function () {
     $('#next').bind('click', function () {
         $('#pg-link li.active').next().addClass('active');
         $('#pg-link li.active:first').removeClass('active');
+        updateIndexesOnScreen($('#pg-link li.number.active'));
 
         navigationButtons($('#pg-link li.active'), numPages);
 
@@ -93,6 +100,7 @@ $(document).ready(function () {
     $('#previous').bind('click', function () {
         $('#pg-link li.active').prev().addClass('active');
         $('#pg-link li.active:last').removeClass('active');
+        updateIndexesOnScreen($('#pg-link li.number.active'));
 
         navigationButtons($('#pg-link li.active'), numPages);
 
@@ -119,4 +127,16 @@ function navigationButtons(element, numPages) {
         $('#last-item').removeClass('disabled');
         $('#next').removeClass('disabled');
     }
+}
+
+function updateIndexesOnScreen(elemClicado) {
+    var numElemClicado = $($(elemClicado).children()[0]);
+    $('#pg-link li.number').each(function (e) {
+        var t = $(this).children()[0];
+        if (+$(t).html() < +numElemClicado.html() - 2 || +$(t).html() > +numElemClicado.html() + 2) {
+            $(this).hide();
+        } else {
+            $(this).show();
+        }
+    });
 }
