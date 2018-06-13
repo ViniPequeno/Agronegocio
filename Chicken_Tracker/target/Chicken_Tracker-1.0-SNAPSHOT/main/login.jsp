@@ -11,15 +11,15 @@
                     <!-- Material input email -->
                     <div class="md-form form-group">
                         <i class="fa fa-id-card prefix grey-text"></i>
-                        <input type="text" id="inputLogin" name="inputLogin" class="form-control validate" autofocus required tabindex="1">
-                        <label for="inputLogin" data-error="">Login</label>
+                        <input type="text" id="inputLogin" name="inputLogin" class="form-control" autofocus required tabindex="1">
+                        <label for="inputLogin">Login</label>
                     </div>
 
                     <!-- Material input password -->
                     <div class="md-form form-group mt-5">
                         <i class="fa fa-lock prefix grey-text"></i>
-                        <input minlength="8" maxlength="20" type="password" id="inputSenha" name="inputSenha" class="form-control validate" required autocomplete="off" tabindex="2">
-                        <label for="inputSenha" data-error="">Senha</label>
+                        <input minlength="8" maxlength="20" type="password" id="inputSenha" name="inputSenha" class="form-control" required autocomplete="off" tabindex="2">
+                        <label for="inputSenha">Senha</label>
                     </div>
                     <p class="text-center"><a class="small ml-4" href="esqueceuSenha.jsp">Esqueci minha senha. Quero recuperá-la.</a></p>
                     <p id="loginOK" class="mt-5 ml-4 invisible">Senha inválida</p>
