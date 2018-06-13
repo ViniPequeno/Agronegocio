@@ -59,7 +59,7 @@
                             <input form="checks" type="checkbox" id="checkbox!<%=e.getSufixoCNPJ()%>" name="checkbox!<%=e.getSufixoCNPJ()%>">
                             <label for="checkbox!<%=e.getSufixoCNPJ()%>" class="label-table"></label>
                         </th>
-                        <td><%=e.getNegocio().getNome()%></td>
+                        <td class="nomeEmpresa"><%=e.getNegocio().getNome()%></td>
                         <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="CNAE"><%=e.getCNAE()%></td>
                         <td class="sufixoCNPJ"><%=e.getSufixoCNPJ()%></td>

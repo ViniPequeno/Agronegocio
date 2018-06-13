@@ -39,6 +39,7 @@
                 <thead>
                     <tr>
                         <th> </th>
+                        <th>Nome</th>
                         <th>CNPJ</th>
                         <th>Preço</th>
                         <th>Quantidade</th>
@@ -58,6 +59,7 @@
                             <input form="checks" type="checkbox" id="checkbox!<%=f.getId()%>" name="checkbox!<%=f.getId()%>">
                             <label for="checkbox!<%=f.getId()%>" class="label-table"></label>
                         </th>
+                        <td class="nomeEmpresa"><%=f.getNome()%></td>
                         <td class="CNPJ"><%=f.getCNPJ()%></td>
                         <td>R$ <%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>

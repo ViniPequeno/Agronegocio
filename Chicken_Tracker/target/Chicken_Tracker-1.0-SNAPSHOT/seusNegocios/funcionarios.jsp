@@ -252,7 +252,7 @@
             '<input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="80">' +
             '<label for="inputNome">Nome</label></div>' +
             '<div class="md-form"><i class="fa fa-id-card prefix grey-text"></i>' +
-            '<input type="text" id="inputCPF" name="inputCPF" class="form-control" required maxlength="14">' +
+            '<input type="text" id="inputCPF" name="inputCPF" class="form-control" required readonly maxlength="14">' +
             '<label for="inputCPF">CPF</label></div>' +
             '<div class="md-form"><i class="fas fa-address-card prefix grey-text"></i>' +
             '<input type="text" id="inputRG" name="inputRG" class="form-control" required maxlength="14">' +

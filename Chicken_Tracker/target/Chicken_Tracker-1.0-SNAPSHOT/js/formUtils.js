@@ -16,4 +16,10 @@ $('.proprietario').each(function () {
         $(this).html(nome[0] + " " + nome[1]);
     }
 });
+$('.nomeEmpresa').each(function () {
+    var nome = $(this).html().split(" ");
+    if (nome.length > 1) {
+        $(this).html(nome[0] + " " + nome[1]);
+    }
+});
 initInputs();
