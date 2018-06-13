@@ -87,15 +87,17 @@ public class FornecedorServlet extends HttpServlet {
                     hue.atualizar(e);
                     hupro.atualizar(f.getProdutos());
                     response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
-                }else{
+                } else {
                     response.getWriter().println("ERRO!");
                 }//SALDO INSUFICINTE
 
             }
 
         } else if (butao.equals("cadastrar")) {
-            f.setCNPJ(request.getParameter("inputCNPJ"));
+            f.setCNPJ(request.getParameter("inputCNPJCompleto"));
             if (ConsultaFornecedores.findById(f.getCNPJ()) == null) {
+                f.setNome(request.getParameter("inputNome"));
+                f.setEmail(request.getParameter("inputEmail"));
                 f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
                 f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -111,7 +113,9 @@ public class FornecedorServlet extends HttpServlet {
 
             }
         } else if (butao.equals("alterar")) {
-            f.setCNPJ(request.getParameter("inputCNPJ"));
+            f.setCNPJ(request.getParameter("inputCNPJCompleto"));
+            f.setNome(request.getParameter("inputNome"));
+            f.setEmail(request.getParameter("inputEmail"));
             f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
             f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");

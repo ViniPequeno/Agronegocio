@@ -87,20 +87,22 @@ public class FornecimentoServlet extends HttpServlet {
                             + "/" + p.getMes() + "/" + p.getAno());
                     e.setSaldo(e.getSaldo() + p.getValor());
                     f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() - f.getQuantidade());
-                    if(f.getProdutos().getQuantidadeAtual()>=0){ // FOI POSSIVEL
+                    if (f.getProdutos().getQuantidadeAtual() >= 0) { // FOI POSSIVEL
                         hup.salvar(p);
                         hue.atualizar(e);
                         hupro.atualizar(f.getProdutos());
                         response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getId());
-                    }else{///NÃO FOI POSSIVEL E CANCENLA ESSA E OUTRAS OPERAÇÕES
+                    } else {///NÃO FOI POSSIVEL E CANCENLA ESSA E OUTRAS OPERAÇÕES
                         response.getWriter().println("ERRADO");
                     }
                 }
-                
+
                 break;
             }
             case "cadastrar": {
-                f.setCNPJ(request.getParameter("inputCNPJ"));
+                f.setCNPJ(request.getParameter("inputCNPJCompleto"));
+                f.setNome(request.getParameter("inputNome"));
+                f.setEmail(request.getParameter("inputEmail"));
                 f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
                 f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -116,6 +118,9 @@ public class FornecimentoServlet extends HttpServlet {
                 break;
             }
             case "alterar": {
+                f.setCNPJ(request.getParameter("inputCNPJCompleto"));
+                f.setNome(request.getParameter("inputNome"));
+                f.setEmail(request.getParameter("inputEmail"));
                 f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
                 f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");

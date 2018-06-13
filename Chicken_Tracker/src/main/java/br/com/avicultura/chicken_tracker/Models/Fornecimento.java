@@ -2,7 +2,6 @@ package br.com.avicultura.chicken_tracker.Models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -16,7 +15,9 @@ public class Fornecimento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(nullable = false)
+    private String nome;
+    private String email;
     private String CNPJ;
     private int quantidade;
     private double pagamento;
@@ -43,6 +44,22 @@ public class Fornecimento implements Serializable {
             getInstance = new Fornecimento();
         }
         return getInstance;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Long getId() {

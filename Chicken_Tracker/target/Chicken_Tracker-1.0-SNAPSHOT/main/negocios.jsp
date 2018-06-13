@@ -175,8 +175,8 @@
         cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3}).*/, '$1.$2.$3');
         $("#cnpj").text("CNPJ: " + cnpj);
 
-        $("#fone1").text("Fone 1: " + fone1);
-        $("#fone2").text("Fone 2: " + fone2);
+        $("#fone1").text("Fone 1: " + (fone1=="null"?"---":fone1));
+        $("#fone2").text("Fone 2: " + (fone2=="null"?"---":fone2));
 
         $("#email").text("Email: " + email);
 

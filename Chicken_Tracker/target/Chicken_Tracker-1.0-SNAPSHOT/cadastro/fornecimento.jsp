@@ -14,9 +14,23 @@
 
                 <!-- Material input text -->
                 <div class="md-form">
+                    <i class="fa fa-id-card prefix grey-text"></i>
+                    <input type="text" id="inputCNPJCompleto" name="inputCNPJCompleto" class="form-control" required autofocus maxlength="8">
+                    <label for="inputCNPJCompleto">CNPJ</label>
+                </div>
+                
+                <!-- Material input text -->
+                <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
-                    <input type="text" id="inputCNPJ" name="inputCNPJ" class="form-control" required autofocus maxlength="8">
-                    <label for="inputCNPJ">CNPJ</label>
+                    <input type="text" id="inputNome" name="inputNome" class="form-control" required>
+                    <label for="inputNome">Nome</label>
+                </div>
+                
+                <!-- Material input text -->
+                <div class="md-form">
+                    <i class="fa fa-at prefix grey-text"></i>
+                    <input type="email" id="inputEmail" name="inputEmail" class="form-control">
+                    <label for="inputEmail">Email</label>
                 </div>
 
                 <!-- Material input text -->
@@ -59,6 +73,7 @@
 <%@include file="../rodape.jsp" %>
 <script src="../js/mascara.js"></script>
 <script src="../js/maskMoney.js"></script>
+<script src="../js/consultaCNPJ.js"></script>
 <script>
     $('#inputCNPJ, #inputProduto').blur(function () {
         if ($('#inputCNPJ').val() !== "" && $('#inputProduto').val() !== "") {
