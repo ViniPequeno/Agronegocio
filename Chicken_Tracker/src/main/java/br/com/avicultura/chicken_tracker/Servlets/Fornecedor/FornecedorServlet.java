@@ -78,14 +78,14 @@ public class FornecedorServlet extends HttpServlet {
                 p.setTipo('D');
                 p.setValor(f.getPagamento());
                 p.setDescricao("Pagamento do fornecedor " + f.getCNPJ()
-                        + "referente ao produto " + f.getProdutos().getNome() + " de quantidade igual a"
+                        + "referente ao produto " + f.getProduto().getNome() + " de quantidade igual a"
                         + f.getQuantidade());
                 e.setSaldo(e.getSaldo() - p.getValor());
                 if (e.getSaldo() >= 0) {
-                    f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() + f.getQuantidade());
+                    f.getProduto().setQuantidadeAtual(f.getProduto().getQuantidadeAtual() + f.getQuantidade());
                     hup.salvar(p);
                     hue.atualizar(e);
-                    hupro.atualizar(f.getProdutos());
+                    hupro.atualizar(f.getProduto());
                     response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
                 } else {
                     response.getWriter().println("ERRO!");
@@ -106,28 +106,31 @@ public class FornecedorServlet extends HttpServlet {
                 } catch (ParseException ex) {
                 }
                 f.setTipo('C');
-                f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
+                f.setProduto(ConsultaProduto.findById(request.getParameter("inputProduto")));
                 f.setEstabelecimento(e);
                 huf.salvar(f);
                 response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
 
             }
         } else if (butao.equals("alterar")) {
-            f.setCNPJ(request.getParameter("inputCNPJCompleto"));
-            f.setNome(request.getParameter("inputNome"));
-            f.setEmail(request.getParameter("inputEmail"));
-            f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
-            f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
-            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            try {
-                f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
-            } catch (ParseException ex) {
-            }
+            f = ConsultaFornecedores.findByCPF(request.getParameter("inputCNPJCompleto"));
+            if (f != null) {
+                f.setCNPJ(request.getParameter("inputCNPJCompleto"));
+                f.setNome(request.getParameter("inputNome"));
+                f.setEmail(request.getParameter("inputEmail"));
+                f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
+                f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
+                } catch (ParseException ex) {
+                }
 
-            f.setTipo('C');
-            f.setEstabelecimento(e);
-            huf.atualizar(f);
-            response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
+                f.setTipo('C');
+                f.setEstabelecimento(e);
+                o.println(huf.atualizar(f));
+                response.sendRedirect("seusNegocios/fornecedores.jsp?estabelecimento=" + e.getId());
+            }
         } else {
             ArrayList<String> chkBoxIds = new ArrayList<String>();
             Enumeration enumeration = request.getParameterNames();

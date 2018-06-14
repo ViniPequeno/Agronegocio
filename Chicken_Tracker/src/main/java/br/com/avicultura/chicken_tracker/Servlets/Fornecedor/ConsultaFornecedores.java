@@ -7,6 +7,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecedor;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -28,6 +29,29 @@ public class ConsultaFornecedores {
             Query query = s.createQuery("from Fornecimento f where"
                     + " f.id =:id and f.tipo ='c'");
             query.setParameter("id", longID);
+            try{
+            f = (Fornecimento) query.getSingleResult();
+            }catch(NoResultException e){
+                f = null;
+            }
+            s.getTransaction().commit();
+            return f;
+        } catch (HibernateException ex) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
+        return f;
+    }
+    
+    public static Fornecimento findByCPF(String cnpj) {
+        Session s = HibernateFactory.getSessionFactory().openSession();
+        Fornecimento f = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Fornecimento f where"
+                    + " f.CNPJ =:CNPJ and f.tipo ='c'");
+            query.setParameter("CNPJ", cnpj);
             try{
             f = (Fornecimento) query.getSingleResult();
             }catch(NoResultException e){
@@ -66,10 +90,14 @@ public class ConsultaFornecedores {
 
     public static String returnValues(Fornecimento f) {
         String a = "";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        a += f.getNome() + "#";
         a += f.getCNPJ() + "#";
-        a += f.getVencimento() + "#";
+        a += f.getEmail() + "#";
+        a += f.getProduto().getNome() + "#";
         a += f.getPagamento() + "#";
         a += f.getQuantidade() + "#";
+        a += formatter.format(f.getVencimento())+ "#";
 
         return a;
     }

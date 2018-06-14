@@ -82,15 +82,15 @@ public class FornecimentoServlet extends HttpServlet {
                     p.setValor(f.getPagamento());
                     o.println("ola");
                     p.setDescricao("Pagamento do fornecimento " + f.getCNPJ() + " no valor: " + p.getValor()
-                            + "referente ao produto " + f.getProdutos().getNome() + " quantidade igual a"
+                            + "referente ao produto " + f.getProduto().getNome() + " quantidade igual a"
                             + f.getQuantidade() + "na data " + p.getDia()
                             + "/" + p.getMes() + "/" + p.getAno());
                     e.setSaldo(e.getSaldo() + p.getValor());
-                    f.getProdutos().setQuantidadeAtual(f.getProdutos().getQuantidadeAtual() - f.getQuantidade());
-                    if (f.getProdutos().getQuantidadeAtual() >= 0) { // FOI POSSIVEL
+                    f.getProduto().setQuantidadeAtual(f.getProduto().getQuantidadeAtual() - f.getQuantidade());
+                    if (f.getProduto().getQuantidadeAtual() >= 0) { // FOI POSSIVEL
                         hup.salvar(p);
                         hue.atualizar(e);
-                        hupro.atualizar(f.getProdutos());
+                        hupro.atualizar(f.getProduto());
                         response.sendRedirect("seusNegocios/fornecimento.jsp?estabelecimento=" + e.getId());
                     } else {///NÃO FOI POSSIVEL E CANCENLA ESSA E OUTRAS OPERAÇÕES
                         response.getWriter().println("ERRADO");
@@ -111,28 +111,31 @@ public class FornecimentoServlet extends HttpServlet {
                 } catch (ParseException ex) {
                 }
                 f.setTipo('V');
-                f.setProdutos(ConsultaProduto.findById(request.getParameter("inputProduto")));
+                f.setProduto(ConsultaProduto.findById(request.getParameter("inputProduto")));
                 f.setEstabelecimento(e);
                 huf.salvar(f);
                 response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getId());
                 break;
             }
             case "alterar": {
-                f.setCNPJ(request.getParameter("inputCNPJCompleto"));
-                f.setNome(request.getParameter("inputNome"));
-                f.setEmail(request.getParameter("inputEmail"));
-                f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
-                f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
-                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
-                } catch (ParseException ex) {
+                f = ConsultaFornecimento.findByCPF(request.getParameter("inputCNPJCompleto"));
+                if (f != null) {
+                    f.setCNPJ(request.getParameter("inputCNPJCompleto"));
+                    f.setNome(request.getParameter("inputNome"));
+                    f.setEmail(request.getParameter("inputEmail"));
+                    f.setQuantidade(Integer.parseInt(request.getParameter("inputQtde")));
+                    f.setPagamento(Double.parseDouble(request.getParameter("inputValorPagamento")));
+                    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                    try {
+                        f.setVencimento(formatter.parse(request.getParameter("inputDataVencimento")));
+                    } catch (ParseException ex) {
+                    }
+                    f.setTipo('V');
+                    f.setEstabelecimento(e);
+                    huf.atualizar(f);
+                    response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getId());
+                    break;
                 }
-                f.setTipo('V');
-                f.setEstabelecimento(e);
-                huf.atualizar(f);
-                response.sendRedirect("seusNegocios/fornecimentos.jsp?estabelecimento=" + e.getId());
-                break;
             }
             default: {
                 ArrayList<String> chkBoxIds = new ArrayList<String>();

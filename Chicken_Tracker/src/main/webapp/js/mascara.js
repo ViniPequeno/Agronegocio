@@ -1,8 +1,7 @@
 $(document).ready(function () {
     $("#inputCPF").mask('000.000.000-00', {reverse: false});
-    $("#inputCNPJ").mask('00.000.000', {reverse: false});
-    $("#inputCNPJCompleto").mask('00.000.000/0000-00', {reverse: false});
-    $(".CNPJ").mask('00.000.000', {reverse: false});
+    $("#inputCNPJ, .CNPJ").mask('00.000.000', {reverse: false});
+    $("#inputCNPJCompleto , .CNPJCompleto").mask('00.000.000/0000-00', {reverse: false});
     $("#inputSufixoCNPJ").mask('0000-00', {reverse: false});
     $(".sufixoCNPJ").mask('0000-00', {reverse: false});
     $("#inputRG").mask('00.000.000-0', {reverse: false});

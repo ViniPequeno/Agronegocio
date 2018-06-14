@@ -41,6 +41,7 @@
                         <th> </th>
                         <th>Nome</th>
                         <th>CNPJ</th>
+                        <th>Produto</th>
                         <th>Preço</th>
                         <th>Quantidade</th>
                         <th>Data de vencimento</th>
@@ -60,7 +61,8 @@
                             <label for="checkbox!<%=f.getId()%>" class="label-table"></label>
                         </th>
                         <td class="nomeEmpresa"><%=f.getNome()%></td>
-                        <td class="CNPJ"><%=f.getCNPJ()%></td>
+                        <td class="CNPJCompleto"><%=f.getCNPJ()%></td>
+                        <td><%=f.getProduto().getNome()%></td>
                         <td>R$ <%=f.getPagamento()%></td>
                         <td><%=f.getQuantidade()%></td>
                         <td><%=dateFormat.format(f.getVencimento())%></td>
@@ -128,11 +130,11 @@
     <form id="checks"></form>
 
     <!-- Modal -->
-    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
+    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="labelExcluir" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão?</h5>
+                    <h5 class="modal-title" id="labelExcluir">Confirmar exclusão?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -146,11 +148,11 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="pagarSelecionados" tabindex="-1" role="dialog" aria-labelledby="pagarSelecionados" aria-hidden="true">
+    <div class="modal fade" id="pagarSelecionados" tabindex="-1" role="dialog" aria-labelledby="labelPagar" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="labelPagar">Pagar funcionários</h5>
+                    <h5 class="modal-title" id="labelPagar">Pagar fornecedores</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -166,10 +168,131 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="detalhesFornecedor" tabindex="-1" role="dialog" aria-labelledby="detalhesFornecedor" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelDetalhes">Detalhes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="bodyDetalhes">
+                    <p id="nome"> Nome: </p>
+                    <p id="CNPJ" class="CNPJ"> CNPJ: </p>
+                    <p id="email"> Email: </p>
+                    <p id="preco"> Preço: R$ </p>
+                    <p id="produto"> Produto: </p>
+                    <p id="qtde"> Quantidade: </p>
+                    <p id="dataVencimento"> Data de vencimento: </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button name="fornecedor" value="alterar" type="button" class="btn btn-primary" id="btnEditarConfirmar">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../js/paginacaoTabelas.js"></script>
 <script src="../js/formUtils.js"></script>
 <script src="../js/mascara.js"></script>
+<script src="../js/maskMoney.js"></script>
+<script>
+    var dataF = "";
+    var modalDetalhesInnerHTML =
+            '<p id="nome"> Nome: </p>' +
+            '<p id="CNPJ" class="CNPJ"> CNPJ: </p>' +
+            '<p id="email"> Email: </p>' +
+            '<p id="produto"> Produto: </p>' +
+            '<p id="preco"> Preço: R$</p>' +
+            '<p id="qtde"> Quantidade: </p>' +
+            '<p id="dataVencimento"> Data de vencimento:';
+    $("td").not(function () {
+        return $("a", this).length != 0;
+    }).click(function () {
+        $("#detalhesFornecedor").modal();
+        $("#bodyDetalhes").html(modalDetalhesInnerHTML);
+        $("#btnEditarConfirmar").text("Editar");
+
+        var linha = $(this).closest('tr');
+        var dados = linha.data('fornecedor').toString();
+        var campo = dados.split("#");
+        dataF = campo;
+
+        var nome = campo[0];
+        var CNPJ = campo[1];
+        var email = campo[2];
+        var nomeProduto = campo[3];
+        var preco = parseFloat(campo[4]);
+        var qtde = campo[5];
+        var vencimento = campo[6];
+
+        $("#nome").text("Nome: " + nome);
+
+        CNPJ = CNPJ.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2}).*/, '$1.$2.$3/$4-$5');
+        $("#CNPJ").text("CNPJ: " + CNPJ);
+
+        $("#email").text("Email: " + email);
+
+        $("#produto").text("Produto: " + nomeProduto);
+
+        $("#preco").text("Preço: R$ " + preco);
+
+        $("#qtde").text("Quantidade: " + qtde);
+
+        $("#dataVencimento").text("Data de Vencimento: " + vencimento);
+    });
+</script>
+<script>
+    var modalEditarInnerHTML =
+            '<form action="/Chicken_Tracker/FornecedorServlet" method="post" name="formEditar" id="formEditar">' +
+            '<div class="md-form"><i class="fa fa-id-card prefix grey-text"></i>' +
+            '<input type="text" id="inputCNPJCompleto" name="inputCNPJCompleto" class="form-control" required readonly maxlength="18">' +
+            '<label for="inputCNPJCompleto">CNPJ</label></div>' +
+            '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
+            '<input type="text" id="inputNome" name="inputNome" class="form-control" autofocus required>' +
+            '<label for="inputNome">Nome</label></div>' +
+            '<div class="md-form"><i class="fa fa-at prefix grey-text"></i>' +
+            '<input type="email" id="inputEmail" name="inputEmail" class="form-control">' +
+            '<label for="inputEmail">Email</label></div>' +
+            '<div class="md-form"><i class="fa fa-box prefix grey-text"></i>' +
+            '<input type="number" id="inputQtde" name="inputQtde" class="form-control" required min="0" maxlength="5">' +
+            '<label for="inputQtde">Quantidade</label></div>' +
+            '<div class="md-form"><i class="fa fa-money-bill-alt prefix grey-text"></i>' +
+            '<input type="text" id="inputValorPagamento" name="inputValorPagamento" class="form-control" required maxlength="20">' +
+            '<label for="inputValorPagamento">Valor do pagamento</label></div>' +
+            '<div class="md-form"><i class="fa fa-calendar-alt prefix grey-text"></i>' +
+            '<input type="text" id="inputDataVencimento" name="inputDataVencimento" class="form-control" required maxlength="10">' +
+            '<label for="inputDataVencimento">Data de vencimento</label></div>' +
+            '</form>';
+    $("#btnEditarConfirmar").click(function (event) {
+        if ($(this).text() == "Editar") {
+            $(this).text("Confirmar");
+            $(this).attr('type', 'submit');
+            event.preventDefault();
+            $(this).attr('form', 'formEditar');
+            $("#bodyDetalhes").html(modalEditarInnerHTML);
+            initInputs();
+            $('#inputNome').val(dataF[0]).trigger("change");
+            $('#inputCNPJCompleto').val(dataF[1]).trigger("change");
+            $('#inputEmail').val(dataF[2]).trigger("change");
+            $('#inputCargo').val(dataF[3]).trigger("change");
+            $('#inputValorPagamento').val(parseFloat(dataF[4])).trigger("change");
+            $('#inputQtde').val(dataF[5]).trigger("change");
+            $('#inputDataVencimento').val(dataF[6]).trigger("change");
+            $('#inputValorPagamento').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','}).trigger('mask.maskMoney');
+            $('#inputCNPJCompleto').mask('00.000.000/0000-00');
+            $('#inputDataVencimento').mask('00/00/0000');
+        } else {
+            var value = $('#inputValorPagamento').maskMoney('unmasked')[0];
+            $('#inputValorPagamento').val(value);
+            $('#inputCNPJCompleto').unmask('00.000.000/0000-00');
+            formEditar.submit();
+        }
+    });
+</script>
 </body>
 </html>

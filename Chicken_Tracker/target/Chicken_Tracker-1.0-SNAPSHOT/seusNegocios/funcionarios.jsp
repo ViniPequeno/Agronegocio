@@ -14,7 +14,7 @@
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>
         Gerenciar Funcionários</h2>
 
-    <%  
+    <%
         if (sessao.getAttribute("estabelecimento") == null) {
             sessao.setAttribute("estabelecimento", ConsultaEstabelecimento.findById(request.getParameter("estabelecimento")));
         } else if (!sessao.getAttribute("estabelecimento").toString().equals(request.getParameter("negocio"))) {
@@ -174,7 +174,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="detalhesFuncionario" tabindex="-1" role="dialog" aria-labelledby="detalhesFuncionario" aria-hidden="true">
+    <div class="modal fade" id="detalhesFuncionario" tabindex="-1" role="dialog" aria-labelledby="labelDetalhes" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -282,6 +282,9 @@
             $('#inputRG').mask('00.000.000-0', {reverse: false});
             $('#inputSalario').maskMoney({prefix: 'R$ ', thousands: '.', decimal: ','}).trigger('mask.maskMoney');
         } else {
+            var value = $('#inputSalario').maskMoney('unmasked')[0];
+            $('#inputSalario').val(value);
+            $('#inputCPF').unmask('00.000.000');
             formEditar.submit();
         }
     });

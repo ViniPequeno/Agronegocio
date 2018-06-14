@@ -7,6 +7,7 @@ package br.com.avicultura.chicken_tracker.Servlets.Fornecimento;
 
 import br.com.avicultura.chicken_tracker.Hibernate.HibernateFactory;
 import br.com.avicultura.chicken_tracker.Models.Fornecimento;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -42,6 +43,29 @@ public class ConsultaFornecimento {
         }
         return f;
     }
+    
+    public static Fornecimento findByCPF(String cnpj) {
+        Session s = HibernateFactory.getSessionFactory().openSession();
+        Fornecimento f = null;
+        try {
+            s.beginTransaction();
+            Query query = s.createQuery("from Fornecimento f where"
+                    + " f.CNPJ =:CNPJ and f.tipo ='v'");
+            query.setParameter("CNPJ", cnpj);
+            try{
+            f = (Fornecimento) query.getSingleResult();
+            }catch(NoResultException e){
+                f = null;
+            }
+            s.getTransaction().commit();
+            return f;
+        } catch (HibernateException ex) {
+            s.getTransaction().rollback();
+        } finally {
+            s.close();
+        }
+        return f;
+    }
 
     public static List<Fornecimento> returnList(String estabelecimentoID) {
         List<Fornecimento> lista = null;
@@ -64,13 +88,17 @@ public class ConsultaFornecimento {
         return lista;
     }
 
-    public static String returnValues(Fornecimento e) {
+    public static String returnValues(Fornecimento f) {
         String a = "";
-        a += e.getCNPJ() + "#";
-        a += e.getVencimento() + "#";
-        a += e.getPagamento() + "#";
-        a += e.getQuantidade() + "#";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        a += f.getNome() + "#";
+        a += f.getCNPJ() + "#";
+        a += f.getEmail() + "#";
+        a += f.getProduto().getNome() + "#";
+        a += f.getPagamento() + "#";
+        a += f.getQuantidade() + "#";
+        a += formatter.format(f.getVencimento())+ "#";
+
         return a;
     }
-
 }

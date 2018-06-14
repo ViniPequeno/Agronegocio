@@ -110,14 +110,6 @@ public class Fornecimento implements Serializable {
         this.tipo = tipo;
     }
 
-    public Produto getProdutos() {
-        return produto;
-    }
-
-    public void setProdutos(Produto produto) {
-        this.produto = produto;
-    }
-
     public Estabelecimento getEstabelecimento() {
         return estabelecimento;
     }

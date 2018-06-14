@@ -53,7 +53,7 @@
                         </th>
                         <td><%=n.getNome()%></td>
                         <td class="proprietario"><%=n.getPerfil().getNome()%></td>
-                        <td class="maskCNPJ"><%=n.getEmpresaCNPJ()%></td>
+                        <td class="CNPJ"><%=n.getEmpresaCNPJ()%></td>
                         <td><%=n.getEmail()%></td>
                         <td><a target="_blank" href="<%=n.getLinkFacebook()%>"><%=n.getLinkFacebook()%><i class="fas fa-external-link-alt ml-1"></i></a></td>
                         <td><a target="_blank" href="http://instagram.com/<%=n.getUserInstagram()%>"><%=n.getUserInstagram()%><i class="fas fa-external-link-alt ml-1"></i></a></td>
@@ -282,7 +282,6 @@
             formEditar.submit();
         }
     });
-    $('.maskCNPJ').mask('00.000.000', {reverse: false});
-</script> 
+    </script> 
 </body>
 </html>
