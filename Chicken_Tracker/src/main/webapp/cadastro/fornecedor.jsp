@@ -18,14 +18,14 @@
                     <input type="text" id="inputCNPJCompleto" name="inputCNPJCompleto" class="form-control" required autofocus maxlength="8">
                     <label for="inputCNPJCompleto">CNPJ</label>
                 </div>
-                
+
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-user prefix grey-text"></i>
                     <input type="text" id="inputNome" name="inputNome" class="form-control" required>
                     <label for="inputNome">Nome</label>
                 </div>
-                
+
                 <!-- Material input text -->
                 <div class="md-form">
                     <i class="fa fa-at prefix grey-text"></i>

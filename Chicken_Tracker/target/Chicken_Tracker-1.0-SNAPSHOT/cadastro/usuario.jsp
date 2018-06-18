@@ -82,7 +82,7 @@
     var senhasCorretas = false;
     $('#inputLogin').change(function () {
         $.ajax({
-            url: "http://localhost/Chicken_Tracker_Consulta/public/index.php/api/perfil/usuario/" + $('#inputLogin').val() + "/",
+            url: "http://localhost:8080/public/index.php/api/perfil/usuario/" + $('#inputLogin').val() + "/",
             async: false,
             dataType: 'json',
             success: function (data) {

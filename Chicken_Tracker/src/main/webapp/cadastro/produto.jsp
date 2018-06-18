@@ -86,7 +86,7 @@
     $('#inputCodigo').blur(function () {
         if ($('#inputCodigo').val() !== "" && $('#inputProduto').val() !== "") {
             $.ajax({
-                url: "http://localhost:8084/Chicken_Tracker_Consulta/public/index.php/api/produto/" + $('#estabelecimento').val() + "/" + $('#inputCodigo').val(),
+                url: "http://localhost:8080/public/index.php/api/produto/" + $('#estabelecimento').val() + "/" + $('#inputCodigo').val(),
                 async: false,
                 dataType: 'json',
                 success: function (data) {
