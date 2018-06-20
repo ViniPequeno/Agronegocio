@@ -136,6 +136,7 @@
 <script src="../js/mascara.js"></script>
 <script src="../js/formUtils.js"></script>
 <script src="../js/maskMoney.js"></script>
+<script src="../js/exportTableToPDF.js"></script>
 <script>
     $('.tipoPagamento').each(function () {
         if ($(this).text() == 'G') {

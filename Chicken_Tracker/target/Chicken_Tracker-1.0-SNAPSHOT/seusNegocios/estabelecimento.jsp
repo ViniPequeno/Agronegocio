@@ -15,7 +15,7 @@
     String lucroSemana = ConsultaPagamento.seteDiasLucros(e.getId());
     String lucroMes = ConsultaPagamento.trintaDiasLucros(e.getId());
 %>
-<div class="container mt-lg-4">
+<div class="container">
     <h2 class="py-5 font-weight-bold text-left">
         <a href="estabelecimentos.jsp?negocio=<%=((Negocio) session.getAttribute("negocio")).getEmpresaCNPJ()%>">
             <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Estabelecimento: <%=e.getSufixoCNPJ()%></h2>

@@ -4,20 +4,19 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container">
-    <h2 class="py-5 font-weight-bold text-left blue-text">
-        <a onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Voltar</a></h2>
-
+    <!--h2 class="py-5 font-weight-bold text-left blue-text"><a onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Voltar</a></h2-->
+    <br>
     <%  //Gera tabela se houver algum registro
         List<Negocio> negocios = null;
         negocios = ConsultaNegocio.returnListOfPerfil(sessao.getAttribute("nome_usuario").toString());
         if (negocios.size() > 0) {
     %>
-    <div class="card card-cascade narrower">
+    <div class="card card-cascade narrower mt-5">
 
         <!--Card image-->
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
 
-            <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
+            <h4 class="white-text font-weight-bold text-uppercase mb-0">Seus Negócios</h4>
 
         </div>
         <!--/Card image-->
@@ -180,6 +179,7 @@
 <script src="../js/paginacaoTabelas.js"></script>
 <script src="../js/formUtils.js"></script>
 <script src="../js/mascara.js"></script>
+<script src="../js/exportTableToPDF.js"></script>
 <script type="text/javascript">
     dataN = "";
     var linha;
@@ -238,8 +238,6 @@
         $("#fone1").text("Fone 1: " + fone1);
         $("#fone2").text("Fone 2: " + fone2);
     }
-</script>
-<script>
     var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/NegocioServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
             '<input type="text" name="inputNome" id="inputNome" class="form-control" autofocus required>' +

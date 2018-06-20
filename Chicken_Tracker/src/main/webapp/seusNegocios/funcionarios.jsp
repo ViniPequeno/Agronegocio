@@ -207,6 +207,7 @@
 <script src="../js/formUtils.js"></script>
 <script src="../js/mascara.js"></script>
 <script src="../js/maskMoney.js"></script>
+<script src="../js/exportTableToPDF.js"></script>
 <script>
     var dataF = "";
     var modalDetalhesInnerHTML = '<p id="nome"> Nome: </p>' +
@@ -248,8 +249,6 @@
 
         $("#salario").text("Salário: R$ " + salario);
     });
-</script>
-<script>
     var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/FuncionarioServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
             '<input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="80">' +

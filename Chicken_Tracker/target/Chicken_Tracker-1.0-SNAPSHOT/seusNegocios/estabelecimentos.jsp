@@ -9,7 +9,7 @@
 <div class="container">
 
     <h2 class="py-5 font-weight-bold text-left blue-text">
-        <a onclick="goBack()"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Voltar</a></h2>
+        <a href="negocios.jsp"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Voltar</a></h2>
         
         <%Negocio n = (Negocio)sessao.getAttribute("negocio");
         if (n == null) {
@@ -175,6 +175,7 @@
 <script src="../js/formUtils.js"></script>
 <script src="../js/consultaCEP.js"></script>
 <script src="../js/mascara.js"></script>
+<script src="../js/exportTableToPDF.js"></script>
 <script>
     dataE = "";
     var modalDetalhesInnerHTML = '<p id="negocio">Negócio: </p>' +
@@ -227,8 +228,6 @@
 
         $("#qtdeFuncionarios").text("Quantidade de funcionários: " + qtdeFuncionarios);
     });
-</script>
-<script>
     var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/EstabelecimentoServlet" >' +
             '<div class="md-form"><i class="fa fa-id-badge prefix grey-text"></i>' +
             '<input type="text" id="inputSufixoCNPJ" name="inputSufixoCNPJ" class="form-control" required autofocus maxlength="8" readonly="true">' +

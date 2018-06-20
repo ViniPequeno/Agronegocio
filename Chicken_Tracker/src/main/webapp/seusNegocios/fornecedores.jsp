@@ -203,6 +203,7 @@
 <script src="../js/formUtils.js"></script>
 <script src="../js/mascara.js"></script>
 <script src="../js/maskMoney.js"></script>
+<script src="../js/exportTableToPDF.js"></script>
 <script>
     var dataF = "";
     var modalDetalhesInnerHTML =
@@ -248,8 +249,6 @@
 
         $("#dataVencimento").text("Data de Vencimento: " + vencimento);
     });
-</script>
-<script>
     var modalEditarInnerHTML =
             '<form action="/Chicken_Tracker/FornecedorServlet" method="post" name="formEditar" id="formEditar">' +
             '<div class="md-form"><i class="fa fa-id-card prefix grey-text"></i>' +

@@ -108,7 +108,7 @@
     <div class="modal fade" id="detalhesNegocio" tabindex="-1" role="dialog" aria-labelledby="detalhesNegocio" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header blue-grey">
                     <h5 class="modal-title white-text" id="labelDetalhes">Detalhes do Negócio</h5>
                     <button type="button" class="close white-ic" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

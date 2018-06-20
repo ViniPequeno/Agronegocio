@@ -173,6 +173,7 @@
 <script src="../js/paginacaoTabelas.js"></script>
 <script src="../js/formUtils.js"></script>
 <script src="../js/mascara.js"></script>
+<script src="../js/exportTableToPDF.js"></script>
 <script>
     var dataV = "";
     var modalDetalhesInnerHTML = '<p id="codigo"> Código: </p>'+
@@ -212,8 +213,6 @@
 
         $("#estabelecimento").text("Estabelecimento: " + estabelecimento);
     });
-</script>
-<script>
     var modalEditarInnerHTML = '<form method="post" action="/Chicken_Tracker/VacinaServlet" name="formEditar">' +
             '<div class="md-form"><i class="fa fa-user prefix grey-text"></i>' +
             '<input type="text" id="inputNome" name="inputNome" class="form-control" required autofocus maxlength="50">' +

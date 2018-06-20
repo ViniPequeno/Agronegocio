@@ -163,6 +163,7 @@
 <%@include file="../rodape.jsp" %>
 <script src="../js/paginacaoTabelas.js"></script>
 <script src="../js/formUtils.js"></script>
+<script src="../js/exportTableToPDF.js"></script>
 <script>
     initInputs();
 </script>
