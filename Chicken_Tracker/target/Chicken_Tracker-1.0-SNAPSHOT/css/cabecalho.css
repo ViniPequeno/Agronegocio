@@ -127,3 +127,8 @@ section a .svg-inline--fa{
 .hide {
     display: none !important;
 }
+
+#btnFace .svg-inline--fa, #btnInsta .svg-inline--fa{
+    margin-top: 16px;
+    margin-left: 18px;
+}

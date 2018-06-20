@@ -107,6 +107,8 @@
         <a href="" class="btn btn-danger btn-rounded mt-4 disabled mb-0" id="btnExcluir" role="button" data-toggle="modal" data-target="#confirmarExclusao">
             <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
+    <button id="btnBaixarPDF" class="btn btn-mdb-color btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Exportar para PDF">
+        <i class="fa fa-file-pdf fa-lg mr-1" aria-hidden="true"></i></button>
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">

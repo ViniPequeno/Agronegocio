@@ -127,6 +127,9 @@
         <a href="" class="btn btn-primary btn-rounded mt-4 disabled mb-0" id="btnPagar" role="button" data-toggle="modal" data-target="#pagarSelecionados">
             <i class="fa fa-money-bill-alt fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
+    <button id="btnBaixarPDF" class="btn btn-mdb-color btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Exportar para PDF">
+        <i class="fa fa-file-pdf fa-lg mr-1" aria-hidden="true"></i></button>
+        
     <form id="checks"></form>
 
     <!-- Modal -->

@@ -116,6 +116,9 @@
             <i class="fa fa-trash fa-lg mr-1" aria-hidden="true"></i></a>
     </span>
 
+    <button id="btnBaixarPDF" class="btn btn-mdb-color btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Exportar para PDF">
+        <i class="fa fa-file-pdf fa-lg mr-1" aria-hidden="true"></i></button>
+
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -142,9 +145,9 @@
     <div class="modal fade" id="detalhesNegocio" tabindex="-1" role="dialog" aria-labelledby="detalhesNegocio" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="labelDetalhes">Detalhes</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div class="modal-header blue-grey">
+                    <h5 class="modal-title white-text" id="labelDetalhes">Detalhes</h5>
+                    <button type="button" class="close white-ic" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -153,10 +156,15 @@
                     <p id="proprietario"> Proprietário: </p>
                     <p id="cnpj"> CNPJ: </p>
                     <p id="email"> Email: </p>
-                    <p id="linkFB"> Link da página do Facebook: </p>
-                    <p id="linkInstagram"> Link da página do Instagram: </p>
                     <p id="fone1"> Fone 1: </p>
                     <p id="fone2"> Fone 2: </p>
+                    Redes Sociais: 
+                    <a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank">
+                        <i data-fa-transform="grow-8" class="fa fab fa-facebook-f"></i>
+                    </a>
+                    <a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" target="_blank">
+                        <i data-fa-transform="grow-8" class="fa fab fa-instagram"></i>
+                    </a>
                     <p id="estabelecimentos"> Estabelecimentos: </p>
                 </div>
                 <div class="modal-footer">
@@ -179,11 +187,12 @@
             '<p id="proprietario"> Proprietário: </p>' +
             '<p id="cnpj"> CNPJ: </p>' +
             '<p id="email"> Email: </p>' +
-            '<p id="linkFB"> Link da página do Facebook: </p>' +
-            '<p id="linkInstagram"> Link da página do Instagram: </p>' +
             '<p id="fone1"> Fone 1: </p>' +
             '<p id="fone2"> Fone 2: </p>' +
-            '<p id="estabelecimentos"> Estabelecimentos: </p>';
+            '<p id="estabelecimentos"> Estabelecimentos: </p>'+
+            'Redes Sociais: '+
+            '<a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank"><i data-fa-transform="grow-8" class="fa fab fa-facebook-f"></i></a>'+
+            '<a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" target="_blank"><i data-fa-transform="grow-8" class="fa fab fa-instagram"></i></a>';
     $("td").not(function () {
         return $("a", this).length != 0;
     }).click(function (event) {
@@ -221,9 +230,8 @@
 
         $("#email").text("Email: " + email);
 
-        $("#linkFB").text("Link da página do Facebook: " + facebook);
-
-        $("#linkInstagram").text("Link da página do Instagram: " + instagram);
+        $("#btnFace").attr("href", "http://"+facebook);
+        $("#btnInsta").attr("href", "http://www.instagram.com/" + instagram);
 
         $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
 
