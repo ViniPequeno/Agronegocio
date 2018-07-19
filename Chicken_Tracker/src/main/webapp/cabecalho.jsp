@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="<%=css%>">
         <link rel="icon" href="../img/icon.png">
 
-        <title>Chicken Tracker</title>
+        <title><%=titulo%></title>
     </head>
     <body>
         <%

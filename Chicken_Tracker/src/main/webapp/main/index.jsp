@@ -1,4 +1,5 @@
-<% String css = "../css/index.css";%>
+<% String css = "../css/index.css";
+   String titulo ="Chicken Tracker";%>
 <%@ include file="../cabecalho.jsp"%>
 <div class="jumbotron vertical-center">
     <div class="img"></div>

@@ -1,7 +1,8 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio"%>
-<% String css = "../css/cadastro.css";%>
+<% String css = "../css/cadastro.css";
+   String titulo ="Novo Estabeleciemnto";%>
 <%@ include file="../cabecalho.jsp"%>
 <% String negocioCNPJ = ((Negocio) sessao.getAttribute("negocio")).getEmpresaCNPJ();%>
 <!-- Material form register -->

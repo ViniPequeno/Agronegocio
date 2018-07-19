@@ -1,4 +1,5 @@
-<% String css = "../css/negocios.css";%>
+<% String css = "../css/negocios.css";
+   String titulo ="Pesquisar Negócios";%>
 <%@ include file="../cabecalho.jsp"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
@@ -7,7 +8,7 @@
     <div class="card card-cascade narrower mt-5">
         <!--Card image-->
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-2 d-flex justify-content-center align-items-center">
-            <h4 class="white-text font-weight-bold text-uppercase mb-0">Negócios</h4>
+            <h4 class="white-text font-weight-bold text-uppercase mb-0">Pesquisar Negócios</h4>
         </div>
         <div class="px-4">
             <form class="md-form" action="" autocomplete="off" method="get" accept-charset="utf-8">

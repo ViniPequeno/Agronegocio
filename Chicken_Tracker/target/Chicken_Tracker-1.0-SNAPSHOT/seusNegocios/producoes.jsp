@@ -1,5 +1,6 @@
+<% String css = "../css/seu_negocio.css";
+   String titulo ="Produções";%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
-<% String css = "../css/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Producao.ConsultaProducao" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Producao" %>
@@ -17,7 +18,7 @@
         <!--Card image-->
         <div class="view gradient-card-header blue-grey darken-4 narrower py-4 mx-4 mb-3 d-flex justify-content-center align-items-center">
 
-            <h4 class="white-text font-weight-bold text-uppercase mb-0">Producaos</h4>
+            <h4 class="white-text font-weight-bold text-uppercase mb-0">Produções</h4>
 
         </div>
         <!--/Card image-->

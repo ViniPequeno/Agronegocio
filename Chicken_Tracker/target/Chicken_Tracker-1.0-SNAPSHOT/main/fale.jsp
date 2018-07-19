@@ -1,4 +1,5 @@
-<% String css = "../css/login.css";%>
+<% String css = "../css/login.css";
+   String titulo ="Fale Conosco";%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Perfil.ConsultaPerfil"%>
 <!DOCTYPE html>
 <%@include file="../cabecalho.jsp"%>

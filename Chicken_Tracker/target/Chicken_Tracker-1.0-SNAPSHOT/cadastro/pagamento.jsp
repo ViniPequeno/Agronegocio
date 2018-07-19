@@ -1,7 +1,8 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio"%>
-<% String css = "../css/cadastro.css";%>
+<% String css = "../css/cadastro.css";
+   String titulo ="Novo Pagamento";%>
 <%@ include file="../cabecalho.jsp"%>
 
 <!-- Material form register -->

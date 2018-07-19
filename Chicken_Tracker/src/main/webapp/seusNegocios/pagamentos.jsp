@@ -1,5 +1,6 @@
+<% String css = "../css/seu_negocio.css";
+   String titulo ="Pagamentos";%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
-<% String css = "../css/seu_negocio.css";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Pagamento.ConsultaPagamento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Pagamento" %>

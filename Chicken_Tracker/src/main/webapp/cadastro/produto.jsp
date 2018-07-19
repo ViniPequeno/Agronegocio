@@ -1,5 +1,6 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
-<% String css = "../css/cadastro.css";%>
+<% String css = "../css/cadastro.css";
+   String titulo ="Novo Produto";%>
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">

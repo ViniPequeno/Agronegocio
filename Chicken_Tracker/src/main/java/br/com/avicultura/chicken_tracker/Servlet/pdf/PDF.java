@@ -5,8 +5,8 @@
  */
 package br.com.avicultura.chicken_tracker.Servlet.pdf;
 
-import com.br.OMT.DAO.EventoDAO;
-import com.br.OMT.models.Eventos;
+import br.com.avicultura.chicken_tracker.Models.Negocio;
+import br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -79,7 +79,7 @@ public class PDF extends HttpServlet {
         try {
             Map<String, Object> parametros = new HashMap();
             parametros.put("descricao", "123");
-            List<Eventos> dataSource = new EventoDAO().listEventos();
+            List<Negocio> dataSource = ConsultaNegocio.returnListOfPerfil("");
 
             JasperReport report = JasperCompileManager.compileReport(jrxml);
 
@@ -88,11 +88,11 @@ public class PDF extends HttpServlet {
             //JasperExportManager.exportReportToPdfFile(print, this.getClass().getClassLoader().getResource("").getPath() + "eventos2.pdf");
 
             response.setContentType("application/x-download");
-            response.addHeader("Content-disposition", "attachment; filename=eventos.pdf");
+            response.addHeader("Content-disposition", "attachment; filename=negocios.pdf");
             OutputStream out = response.getOutputStream();
             JasperExportManager.exportReportToPdfStream(print, out);
         } catch (JRException ex) {
-            Logger.getLogger(pdf.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PDF.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,11 +1,12 @@
-<% String css = "../css/seu_negocio.css";%>
-<%@ include file="../cabecalho.jsp"%>
+<% String css = "../css/seu_negocio.css";
+   String titulo ="Estabelecimentos";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Perfil" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
+<%@ include file="../cabecalho.jsp"%>
 <div class="container">
 
     <h2 class="py-5 font-weight-bold text-left blue-text">

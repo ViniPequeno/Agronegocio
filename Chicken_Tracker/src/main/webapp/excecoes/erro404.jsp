@@ -1,4 +1,5 @@
-<%String css = "";%>
+<%String css = "";
+  String titulo ="Erro";%>
 <%@ include file="../cabecalho.jsp"%>
 <div class="container mt-5">
     <%

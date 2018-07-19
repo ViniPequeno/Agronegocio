@@ -1,4 +1,5 @@
-<% String css = "../css/login.css";%>
+<% String css = "../css/login.css";
+   String titulo ="Recupere sua senha";%>
 <%@ include file="../cabecalho.jsp"%>
 <!-- Material form register -->
 <div class="container">
@@ -7,7 +8,7 @@
             <div class="card-body">
                 <!-- Material form login -->
                 <form action="/Chicken_Tracker/EmailServlet" method="post" id="alterarSenha">
-                    <p class="h4 text-center mb-4">Esqueceu seu senha?</p>
+                    <p class="h4 text-center mb-4">Esqueceu sua senha?</p>
                     <p class="lead">Informe seu login e lhe enviaremos um email para confirmamos que você é você mesmo</p>
                     <!-- Material input text -->
                     <div class="md-form form-group my-5"> 

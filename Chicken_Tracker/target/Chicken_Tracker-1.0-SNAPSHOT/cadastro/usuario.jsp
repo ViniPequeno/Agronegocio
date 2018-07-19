@@ -1,4 +1,5 @@
-<% String css = "../css/cadastro.css";%>
+<% String css = "../css/cadastro.css";
+   String titulo ="Criar nova conta";%>
 <%@ include file="../cabecalho.jsp"%>
 
 <!-- Material form register -->
@@ -7,7 +8,7 @@
         <div class="card-body">
             <form action="/Chicken_Tracker/PerfilServlet" method="post" autocomplete="off" id="formCadastro"
                   enctype="multipart/form-data">
-                <p class="h1 text-center">Criar conta</p>
+                <p class="h1 text-center">Criar nova conta</p>
                 <!-- Material input text -->
 
                 <div class="row">

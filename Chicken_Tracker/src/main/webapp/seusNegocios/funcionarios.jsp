@@ -1,4 +1,5 @@
-<% String css = "../css/seu_negocio.css";%>
+<% String css = "../css/seu_negocio.css";
+   String titulo ="Gerenciar Funcionários";%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>

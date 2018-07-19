@@ -1,6 +1,7 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Perfil"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Perfil.ConsultaPerfil"%>
-<% String css = "../css/cadastro.css";%>
+<% String css = "../css/cadastro.css";
+   String titulo ="Sua conta";%>
 <%@ include file="../cabecalho.jsp"%>
 <%String login = (String) sessao.getAttribute("nome_usuario");
     Perfil p = ConsultaPerfil.findById(login);%>

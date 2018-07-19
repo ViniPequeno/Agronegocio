@@ -2,7 +2,8 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Estabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Produto"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Produto.ConsultaProduto"%>
-<% String css = "../css/cadastro.css";%>
+<% String css = "../css/cadastro.css";
+   String titulo ="Novo Fornecedor";%>
 <%@ include file="../cabecalho.jsp"%>
 
 <!-- Material form register -->
