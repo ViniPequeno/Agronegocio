@@ -4,6 +4,7 @@
 <script src="../Bootstrap/js/mdb.js"></script>
 <script src="../js/jquery.mask.js"></script>
 <script src="../js/jspdf.min.js"></script>
+<script src="../js/jspdf.plugin.autotable.min.js"></script>
 <script>
 // Tooltips Initialization
     $(function () {

@@ -29,7 +29,7 @@
                 <!--Table head-->
                 <thead>
                     <tr>
-                        <th> </th>
+                        <th class="check-column"> </th>
                         <th>Código</th>
                         <th>Valor</th>
                         <th>Data</th>

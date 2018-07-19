@@ -7,30 +7,56 @@ $('#btnBaixarPDF').click(function () {
     //creates PDF from img
     var tabela = $('#tableDados');
     var doc = new jsPDF('portrait');
-    doc.setFontSize(20);
-    doc.text(15, 15, document.title);
 
     var width = doc.internal.pageSize.width;
     var height = doc.internal.pageSize.height;
     var x = 15, y = 25;
+    var columns = [];
+    var data = [];
+    var totalPagesExp = "{total_pages_count_string}";
 
+    var pageContent = function (data) {
+        // HEADER
+        doc.setFontSize(20);
+        doc.setTextColor(40);
+        doc.setFontStyle('normal');
+        doc.text(document.title, data.settings.margin.left + 15, 22);
+
+        // FOOTER
+        var str = "Página " + data.pageCount;
+        // Total page number plugin only available in jspdf v1.0+
+        if (typeof doc.putTotalPages === 'function') {
+            str = str + " de " + totalPagesExp;
+        }
+        doc.setFontSize(10);
+        var pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
+        doc.text(str, data.settings.margin.left, pageHeight - 10);
+    };
+    $($(tabela).find('thead tr')).each(function () {
+        doc.setFontSize(12);
+        var linhaAtual = $(this);
+        $($(linhaAtual).find('th:not(.check-column)')).each(function () {
+            columns.push($(this).text());
+        });
+    });
+    
     $($(tabela).find('tbody tr')).each(function () {
         doc.setFontSize(12);
         var linhaAtual = $(this);
-        var dados = "";
+        var dataLine = [];
         $($(linhaAtual).find('td:not(:has(a.btn))')).each(function () {
-            dados += $(this).text() + " ";
+            dataLine.push($(this).text());
         });
-        dados += " " + (y + 8) + " " + width + " " + height;
-        var splitTitle = doc.splitTextToSize(dados, 180);
-        doc.text(x, y, splitTitle);
-        y += 8;
-        if (y > height) {
-            y = 30;
-            doc.addPage();
-            doc.text(15, 15, document.title);
-        }
+        data.push(dataLine);
     });
+    
+    doc.autoTable(columns, data, {
+        addPageContent: pageContent,
+        margin: {top: 30}
+    });
+    if (typeof doc.putTotalPages === 'function') {
+        doc.putTotalPages(totalPagesExp);
+    }
     doc.save('lista.pdf');
 });
 
