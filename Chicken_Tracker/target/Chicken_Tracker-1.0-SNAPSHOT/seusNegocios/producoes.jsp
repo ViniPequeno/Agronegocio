@@ -29,7 +29,7 @@
                 <!--Table head-->
                 <thead>
                     <tr>
-                        <th> </th>
+                        <th class="check-column"> </th>
                         <th>Local Aves</th>
                         <th>Produto</th>
                         <th>Quantidade</th>
@@ -108,22 +108,22 @@
     </span>   -->
 
     <!-- Modal -->
-    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="labelExclusao" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-danger" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão?</h5>
+                    <h5 class="modal-title heading lead" id="labelExclusao">Confirmar exclusão?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" class="white-text">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <p>Esta ação não pode ser desfeita</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                     <form id="checks" action="/Chicken_Tracker/ProducaoServlet" method="post">
-                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                        <button type="submit" class="btn btn-danger">Confirmar</button>
                     </form>
                 </div>
             </div>

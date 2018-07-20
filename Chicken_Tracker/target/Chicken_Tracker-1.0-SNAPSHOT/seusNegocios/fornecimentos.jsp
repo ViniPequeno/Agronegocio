@@ -34,11 +34,11 @@
 
         <div class="px-4">
             <!--Table-->
-            <table class="table table-hover table-responsive-md btn-table" id="tableDados">
+            <table class="table table-hover table-responsive-lg btn-table" id="tableDados">
                 <!--Table head-->
                 <thead>
                     <tr>
-                        <th> </th>
+                        <th class="check-column"> </th>
                         <th>Nome</th>
                         <th>CNPJ</th>
                         <th>Produto</th>
@@ -133,17 +133,17 @@
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="labelExcluir" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-notify modal-danger" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="labelExcluir">Confirmar exclusão?</h5>
+                    <h5 class="modal-title heading lead" id="labelExclusao">Confirmar exclusão?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" class="white-text">&times;</span>
                     </button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
-                    <button form="checks" formaction="/Chicken_Tracker/FornecimentoServlet" formmethod="post" name="fornecimento" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                    <button form="checks" formaction="/Chicken_Tracker/FornecimentoServlet" formmethod="post" name="fornecimento" value="excluir" type="submit" class="btn btn-danger">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -174,8 +174,8 @@
     <div class="modal fade" id="detalhesFornecimento" tabindex="-1" role="dialog" aria-labelledby="labelDetalhes" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="labelDetalhes">Detalhes</h5>
+                <div class="modal-header blue-grey">
+                    <h5 class="modal-title white-text" id="labelDetalhes">Detalhes</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

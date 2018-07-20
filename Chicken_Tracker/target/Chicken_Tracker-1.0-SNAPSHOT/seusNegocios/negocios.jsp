@@ -28,13 +28,13 @@
                 <!--Table head-->  
                 <thead>
                     <tr>
-                        <th> </th>
+                        <th class="check-column"> </th>
                         <th>Nome</th>
                         <th>Proprietário</th>
                         <th>CNPJ</th>
                         <th>Email</th>
-                        <th>Facebook<i class="fa fab fa-facebook-f ml-1"></i></th>
-                        <th>Instagram<i class="fa fab fa-instagram ml-1"></i></th>
+                        <th>Facebook<i class="fab fa-facebook-f ml-1"></i></th>
+                        <th>Instagram<i class="fab fa-instagram ml-1"></i></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -55,7 +55,7 @@
                         <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="CNPJ"><%=n.getEmpresaCNPJ()%></td>
                         <td><%=n.getEmail()%></td>
-                        <td><a target="_blank" href="<%=n.getLinkFacebook()%>"><%=n.getLinkFacebook()%><i class="fas fa-external-link-alt ml-1"></i></a></td>
+                        <td><a target="_blank" href="http://<%=n.getLinkFacebook()%>"><%=n.getLinkFacebook()%><i class="fas fa-external-link-alt ml-1"></i></a></td>
                         <td><a target="_blank" href="http://instagram.com/<%=n.getUserInstagram()%>"><%=n.getUserInstagram()%><i class="fas fa-external-link-alt ml-1"></i></a></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimentos.jsp?negocio=<%=n.getEmpresaCNPJ()%>" data-toggle="tooltip" data-placement="bottom" title="Mostrar Estabelecimentos" role="button">
                                 <i data-fa-transform="grow-8" class="fa fa-clipboard-list mr-1" aria-hidden="true"></i></a></td>
@@ -121,28 +121,28 @@
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-notify modal-danger" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão?</h5>
+                    <h5 class="modal-title heading lead" id="labelExclusao">Confirmar exclusão?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" class="white-text">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <p>Todos os estabelecimentos associados a este negócio também serão apagados</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                     <form id="checks" action="/Chicken_Tracker/NegocioServlet" method="post">
-                        <button name="negocio" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
+                        <button name="negocio" value="excluir" type="submit" class="btn btn-danger">Confirmar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="detalhesNegocio" tabindex="-1" role="dialog" aria-labelledby="detalhesNegocio" aria-hidden="true">
+    <div class="modal fade" id="detalhesNegocio" tabindex="-1" role="dialog" aria-labelledby="labelDetalhes" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header blue-grey">

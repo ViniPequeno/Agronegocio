@@ -1,5 +1,5 @@
 <% String css = "../css/seu_negocio.css";
-   String titulo ="Estabelecimentos";%>
+    String titulo = "Estabelecimentos";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento" %>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
@@ -11,13 +11,13 @@
 
     <h2 class="py-5 font-weight-bold text-left blue-text">
         <a href="negocios.jsp"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Voltar</a></h2>
-        
-        <%Negocio n = (Negocio)sessao.getAttribute("negocio");
+
+    <%Negocio n = (Negocio) sessao.getAttribute("negocio");
         if (n == null) {
-            n=ConsultaNegocio.findById(request.getParameter("negocio"));
+            n = ConsultaNegocio.findById(request.getParameter("negocio"));
             sessao.setAttribute("negocio", n);
         } else if (!n.getEmpresaCNPJ().equals(request.getParameter("negocio").toString())) {
-            n=ConsultaNegocio.findById(request.getParameter("negocio"));
+            n = ConsultaNegocio.findById(request.getParameter("negocio"));
             sessao.setAttribute("negocio", n);
         }
         List<Estabelecimento> estabelecimentos;
@@ -40,11 +40,12 @@
                 <!--Table head-->
                 <thead>
                     <tr>
-                        <th> </th>
+                        <th class="check-column"> </th>
                         <th>Negócio</th>
                         <th>Proprietário</th>
                         <th>CNAE</th>
                         <th>Sufixo CNPJ</th>
+                        <th>Cidade/Estado</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -64,6 +65,7 @@
                         <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="CNAE"><%=e.getCNAE()%></td>
                         <td class="sufixoCNPJ"><%=e.getSufixoCNPJ()%></td>
+                        <td><%=e.getCidade()%>/<%=e.getEstado()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getId()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
                                 <i class="fa fa-ellipsis-h fa-lg mr-1" aria-hidden="true"></i></a></td>
                     </tr>
@@ -126,31 +128,34 @@
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-notify modal-danger" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão?</h5>
+                    <h5 class="modal-title heading lead" id="labelExclusao">Confirmar exclusão?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" class="white-text">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Todos os funcionários associados a este estabelecimento também serão apagados</p>
+                    <div class="text-center"> 
+                        <i class="fa fa-trash-alt fa-4x mb-3 animated rotateIn"></i>
+                        <p>Todos os funcionários associados a este estabelecimento também serão apagados</p>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                     <form id="checks" action="/Chicken_Tracker/EstabelecimentoServlet" method="post">
-                        <button name="estabelecimento" type="submit" value="excluir" class="btn btn-primary">Confirmar</button>
+                        <button name="estabelecimento" type="submit" value="excluir" class="btn btn-danger">Confirmar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="detalhesEstabelecimento" tabindex="-1" role="dialog" aria-labelledby="detalhesEstabelecimento" aria-hidden="true">
+    <div class="modal fade" id="detalhesEstabelecimento" tabindex="-1" role="dialog" aria-labelledby="labelDetalhes" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="labelDetalhes">Detalhes</h5>
+                <div class="modal-header blue-grey">
+                    <h5 class="modal-title white-text" id="labelDetalhes">Detalhes</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -219,7 +224,7 @@
 
         sufixoCNPJ = sufixoCNPJ.replace(/^(\d{4})(\d{2}).*/, '$1-$2');
         $("#sufixoCNPJ").text("Sufixo do CNPJ: " + sufixoCNPJ);
-        
+
         CEP = CEP.replace(/^(\d{5})(\d{3}).*/, '$1-$2');
         $("#CEP").text("CEP: " + CEP);
 

@@ -124,10 +124,10 @@
                     <p id="email"> Email: </p>
                     Redes Sociais: 
                     <a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank">
-                        <i data-fa-transform="grow-8" class="fa fab fa-facebook-f"></i>
+                        <i class="fa fab fa-facebook-f"></i>
                     </a>
                     <a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" target="_blank">
-                        <i data-fa-transform="grow-8" class="fa fab fa-instagram"></i>
+                        <i class="fa fab fa-instagram"></i>
                     </a>
                 </div>
             </div>

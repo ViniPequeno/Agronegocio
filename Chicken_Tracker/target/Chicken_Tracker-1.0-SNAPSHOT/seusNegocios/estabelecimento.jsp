@@ -23,15 +23,24 @@
             
     <div class="row">
         <div class="col-lg-12 text-center">
-            <a class="btn blue-grey darken-4 white-text mx-3" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getId()%>">Funcionários</a>
-            <a class="btn blue-grey darken-3 white-text mx-3" href="../seusNegocios/fornecedores.jsp?estabelecimento=<%=e.getId()%>">Fornecedores</a>
-            <a class="btn blue-grey darken-2 white-text mx-3" href="../seusNegocios/fornecimentos.jsp?estabelecimento=<%=e.getId()%>">Fornecimentos</a>
-            <a class="btn blue-grey darken-1 white-text mx-3" href="../seusNegocios/produtos.jsp?estabelecimento=<%=e.getId()%>">Produtos</a>
-            <a class="btn blue-grey white-text mx-4" href="../seusNegocios/vacinas.jsp?estabelecimento=<%=e.getId()%>">Vacinas</a>
-            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/aviarios.jsp?estabelecimento=<%=e.getId()%>">Aviários</a>
-            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/pagamentos.jsp?estabelecimento=<%=e.getId()%>">Pagamentos</a>
-            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/producoes.jsp?estabelecimento=<%=e.getId()%>">Produção</a>
-            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getId()%>">Desempenho</a>
+            <a class="btn blue-grey darken-4 white-text mx-3" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getId()%>">
+                <i class="fas fa-user-tie fa-lg mr-1"></i>Funcionários</a>
+            <a class="btn blue-grey darken-3 white-text mx-3" href="../seusNegocios/fornecedores.jsp?estabelecimento=<%=e.getId()%>">
+                <i class="fa fa-people-carry fa-lg mr-1"></i><i class="fa fa-sign-in-alt fa-lg mr-1"></i>Fornecedores</a>
+            <a class="btn blue-grey darken-2 white-text mx-3" href="../seusNegocios/fornecimentos.jsp?estabelecimento=<%=e.getId()%>">
+                <i class="fa fa-people-carry fa-lg mr-1"></i><i class="fa fa-sign-out-alt fa-lg mr-1"></i>Fornecimentos</a>
+            <a class="btn blue-grey darken-1 white-text mx-3" href="../seusNegocios/produtos.jsp?estabelecimento=<%=e.getId()%>">
+                <i class="fa fa-boxes fa-lg mr-1"></i>Produtos</a>
+            <a class="btn blue-grey white-text mx-4" href="../seusNegocios/vacinas.jsp?estabelecimento=<%=e.getId()%>">
+                <i class="fa fa-syringe fa-lg mr-1"></i>Vacinas</a>
+            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/aviarios.jsp?estabelecimento=<%=e.getId()%>">
+                <i class="fa fa-crow fa-lg mr-1"></i>Aviários</a>
+            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/pagamentos.jsp?estabelecimento=<%=e.getId()%>">
+                <i class="fa fa-money-bill-wave fa-lg mr-1"></i>Pagamentos</a>
+            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/producoes.jsp?estabelecimento=<%=e.getId()%>">
+                <i class="fa fa-industry fa-lg mr-1"></i>Produção</a>
+            <a class="btn blue-grey lighten-1 white-text mx-3" href="../seusNegocios/desempenho.jsp?estabelecimento=<%=e.getId()%>">
+                <i class="fa fa-chart-area fa-lg mr-1"></i>Desempenho</a>
         </div>
     </div>
     <div class="row mt-lg-5">

@@ -3,6 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+var base64Img = null;
+
+// You could either use a function similar to this or pre convert an image with for example http://dopiaza.org/tools/datauri
+// http://stackoverflow.com/questions/6150289/how-to-convert-image-into-base64-string-using-javascript
+function imgToBase64(url, callback) {
+    if (!window.FileReader) {
+        callback(null);
+        return;
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function() {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            callback(reader.result.replace('text/xml', 'image/jpeg'));
+        };
+        reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.send();
+}
+
+imgToBase64('../img/icon.png', function(base64) {
+    base64Img = base64; 
+});
+
+
 $('#btnBaixarPDF').click(function () {
     //creates PDF from img
     var tabela = $('#tableDados');
@@ -20,6 +48,9 @@ $('#btnBaixarPDF').click(function () {
         doc.setFontSize(20);
         doc.setTextColor(40);
         doc.setFontStyle('normal');
+        if (base64Img) {
+            doc.addImage(base64Img, 'png', data.settings.margin.left, 15, 10, 10);
+        }
         doc.text(document.title, data.settings.margin.left + 15, 22);
 
         // FOOTER
@@ -52,6 +83,7 @@ $('#btnBaixarPDF').click(function () {
     
     doc.autoTable(columns, data, {
         addPageContent: pageContent,
+        styles: {overflow: 'linebreak', columnWidth: 'wrap'},
         margin: {top: 30}
     });
     if (typeof doc.putTotalPages === 'function') {

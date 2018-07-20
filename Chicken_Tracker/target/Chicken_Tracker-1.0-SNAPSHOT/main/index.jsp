@@ -113,15 +113,15 @@
 
                 <!--Facebook-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/profile.php?id=100006546753271" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
+                    <i class="fab fa-facebook-f fa-lg"></i>
                 </a>
                 <!--Twitter-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
+                    <i class="fab fa-twitter fa-lg"></i>
                 </a>
                 <!--GitHub-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="https://github.com/ViniPequeno" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-github"></i>
+                    <i class="fab fa-github fa-lg"></i>
                 </a>
 
             </div>
@@ -141,15 +141,15 @@
 
                 <!--Facebook-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/victor.yan.92?ref=br_rs" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
+                    <i class="fab fa-facebook-f fa-lg"></i>
                 </a>
                 <!--Twitter-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="https://twitter.com/supervictor7095" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
+                    <i class="fab fa-twitter fa-lg"></i>
                 </a>
                 <!--GitHub-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="https://github.com/Victor7095" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-github"></i>
+                    <i class="fab fa-github fa-lg"></i>
                 </a>
 
             </div>
@@ -169,15 +169,15 @@
 
                 <!--Facebook-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/profile.php?id=100010879563084" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
+                    <i class="fab fa-facebook-f fa-lg"></i>
                 </a>
                 <!--Twitter-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="https://twitter.com/Paperzord" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-twitter"></i>
+                    <i class="fab fa-twitter fa-lg"></i>
                 </a>
                 <!--GitHub-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="https://github.com/Dabwiel" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-github"></i>
+                    <i class="fab fa-github fa-lg"></i>
                 </a>
 
             </div>
@@ -197,15 +197,15 @@
 
                 <!--Facebook-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-fb" href="https://www.facebook.com/profile.php?id=100012432752260" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-facebook-f"></i>
+                    <i class="fab fa-facebook-f fa-lg"></i>
                 </a>
                 <!--Twitter-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-tw" href="" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-twitter "></i>
+                    <i class="fab fa-twitter fa-lg"></i>
                 </a>
                 <!--GitHub-->
                 <a type="button" class="btn-floating btn-sm mx-1  btn-git" href="" target="_blank">
-                    <i data-fa-transform="grow-8" class="fab fa-github"></i>
+                    <i class="fab fa-github fa-lg"></i>
                 </a>
 
             </div>

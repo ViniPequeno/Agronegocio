@@ -60,11 +60,11 @@ footer.page-footer a:hover {
     transition: 0.2s;
 }
 
-footer li .svg-inline--fa{
+footer li .fab{
     margin-top: 16px;
 }
 
-section a .svg-inline--fa{
+section a .fab{
     margin-top: 16px;
 }
 
@@ -76,17 +76,9 @@ section a .svg-inline--fa{
     align-items: center;
 }
 
-#btn-topo{
-    position: fixed;
-    z-index: 2000;
-    right:50px;
-    bottom:50px;
-    border-radius: 50%;
-}
-
 .pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
 
-.fixed-action-btn .svg-inline--fa{
+.fixed-action-btn .fa{
     margin-top: 16px;
 }
 
@@ -128,7 +120,7 @@ section a .svg-inline--fa{
     display: none !important;
 }
 
-#btnFace .svg-inline--fa, #btnInsta .svg-inline--fa{
+#btnFace .fa, #btnInsta .fa{
     margin-top: 16px;
     margin-left: 18px;
 }

@@ -7,7 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script defer src="../fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.js"></script>
+        <link rel="stylesheet" type="text/css" href="../fontawesome-free-5.0.8/web-fonts-with-css/css/fontawesome-all.min.css">
         <link rel="stylesheet" type="text/css" href="../Bootstrap/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../Bootstrap/css/mdb.css">
         <link rel="stylesheet" type="text/css" href="../css/cabecalho.css">
