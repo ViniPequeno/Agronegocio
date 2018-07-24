@@ -160,10 +160,10 @@
                     <p id="fone2"> Fone 2: </p>
                     Redes Sociais: 
                     <a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank">
-                        <i data-fa-transform="grow-8" class="fa fab fa-facebook-f"></i>
+                        <i class="fab fa-facebook-f"></i>
                     </a>
                     <a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" target="_blank">
-                        <i data-fa-transform="grow-8" class="fa fab fa-instagram"></i>
+                        <i class="fab fa-instagram"></i>
                     </a>
                     <p id="estabelecimentos"> Estabelecimentos: </p>
                 </div>

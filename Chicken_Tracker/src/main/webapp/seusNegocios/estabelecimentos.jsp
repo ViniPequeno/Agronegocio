@@ -44,7 +44,7 @@
                         <th>Negócio</th>
                         <th>Proprietário</th>
                         <th>CNAE</th>
-                        <th>Sufixo CNPJ</th>
+                        <th>CNPJ</th>
                         <th>Cidade/Estado</th>
                         <th></th>
                     </tr>
@@ -64,7 +64,7 @@
                         <td class="nomeEmpresa"><%=e.getNegocio().getNome()%></td>
                         <td class="proprietario"><%=n.getPerfil().getNome()%></td>
                         <td class="CNAE"><%=e.getCNAE()%></td>
-                        <td class="sufixoCNPJ"><%=e.getSufixoCNPJ()%></td>
+                        <td class="CNPJCompleto"><%=n.getEmpresaCNPJ()%><%=e.getSufixoCNPJ()%></td>
                         <td><%=e.getCidade()%>/<%=e.getEstado()%></td>
                         <td><a class="btn btn-cyan btn-rounded" href="../seusNegocios/estabelecimento.jsp?estabelecimento=<%=e.getId()%>" data-toggle="tooltip" data-placement="bottom" title="Mais informações" role="button">
                                 <i class="fa fa-ellipsis-h fa-lg mr-1" aria-hidden="true"></i></a></td>
@@ -127,7 +127,7 @@
         <i class="fa fa-file-pdf fa-lg mr-1" aria-hidden="true"></i></button>
 
     <!-- Modal -->
-    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusao" aria-hidden="true">
+    <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="labelExclusao" aria-hidden="true">
         <div class="modal-dialog modal-notify modal-danger" role="document">
             <div class="modal-content">
                 <div class="modal-header">

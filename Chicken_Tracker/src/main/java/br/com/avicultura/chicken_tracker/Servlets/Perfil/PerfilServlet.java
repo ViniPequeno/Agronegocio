@@ -46,6 +46,7 @@ public class PerfilServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("ISO-8859-1");
         PrintWriter out = response.getWriter();
         String s = "";
         String senha = "";

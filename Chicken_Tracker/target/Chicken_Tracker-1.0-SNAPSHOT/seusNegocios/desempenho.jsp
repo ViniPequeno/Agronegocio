@@ -117,7 +117,7 @@
         </h1>
 
         <div class="card border-light">
-            <div class="card-header">
+            <div class="card-header light-green lighten-4">
                 Lucro dos últimos sete dias
             </div>
             <div class="card-body">
@@ -132,7 +132,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card border-light">
-                    <div class="card-header">
+                    <div class="card-header red lighten-4">
                         Despesas dos últimos sete dias
                     </div>
                     <div class="card-body">
@@ -147,7 +147,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="card border-light">
-                    <div class="card-header">
+                    <div class="card-header blue lighten-4">
                         Ganhos dos últimos sete dias
                     </div>
                     <div class="card-body">
@@ -168,7 +168,7 @@
             <button class="btn btn-primary" type="button" id="downloadTrintaDiasPDF"><i class="fa fa-download mr-1"></i>Baixar PDF</button>
         </h1>
         <div class="card border-light">
-            <div class="card-header">
+            <div class="card-header light-green lighten-4">
                 Lucro dos últimos trinta dias
             </div>
             <div class="card-body">
@@ -183,7 +183,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card border-light">
-                    <div class="card-header">
+                    <div class="card-header red lighten-4">
                         Despesas dos últimos trinta dias
                     </div>
                     <div class="card-body">
@@ -198,7 +198,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="card border-light">
-                    <div class="card-header">
+                    <div class="card-header blue lighten-4">
                         Ganhos dos últimos trinta dias
                     </div>
                     <div class="card-body">
@@ -219,7 +219,7 @@
             <button class="btn btn-primary" type="button" id="downloadDozeMesesPDF"><i class="fa fa-download mr-1"></i>Baixar PDF</button>
         </h1>
         <div class="card border-light">
-            <div class="card-header">
+            <div class="card-header light-green lighten-4">
                 Lucro dos últimos doze meses
             </div>
             <div class="card-body">
@@ -234,7 +234,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card border-light">
-                    <div class="card-header">
+                    <div class="card-header red lighten-4">
                         Despesas dos últimos doze meses
                     </div>
                     <div class="card-body">
@@ -249,7 +249,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="card border-light">
-                    <div class="card-header">
+                    <div class="card-header blue lighten-4">
                         Ganhos dos últimos doze meses
                     </div>
                     <div class="card-body">
@@ -277,7 +277,7 @@
         </form>
         <%if (lucrosAnos != null) {%>
         <div class="card border-light">
-            <div class="card-header">
+            <div class="card-header light-green lighten-4">
                 Lucro dos últimos anos
             </div>
             <div class="card-body">
@@ -292,7 +292,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card border-light">
-                    <div class="card-header">
+                    <div class="card-header red lighten-4">
                         Despesas dos últimos anos
                     </div>
                     <div class="card-body">
@@ -307,7 +307,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="card border-light">
-                    <div class="card-header">
+                    <div class="card-header blue lighten-4">
                         Ganhos dos últimos anos
                     </div>
                     <div class="card-body">

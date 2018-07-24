@@ -1,14 +1,14 @@
 <%@page import="br.com.avicultura.chicken_tracker.Models.Perfil"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Perfil.ConsultaPerfil"%>
 <% String css = "../css/cadastro.css";
-   String titulo ="Sua conta";%>
+    String titulo = "Sua conta";%>
 <%@ include file="../cabecalho.jsp"%>
 <%String login = (String) sessao.getAttribute("nome_usuario");
     Perfil p = ConsultaPerfil.findById(login);%>
 <div class="container">
     <div class="card mx-auto mt-5">
         <div class="card-header">
-            <p class="h1 text-center mb-4">Sua conta</p>
+            <p class="h1 my-3">Sua conta</p>
         </div>
         <div class="card-body">
             <form action="/Chicken_Tracker/PerfilServlet" method="post" enctype="multipart/form-data">
@@ -102,21 +102,24 @@
 
     <!-- Modal -->
     <div class="modal fade" id="confirmarExclusao" tabindex="-1" role="dialog" aria-labelledby="confirmarExclusaoLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-notify modal-danger" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="confirmarExclusaoLabel">Confirmar exclusão?</h5>
+                    <h5 class="modal-title heading lead" id="confirmarExclusaoLabel">Confirmar exclusão?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Todos os negócios associados a esta conta também serão apagados</p>
+                    <div class="text-center">
+                        <i class="fa fa-trash-alt fa-4x mb-3 animated rotateIn"></i>
+                        <p>Todos os negócios associados a esta conta também serão apagados</p>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                     <form action="/Chicken_Tracker/PerfilServlet" method="post">
-                        <button name="usuario" value="excluir" type="submit" class="btn btn-primary">Confirmar</button>
+                        <button name="usuario" value="excluir" type="submit" class="btn btn-danger">Confirmar</button>
                     </form>
                 </div>
             </div>

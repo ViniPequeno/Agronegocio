@@ -26,7 +26,7 @@
                         <a href="../seusNegocios/negocios.jsp">Seus negócios</a>
                     </li>
                     <li class="mb-2" >
-                        <a href="#">Ajuda</a>
+                        <a href="../main/fale.jsp">Ajuda</a>
                     </li>
                 </ul>
             </div>

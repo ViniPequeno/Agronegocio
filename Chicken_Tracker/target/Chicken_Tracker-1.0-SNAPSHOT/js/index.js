@@ -38,7 +38,7 @@ var myLineChart = new Chart(ctxL, {
         title: {
             display: true,
             position: 'top',
-            text: ['Título'],
+            text: ['Exemplo de gráfico gerado pelo sistema'],
             fontSize: 14
         },
         responsive: true

@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-10">
                         <h5 class="font-weight-bold text-left mb-3 dark-grey-text">Informativo</h5>
-                        <p class="grey-text text-left">Ele dá controle sobre o estoque, além de gerar relatórios sobre o seu
+                        <p class="grey-text text-left">Ele lhe dá total controle sobre o seu estoque, além de gerar relatórios sobre o seu
                             desempenho.</p>
                     </div>
                 </div>

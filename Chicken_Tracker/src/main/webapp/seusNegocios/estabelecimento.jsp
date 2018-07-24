@@ -1,5 +1,5 @@
 <% String css = "../css/seu_negocio.css";
-   String titulo ="Estabelecimento";%>
+    String titulo = "Estabelecimento";%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Pagamento.ConsultaPagamento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
@@ -18,9 +18,13 @@
 %>
 <div class="container">
     <h2 class="py-5 font-weight-bold text-left">
-        <a href="estabelecimentos.jsp?negocio=<%=((Negocio) session.getAttribute("negocio")).getEmpresaCNPJ()%>">
-            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Estabelecimento: <%=e.getSufixoCNPJ()%></h2>
-            
+        <a href="estabelecimentos.jsp?negocio=<%=n.getEmpresaCNPJ()%>">
+            <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i>Voltar </a>Estabelecimento: 
+        <div class="d-inline CNPJCompleto">
+            <%=n.getEmpresaCNPJ()%><%=e.getSufixoCNPJ()%>
+        </div>
+    </h2>
+
     <div class="row">
         <div class="col-lg-12 text-center">
             <a class="btn blue-grey darken-4 white-text mx-3" href="../seusNegocios/funcionarios.jsp?estabelecimento=<%=e.getId()%>">
@@ -50,25 +54,25 @@
                     Dados
                 </div>
                 <div class="card-body">
-                    <table class="table" id="tableEstabelecimento">
+                    <table class="table table-sm" id="tableEstabelecimento">
                         <tr>
-                            <th> Negócio </th>
+                            <th scope="row"> Negócio </th>
                             <td> <%=e.getNegocio().getNome()%> </td>
                         </tr>
                         <tr>
-                            <th> Proprietário </th>
+                            <th scope="row"> Proprietário </th>
                             <td> <%=n.getPerfil().getNome()%> </td>
                         </tr>
                         <tr>
-                            <th> CNAE </th>
+                            <th scope="row"> CNAE </th>
                             <td class="CNAE"> <%=e.getCNAE()%> </td>
                         </tr>
                         <tr>
-                            <th> Sufixo do CNPJ </th>
-                            <td class="sufixoCNPJ"> <%=e.getSufixoCNPJ()%> </td>
+                            <th scope="row">CNPJ </th>
+                            <td class="CNPJCompleto"> <%=n.getEmpresaCNPJ()%><%=e.getSufixoCNPJ()%> </td>
                         </tr>
                         <tr>
-                            <th> Saldo </th>
+                            <th scope="row"> Saldo </th>
                             <td> R$ <%=e.getSaldo()%> </td>
                         </tr>
                         <tr>
@@ -76,27 +80,27 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <th> CEP </th>
+                            <th scope="row"> CEP </th>
                             <td class="CEP"> <%=e.getCEP()%> </td>
                         </tr>
                         <tr>
-                            <th> Rua </th>
+                            <th scope="row"> Rua </th>
                             <td> <%=e.getRua()%> </td>
                         </tr>
                         <tr>
-                            <th> Bairro </th>
+                            <th scope="row"> Bairro </th>
                             <td> <%=e.getBairro()%> </td>
                         </tr>
                         <tr>
-                            <th> Cidade</th>
+                            <th scope="row"> Cidade</th>
                             <td> <%=e.getCidade()%> </td>
                         </tr>
                         <tr>
-                            <th> Estado </th>
+                            <th scope="row"> Estado </th>
                             <td> <%=e.getEstado()%> </td>
                         </tr>
                         <tr>
-                            <th> Número de funcionários: </th>
+                            <th scope="row"> Número de funcionários </th>
                             <td> <%=e.getFuncionarios().size()%> </td>
                         </tr>
                     </table>
