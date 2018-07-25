@@ -127,7 +127,7 @@
                 <div class="col-12">
                     <div class="card border-light">
                         <div class="card-header">
-                            Lucros dessa semana
+                            Lucros desse mês
                         </div>
                         <div class="card-body">
                             <div>
@@ -150,7 +150,7 @@
 </div>
 <%@include file="../rodape.jsp" %>
 <script src="../js/mascara.js"></script>
-<script src="../js/graficos/graficoSeteDiasLucros.js"></script>
-<script src="../js/graficos/graficoTrintaDiasLucros.js"></script>
+<script src="../js/graficos/graficoSeteDiasLucros.js" charset="utf-8"></script>
+<script src="../js/graficos/graficoTrintaDiasLucros.js" charset="utf-8"></script>
 </body>
 </html>

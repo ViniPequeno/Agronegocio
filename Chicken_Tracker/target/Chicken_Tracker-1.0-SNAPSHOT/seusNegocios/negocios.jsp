@@ -1,5 +1,5 @@
 <% String css = "../css/seu_negocio.css";
-   String titulo ="Seus Negócios";%>
+    String titulo = "Seus Negócios";%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Negocio.ConsultaNegocio" %>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio" %>
@@ -130,7 +130,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Todos os estabelecimentos associados a este negócio também serão apagados</p>
+                    <div class="text-center"> 
+                        <i class="fa fa-trash-alt fa-4x mb-3 animated rotateIn"></i>
+                        <p>Todos os estabelecimentos associados a este negócio também serão apagados</p>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
@@ -160,10 +163,10 @@
                     <p id="fone2"> Fone 2: </p>
                     Redes Sociais: 
                     <a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-facebook-f fa-lg"></i>
                     </a>
                     <a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" target="_blank">
-                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-instagram fa-lg"></i>
                     </a>
                     <p id="estabelecimentos"> Estabelecimentos: </p>
                 </div>
@@ -190,10 +193,10 @@
             '<p id="email"> Email: </p>' +
             '<p id="fone1"> Fone 1: </p>' +
             '<p id="fone2"> Fone 2: </p>' +
-            '<p id="estabelecimentos"> Estabelecimentos: </p>'+
-            'Redes Sociais: '+
-            '<a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank"><i data-fa-transform="grow-8" class="fa fab fa-facebook-f"></i></a>'+
-            '<a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" target="_blank"><i data-fa-transform="grow-8" class="fa fab fa-instagram"></i></a>';
+            '<p id="estabelecimentos"> Estabelecimentos: </p>' +
+            'Redes Sociais: ' +
+            '<a id="btnFace" type="button" class="btn-floating btn-sm mx-1 btn-fb" href="" target="_blank"><i class="fab fa-facebook-f fa-lg"></i></a>' +
+            '<a id="btnInsta" type="button" class="btn-floating btn-sm mx-1 btn-ins" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>';
     $("td").not(function () {
         return $("a", this).length != 0;
     }).click(function (event) {
@@ -215,8 +218,8 @@
         var email = campo[3];
         var facebook = campo[4];
         var instagram = campo[5];
-        var fone1 = campo[6]!=="null"?campo[6]:"------";
-        var fone2 = campo[7]!=="null"?campo[7]:"------";
+        var fone1 = campo[6] !== "null" ? campo[6] : "------";
+        var fone2 = campo[7] !== "null" ? campo[7] : "------";
 
         var estabelecimentos = campo[8];
 
@@ -231,7 +234,7 @@
 
         $("#email").text("Email: " + email);
 
-        $("#btnFace").attr("href", "http://"+facebook);
+        $("#btnFace").attr("href", "http://" + facebook);
         $("#btnInsta").attr("href", "http://www.instagram.com/" + instagram);
 
         $("#estabelecimentos").text("Estabelecimentos: " + estabelecimentos);
@@ -289,6 +292,6 @@
             formEditar.submit();
         }
     });
-    </script> 
+</script> 
 </body>
 </html>

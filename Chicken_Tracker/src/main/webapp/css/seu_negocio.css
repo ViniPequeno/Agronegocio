@@ -21,3 +21,8 @@ table.btn-table th label{
 td a:hover{
     text-decoration: underline;
 }
+
+#btnFace .fab, #btnInsta .fab{
+    margin-top: 16px;
+    margin-left: 16px;
+}

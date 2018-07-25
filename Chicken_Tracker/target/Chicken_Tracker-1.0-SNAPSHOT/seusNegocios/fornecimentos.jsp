@@ -141,6 +141,12 @@
                         <span aria-hidden="true" class="white-text">&times;</span>
                     </button>
                 </div>
+                <div class="modal-body">
+                    <div class="text-center"> 
+                        <i class="fa fa-trash-alt fa-4x mb-3 animated rotateIn"></i>
+                        <p>Esta ação não pode ser desfeita</p>
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                     <button form="checks" formaction="/Chicken_Tracker/FornecimentoServlet" formmethod="post" name="fornecimento" value="excluir" type="submit" class="btn btn-danger">Confirmar</button>

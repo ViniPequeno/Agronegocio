@@ -1,5 +1,5 @@
 <% String css = "../css/seu_negocio.css";
-   String titulo ="Gerenciar Funcionários";%>
+    String titulo = "Gerenciar Funcionários";%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
 <%@page import="br.com.avicultura.chicken_tracker.Models.Negocio"%>
 <%@page import="br.com.avicultura.chicken_tracker.Servlets.Estabelecimentos.ConsultaEstabelecimento"%>
@@ -130,7 +130,7 @@
     </span>
     <button id="btnBaixarPDF" class="btn btn-mdb-color btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Exportar para PDF">
         <i class="fa fa-file-pdf fa-lg mr-1" aria-hidden="true"></i></button>
-        
+
     <form id="checks"></form>
 
     <!-- Modal -->
@@ -167,7 +167,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Todos os funcionários selecionados serão apagados.</p>
+                    <div class="text-center"> 
+                        <i class="fa fa-trash-alt fa-4x mb-3 animated rotateIn"></i>
+                        <p>Todos os funcionários selecionados serão apagados.</p>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>

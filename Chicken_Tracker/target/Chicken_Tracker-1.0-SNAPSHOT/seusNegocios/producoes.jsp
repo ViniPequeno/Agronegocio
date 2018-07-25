@@ -98,8 +98,8 @@
     <%} else {%>
     <h2 class="my-5 py-5 text-center">Nenhuma produção registrada ainda</h2>
     <%}%>
-    <a href="../cadastro/pagamento.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Inserir pagamento" role="button">
-        <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a>
+    <!--a href="../cadastro/pagamento.jsp" class="btn btn-light-green btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Inserir pagamento" role="button">
+        <i class="fa fa-plus fa-lg mr-1" aria-hidden="true"></i></a-->
     <button id="btnBaixarPDF" class="btn btn-mdb-color btn-rounded mt-4 mb-0" data-toggle="tooltip" data-placement="bottom" title="Exportar para PDF">
         <i class="fa fa-file-pdf fa-lg mr-1" aria-hidden="true"></i></button>
     <!--<span class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Excluir pagamentos selecionados">
@@ -118,7 +118,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Esta ação não pode ser desfeita</p>
+                    <div class="text-center"> 
+                        <i class="fa fa-trash-alt fa-4x mb-3 animated rotateIn"></i>
+                        <p>Esta ação não pode ser desfeita</p>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
